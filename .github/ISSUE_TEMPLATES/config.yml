@@ -16,7 +16,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 ###############################################################
----
 blank_issues_enabled: false
 contact_links:
   - name: Eclipse Tractus X Community Overview
