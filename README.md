@@ -1,3 +1,3 @@
 # SIG-Project-Management
 
-This Repository is for the Project Management related organisational part
+This repository contains all project management related information.
