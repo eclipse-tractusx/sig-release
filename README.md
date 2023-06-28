@@ -1,3 +1,3 @@
-# Eclipse Tractus-X community
+# SIG-Project-Management
 
-The repository is the Homebase for all community efforts at Eclipse Tractus-X.
+This Repository is for the Project Management related organisational part
