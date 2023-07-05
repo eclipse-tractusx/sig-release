@@ -2,8 +2,6 @@ name: KIT-Promotion-Incubating
 description: Request to promote your KIT
 title: "[Promote KIT To Incubating]: "
 labels: ["kit-promotion"]
-assignees:
-  - octocat
 body:
   - type: input
     id: kit_name
