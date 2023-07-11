@@ -1,28 +1,22 @@
 ---
-name: Bug
-about: Something we have to fix
-title: ''
-labels: ''
-assignees: ''
-
+name: Report a Bug
+about: report bugs or unexpected behavior.
 ---
 
-**Describe the bug**
+<!-- 
+Thanks for your contribution! Please fill out this template as good as possible. 
+Important: Contributing Guidelines can be found here: https://eclipse-tractusx.github.io/docs/oss/how-to-contribute
+Checkout the repository README for process description. 
+-->
+
+## Description
 <!-- A clear and concise description of what the bug is. -->
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
-
-**Expected behavior**
+## Expected behavior
 <!-- A clear and concise description of what you expected to happen. -->
 
-**Screenshots**
-<!-- If applicable, add screenshots to help explain your problem. -->
-
-
-**Additional context**
-<!-- Add any other context about the problem here. -->
+## How to reproduce
+<!-- Please provide a clear procedure how to reproduce the bug. 
+Important technical details: 
+browser, app-version, environment, device, etc.
+-->

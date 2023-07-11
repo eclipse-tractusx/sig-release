@@ -1,24 +1,23 @@
 ---
-name: Feature
-about: Functionality we want to have
-title: ''
-labels: ''
-assignees: ''
-
+name: Propose a Feature
+about: propose a new functionality
 ---
 
-**Is your feature request related to a problem? Please describe.**
-<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] 
-     What´s the purpose, what´s the expected result. You can use Gherkin or the following simple approach: If (proposition), then (benefit) -->
+## Description
+<!-- 
+A clear and concise description of what the desired feature will look like. 
+What is the purpose, what´s the expected result. 
+Please describe.
+-->
 
-**Describe the solution you'd like**
-<!-- A clear and concise description of what you want to happen. Who will benefit for that feature -->
+## Impact
+<!--
+If possible, please provide insight in what and how many components might be affected or give a hint, if the feature implementation might result in breaking changes.
+-->
 
-**Describe alternatives you've considered**
-<!-- A clear and concise description of any alternative solutions or features you've considered. -->
+## Additional information 
 
-**Additional context**
-<!-- Add any other context or screenshots about the feature request here. -->
+- [ ] I'm willing to contribute this feature to the community
 
 
 
