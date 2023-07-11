@@ -1,14 +1,13 @@
-# SIG-Project-Management
+# SIG-Release
 
-The repository is the Homebase for all community efforts at Eclipse Tractus-X.
+Welcome to SIG-Release, home of release and feature management. 
 
-## Labels
+## RoadMap Process
 
-| Label Name      | Purpose                                                    |        How to use this label        | Who should use this label |
-|-----------------|------------------------------------------------------------|:-----------------------------------:|---------------------------|
-| `bug`           | Something isn't working                                    |     use the bug issue template      | Anyone                    |
-| `documentation` | Improvements or additions to documentation                 | add this label in your pull request | Anyone                    |
-| `enabler`       | NFR                                                        |    add this label in your issue     | Anyone                    |
-| `feature`       | What will be developed? Functionality - Over Product Teams |   use the feature issue template    | Anyone                    |
-| `requirement`   | What does the Economy want? Market Value - Purpose         | use the requirement issue template  | Anyone                    |
-| `task`          | A task for someone                                         |     use the task issue template     | Anyone                    |
+We follow a coordinated approach to plan improvements of Eclipse Tractus-X.
+
+While every repository in the eclipse-tractusx GitHub organization has its own issue management, the release [planning board](https://github.com/orgs/eclipse-tractusx/projects/26) is used to align overarching Tractus-X releases.
+
+## Contact
+
+- [Mailing List](https://accounts.eclipse.org/mailing-list/tractusx-dev)
