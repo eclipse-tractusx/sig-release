@@ -2,7 +2,7 @@
 name: Feature
 about: Functionality we want to have
 title: ''
-labels: 'feature'
+labels: ''
 assignees: ''
 
 ---
