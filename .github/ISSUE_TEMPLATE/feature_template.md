@@ -17,7 +17,7 @@ If possible, please provide insight in what and how many components might be aff
 
 ## Additional information 
 
-- [ ] I'm willing to contribute to this feature to the community
+- [ ] I'm willing to contribute to this feature
 
 
 
