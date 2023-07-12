@@ -25,8 +25,7 @@ more.
 
 The project maintains the following source code repositories
 
-* https://github.com/eclipse/tractusx
-* https://github.com/eclipse-tractusx/community
+* https://github.com/eclipse-tractusx/sig-release
 
 ## Eclipse Development Process
 

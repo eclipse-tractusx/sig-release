@@ -14,7 +14,7 @@ is used to align the overarching Tractus-X releases.
 
 In case you experienced a bug, unexpected behaviour, or you want to propose enhancements to Eclipse Tractus-X,
 feel free to use on of the provided [issue templates](https://github.com/eclipse-tractusx/sig-project-management/issues/new/choose) and describe your request.
-Please be aware, that not every feature request can be integrated and that we also cannot treat every issue with highest priority.
+Please be aware, that not every feature request can be integrated and that we also cannot treat every issue with the highest priority.
 
 Every Release planning will be kicked off by two public alignment sessions. The dates and further details will be shared via
 [tractusx-dev](https://accounts.eclipse.org/mailing-list/tractusx-dev) mailing list.
