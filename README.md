@@ -35,15 +35,15 @@ Our issues do have important properties, that enable our planning process. These
 
 The following statuses are defined:
 
-- __Planning:__ This is the initial status of all issues. It indicates, that involved components have to be identified and additional information gathered
-- __Backlog:__ If enough information is gathered and we agreed to work on the issue, it is set from `Planning` to `Backlog` to indicate it is ready for timeline planning
+- __Inbox:__ This is the initial status of all issues. It indicates, that involved components have to be identified and additional information gathered
+- __Backlog:__ If enough information is gathered and we agreed to work on the issue, it is set from `Inbox` to `Backlog` to indicate it is ready for timeline planning
 - __Work in Progress:__ The issue is actively been worked on.
 - __Done:__ All relevant parts have been implemented and released
 
 ### Issue process
 
-Every new feature proposal or bug report will be handled as issue in status `Planning` initially. The alignment meetings are used to discuss the purpose and impact of the current issues.
-While in `Planning` status, the involved components are discovered and respective `Labels` are added. If already possible, a desired `Milestone` can be set.
+Every new feature proposal or bug report will be handled as issue in status `Inbox` initially. The alignment meetings are used to discuss the purpose and impact of the current issues.
+While in `Inbox` status, the involved components are discovered and respective `Labels` are added. If already possible, a desired `Milestone` can be set.
 Additionally an `Assignee` is selected, who will coordinate efforts to solve the issue.
 
 After these details are clarified, an issue is moved to `Backlog` to open it for detailed timeline planning. In this status, discussions about a fitting `Iteration` is held.
