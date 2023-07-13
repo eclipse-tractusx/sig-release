@@ -21,6 +21,13 @@ Every Release planning will be kicked off by two public alignment sessions. The 
 Issues or bug reports, that should be discussed in these meetings, have to be opened prior to the meeting via
 our [issue templates](https://github.com/eclipse-tractusx/sig-project-management/issues/new/choose).
 
+### What can I expect
+
+We really welcome every contribution. Every Bug report and feature proposal takes time to prepare,
+is valuable to our project and we very much appreciate this input.
+We are giving our best to give a first feedback in one week.
+If we should miss that, please stick with us and just use the commenting function to remind us of the issue.
+
 ### Issue structure
 
 Our issues do have important properties, that enable our planning process. These are:
