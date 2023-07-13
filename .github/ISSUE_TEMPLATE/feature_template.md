@@ -13,7 +13,7 @@ Please describe.
 ## Impact
 <!--
 If possible, please provide insight in what and how many components and teams might be affected or give a hint, if the feature implementation might result in breaking changes.
-If there there are dependencies to other features please name it, here.
+If there are dependencies to other features please name it.
 -->
 
 ## Additional information 
