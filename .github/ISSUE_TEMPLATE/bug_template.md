@@ -18,5 +18,5 @@ Checkout the repository README for process description.
 ## How to reproduce
 <!-- Please provide a clear procedure how to reproduce the bug. 
 Important technical details: 
-browser, app-version, environment, device, etc.
+user information, screenshots, browser, app-version, environment, device, etc.
 -->
