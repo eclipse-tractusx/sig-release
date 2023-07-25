@@ -1,21 +1,36 @@
- <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ~ Copyright (c) 2023 Contributors to the Eclipse Foundation
-  ~
-  ~ See the NOTICE file(s) distributed with this work for additional
-  ~ information regarding copyright ownership.
-  ~
-  ~ This program and the accompanying materials are made available under the
-  ~ terms of the Apache License, Version 2.0 which is available at
-  ~ https://www.apache.org/licenses/LICENSE-2.0.
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-  ~ License for the specific language governing permissions and limitations
-  ~ under the License.
-  ~
-  ~ SPDX-License-Identifier: Apache-2.0
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~ Copyright (c) 2023 Contributors to the Eclipse Foundation
+ ~
+ ~ See the NOTICE file(s) distributed with this work for additional
+ ~ information regarding copyright ownership.
+ ~
+ ~ This program and the accompanying materials are made available under the
+ ~ terms of the Apache License, Version 2.0 which is available at
+ ~ https://www.apache.org/licenses/LICENSE-2.0.
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ ~ License for the specific language governing permissions and limitations
+ ~ under the License.
+ ~
+ ~ SPDX-License-Identifier: Apache-2.0
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 {{ define "header" }}
+<nav class="top-nav">
+    <div class="logo-box">
+        <img src="{{ .Config.AssetsPath }}/img/logo_tractus-x.svg" alt="The Eclipse Tractus-X logo">
+        <span>Eclipse Tractus-X Release Guideline Checks</span>
+    </div>
+    <div class="social-box">
+        <a href="https://github.com/eclipse-tractusx/eclipse-tractusx.github.io" target="_blank">
+            GitHub
+            <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
+                <path fill="currentColor"
+                      d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg>
+        </a>
+    </div>
+</nav>
 {{ end }}
