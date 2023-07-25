@@ -17,10 +17,13 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
-.top-nav {
+.nav {
     background: black;
     color: #dadde1;
     width: 100%;
+}
+
+.nav-top {
     height: 50px;
     margin: 0;
     display: flex;
@@ -42,4 +45,12 @@
     height: 100%;
     align-items: center;
     margin-right: 10px;
+}
+
+.nav-bottom {
+    height: 80px;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
