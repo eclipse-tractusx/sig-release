@@ -26,10 +26,10 @@ import (
 	"os"
 	"path"
 
-	"github.com/spf13/cobra"
-	"trg-checks-dashboard/templating"
-
 	cp "github.com/otiai10/copy"
+	"github.com/spf13/cobra"
+	"trg-checks-dashboard/internal/templating"
+	"trg-checks-dashboard/internal/tractusx"
 )
 
 const buildOutputDir = "build"
@@ -50,7 +50,7 @@ to quickly create a Cobra application.`,
 		copyAssets()
 
 		var outputBuffer bytes.Buffer
-		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig()})
+		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), Checks: getChecks()})
 
 		writeToFile(outputBuffer)
 	},
@@ -103,4 +103,21 @@ func copyAssets() {
 
 func getConfig() templating.Config {
 	return templating.Config{AssetsPath: "/assets"}
+}
+
+func getChecks() []templating.ProductCheck {
+	return []templating.ProductCheck{
+		{
+			Product: tractusx.Product{Name: "Portal", LeadingRepo: "https://github.com/eclipse-tractusx/portal-cd", Repositories: []string{}},
+			Checks:  []tractusx.ReleaseGuidelineCheck{},
+		},
+		{
+			Product: tractusx.Product{Name: "EDC", LeadingRepo: "", Repositories: []string{}},
+			Checks:  []tractusx.ReleaseGuidelineCheck{},
+		},
+		{
+			Product: tractusx.Product{Name: "Trace-X", LeadingRepo: "", Repositories: []string{}},
+			Checks:  []tractusx.ReleaseGuidelineCheck{},
+		},
+	}
 }

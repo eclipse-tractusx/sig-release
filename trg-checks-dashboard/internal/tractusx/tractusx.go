@@ -17,40 +17,16 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
-.nav {
-    background: black;
-    color: #dadde1;
-    width: 100%;
+package tractusx
+
+type Product struct {
+	Name         string
+	LeadingRepo  string
+	Repositories []string
 }
 
-.nav-top {
-    height: 50px;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.logo-box {
-    display: flex;
-    align-items:center;
-}
-
-.logo-box > img {
-    height: 28px;
-    margin: 11px 5px;
-}
-
-.social-box {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    margin-right: 10px;
-}
-
-.nav-bottom {
-    height: 80px;
-    text-align: center;
-    font-size: 14px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+type ReleaseGuidelineCheck struct {
+	Repository string
+	Guideline  string
+	Passed     bool
 }

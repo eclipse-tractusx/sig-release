@@ -24,6 +24,8 @@ import (
 	"io"
 	"log"
 	"path"
+
+	"trg-checks-dashboard/internal/tractusx"
 )
 
 const templateDir = "web/templates"
@@ -32,15 +34,22 @@ const indexTemplate = "index.html.tmpl"
 var allTemplates = []string{
 	"index.html.tmpl",
 	"header.html.tmpl",
+	"body.html.tmpl",
 	"footer.html.tmpl",
 }
 
 type TemplateData struct {
-	Config Config
+	Config
+	Checks []ProductCheck
 }
 
 type Config struct {
 	AssetsPath string
+}
+
+type ProductCheck struct {
+	Product tractusx.Product
+	Checks  []tractusx.ReleaseGuidelineCheck
 }
 
 // RenderHtmlTo does par take an w io.Writer and

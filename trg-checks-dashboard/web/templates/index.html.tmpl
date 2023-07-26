@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
     <link href="{{ .Config.AssetsPath }}/img/logo_tractus-x.svg" rel="icon" type="image/x-icon">
-    <link href="{{ .Config.AssetsPath }}/css/main.css" rel="stylesheet" type="text/css"/>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ .Config.AssetsPath }}/css/materialize.min.css"  media="screen,projection"/>
+
     <title>Eclipse Tractus-X Release Guidelines checks</title>
 </head>
 <body>
 {{ template "header" . }}
+    <div class="body">
+    {{ template "body" . }}
+    </div>
 {{ template "footer" . }}
+
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="{{ .Config.AssetsPath }}/js/materialize.min.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const elems = document.querySelectorAll('.collapsible');
+        const options = {}
+        M.Collapsible.init(elems, options);
+    });
+</script>
 </body>
