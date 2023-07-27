@@ -25,9 +25,7 @@
     <ul class="collapsible">
         {{ range .Checks }}
         <li>
-            <div class="collapsible-header">
-                <h5>{{ .Product.Name }}</h5>
-            </div>
+            <div class="collapsible-header">{{ .Product.Name }}</div>
             <div class="collapsible-body">Body</div>
         </li>
         {{ end }}

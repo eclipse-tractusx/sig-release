@@ -106,6 +106,9 @@ func getConfig() templating.Config {
 }
 
 func getChecks() []templating.ProductCheck {
+	for _, product := range tractusx.QueryProducts() {
+		log.Printf("Would have found product: %s", product.Name)
+	}
 	return []templating.ProductCheck{
 		{
 			Product: tractusx.Product{Name: "Portal", LeadingRepo: "https://github.com/eclipse-tractusx/portal-cd", Repositories: []string{}},

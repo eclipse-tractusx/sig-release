@@ -19,6 +19,18 @@
 
 package tractusx
 
+import (
+	"context"
+	"log"
+	"net/http"
+	"os"
+
+	"github.com/google/go-github/v53/github"
+	"golang.org/x/oauth2"
+)
+
+const gitHubOrg = "eclipse-tractusx"
+
 type Product struct {
 	Name         string
 	LeadingRepo  string
@@ -29,4 +41,41 @@ type ReleaseGuidelineCheck struct {
 	Repository string
 	Guideline  string
 	Passed     bool
+}
+
+func QueryProducts() []Product {
+	opt := &github.RepositoryListByOrgOptions{Type: "public"}
+	client := getGitHubClient()
+	repos, _, err := client.Repositories.ListByOrg(context.Background(), gitHubOrg, opt)
+
+	for _, repo := range repos {
+		log.Printf("Getting tractusx metadata for repository: %s", *repo.Name)
+		contents, _, _, err := client.Repositories.GetContents(context.Background(), gitHubOrg, *repo.Name, ".tractusx", nil)
+		if err != nil {
+			log.Printf("Could not get .tractusx metadata for repository: %s", *repo.Name)
+		} else {
+			content, _ := contents.GetContent()
+			log.Printf("Got filecontent: %s", content)
+		}
+	}
+
+	if err != nil {
+		log.Printf("Could not query repositories for GitHub organization: %v", err)
+	}
+
+	return []Product{}
+}
+
+func getGitHubClient() *github.Client {
+	return github.NewClient(getGitHubHttpClient())
+}
+
+func getGitHubHttpClient() *http.Client {
+	if os.Getenv("GITHUB_ACCESS_TOKEN") == "" {
+		return nil
+	}
+
+	return oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(
+		&oauth2.Token{AccessToken: os.Getenv("GITHUB_ACCESS_TOKEN")},
+	))
 }
