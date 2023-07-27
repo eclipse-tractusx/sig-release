@@ -25,10 +25,28 @@
     <ul class="collapsible">
         {{ range .Checks }}
         <li>
-            <div class="collapsible-header">{{ .Product.Name }}</div>
-            <div class="collapsible-body">Body</div>
+            <div class="collapsible-header"><a href="{{ .Product.LeadingRepo }}">{{ .Product.Name }}</a></div>
+            <div class="collapsible-body">
+                {{ range .Product.Repositories }}
+                <div class="row">
+                    <ul>
+                        <li>{{ . }}</li>
+                    </ul>
+                </div>
+                {{ end }}
+            </div>
         </li>
         {{ end }}
     </ul>
+
+    <div class="divider"></div>
+    <div class="section">
+        <h3>Unhandled Repositories:</h3>
+        <ul>
+            {{ range .UnhandledRepos }}
+            <div class="chip"><a href="{{ .URL }}">{{ .Name }}</a></div>
+            {{ end }}
+        </ul>
+    </div>
 </div>
 {{ end }}

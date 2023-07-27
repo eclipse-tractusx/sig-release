@@ -40,7 +40,8 @@ var allTemplates = []string{
 
 type TemplateData struct {
 	Config
-	Checks []ProductCheck
+	Checks         []ProductCheck
+	UnhandledRepos []tractusx.Repository
 }
 
 type Config struct {

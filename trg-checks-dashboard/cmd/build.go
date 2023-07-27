@@ -50,7 +50,8 @@ to quickly create a Cobra application.`,
 		copyAssets()
 
 		var outputBuffer bytes.Buffer
-		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), Checks: getChecks()})
+		products, unparseableRepos := tractusx.QueryProducts()
+		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), Checks: getChecks(products), UnhandledRepos: unparseableRepos})
 
 		writeToFile(outputBuffer)
 	},
@@ -105,22 +106,14 @@ func getConfig() templating.Config {
 	return templating.Config{AssetsPath: "/assets"}
 }
 
-func getChecks() []templating.ProductCheck {
-	for _, product := range tractusx.QueryProducts() {
-		log.Printf("Would have found product: %s", product.Name)
+func getChecks(products []tractusx.Product) []templating.ProductCheck {
+	var checks []templating.ProductCheck
+
+	for _, product := range products {
+		checks = append(checks, templating.ProductCheck{
+			Product: product,
+			Checks:  []tractusx.ReleaseGuidelineCheck{},
+		})
 	}
-	return []templating.ProductCheck{
-		{
-			Product: tractusx.Product{Name: "Portal", LeadingRepo: "https://github.com/eclipse-tractusx/portal-cd", Repositories: []string{}},
-			Checks:  []tractusx.ReleaseGuidelineCheck{},
-		},
-		{
-			Product: tractusx.Product{Name: "EDC", LeadingRepo: "", Repositories: []string{}},
-			Checks:  []tractusx.ReleaseGuidelineCheck{},
-		},
-		{
-			Product: tractusx.Product{Name: "Trace-X", LeadingRepo: "", Repositories: []string{}},
-			Checks:  []tractusx.ReleaseGuidelineCheck{},
-		},
-	}
+	return checks
 }
