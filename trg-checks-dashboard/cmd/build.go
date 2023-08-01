@@ -23,13 +23,13 @@ import (
 	"bufio"
 	"bytes"
 	"log"
+	"math/rand"
 	"os"
 	"path"
 
 	cp "github.com/otiai10/copy"
 	"github.com/spf13/cobra"
 	"trg-checks-dashboard/internal/templating"
-	"trg-checks-dashboard/internal/tractusx"
 )
 
 const buildOutputDir = "build"
@@ -38,20 +38,18 @@ const outputFileName = "index.html"
 // buildCmd represents the build command
 var buildCmd = &cobra.Command{
 	Use:   "build",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Create a statically compiled dashboard with release check status",
+	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		ensureOutputDirExists()
 		copyAssets()
 
 		var outputBuffer bytes.Buffer
-		products, unparseableRepos := tractusx.QueryProducts()
-		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), Checks: getChecks(products), UnhandledRepos: unparseableRepos})
+		products, unhandledRepos := templating.CheckProducts()
+		// unhandledRepos := getDemoUnhandledRepos()
+
+		// templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), CheckedProducts: getDemoChecks(), UnhandledRepos: unhandledRepos})
+		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), CheckedProducts: products, UnhandledRepos: unhandledRepos})
 
 		writeToFile(outputBuffer)
 	},
@@ -106,14 +104,79 @@ func getConfig() templating.Config {
 	return templating.Config{AssetsPath: "/assets"}
 }
 
-func getChecks(products []tractusx.Product) []templating.ProductCheck {
-	var checks []templating.ProductCheck
-
-	for _, product := range products {
-		checks = append(checks, templating.ProductCheck{
-			Product: product,
-			Checks:  []tractusx.ReleaseGuidelineCheck{},
-		})
+func getDemoUnhandledRepos() []templating.Repository {
+	return []templating.Repository{
+		{
+			Name: "BPDM",
+			URL:  "https://github.com/eclipse-tractusx/bpdm",
+		},
 	}
-	return checks
+}
+
+func getDemoChecks() []templating.CheckedProduct {
+	return []templating.CheckedProduct{
+		{
+			Name:          "Portal",
+			OverallPassed: randomBool(),
+			LeadingRepo:   "https://github.com/eclipse-tractusx/portal-cd",
+			CheckedRepositories: []templating.CheckedRepository{
+				{
+					RepoName:        "portal-cd",
+					RepoUrl:         "https://github.com/eclipse-tractusx/portal-cd",
+					GuidelineChecks: demoChecks(),
+				},
+				{
+					RepoName:        "portal-frontend",
+					RepoUrl:         "https://github.com/eclipse-tractusx/portal-frontend",
+					GuidelineChecks: demoChecks(),
+				},
+				{
+					RepoName:        "portal-backend",
+					RepoUrl:         "https://github.com/eclipse-tractusx/portal-backend",
+					GuidelineChecks: demoChecks(),
+				},
+			},
+		},
+		{
+			Name:          "EDC",
+			OverallPassed: randomBool(),
+			LeadingRepo:   "https://github.com/eclipse-tractusx/tractusx-edc",
+			CheckedRepositories: []templating.CheckedRepository{
+				{
+					RepoName:        "tractusx-edc",
+					RepoUrl:         "https://github.com/eclipse-tractusx/tractusx-edc",
+					GuidelineChecks: demoChecks(),
+				},
+			},
+		},
+	}
+}
+
+func demoChecks() []templating.GuidelineCheck {
+	return []templating.GuidelineCheck{
+		{
+			GuidelineName: "TRG 1.01",
+			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1",
+			Passed:        randomBool(),
+		},
+		{
+			GuidelineName: "TRG 4.02",
+			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02",
+			Passed:        randomBool(),
+		},
+		{
+			GuidelineName: "TRG 5.02",
+			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02",
+			Passed:        randomBool(),
+		},
+		{
+			GuidelineName: "TRG 7.04",
+			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-7/trg-7-04",
+			Passed:        randomBool(),
+		},
+	}
+}
+
+func randomBool() bool {
+	return rand.Int31n(2) == 0
 }

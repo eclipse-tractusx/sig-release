@@ -19,35 +19,50 @@
 
 package templating
 
-import (
-	"html/template"
-	"io"
-	"log"
-	"path"
-)
+import "github.com/eclipse-tractusx/tractusx-quality-checks/pkg/product"
 
-const templateDir = "web/templates"
-const indexTemplate = "index.html.tmpl"
-
-var allTemplates = []string{
-	"index.html.tmpl",
-	"header.html.tmpl",
-	"body.html.tmpl",
-	"footer.html.tmpl",
+type TemplateData struct {
+	Config
+	CheckedProducts []CheckedProduct
+	UnhandledRepos  []Repository
 }
 
-// RenderHtmlTo does par take an w io.Writer and
-func RenderHtmlTo(w io.Writer, data *TemplateData) {
-	templates := template.Must(template.New(indexTemplate).ParseFiles(allTemplatePaths()...))
-	if err := templates.ExecuteTemplate(w, indexTemplate, data); err != nil {
-		log.Fatalf("Could not execute template: %v", err)
-	}
+type CheckedProduct struct {
+	Name                string
+	LeadingRepo         string
+	OverallPassed       bool
+	CheckedRepositories []CheckedRepository
 }
 
-func allTemplatePaths() []string {
-	var result []string
-	for _, t := range allTemplates {
-		result = append(result, path.Join(templateDir, t))
-	}
-	return result
+type CheckedRepository struct {
+	RepoName            string
+	RepoUrl             string
+	PassedAllGuidelines bool
+	GuidelineChecks     []GuidelineCheck
+}
+
+type GuidelineCheck struct {
+	GuidelineName string
+	GuidelineUrl  string
+	Passed        bool
+}
+
+type Config struct {
+	AssetsPath string
+}
+
+type Repository struct {
+	Name, URL string
+}
+
+type Product struct {
+	Name         string
+	LeadingRepo  string
+	Repositories []Repository
+}
+
+type repoInfo struct {
+	metadata product.Metadata
+	repoName string
+	repoUrl  string
 }

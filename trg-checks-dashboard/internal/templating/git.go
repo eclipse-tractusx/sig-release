@@ -20,34 +20,26 @@
 package templating
 
 import (
-	"html/template"
-	"io"
+	"errors"
+	"fmt"
 	"log"
-	"path"
+	"os"
+
+	"gopkg.in/src-d/go-git.v4"
 )
 
-const templateDir = "web/templates"
-const indexTemplate = "index.html.tmpl"
-
-var allTemplates = []string{
-	"index.html.tmpl",
-	"header.html.tmpl",
-	"body.html.tmpl",
-	"footer.html.tmpl",
-}
-
-// RenderHtmlTo does par take an w io.Writer and
-func RenderHtmlTo(w io.Writer, data *TemplateData) {
-	templates := template.Must(template.New(indexTemplate).ParseFiles(allTemplatePaths()...))
-	if err := templates.ExecuteTemplate(w, indexTemplate, data); err != nil {
-		log.Fatalf("Could not execute template: %v", err)
+// cloneRepo creates a temporary directory and clones the given repo into it.
+// If successful, the directory, that the repo was cloned into is returned.
+// Error in case the temp dir cannot be created or the repo not cloned
+func cloneRepo(repo Repository) (string, error) {
+	dir, err := os.MkdirTemp("", fmt.Sprintf("%s-*", repo.Name))
+	if err != nil {
+		return "", errors.New("could not create temp dir to clone repo into")
 	}
-}
+	log.Printf("Created temp dir for repo check: %s; Cloning %s", dir, repo.URL)
 
-func allTemplatePaths() []string {
-	var result []string
-	for _, t := range allTemplates {
-		result = append(result, path.Join(templateDir, t))
+	if _, err := git.PlainClone(dir, true, &git.CloneOptions{URL: repo.URL, Depth: 0}); err != nil {
+		return "", errors.New(fmt.Sprintf("Could not clone repo %s (%s)", repo.Name, repo.URL))
 	}
-	return result
+	return dir, nil
 }

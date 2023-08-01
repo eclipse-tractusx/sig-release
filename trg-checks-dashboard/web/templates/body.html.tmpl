@@ -23,17 +23,30 @@
         <h1 class="header center orange-text">Release Guidelines Checks</h1>
     </div>
     <ul class="collapsible">
-        {{ range .Checks }}
+        {{ range $checkedProduct := .CheckedProducts }}
         <li>
-            <div class="collapsible-header"><a href="{{ .Product.LeadingRepo }}">{{ .Product.Name }}</a></div>
-            <div class="collapsible-body">
-                {{ range .Product.Repositories }}
-                <div class="row">
-                    <ul>
-                        <li>{{ . }}</li>
-                    </ul>
+            <div class="collapsible-header {{ if .OverallPassed }} light-green {{ else }} red lighten-1 {{ end }}">
+                <div class="valign-wrapper">
+                    {{ if .OverallPassed }}
+                    <i class="material-icons">check</i>
+                    {{ else }}
+                    <i class="material-icons">heart_broken</i>
+                    {{ end }}
+
+                    <h5>{{ .Name }}</h5>
                 </div>
-                {{ end }}
+            </div>
+            <div class="collapsible-body">
+                <table>
+                    {{ range $checkedProduct.CheckedRepositories }}
+                    <tr>
+                        <th><a href="{{ .RepoUrl }}">{{ .RepoName }}</a></th>
+                        {{ range .GuidelineChecks }}
+                        <td class="center {{ if .Passed }} light-green {{ else }} red lighten-1 {{ end }}"><a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a></td>
+                        {{ end }}
+                    </tr>
+                    {{ end }}
+                </table>
             </div>
         </li>
         {{ end }}
