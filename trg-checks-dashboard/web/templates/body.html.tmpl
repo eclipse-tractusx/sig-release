@@ -25,12 +25,12 @@
     <ul class="collapsible">
         {{ range $checkedProduct := .CheckedProducts }}
         <li>
-            <div class="collapsible-header {{ if .OverallPassed }} light-green {{ else }} red lighten-1 {{ end }}">
+            <div class="collapsible-header">
                 <div class="valign-wrapper">
                     {{ if .OverallPassed }}
-                    <i class="material-icons">check</i>
+                    <i class="material-icons green-text">check</i>
                     {{ else }}
-                    <i class="material-icons">heart_broken</i>
+                    <i class="material-icons red-text">heart_broken</i>
                     {{ end }}
 
                     <h5>{{ .Name }}</h5>
@@ -40,9 +40,19 @@
                 <table>
                     {{ range $checkedProduct.CheckedRepositories }}
                     <tr>
-                        <th><a href="{{ .RepoUrl }}">{{ .RepoName }}</a></th>
+                        <th>
+                            <div class="valign-wrapper">
+                                {{ if .PassedAllGuidelines }}
+                                <i class="material-icons green-text">check</i>
+                                {{ else }}
+                                <i class="material-icons red-text">heart_broken</i>
+                                {{ end }}
+                                <a href="{{ .RepoUrl }}">{{ .RepoName }}</a>
+                            </div>
+                        </th>
                         {{ range .GuidelineChecks }}
-                        <td class="center {{ if .Passed }} light-green {{ else }} red lighten-1 {{ end }}"><a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a></td>
+                        <td class="center {{ if .Passed }} light-green {{ else }} red lighten-1 {{ end }}">
+                            <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a></td>
                         {{ end }}
                     </tr>
                     {{ end }}
