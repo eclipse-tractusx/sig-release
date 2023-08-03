@@ -23,6 +23,7 @@ import (
 	"context"
 	"log"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/container"
@@ -57,8 +58,8 @@ func CheckProducts() ([]CheckedProduct, []Repository) {
 	var checkedProducts []CheckedProduct
 	for _, p := range getProductsFromMetadata(repoInfoByRepoUrl) {
 		checkedProduct := CheckedProduct{Name: p.Name, LeadingRepo: p.LeadingRepo, OverallPassed: true}
-		for _, repo := range p.Repositories {
-			checkedRepo := runQualityChecks(repo)
+		for _, r := range p.Repositories {
+			checkedRepo := runQualityChecks(r)
 			checkedProduct.OverallPassed = checkedProduct.OverallPassed && checkedRepo.PassedAllGuidelines
 			checkedProduct.CheckedRepositories = append(checkedProduct.CheckedRepositories, checkedRepo)
 		}
@@ -81,7 +82,7 @@ func runQualityChecks(repo Repository) CheckedRepository {
 
 	for _, check := range initializeChecksForDirectory(dir) {
 		testResult := check.Test()
-		checkedRepo.PassedAllGuidelines = checkedRepo.PassedAllGuidelines && testResult.Passed
+		checkedRepo.PassedAllGuidelines = checkedRepo.PassedAllGuidelines && (testResult.Passed || check.IsOptional())
 
 		guidelineCheck := GuidelineCheck{
 			Passed:        testResult.Passed,
@@ -135,6 +136,9 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 	for _, p := range leadingRepoToProduct {
 		products = append(products, *p)
 	}
+	sort.Slice(products, func(i, j int) bool {
+		return products[i].Name < products[j].Name
+	})
 	return products
 }
 
