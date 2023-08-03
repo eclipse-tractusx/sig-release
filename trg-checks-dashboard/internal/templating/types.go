@@ -47,6 +47,7 @@ type GuidelineCheck struct {
 	GuidelineName string
 	GuidelineUrl  string
 	Passed        bool
+	Optional      bool
 }
 
 type Config struct {

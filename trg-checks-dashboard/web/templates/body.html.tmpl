@@ -51,8 +51,30 @@
                             </div>
                         </th>
                         {{ range .GuidelineChecks }}
-                        <td class="center {{ if .Passed }} light-green {{ else }} red lighten-1 {{ end }}">
-                            <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a></td>
+                            {{ if .Passed }}
+                            <td class="center">
+                                <div class="valign-wrapper">
+                                    <i class="material-icons green-text">check</i>
+                                    <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                </div>
+                            </td>
+                            {{ else }}
+                                {{ if .Optional }}
+                                <td class="center">
+                                    <div class="valign-wrapper">
+                                        <i class="material-icons yellow-text">check</i>
+                                        <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                    </div>
+                                </td>
+                                {{ else }}
+                                <td class="center">
+                                    <div class="valign-wrapper">
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                    </div>
+                                </td>
+                                {{ end }}
+                            {{ end }}
                         {{ end }}
                     </tr>
                     {{ end }}
