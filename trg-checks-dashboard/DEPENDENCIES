@@ -8,15 +8,15 @@ go/golang/github.com%2Fcpuguy83%2Fgo-md2man/v2/v2.0.2, MIT, approved, clearlydef
 go/golang/github.com%2Fcreack/pty/v1.1.7, MIT, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.0, ISC, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.1, ISC, approved, clearlydefined
-go/golang/github.com%2Feclipse-tractusx/tractusx-quality-checks/v0.5.0, , restricted, clearlydefined
+go/golang/github.com%2Feclipse-tractusx/tractusx-quality-checks/v0.6.0, , restricted, clearlydefined
 go/golang/github.com%2Femirpasic/gods/v1.12.0, BSD-2-Clause AND ISC, approved, clearlydefined
+go/golang/github.com%2Ffatih/color/v1.15.0, MIT, approved, #9689
 go/golang/github.com%2Fflynn/go-shlex/v0.0.0-20150515145356-3f9db97f8568, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgliderlabs/ssh/v0.2.2, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgo-ini/ini/v1.67.0, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgolang/protobuf/v1.3.1, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgolang/protobuf/v1.5.0, BSD-3-Clause, approved, #5706
 go/golang/github.com%2Fgolang/protobuf/v1.5.3, BSD-3-Clause, approved, #5706
-go/golang/github.com%2Fgoogle%2Fgo-github/v50/v50.2.0, BSD-3-Clause, approved, #8204
 go/golang/github.com%2Fgoogle%2Fgo-github/v53/v53.2.0, BSD-3-Clause, approved, #9796
 go/golang/github.com%2Fgoogle/go-cmp/v0.3.0, BSD-3-Clause, approved, #5685
 go/golang/github.com%2Fgoogle/go-cmp/v0.5.2, BSD-3-Clause, approved, #5689
@@ -32,6 +32,9 @@ go/golang/github.com%2Fkr/pty/v1.1.1, MIT, approved, clearlydefined
 go/golang/github.com%2Fkr/pty/v1.1.8, MIT, approved, clearlydefined
 go/golang/github.com%2Fkr/text/v0.1.0, MIT, approved, clearlydefined
 go/golang/github.com%2Fkr/text/v0.2.0, MIT, approved, clearlydefined
+go/golang/github.com%2Fmattn/go-colorable/v0.1.13, MIT, approved, clearlydefined
+go/golang/github.com%2Fmattn/go-isatty/v0.0.16, MIT, approved, clearlydefined
+go/golang/github.com%2Fmattn/go-isatty/v0.0.17, MIT, approved, clearlydefined
 go/golang/github.com%2Fmitchellh/go-homedir/v1.1.0, MIT, approved, clearlydefined
 go/golang/github.com%2Fotiai10/copy/v1.12.0, MIT, approved, clearlydefined
 go/golang/github.com%2Fotiai10/mint/v1.5.1, MIT, approved, clearlydefined
@@ -82,6 +85,7 @@ go/golang/golang.org%2Fx/sys/v0.0.0-20201119102817-f84b799fce68, Apache-2.0 AND 
 go/golang/golang.org%2Fx/sys/v0.0.0-20210615035016-665e8c7367d1, Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause, approved, #3437
 go/golang/golang.org%2Fx/sys/v0.0.0-20220520151302-bc2c85ada10a, Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause, approved, #3437
 go/golang/golang.org%2Fx/sys/v0.0.0-20220722155257-8c9f86f7a55f, Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause, approved, #3437
+go/golang/golang.org%2Fx/sys/v0.0.0-20220811171246-fbc7d0a398ab, Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause, approved, #3437
 go/golang/golang.org%2Fx/sys/v0.10.0, BSD-3-Clause, approved, #9282
 go/golang/golang.org%2Fx/sys/v0.2.0, BSD-3-Clause, approved, #6379
 go/golang/golang.org%2Fx/sys/v0.3.0, BSD-3-Clause, approved, #9289

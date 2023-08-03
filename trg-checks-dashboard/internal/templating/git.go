@@ -38,7 +38,7 @@ func cloneRepo(repo Repository) (string, error) {
 	}
 	log.Printf("Created temp dir for repo check: %s; Cloning %s", dir, repo.URL)
 
-	if _, err := git.PlainClone(dir, true, &git.CloneOptions{URL: repo.URL, Depth: 0}); err != nil {
+	if _, err := git.PlainClone(dir, false, &git.CloneOptions{URL: repo.URL, Depth: 0}); err != nil {
 		return "", errors.New(fmt.Sprintf("Could not clone repo %s (%s)", repo.Name, repo.URL))
 	}
 	return dir, nil

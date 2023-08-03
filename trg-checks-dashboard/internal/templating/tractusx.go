@@ -23,10 +23,13 @@ import (
 	"context"
 	"log"
 	"os"
-	"path"
 	"strings"
 
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/product"
+	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/container"
+	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/docs"
+	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/helm"
+	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/repo"
+	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/tractusx"
 	"github.com/google/go-github/v53/github"
 	"golang.org/x/oauth2"
 )
@@ -34,13 +37,6 @@ import (
 const gitHubOrg = "eclipse-tractusx"
 
 var gitHubClient *github.Client
-
-var checks = []func(string) bool{
-	func(dir string) bool {
-		_, err := os.Stat(path.Join(dir, "README.md"))
-		return err != nil
-	},
-}
 
 func CheckProducts() ([]CheckedProduct, []Repository) {
 	repoInfoByRepoUrl := make(map[string]repoInfo)
@@ -83,14 +79,33 @@ func runQualityChecks(repo Repository) CheckedRepository {
 		return CheckedRepository{}
 	}
 
-	for _, check := range checks {
-		log.Println("Running checks...")
-		passed := check(dir)
-		checkedRepo.PassedAllGuidelines = checkedRepo.PassedAllGuidelines && passed
-		checkedRepo.GuidelineChecks = append(checkedRepo.GuidelineChecks, GuidelineCheck{Passed: passed, GuidelineUrl: "https://trg.com", GuidelineName: "TRG 1"})
+	for _, check := range initializeChecksForDirectory(dir) {
+		testResult := check.Test()
+		checkedRepo.PassedAllGuidelines = checkedRepo.PassedAllGuidelines && testResult.Passed
+
+		guidelineCheck := GuidelineCheck{
+			Passed:        testResult.Passed,
+			GuidelineUrl:  check.ExternalDescription(),
+			GuidelineName: check.Name(),
+		}
+		checkedRepo.GuidelineChecks = append(checkedRepo.GuidelineChecks, guidelineCheck)
 	}
 
 	return checkedRepo
+}
+
+func initializeChecksForDirectory(dir string) []tractusx.QualityGuideline {
+	var checks []tractusx.QualityGuideline
+
+	checks = append(checks, docs.NewReadmeExists(dir))
+	checks = append(checks, docs.NewInstallExists(dir))
+	checks = append(checks, docs.NewChangelogExists(dir))
+	//checks = append(checks, repo.NewRepoStructureExists(dir))
+	checks = append(checks, repo.NewLeadingRepositoryDefined(dir))
+	checks = append(checks, container.NewAllowedBaseImage(dir))
+	checks = append(checks, helm.NewHelmStructureExists(dir))
+
+	return checks
 }
 
 func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
@@ -122,20 +137,20 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 	return products
 }
 
-func getOrgRepos() []product.Repository {
+func getOrgRepos() []tractusx.Repository {
 	repos, _, err := gitHubClient.Repositories.ListByOrg(context.Background(), gitHubOrg, &github.RepositoryListByOrgOptions{Type: "public"})
 	if err != nil {
 		log.Printf("Could not query repositories for GitHub organization: %v", err)
 	}
 
-	var result []product.Repository
+	var result []tractusx.Repository
 	for _, r := range repos {
-		result = append(result, product.Repository{Name: *r.Name, Url: *r.HTMLURL})
+		result = append(result, tractusx.Repository{Name: *r.Name, Url: *r.HTMLURL})
 	}
 	return result
 }
 
-func getMetadataForRepo(repo product.Repository) *product.Metadata {
+func getMetadataForRepo(repo tractusx.Repository) *tractusx.Metadata {
 	log.Printf("Getting tractusx metadata for repository: %s", repo.Name)
 	contents, _, _, err := gitHubClient.Repositories.GetContents(context.Background(), gitHubOrg, repo.Name, ".tractusx", nil)
 	if err != nil {
@@ -144,7 +159,7 @@ func getMetadataForRepo(repo product.Repository) *product.Metadata {
 	}
 
 	content, _ := contents.GetContent()
-	metadata, err := product.MetadataFromFile([]byte(content))
+	metadata, err := tractusx.MetadataFromFile([]byte(content))
 	if err != nil {
 		log.Printf("Could not parse .tractusx metadata for repository: %s", repo.Name)
 		return nil

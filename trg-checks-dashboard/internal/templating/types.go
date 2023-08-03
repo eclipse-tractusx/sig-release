@@ -19,7 +19,9 @@
 
 package templating
 
-import "github.com/eclipse-tractusx/tractusx-quality-checks/pkg/product"
+import (
+	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/tractusx"
+)
 
 type TemplateData struct {
 	Config
@@ -62,7 +64,7 @@ type Product struct {
 }
 
 type repoInfo struct {
-	metadata product.Metadata
+	metadata tractusx.Metadata
 	repoName string
 	repoUrl  string
 }
