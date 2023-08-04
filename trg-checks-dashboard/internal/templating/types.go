@@ -44,10 +44,11 @@ type CheckedRepository struct {
 }
 
 type GuidelineCheck struct {
-	GuidelineName string
-	GuidelineUrl  string
-	Passed        bool
-	Optional      bool
+	GuidelineName    string
+	GuidelineUrl     string
+	Passed           bool
+	Optional         bool
+	ErrorDescription string
 }
 
 type Config struct {

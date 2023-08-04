@@ -85,10 +85,11 @@ func runQualityChecks(repo Repository) CheckedRepository {
 		checkedRepo.PassedAllGuidelines = checkedRepo.PassedAllGuidelines && (testResult.Passed || check.IsOptional())
 
 		guidelineCheck := GuidelineCheck{
-			Passed:        testResult.Passed,
-			Optional:      check.IsOptional(),
-			GuidelineUrl:  check.ExternalDescription(),
-			GuidelineName: check.Name(),
+			Passed:           testResult.Passed,
+			Optional:         check.IsOptional(),
+			ErrorDescription: testResult.ErrorDescription,
+			GuidelineUrl:     check.ExternalDescription(),
+			GuidelineName:    check.Name(),
 		}
 		checkedRepo.GuidelineChecks = append(checkedRepo.GuidelineChecks, guidelineCheck)
 	}
