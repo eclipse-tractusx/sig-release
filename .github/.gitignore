@@ -1,0 +1,2 @@
+# ignore example event inputs for local testing with act
+act/
