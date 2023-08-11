@@ -23,7 +23,6 @@ import (
 	"bufio"
 	"bytes"
 	"log"
-	"math/rand"
 	"os"
 	"path"
 
@@ -46,9 +45,7 @@ var buildCmd = &cobra.Command{
 
 		var outputBuffer bytes.Buffer
 		products, unhandledRepos := templating.CheckProducts()
-		// unhandledRepos := getDemoUnhandledRepos()
 
-		// templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), CheckedProducts: getDemoChecks(), UnhandledRepos: unhandledRepos})
 		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), CheckedProducts: products, UnhandledRepos: unhandledRepos})
 
 		writeToFile(outputBuffer)
@@ -102,81 +99,4 @@ func copyAssets() {
 
 func getConfig() templating.Config {
 	return templating.Config{AssetsPath: "/assets"}
-}
-
-func getDemoUnhandledRepos() []templating.Repository {
-	return []templating.Repository{
-		{
-			Name: "BPDM",
-			URL:  "https://github.com/eclipse-tractusx/bpdm",
-		},
-	}
-}
-
-func getDemoChecks() []templating.CheckedProduct {
-	return []templating.CheckedProduct{
-		{
-			Name:          "Portal",
-			OverallPassed: randomBool(),
-			LeadingRepo:   "https://github.com/eclipse-tractusx/portal-cd",
-			CheckedRepositories: []templating.CheckedRepository{
-				{
-					RepoName:        "portal-cd",
-					RepoUrl:         "https://github.com/eclipse-tractusx/portal-cd",
-					GuidelineChecks: demoChecks(),
-				},
-				{
-					RepoName:        "portal-frontend",
-					RepoUrl:         "https://github.com/eclipse-tractusx/portal-frontend",
-					GuidelineChecks: demoChecks(),
-				},
-				{
-					RepoName:        "portal-backend",
-					RepoUrl:         "https://github.com/eclipse-tractusx/portal-backend",
-					GuidelineChecks: demoChecks(),
-				},
-			},
-		},
-		{
-			Name:          "EDC",
-			OverallPassed: randomBool(),
-			LeadingRepo:   "https://github.com/eclipse-tractusx/tractusx-edc",
-			CheckedRepositories: []templating.CheckedRepository{
-				{
-					RepoName:        "tractusx-edc",
-					RepoUrl:         "https://github.com/eclipse-tractusx/tractusx-edc",
-					GuidelineChecks: demoChecks(),
-				},
-			},
-		},
-	}
-}
-
-func demoChecks() []templating.GuidelineCheck {
-	return []templating.GuidelineCheck{
-		{
-			GuidelineName: "TRG 1.01",
-			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1",
-			Passed:        randomBool(),
-		},
-		{
-			GuidelineName: "TRG 4.02",
-			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02",
-			Passed:        randomBool(),
-		},
-		{
-			GuidelineName: "TRG 5.02",
-			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02",
-			Passed:        randomBool(),
-		},
-		{
-			GuidelineName: "TRG 7.04",
-			GuidelineUrl:  "https://eclipse-tractusx.github.io/docs/release/trg-7/trg-7-04",
-			Passed:        randomBool(),
-		},
-	}
-}
-
-func randomBool() bool {
-	return rand.Int31n(2) == 0
 }
