@@ -144,7 +144,13 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 }
 
 func getOrgRepos() []tractusx.Repository {
-	repos, _, err := gitHubClient.Repositories.ListByOrg(context.Background(), gitHubOrg, &github.RepositoryListByOrgOptions{Type: "public"})
+	repos, _, err := gitHubClient.Repositories.ListByOrg(context.Background(), gitHubOrg, &github.RepositoryListByOrgOptions{
+		Type: "public",
+		ListOptions: github.ListOptions{
+			Page:    0,
+			PerPage: 100,
+		}},
+	)
 	if err != nil {
 		log.Printf("Could not query repositories for GitHub organization: %v", err)
 	}
