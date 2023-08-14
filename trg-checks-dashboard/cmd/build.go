@@ -98,5 +98,8 @@ func copyAssets() {
 }
 
 func getConfig() templating.Config {
+	if os.Getenv("DASHBOARD_ASSETS_PATH") != "" {
+		return templating.Config{AssetsPath: os.Getenv("DASHBOARD_ASSETS_PATH")}
+	}
 	return templating.Config{AssetsPath: "/assets"}
 }

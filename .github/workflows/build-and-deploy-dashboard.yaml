@@ -48,6 +48,8 @@ jobs:
           echo "GITHUB_ACCESS_TOKEN=${{ env.GITHUB_ACCESS_TOKEN}}" >> $GITHUB_ENV
           cd ${{ env.DASHBOARD_DIR }}
           go run main.go build
+        env:
+          DASHBOARD_ASSETS_PATH: "/sig-release/assets"
 
       # Docs: https://github.com/peaceiris/actions-gh-pages
       - name: Deploy to GitHub Pages
