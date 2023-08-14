@@ -43,7 +43,7 @@ jobs:
 
       - name: build static dashboard
         env:
-          GITHUB_ACCESS_TOKEN: ${{ github.events.inputs.github_token }}
+          GITHUB_ACCESS_TOKEN: ${{ github.event.inputs.github_token }}
         run: |
           echo "::add-mask::$GITHUB_ACCESS_TOKEN"
           cd ${{ env.DASHBOARD_DIR }}
