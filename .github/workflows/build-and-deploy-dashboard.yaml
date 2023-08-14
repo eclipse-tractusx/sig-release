@@ -43,8 +43,8 @@ jobs:
 
       - name: build static dashboard
         run: |
-          echo "::add-mask::${{ github.event.inputs.github_token }}"
-          echo "GITHUB_ACCESS_TOKEN=${{ github.event.inputs.github_token }}" >> $GITHUB_ENV
+          echo "::add-mask::$INPUT_GITHUB_TOKEN"
+          echo "GITHUB_ACCESS_TOKEN=$INPUT_GITHUB_TOKEN" >> $GITHUB_ENV
           cd ${{ env.DASHBOARD_DIR }}
           go run main.go build
 
