@@ -42,10 +42,9 @@ jobs:
           go-version-file: "${{ env.DASHBOARD_DIR }}/go.mod"
 
       - name: build static dashboard
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ github.event.inputs.github_token }}
         run: |
-          echo "::add-mask::$GITHUB_ACCESS_TOKEN"
+          echo "::add-mask::${{ github.event.inputs.github_token }}"
+          echo "GITHUB_ACCESS_TOKEN=${{ github.event.inputs.github_token }}" >> $GITHUB_ENV
           cd ${{ env.DASHBOARD_DIR }}
           go run main.go build
 
