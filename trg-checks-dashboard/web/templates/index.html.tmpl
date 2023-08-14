@@ -1,0 +1,55 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright (c) 2023 Contributors to the Eclipse Foundation
+  ~
+  ~ See the NOTICE file(s) distributed with this work for additional
+  ~ information regarding copyright ownership.
+  ~
+  ~ This program and the accompanying materials are made available under the
+  ~ terms of the Apache License, Version 2.0 which is available at
+  ~ https://www.apache.org/licenses/LICENSE-2.0.
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations
+  ~ under the License.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+    <link href="{{ .Config.AssetsPath }}/img/logo_tractus-x.svg" rel="icon" type="image/x-icon">
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ .Config.AssetsPath }}/css/materialize.min.css"  media="screen,projection"/>
+
+    <title>Eclipse Tractus-X Release Guidelines checks</title>
+</head>
+<body>
+{{ template "header" . }}
+    <div class="body">
+    {{ template "body" . }}
+    </div>
+{{ template "footer" . }}
+
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="{{ .Config.AssetsPath }}/js/materialize.min.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const elems = document.querySelectorAll('.collapsible');
+        const options = {}
+        M.Collapsible.init(elems, options);
+    });
+</script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const elems = document.querySelectorAll('.tooltipped');
+        M.Tooltip.init(elems, {});
+    });
+</script>
+</body>

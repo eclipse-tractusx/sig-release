@@ -30,6 +30,17 @@ The project maintains the following source code repositories:
 
 * https://github.com/eclipse-tractusx/sig-release
 
+## Third-party Content
+
+This project leverages the following third party content.
+
+See [DEPENDENCIES](./DEPENDENCIES) file.
+
+In addition, we use:
+
+- [Materialize](https://github.com/Dogfalo/materialize) in version 1.0.0 licensed under MIT.
+- [Material Icons](https://github.com/google/material-design-icons) licensed under Apache-2.0
+
 ## Cryptography
 
 Content may contain encryption software. The country in which you are currently
