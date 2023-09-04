@@ -182,10 +182,10 @@ func getMetadataForRepo(repo tractusx.Repository) *tractusx.Metadata {
 func init() {
 	if os.Getenv("GITHUB_ACCESS_TOKEN") == "" {
 		gitHubClient = github.NewClient(nil)
+	} else {
+		httpClient := oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(
+			&oauth2.Token{AccessToken: os.Getenv("GITHUB_ACCESS_TOKEN")},
+		))
+		gitHubClient = github.NewClient(httpClient)
 	}
-
-	httpClient := oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: os.Getenv("GITHUB_ACCESS_TOKEN")},
-	))
-	gitHubClient = github.NewClient(httpClient)
 }
