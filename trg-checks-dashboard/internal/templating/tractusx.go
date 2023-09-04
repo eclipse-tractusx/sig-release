@@ -94,6 +94,8 @@ func runQualityChecks(repo Repository) CheckedRepository {
 		checkedRepo.GuidelineChecks = append(checkedRepo.GuidelineChecks, guidelineCheck)
 	}
 
+	// Cleanup temporary directory used to clone the repo.
+	defer os.RemoveAll(dir)
 	return checkedRepo
 }
 
@@ -143,14 +145,44 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 	return products
 }
 
+type listFunc[T any] func(ctx context.Context, options *github.ListOptions) ([]T, *github.Response, error)
+
+func paginate[T any](ctx context.Context, listFunc listFunc[T], listOps *github.ListOptions) ([]T, error) {
+	var allItems []T
+
+	for {
+		items, resp, err := listFunc(ctx, listOps)
+		if err != nil {
+			return allItems, err
+		}
+
+		allItems = append(allItems, items...)
+
+		if resp.NextPage == 0 {
+			break
+		}
+
+		listOps.Page = resp.NextPage
+	}
+
+	return allItems, nil
+}
+
+func listOrgRepos(ctx context.Context, listOps *github.ListOptions) ([]*github.Repository, *github.Response, error) {
+	repos, response, err := gitHubClient.Repositories.ListByOrg(ctx, gitHubOrg, &github.RepositoryListByOrgOptions{
+		Type:        "public",
+		ListOptions: *listOps})
+	return repos, response, err
+}
+
 func getOrgRepos() []tractusx.Repository {
-	repos, _, err := gitHubClient.Repositories.ListByOrg(context.Background(), gitHubOrg, &github.RepositoryListByOrgOptions{
-		Type: "public",
-		ListOptions: github.ListOptions{
-			Page:    0,
-			PerPage: 100,
-		}},
-	)
+	repos, err := paginate(context.Background(), listOrgRepos, &github.ListOptions{
+		Page:    0,
+		PerPage: 100,
+	})
+
+	log.Printf("%s", repos)
+
 	if err != nil {
 		log.Printf("Could not query repositories for GitHub organization: %v", err)
 	}
