@@ -52,7 +52,7 @@ go/golang/github.com%2Fstretchr/objx/v0.2.0, MIT, approved, clearlydefined
 go/golang/github.com%2Fstretchr/testify/v1.3.0, MIT, approved, clearlydefined
 go/golang/github.com%2Fstretchr/testify/v1.4.0, MIT, approved, clearlydefined
 go/golang/github.com%2Fstretchr/testify/v1.7.0, MIT, approved, clearlydefined
-go/golang/github.com%2Fxanzy/ssh-agent/v0.2.1, Apache-2.0, restricted, clearlydefined
+go/golang/github.com%2Fxanzy/ssh-agent/v0.2.1, Apache-2.0 AND MIT, approved, #10251
 go/golang/github.com%2Fyuin/goldmark/v1.4.13, MIT, approved, clearlydefined
 go/golang/golang.org%2Fx/crypto/v0.0.0-20190219172222-a4c6cb3142f2, BSD-3-Clause AND (BSD-3-Clause AND OpenSSL) AND (BSD-3-Clause AND MIT), approved, #5633
 go/golang/golang.org%2Fx/crypto/v0.0.0-20190308221718-c2843e01d9a2, BSD-3-Clause AND (BSD-3-Clause AND OpenSSL) AND (BSD-3-Clause AND MIT), approved, #5633
@@ -93,11 +93,11 @@ go/golang/golang.org%2Fx/sys/v0.5.0, BSD-3-Clause, approved, #9288
 go/golang/golang.org%2Fx/sys/v0.6.0, BSD-3-Clause, approved, #8201
 go/golang/golang.org%2Fx/term/v0.0.0-20201126162022-7de9c90e9dd1, BSD-3-Clause, approved, #5720
 go/golang/golang.org%2Fx/term/v0.0.0-20210927222741-03fcf44c2211, BSD-3-Clause, approved, #5720
-go/golang/golang.org%2Fx/term/v0.10.0, BSD-3-Clause AND OTHER, restricted, clearlydefined
+go/golang/golang.org%2Fx/term/v0.10.0, BSD-3-Clause, approved, #10252
 go/golang/golang.org%2Fx/term/v0.2.0, BSD-3-Clause, approved, #6385
 go/golang/golang.org%2Fx/term/v0.5.0, BSD-3-Clause, approved, #9280
 go/golang/golang.org%2Fx/term/v0.6.0, BSD-3-Clause, approved, #9290
-go/golang/golang.org%2Fx/text/v0.11.0, BSD-3-Clause AND OTHER, restricted, clearlydefined
+go/golang/golang.org%2Fx/text/v0.11.0, BSD-3-Clause, approved, #10250
 go/golang/golang.org%2Fx/text/v0.3.0, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #6122
 go/golang/golang.org%2Fx/text/v0.3.2, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #6120
 go/golang/golang.org%2Fx/text/v0.3.3, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #6126
@@ -116,9 +116,9 @@ go/golang/google.golang.org/appengine/v1.6.7, Apache-2.0 AND BSD-3-Clause, appro
 go/golang/google.golang.org/protobuf/v1.26.0, BSD-3-Clause, approved, #5710
 go/golang/google.golang.org/protobuf/v1.26.0-rc.1, BSD-3-Clause, approved, #5710
 go/golang/google.golang.org/protobuf/v1.31.0, BSD-3-Clause, approved, #9281
-go/golang/gopkg.in%2Fsrc-d/go-billy.v4/v4.3.2, Apache-2.0, restricted, clearlydefined
+go/golang/gopkg.in%2Fsrc-d/go-billy.v4/v4.3.2, Apache-2.0, approved, #10249
 go/golang/gopkg.in%2Fsrc-d/go-git-fixtures.v3/v3.5.0, Apache-2.0, approved, clearlydefined
-go/golang/gopkg.in%2Fsrc-d/go-git.v4/v4.13.1, Apache-2.0, restricted, clearlydefined
+go/golang/gopkg.in%2Fsrc-d/go-git.v4/v4.13.1, Apache-2.0 AND MIT, approved, #10253
 go/golang/gopkg.in/check.v1/v0.0.0-20161208181325-20d25e280405, BSD-3-Clause AND BSD-2-Clause, approved, #6054
 go/golang/gopkg.in/check.v1/v1.0.0-20180628173108-788fd7840127, BSD-3-Clause AND BSD-2-Clause, approved, #6113
 go/golang/gopkg.in/check.v1/v1.0.0-20190902080502-41f04d3bba15, BSD-3-Clause AND BSD-2-Clause, approved, #6113
