@@ -44,9 +44,9 @@ var buildCmd = &cobra.Command{
 		copyAssets()
 
 		var outputBuffer bytes.Buffer
-		products, unhandledRepos := templating.CheckProducts()
+		products, unhandledRepos, archivedRepos := templating.CheckProducts()
 
-		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), CheckedProducts: products, UnhandledRepos: unhandledRepos})
+		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), CheckedProducts: products, UnhandledRepos: unhandledRepos, ArchivedRepos: archivedRepos})
 
 		writeToFile(outputBuffer)
 	},

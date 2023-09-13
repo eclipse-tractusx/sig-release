@@ -39,9 +39,9 @@ const gitHubOrg = "eclipse-tractusx"
 
 var gitHubClient *github.Client
 
-func CheckProducts() ([]CheckedProduct, []Repository) {
+func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 	repoInfoByRepoUrl := make(map[string]repoInfo)
-	var unhandledRepos []Repository
+	var unhandledRepos, archivedRepos []Repository
 
 	repos := getOrgRepos()
 
@@ -49,9 +49,11 @@ func CheckProducts() ([]CheckedProduct, []Repository) {
 		metadata := getMetadataForRepo(repo)
 
 		if metadata == nil {
-			unhandledRepos = append(unhandledRepos, Repository{Name: repo.Name, URL: repo.Url})
+			unhandledRepos = append(unhandledRepos, repo)
+		} else if repo.Archived {
+			archivedRepos = append(archivedRepos, repo)
 		} else {
-			repoInfoByRepoUrl[repo.Url] = repoInfo{metadata: *metadata, repoName: repo.Name, repoUrl: repo.Url}
+			repoInfoByRepoUrl[repo.URL] = repoInfo{metadata: *metadata, repoName: repo.Name, repoUrl: repo.URL}
 		}
 	}
 
@@ -67,7 +69,7 @@ func CheckProducts() ([]CheckedProduct, []Repository) {
 		checkedProducts = append(checkedProducts, checkedProduct)
 	}
 
-	return checkedProducts, unhandledRepos
+	return checkedProducts, unhandledRepos, archivedRepos
 }
 
 func runQualityChecks(repo Repository) CheckedRepository {
@@ -175,7 +177,7 @@ func listOrgRepos(ctx context.Context, listOps *github.ListOptions) ([]*github.R
 	return repos, response, err
 }
 
-func getOrgRepos() []tractusx.Repository {
+func getOrgRepos() []Repository {
 	repos, err := paginate(context.Background(), listOrgRepos, &github.ListOptions{
 		Page:    0,
 		PerPage: 100,
@@ -187,14 +189,14 @@ func getOrgRepos() []tractusx.Repository {
 		log.Printf("Could not query repositories for GitHub organization: %v", err)
 	}
 
-	var result []tractusx.Repository
+	var result []Repository
 	for _, r := range repos {
-		result = append(result, tractusx.Repository{Name: *r.Name, Url: *r.HTMLURL})
+		result = append(result, Repository{Name: *r.Name, URL: *r.HTMLURL, Archived: *r.Archived})
 	}
 	return result
 }
 
-func getMetadataForRepo(repo tractusx.Repository) *tractusx.Metadata {
+func getMetadataForRepo(repo Repository) *tractusx.Metadata {
 	log.Printf("Getting tractusx metadata for repository: %s", repo.Name)
 	contents, _, _, err := gitHubClient.Repositories.GetContents(context.Background(), gitHubOrg, repo.Name, ".tractusx", nil)
 	if err != nil {
