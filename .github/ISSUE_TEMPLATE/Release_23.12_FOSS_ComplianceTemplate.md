@@ -1,3 +1,12 @@
+---
+name: Release Compliance 23.12
+about: Use this template for tracking Catena-X Release 23.12.
+title: "[FOSS NAME] Release Compliance 23.12"
+labels: compliance
+assignees: @kelaja
+milestones: 23.12
+---
+
 <!---
  * Copyright (c) 2021,2023 Contributors to the Eclipse Foundation
  *
@@ -17,8 +26,15 @@
  * SPDX-License-Identifier: Apache-2.0
 --->
 
+<!-- 
+Thanks for your contribution! Please fill out this template as good as possible. 
+Important: Contributing Guidelines can be found here: https://eclipse-tractusx.github.io/docs/oss/how-to-contribute
+Checkout the repository README for process description. 
+-->
 
-# Release Compliance 23.12
+
+
+## Release Compliance 23.12
 Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
