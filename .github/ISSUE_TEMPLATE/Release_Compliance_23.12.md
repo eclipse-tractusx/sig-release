@@ -1,8 +1,8 @@
 # Release Compliance 23.12
-[source in Catena-X Confluence](https://confluence.catena-x.net/x/DOZkBQ)
+Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
-- [ ] Gaia-X compliance confirmed by Catena-X expert.
+ - [ ] Gaia-X compliance confirmed by Catena-X expert.
 	Obtain approval from CX Gaia-X expert(s), prior to Gate review.
   Provide info as early as possible; expect optimization loops based on feedback
   => check [linked PDF](https://confluence.catena-x.net/download/attachments/90498572/SD_Data_for_Onboarding.pdf?version=1&modificationDate=1690457195303&api=v2) summary for requirements
