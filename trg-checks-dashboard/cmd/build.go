@@ -73,7 +73,7 @@ func writeToFile(buffer bytes.Buffer) {
 	}
 
 	w := bufio.NewWriter(f)
-	_, err = w.WriteString(string(buffer.Bytes()))
+	_, err = w.WriteString(buffer.String())
 	if err != nil {
 		log.Fatalf("Could not write to output file: %v", err)
 	}
