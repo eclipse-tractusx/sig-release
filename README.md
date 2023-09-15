@@ -65,6 +65,20 @@ While the [Release Planning Board](https://github.com/orgs/eclipse-tractusx/proj
 we encourage every component team to break these issues down to their component repositories/projects.
 When doing so, make sure you link to the overarching issue in your component issue description.
 
+## Release Management Acceptance Criteria
+The Release Participation can be initiated by creating issues for the Acceptance Criteria Check from the Issue Templates.
+Each Release the Templates for the Acceptance Criteria will be renewed. There are two Paths for processing the Acceptance Criteria for an Application Team to participate in a Release.
+
+### The Happy Path
+The three Process Steps to get to the Status you need to pass the Q-Gate are shown in the Happy Path Process Flow.
+
+Each Acceptance Criterion Issue in GitHub contains a note with the prime contacts so that it is clear who is the assigned Expert or Release Manager.
+![Happy Path](image2023-3-24_9-19-57.png)
+
+### The other Path
+If the Evidence is not sufficient so that the criterium can not be accepted in the Quality Gate (QG), obligations for the Product team will be defined to make a reassessment.
+![The other Path](image2023-3-24_9-29-57.png)
+
 
 ## Contact
 
