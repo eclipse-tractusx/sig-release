@@ -66,18 +66,19 @@ we encourage every component team to break these issues down to their component 
 When doing so, make sure you link to the overarching issue in your component issue description.
 
 ## Release Management Acceptance Criteria
-The Release Participation can be initiated by creating issues for the Acceptance Criteria Check from the Issue Templates.
-Each Release the Templates for the Acceptance Criteria will be renewed. There are two Paths for processing the Acceptance Criteria for an Application Team to participate in a Release.
+The release participation can be initiated by creating issues for the acceptance criteria check from the Issue templates.
+Each release the Templates for the acceptance criteria will be renewed. There are two Paths for processing the acceptance criteria for an application team to participate in a release.
 
-### The Happy Path
-The three Process Steps to get to the Status you need to pass the Q-Gate are shown in the Happy Path Process Flow.
+### The Release Happy Path for the Acceptance Criteria
+The three process steps to get to the status you need to pass the Q-Gate are shown in the happy path process flow.
 
-Each Acceptance Criterion Issue in GitHub contains a note with the prime contacts so that it is clear who is the assigned Expert or Release Manager.
-![Happy Path](image2023-3-24_9-19-57.png)
+Each acceptance criteria issue in GitHub contains a note with the prime contacts so that it is clear who is the assigned expert or release manager.
 
-### The other Path
-If the Evidence is not sufficient so that the criterium can not be accepted in the Quality Gate (QG), obligations for the Product team will be defined to make a reassessment.
-![The other Path](image2023-3-24_9-29-57.png)
+![Happy Path](docs/static/releasemanagement-acceptance-happy-path.svg)
+
+### The other Release Path
+If the evidence is not sufficient so that the criterium can not be accepted in the quality gate (QG), obligations for the product team will be defined to make a reassessment.
+![The other Path](docs/static/releasemanagement-acceptance-other-path.png)
 
 
 ## Contact
