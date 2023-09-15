@@ -1,7 +1,7 @@
 ---
 name: Release Compliance 23.12
 about: Use this template for tracking Catena-X Release 23.12.
-title: "[FOSS NAME] Release Compliance 23.12"
+title: "[FOSS NAME] Release Compliance"
 labels: compliance
 assignees: @kelaja
 milestones: 23.12
