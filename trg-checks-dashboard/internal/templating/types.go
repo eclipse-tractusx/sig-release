@@ -33,6 +33,7 @@ type TemplateData struct {
 type CheckedProduct struct {
 	Name                string
 	LeadingRepo         string
+	RepoCategory        string
 	OverallPassed       bool
 	CheckedRepositories []CheckedRepository
 }
@@ -64,6 +65,7 @@ type Repository struct {
 type Product struct {
 	Name         string
 	LeadingRepo  string
+	RepoCategory string
 	Repositories []Repository
 }
 
