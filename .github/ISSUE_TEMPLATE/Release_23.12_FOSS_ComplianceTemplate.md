@@ -16,7 +16,7 @@ Checkout the repository README for process description.
 
 
 ## Release Compliance 23.12
-Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
 - [ ] **Gaia-X compliance** confirmed by (dedicated) expert.
