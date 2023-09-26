@@ -19,7 +19,7 @@ Checkout the repository README for process description.
 Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
- - [ ] **Gaia-X compliance** confirmed by Catena-X expert.
+- [ ] **Gaia-X compliance** confirmed by Catena-X expert.
 	
     - Obtain approval from CX Gaia-X expert(s), prior to Gate review.
 
@@ -27,7 +27,7 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
     => check [linked PDF](https://confluence.catena-x.net/download/attachments/90498572/SD_Data_for_Onboarding.pdf?version=1&modificationDate=1690457195303&api=v2) summary for requirements
 
-- [ ] **GDPR compliance** must be ensured
+- [ ] **GDPR compliance** confirmed
   (personal data; Data Protection & Privacy DPP)
   - assessment must be completed via Catena-X [GDPR questionnaire](https://confluence.catena-x.net/download/attachments/90498572/Catena-X%20GDPR%20Declaration%20and%20Requirements_V3.xlsx?version=1&modificationDate=1690457195339&api=v2)
   - either the product/service doesn`t process any relevant data,
@@ -46,7 +46,8 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   **Contact:** SYSTEM ARCHITECT2
 
-- [ ] **Data Sovereignty Check**
+
+- [ ] **Data Sovereignty Check**
 
   Acceptance criteria are fulfilled as described in in the following area on confluence:
 
