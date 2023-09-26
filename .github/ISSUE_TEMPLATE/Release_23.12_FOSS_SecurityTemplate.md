@@ -1,7 +1,7 @@
 ---
 name: Release Security 23.12
-about: Use this template for tracking Catena-X Release 23.12.
-title: "[FOSS NAME] Release Security"
+about: Use this template to track all Security-relevant topics for your component with regards to the upcoming Milestone.
+title: "[FOSS NAME] Release Security 23.12"
 labels: security
 assignees: @kelaja
 milestones: 23.12
@@ -16,7 +16,9 @@ Checkout the repository README for process description.
 # Release Compliance 23.12
 Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
-- [ ] **Threat Modelling Analysis results**
+
+- [ ] **Threat Modelling Analysis results**
+
 Analysis completed (operations excluded):
 > List of risks generated or updated, rated & actions defined
 > Risks accepted or mitigation actions implemented and tested
@@ -30,7 +32,9 @@ risk register
 **Prime Contacts:**
 Security Team: SEC0
 
-- [ ] **Static Application Security Testing (SAST)**
+
+- [ ] **Static Application Security Testing (SAST)**
+
 >code must be scanned weekly with Veracode tool
 >medium risks require mitigation statement
 >high and above not accepted
@@ -46,7 +50,9 @@ Veracode UI
 Security Team: SEC1
 
 
-- [ ] **Dynamic Application Security Testing (DAST)**
+
+- [ ] **Dynamic Application Security Testing (DAST)**
+
 incl API testing (if applicable)
 => all findings assessed
 => high & very high findings mitigated
@@ -61,7 +67,8 @@ INVICTI tool
 **Prime Contacts:**
 Security Team: SEC3 SEC4
 
-- [ ] **Secret scanning**
+
+- [ ] **Secret scanning**
 
 Scan executed centrally by SEC team
 >ZERO valid findings
@@ -75,7 +82,9 @@ Confirm relevant repository as early as possible to SEC team to enable regular, 
 
 **Prime Contact:** SEC1
 
-- [ ] **Software Composition Analysis (SCA)**
+
+- [ ] **Software Composition Analysis (SCA)**
+
 Dependencies must be scanned with Veracode tool with regards to vulnerability
 >high and above not accepted
 >FOSS whitelist policy has to be passed
@@ -90,7 +99,9 @@ Veracode UI
 **Prime Contacts:**
 Security Team: SEC1
 
-- [ ] **Container Scan conducted**
+
+- [ ] **Container Scan conducted**
+
 All containers in GitHub Packages must be scanned
 >High / Critical findings not accepted
 
@@ -104,7 +115,9 @@ via nightly GitHub Action
 **Prime Contacts:**
 Security Team: SEC2
 
-- [ ] **Infrastructure as Code**
+
+- [ ] **Infrastructure as Code**
+
 	
 IaC code must be scanned
 >Error findings not accepted
