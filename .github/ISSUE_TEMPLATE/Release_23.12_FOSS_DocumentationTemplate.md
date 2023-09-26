@@ -16,13 +16,14 @@ Checkout the repository README for process description.
 -->
 
 # Release Documentation 23.12
-Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
 - [ ] **Source Code**
 
     Code is centrally managed in Eclipse Tractus-X repository.
     All active and relevant [Release Guidelines](https://eclipse-tractusx.github.io/docs/release) are fulfilled (with confirmation by DevSecOps SystemTeam).
+
     Artefact Repo: https://github.com/eclipse-tractusx
 
     FOSS [Infopage](https://confluence.catena-x.net/x/_AZHAw)
