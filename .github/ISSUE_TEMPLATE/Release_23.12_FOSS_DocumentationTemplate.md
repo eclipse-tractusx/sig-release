@@ -19,7 +19,7 @@ Checkout the repository README for process description.
 Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
- - [ ] **Source Code**
+- [ ] **Source Code**
 
     Code is centrally managed in Eclipse Tractus-X repository.
     All active and relevant [Release Guidelines](https://eclipse-tractusx.github.io/docs/release) are fulfilled (with confirmation by DevSecOps SystemTeam).
