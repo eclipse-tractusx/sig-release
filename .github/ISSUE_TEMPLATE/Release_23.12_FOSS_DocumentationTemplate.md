@@ -106,8 +106,6 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
   Provide link to documentation as early as possible and mark changes to previous version (if applicable); expect optimization loops based on feedback.
-
-  example: branching & release strategies
   
   **Contact:** SYSTEM ARCHITECT
 
