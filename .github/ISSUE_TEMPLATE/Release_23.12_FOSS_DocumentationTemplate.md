@@ -1,6 +1,6 @@
 ---
 name: Release Documentation 23.12
-about: Use this template for tracking Catena-X Release 23.12.
+about: Use this template to track all Documentation-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Documentation"
 labels: documentation
 assignees: @kelaja
