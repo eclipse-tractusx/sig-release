@@ -1,0 +1,7 @@
+product: "sig-release"
+leadingRepository: "https://github.com/eclipse-tractusx/sig-release"
+repoCategory: "special"
+repositories:
+  - name: "sig-release"
+    usage: "Home of release and feature management."
+    url: "https://github.com/eclipse-tractusx/sig-release"

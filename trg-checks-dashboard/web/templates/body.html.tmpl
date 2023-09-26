@@ -83,7 +83,15 @@
         </li>
         {{ end }}
     </ul>
-
+    <div class="divider"></div>
+    <div class="section">
+        <h3>Archived Repositories:</h3>
+        <ul>
+            {{ range .ArchivedRepos }}
+            <div class="chip"><a href="{{ .URL }}">{{ .Name }}</a></div>
+            {{ end }}
+        </ul>
+    </div>
     <div class="divider"></div>
     <div class="section">
         <h3>Unhandled Repositories:</h3>
