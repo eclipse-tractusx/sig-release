@@ -1,30 +1,13 @@
 ---
 name: Release Documentation 23.12
-about: Use this template for tracking Catena-X Release 23.12.
-title: "[FOSS NAME] Release Documentation 23.12"
+about: Use this template to track all Documentation-relevant topics for your component with regards to the upcoming Milestone.
+title: "[FOSS NAME] Release Documentation"
 labels: documentation
 assignees: @kelaja
 milestones: 23.12
 ---
 
-<!---
- * Copyright (c) 2021,2023 Contributors to the Eclipse Foundation
- *
- * See the NOTICE file(s) distributed with this work for additional
- * information regarding copyright ownership.
- *
- * This program and the accompanying materials are made available under the
- * terms of the Apache License, Version 2.0 which is available at
- * https://www.apache.org/licenses/LICENSE-2.0.
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- *
- * SPDX-License-Identifier: Apache-2.0
---->
+
 
 <!-- 
 Thanks for your contribution! Please fill out this template as good as possible. 
@@ -123,8 +106,6 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
   Provide link to documentation as early as possible and mark changes to previous version (if applicable); expect optimization loops based on feedback.
-
-  example: branching & release strategies
   
   **Contact:** SYSTEM ARCHITECT
 

@@ -1,30 +1,11 @@
 ---
 name: Release Compliance 23.12
-about: Use this template for tracking Catena-X Release 23.12.
-title: "[FOSS NAME] Release Compliance 23.12"
+about: Use this template to track all Compliance-relevant topics for your component with regards to the upcoming Milestone.
+title: "[FOSS NAME] Release Compliance"
 labels: compliance
 assignees: @kelaja
 milestones: 23.12
 ---
-
-<!---
- * Copyright (c) 2021,2023 Contributors to the Eclipse Foundation
- *
- * See the NOTICE file(s) distributed with this work for additional
- * information regarding copyright ownership.
- *
- * This program and the accompanying materials are made available under the
- * terms of the Apache License, Version 2.0 which is available at
- * https://www.apache.org/licenses/LICENSE-2.0.
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- *
- * SPDX-License-Identifier: Apache-2.0
---->
 
 <!-- 
 Thanks for your contribution! Please fill out this template as good as possible. 
@@ -38,38 +19,39 @@ Checkout the repository README for process description.
 Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
- - [ ] **Gaia-X compliance** confirmed by Catena-X expert.
+- [ ] **Gaia-X compliance** confirmed by (dedicated) expert.
 	
     - Obtain approval from CX Gaia-X expert(s), prior to Gate review.
 
     - Provide info as early as possible; expect optimization loops based on feedback
 
-    => check [linked PDF](https://confluence.catena-x.net/download/attachments/90498572/SD_Data_for_Onboarding.pdf?version=1&modificationDate=1690457195303&api=v2) summary for requirements
+    => check [linked PDF](https://confluence.catena-x.net/download/attachments/90498572/SD_Data_for_Onboarding.pdf?version=1&modificationDate=1690457195303&api=v2) summary for requirements (Source only accessible for Catena-X Consortia members in current transition phase).
 
-- [ ] **GDPR compliance** must be ensured
+- [ ] **GDPR compliance** confirmed
   (personal data; Data Protection & Privacy DPP)
-  - assessment must be completed via Catena-X [GDPR questionnaire](https://confluence.catena-x.net/download/attachments/90498572/Catena-X%20GDPR%20Declaration%20and%20Requirements_V3.xlsx?version=1&modificationDate=1690457195339&api=v2)
+  - assessment must be completed via Catena-X [GDPR questionnaire](https://confluence.catena-x.net/download/attachments/90498572/Catena-X%20GDPR%20Declaration%20and%20Requirements_V3.xlsx?version=1&modificationDate=1690457195339&api=v2) (Source only accessible for Catena-X Consortia members in current transition phase.)
   - either the product/service doesn`t process any relevant data,
   - or - in case the assessment reveals potential issues - a more severe "Data Privacy Impact Assessment" shall be conducted (if applicable: robust mitigation actions must be completed)
   Provide evidence for GDPR compliance prior to Gate review. Previous assessments remain valid, as long as approach to handling of personal data was not changed.
 
 - [ ] **Interoperability Check**
 
-  Acceptance criteria are fulfilled as described in in the following area on confluence: [Interoperability Quality Gate Requirements](https://confluence.catena-x.net/x/DkwjB)
+  Acceptance criteria are fulfilled as described in in the following area on confluence: [Interoperability Quality Gate Requirements](https://confluence.catena-x.net/x/DkwjB) (Source only accessible for Catena-X Consortia members in current transition phase.)
 
   - Approval will be documented centrally by Expert(s)
 
   - Obtain approval from Interoperability experts prior to Gate review.
 
-  Therefore consult the [regular office hours](https://confluence.catena-x.net/x/fzkAAQ) as early as possible; expect optimization loops based on feedback. 
+  Therefore consult the [regular office hours](https://confluence.catena-x.net/x/fzkAAQ) as early as possible; expect optimization loops based on feedback. (Source only accessible for Catena-X Consortia members in current transition phase.)
 
   **Contact:** SYSTEM ARCHITECT2
 
-- [ ] **Data Sovereignty Check**
+
+- [ ] **Data Sovereignty Check**
 
   Acceptance criteria are fulfilled as described in in the following area on confluence:
 
-   - [Data Sovereignty Guardrails for Release 3.2](https://confluence.catena-x.net/x/qPTeB)
+   - [Data Sovereignty Guardrails for Release 3.2](https://confluence.catena-x.net/x/qPTeB) (Source only accessible for Catena-X Consortia members in current transition phase.)
 
   - Approval will be documented centrally by Expert(s)
 
@@ -91,7 +73,7 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
   
   Product Owner confirms:
 
-  - The content of upcoming CX Standardization Requests (STAN) has been reviewed and feedback was provided to the responsible PCA/BDA. As per current status, the FOSS product under review will be compliant as soon as the CX Standard is published. ([Info here](https://confluence.catena-x.net/x/XtyAAQ))
+  - The content of upcoming CX Standardization Requests (STAN) has been reviewed and feedback was provided to the responsible PCA/BDA. As per current status, the FOSS product under review will be compliant as soon as the CX Standard is published. ([Info here](https://confluence.catena-x.net/x/XtyAAQ)) (Source only accessible for Catena-X Consortia members in current transition phase.)
 
   - Minimum: PCA/BDA have finalized all release-relevant Standardization Requests (STAN). Those have passed the CX Association`s technical committee (TC4S) and are pre-published on the website. Opt-out period in progress.
 

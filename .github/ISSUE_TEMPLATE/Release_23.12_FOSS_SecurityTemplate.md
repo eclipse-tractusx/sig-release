@@ -7,25 +7,6 @@ assignees: @kelaja
 milestones: 23.12
 ---
 
-<!---
- * Copyright (c) 2021,2023 Contributors to the Eclipse Foundation
- *
- * See the NOTICE file(s) distributed with this work for additional
- * information regarding copyright ownership.
- *
- * This program and the accompanying materials are made available under the
- * terms of the Apache License, Version 2.0 which is available at
- * https://www.apache.org/licenses/LICENSE-2.0.
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- *
- * SPDX-License-Identifier: Apache-2.0
---->
-
 <!-- 
 Thanks for your contribution! Please fill out this template as good as possible. 
 Important: Contributing Guidelines can be found here: https://eclipse-tractusx.github.io/docs/oss/how-to-contribute
@@ -33,9 +14,11 @@ Checkout the repository README for process description.
 -->
 
 # Release Compliance 23.12
-Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+
 
 - [ ] **Threat Modelling Analysis results**
+
 Analysis completed (operations excluded):
 > List of risks generated or updated, rated & actions defined
 > Risks accepted or mitigation actions implemented and tested
@@ -49,7 +32,9 @@ risk register
 **Prime Contacts:**
 Security Team: SEC0
 
+
 - [ ] **Static Application Security Testing (SAST)**
+
 >code must be scanned weekly with Veracode tool
 >medium risks require mitigation statement
 >high and above not accepted
@@ -65,7 +50,9 @@ Veracode UI
 Security Team: SEC1
 
 
+
 - [ ] **Dynamic Application Security Testing (DAST)**
+
 incl API testing (if applicable)
 => all findings assessed
 => high & very high findings mitigated
@@ -79,6 +66,7 @@ INVICTI tool
 
 **Prime Contacts:**
 Security Team: SEC3 SEC4
+
 
 - [ ] **Secret scanning**
 
@@ -94,7 +82,9 @@ Confirm relevant repository as early as possible to SEC team to enable regular, 
 
 **Prime Contact:** SEC1
 
+
 - [ ] **Software Composition Analysis (SCA)**
+
 Dependencies must be scanned with Veracode tool with regards to vulnerability
 >high and above not accepted
 >FOSS whitelist policy has to be passed
@@ -109,7 +99,9 @@ Veracode UI
 **Prime Contacts:**
 Security Team: SEC1
 
+
 - [ ] **Container Scan conducted**
+
 All containers in GitHub Packages must be scanned
 >High / Critical findings not accepted
 
@@ -123,7 +115,9 @@ via nightly GitHub Action
 **Prime Contacts:**
 Security Team: SEC2
 
+
 - [ ] **Infrastructure as Code**
+
 	
 IaC code must be scanned
 >Error findings not accepted
