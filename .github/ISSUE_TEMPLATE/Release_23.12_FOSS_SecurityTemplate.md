@@ -17,7 +17,7 @@ Checkout the repository README for process description.
 Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
-- [ ] **Threat Modelling Analysis results**
+- [ ] **Threat Modelling Analysis results**
 
 Analysis completed (operations excluded):
 > List of risks generated or updated, rated & actions defined
@@ -33,7 +33,7 @@ risk register
 Security Team: SEC0
 
 
-- [ ] **Static Application Security Testing (SAST)**
+- [ ] **Static Application Security Testing (SAST)**
 
 >code must be scanned weekly with Veracode tool
 >medium risks require mitigation statement
@@ -51,7 +51,7 @@ Security Team: SEC1
 
 
 
-- [ ] **Dynamic Application Security Testing (DAST)**
+- [ ] **Dynamic Application Security Testing (DAST)**
 
 incl API testing (if applicable)
 => all findings assessed
@@ -68,7 +68,7 @@ INVICTI tool
 Security Team: SEC3 SEC4
 
 
-- [ ] **Secret scanning**
+- [ ] **Secret scanning**
 
 Scan executed centrally by SEC team
 >ZERO valid findings
@@ -83,7 +83,7 @@ Confirm relevant repository as early as possible to SEC team to enable regular, 
 **Prime Contact:** SEC1
 
 
-- [ ] **Software Composition Analysis (SCA)**
+- [ ] **Software Composition Analysis (SCA)**
 
 Dependencies must be scanned with Veracode tool with regards to vulnerability
 >high and above not accepted
@@ -100,7 +100,7 @@ Veracode UI
 Security Team: SEC1
 
 
-- [ ] **Container Scan conducted**
+- [ ] **Container Scan conducted**
 
 All containers in GitHub Packages must be scanned
 >High / Critical findings not accepted
@@ -116,7 +116,7 @@ via nightly GitHub Action
 Security Team: SEC2
 
 
-- [ ] **Infrastructure as Code**
+- [ ] **Infrastructure as Code**
 
 	
 IaC code must be scanned
