@@ -19,7 +19,7 @@ Checkout the repository README for process description.
 Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
-- [ ] **E2E System Integrations Tests**
+- [ ] **E2E System Integrations Tests**
   To pass the Consortia Gate 4, evidence has to be made available that all test criteria up to and including TRL 4 & TRL 6 have been achieved.
 
   - Expected evidence = outputs of TRL 4 and TRL 6.
