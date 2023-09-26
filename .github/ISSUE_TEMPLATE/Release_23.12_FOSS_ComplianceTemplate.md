@@ -96,4 +96,3 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
   - Minimum: PCA/BDA have finalized all release-relevant Standardization Requests (STAN). Those have passed the CX Association`s technical committee (TC4S) and are pre-published on the website. Opt-out period in progress.
 
    - Best case: Association Board approval available and CX Standard is published on website.
-
