@@ -57,7 +57,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
   - Admin Guide is correct and up to date; english is a must
 
-  - The documentation is of appropriate maturity to be handed over from the CX Consortia to any Operations Company with global business practice intentions. 
+  - The documentation is of appropriate maturity for any Operating Company with global business practice intentions. 
 
   - In MarkDown format. Link to document available. Must point to leading repository within Tractus-X.
 
@@ -101,19 +101,9 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
   **Contact:** SYSTEM ARCHITECT
 
-- [ ] **Development Process**
-
-  Description finalized for relevant product version.
-
-  Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
-  Provide link to documentation as early as possible and mark changes to previous version (if applicable); expect optimization loops based on feedback.
-  
-  **Contact:** SYSTEM ARCHITECT
-
-
 - [ ] **UX consistency** Style Guideline for User Interfaces
 
-    > [!NOTE]  mandatory for CX FrontEnd modules where the IP is Open Source or owned by Catena-X. COTS apps are out of scope).
+    > [!NOTE]  mandatory for FrontEnd modules where the IP is Open Source or owned by Catena-X. COTS apps are out of scope).
 
     User Interfaces are in line with the Catena-X Style Guidelines
 
