@@ -37,7 +37,7 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   Therefore consult the [regular office hours](https://confluence.catena-x.net/x/fzkAAQ) as early as possible; expect optimization loops based on feedback. (Source only accessible for Catena-X Consortia members in current transition phase.)
 
-  **Contact:** SYSTEM ARCHITECT2
+  _Contact:_ SYSTEM ARCHITECT2
 
 - [ ] **Data Sovereignty Check**
 
@@ -48,7 +48,7 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   Expect optimization loops based on feedback.
 
-  **Contact:** SYSTEM ARCHITECT3, SYSTEM ARCHITECT4
+  _Contact:_ SYSTEM ARCHITECT3, SYSTEM ARCHITECT4
 
 - [ ] **Confirmation of _published_ CX Standards**
   
