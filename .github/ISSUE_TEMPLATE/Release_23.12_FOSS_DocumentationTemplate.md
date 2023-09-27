@@ -28,15 +28,8 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
     FOSS [Infopage](https://confluence.catena-x.net/x/_AZHAw)(Source only accessible for Catena-X Consortia members in current transition phase)
 
-    Release Guidelines ([TRG](https://eclipse-tractusx.github.io/docs/release)) => ensure conformity prior to Gate review. 
-
     Consult the [regular office hours](https://catenax-ng.github.io/) as early as possible; expect optimization loops based on feedback.
 
-    **Examples:**
-    One leading product repository
-    App Version clearly identified via Github Release
-    Product is deployable via versioned & released HelmChart with ArgoCD
-    relevant documentation available in MD format
 
     **Contact:** DevSecOps System Team @Siegfriedk
   
