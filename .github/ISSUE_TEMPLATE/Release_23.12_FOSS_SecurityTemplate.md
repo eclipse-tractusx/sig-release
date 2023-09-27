@@ -3,7 +3,7 @@ name: Release Security 23.12
 about: Use this template to track all Security-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Security 23.12"
 labels: "security analysis"
-assignees: @kelaja
+assignees: kelaja
 ---
 
 <!-- 
