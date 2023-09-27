@@ -16,10 +16,10 @@ Checkout the repository README for process description.
 
 
 ## Release Compliance 23.12
-Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ). (Source only accessible for Catena-X Consortia members in current transition phase)
 
 
-- [ ] **Gaia-X compliance** confirmed by (dedicated) expert.
+- [ ] **Gaia-X compliance** confirmed by dedicated expert.
 	
     - Obtain approval from CX Gaia-X expert(s), prior to Gate review.
 

@@ -16,7 +16,7 @@ Checkout the repository README for process description.
 
 
 # Release Test Results 23.12
-Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ)(Source only accessible for Catena-X Consortia members in current transition phase).
 
 
 - [ ] **E2E System Integrations Tests**
@@ -24,7 +24,7 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   - Expected evidence = outputs of TRL 4 and TRL 6.
 
-  - Test Management has mapped and described all mandatory tests for Consortia Quality Gates [HERE](https://confluence.catena-x.net/x/WQpHAw).
+  - Test Management has mapped and described all mandatory tests for Consortia Quality Gates [HERE](https://confluence.catena-x.net/x/WQpHAw)(Source only accessible for Catena-X Consortia members in current transition phase).
   - Please focus on the columns "Derived Criteria" and "Outputs"  
 
   Document your test results in Catena-X JIRA XRAY
@@ -44,7 +44,7 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
   Relevant evidence is available
 
   **Artifact Repository**
-  [Jira Solution Level](https://jira.catena-x.net/projects/CXSOLUTION/summary)
+  [Jira Solution Level](https://jira.catena-x.net/projects/CXSOLUTION/summary)(Source only accessible for Catena-X Consortia members in current transition phase)
   
   **Best Practise**
   - PO to obtain BO approval prior to Gate review.

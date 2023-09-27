@@ -16,7 +16,7 @@ Checkout the repository README for process description.
 -->
 
 # Release Documentation 23.12
-Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ) (Source only accessible for Catena-X Consortia members in current transition phase).
 
 
 - [ ] **Source Code**
@@ -26,7 +26,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
     Artefact Repo: https://github.com/eclipse-tractusx
 
-    FOSS [Infopage](https://confluence.catena-x.net/x/_AZHAw)
+    FOSS [Infopage](https://confluence.catena-x.net/x/_AZHAw)(Source only accessible for Catena-X Consortia members in current transition phase)
 
     Release Guidelines ([TRG](https://eclipse-tractusx.github.io/docs/release)) => ensure conformity prior to Gate review. 
 
@@ -47,7 +47,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
     Provide link to documentation as early as possible and **mark changes** to previous version (if applicable); expect optimization loops based on feedback.
 
-    [LINK](https://confluence.catena-x.net/x/iVIAAQ) (GitHub Readme how-to)
+    [LINK](https://confluence.catena-x.net/x/iVIAAQ) (GitHub Readme how-to)(Source only accessible for Catena-X Consortia members in current transition phase)
 
     **Contact:** SYSTEM ARCHITECT
 
@@ -132,6 +132,6 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
    - (=> use issue, include app URL & TestUser, assign to SYSTEM ARCHITECT5, expect review loop)
 
   - [Style Components](https://portal.dev.demo.catena-x.net/_storybook/?path=/story)
-  - [LINK](https://confluence.catena-x.net/x/DVIAAQ) to Style Guideline
+  - [LINK](https://confluence.catena-x.net/x/DVIAAQ) to Style Guideline (Source only accessible for Catena-X Consortia members in current transition phase)
   - LINK to FrontEnd validations (will be added asap)
   - Please note, you can use the [official public available CX shared component library](https://www.npmjs.com/package/cx-portal-shared-components?activeTab=readme) (react supported) to easily develop applications which are in-line with the CX style guidelines

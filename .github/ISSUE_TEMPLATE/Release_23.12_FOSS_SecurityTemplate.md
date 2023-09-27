@@ -13,11 +13,11 @@ Important: Contributing Guidelines can be found here: https://eclipse-tractusx.g
 Checkout the repository README for process description. 
 -->
 
-# Release Compliance 23.12
-Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
+# Release Security 23.12
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ)(Source only accessible for Catena-X Consortia members in current transition phase).
 
 
-- [ ] **Threat Modelling Analysis results**
+- [ ] Threat Modelling Analysis results
 
 Analysis completed (operations excluded):
 > List of risks generated or updated, rated & actions defined
@@ -26,6 +26,7 @@ Analysis completed (operations excluded):
 
 
 **Artifact Repository:**
+confirm with SEC team for PI10
 risk register
 (decentral on Catena-X confluence)
 
