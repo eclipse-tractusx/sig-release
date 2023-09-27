@@ -19,7 +19,7 @@ Checkout the repository README for process description.
 Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ).
 
 
-- [ ] **Gaia-X compliance** confirmed by (dedicated) expert.
+- [ ] **Gaia-X compliance** confirmed by dedicated expert.
 	
     - Obtain approval from CX Gaia-X expert(s), prior to Gate review.
 
