@@ -56,7 +56,7 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   - The FOSS product under review is compliant to all relevant Catena-X Standards which are already published on the [Association website](https://catena-x.net/de/standard-library).
   > [!NOTE]  
-  > Failure to do so may ultimately make the reference implementation useless, as the mandatory CX Certification cannot be accomplished 
+  > Failure to do so may ultimately make the reference implementation useless, as the mandatory CX Certification cannot be accomplished.
 
 - [ ] **Verification of _foreseen_ CX Standards**
   

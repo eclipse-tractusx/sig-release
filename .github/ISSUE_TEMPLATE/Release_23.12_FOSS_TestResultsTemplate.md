@@ -13,8 +13,8 @@ Important: Contributing Guidelines can be found here: https://eclipse-tractusx.g
 Checkout the repository README for process description. 
 -->
 
-
 # Release Test Results 23.12
+
 Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ)(Source only accessible for Catena-X Consortia members in current transition phase).
 
 
@@ -34,23 +34,22 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   >
   >=> this is pre-requisite to participate in E2E test phase
 
-  **Contact:** TEST MANAGEMENT
+  _Contact:_ TEST MANAGEMENT
 
 - [ ] **Approval of User Journey**
 
   CX Business Owner confirms: All acceptance criteria met (as defined in PI documentation)
-
   Relevant evidence is available
 
-  **Artifact Repository**
+  _Artifact Repository_
   [Jira Solution Level](https://jira.catena-x.net/projects/CXSOLUTION/summary)(Source only accessible for Catena-X Consortia members in current transition phase)
   
-  **Best Practise**
+  _Best Practise_
   - PO to obtain BO approval prior to Gate review.
   - BO therefore to evaluate progress by participation at iteration demos.
   - BOs provide E2E test cases.
   - BOs welcome to act as tester.
   - BOs expected to participate in System Demo.
 
-  **Contacts** FOSS Product Owners &
-CX Business Owners
+  _Contact:_ FOSS Product Owners &
+  CX Business Owners
