@@ -4,7 +4,6 @@ about: Use this template to track all Compliance-relevant topics for your compon
 title: "[FOSS NAME] Release Compliance"
 labels: compliance
 assignees: @kelaja
-milestones: 23.12
 ---
 
 <!-- 

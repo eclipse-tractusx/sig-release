@@ -2,9 +2,8 @@
 name: Release TestResults 23.12
 about: Use this template to track all Test-Result-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Test Results 23.12"
-labels: TestResults
+labels: "test results"
 assignees: @kelaja
-milestones: 23.12
 ---
 
 

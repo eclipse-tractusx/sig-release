@@ -4,7 +4,6 @@ about: Use this template to track all Documentation-relevant topics for your com
 title: "[FOSS NAME] Release Documentation"
 labels: documentation
 assignees: @kelaja
-milestones: 23.12
 ---
 
 
@@ -54,7 +53,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
   - In MarkDown format. Link to document available. Must point to leading repository within Tractus-X.
 
-  **Best Practice**
+  _Best Practice_
 
   Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
   Provide link to documentation as early as possible and mark changes to previous version (if applicable); expect optimization loops based on feedback.
@@ -72,14 +71,14 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
   - The documentation is of appropriate maturity to be handed over from the CX Consortia to any Operations Company with global business practice intentions. 
 
-  **Best Practice**
+    _Best Practice_
   - Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
   - Provide link to documentation as early as possible and mark changes to previous version (if applicable); expect optimization loops based on feedback.
 
   - User assistance ensures that end users and others get all the information they need to accomplish their tasks with the software. Refer to a user guide, which covers "install/deploy, configure, and use the software" – as appropriate for the type of software and the information needs of the target group(s)
   - UI text and embedded help complete the User assistance.
 
-     **Contact:** SYSTEM ARCHITECT
+     _Contact:_ SYSTEM ARCHITECT
 
 - [ ] **Interfaces Documentation**
 
@@ -92,7 +91,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
   https://www.openapis.org/
 
-  **Contact:** SYSTEM ARCHITECT
+  _Contact:_ SYSTEM ARCHITECT
 
 - [ ] **Development Process**
 
