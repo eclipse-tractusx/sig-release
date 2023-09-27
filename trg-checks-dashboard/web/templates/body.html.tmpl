@@ -22,70 +22,209 @@
     <div class="section">
         <h1 class="header center orange-text">Release Guidelines Checks</h1>
     </div>
-    <ul class="collapsible">
-        {{ range $checkedProduct := .CheckedProducts }}
-        <li>
-            <div class="collapsible-header">
-                <div class="valign-wrapper">
-                    {{ if .OverallPassed }}
-                    <i class="material-icons green-text">check</i>
-                    {{ else }}
-                    <i class="material-icons red-text">heart_broken</i>
-                    {{ end }}
-
-                    <h5>{{ .Name }}</h5>
-                </div>
-            </div>
-            <div class="collapsible-body">
-                <table class="striped">
-                    {{ range $checkedProduct.CheckedRepositories }}
-                    <tr>
-                        <th>
+    <div class="section">
+        <h3>Special Interest Group:</h3>
+        <ul class="collapsible">
+            {{ range $checkedProduct := .CheckedProducts }}
+                {{ if eq .RepoCategory "special" }}
+                    <li>
+                        <div class="collapsible-header">
                             <div class="valign-wrapper">
-                                {{ if .PassedAllGuidelines }}
+                                {{ if .OverallPassed }}
                                 <i class="material-icons green-text">check</i>
                                 {{ else }}
                                 <i class="material-icons red-text">heart_broken</i>
                                 {{ end }}
-                                <a href="{{ .RepoUrl }}">{{ .RepoName }}</a>
+
+                                <h5>{{ .Name }}</h5>
                             </div>
-                        </th>
-                        {{ range .GuidelineChecks }}
-                            {{ if .Passed }}
-                            <td class="center">
-                                <div class="valign-wrapper">
-                                    <i class="material-icons green-text">check</i>
-                                    <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
-                                </div>
-                            </td>
-                            {{ else }}
-                                {{ if .Optional }}
-                                <td class="center">
-                                    <div class="valign-wrapper">
-                                        <i class="material-icons yellow-text">check</i>
-                                        <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
-                                    </div>
-                                </td>
-                                {{ else }}
-                                <td class="center">
-                                    <div class="valign-wrapper">
-                                        <i class="material-icons red-text">heart_broken</i>
-                                        <a class="tooltipped" data-position="top" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
-                                    </div>
-                                </td>
+                        </div>
+                        <div class="collapsible-body">
+                            <table class="striped">
+                                {{ range $checkedProduct.CheckedRepositories }}
+                                <tr>
+                                    <th>
+                                        <div class="valign-wrapper">
+                                            {{ if .PassedAllGuidelines }}
+                                            <i class="material-icons green-text">check</i>
+                                            {{ else }}
+                                            <i class="material-icons red-text">heart_broken</i>
+                                            {{ end }}
+                                            <a href="{{ .RepoUrl }}">{{ .RepoName }}</a>
+                                        </div>
+                                    </th>
+                                    {{ range .GuidelineChecks }}
+                                        {{ if .Passed }}
+                                        <td class="center">
+                                            <div class="valign-wrapper">
+                                                <i class="material-icons green-text">check</i>
+                                                <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                            </div>
+                                        </td>
+                                        {{ else }}
+                                            {{ if .Optional }}
+                                            <td class="center">
+                                                <div class="valign-wrapper">
+                                                    <i class="material-icons yellow-text">check</i>
+                                                    <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                                </div>
+                                            </td>
+                                            {{ else }}
+                                            <td class="center">
+                                                <div class="valign-wrapper">
+                                                    <i class="material-icons red-text">heart_broken</i>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                                </div>
+                                            </td>
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ end }}
+                                </tr>
                                 {{ end }}
-                            {{ end }}
-                        {{ end }}
-                    </tr>
-                    {{ end }}
-                </table>
-            </div>
-        </li>
-        {{ end }}
-    </ul>
+                            </table>
+                        </div>
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
     <div class="divider"></div>
     <div class="section">
-        <h3>Archived Repositories:</h3>
+        <h3>Products:</h3>
+        <ul class="collapsible">
+            {{ range $checkedProduct := .CheckedProducts }}
+                {{ if and (ne .RepoCategory "special") (ne .RepoCategory "support")}}
+                <li>
+                    <div class="collapsible-header">
+                        <div class="valign-wrapper">
+                            {{ if .OverallPassed }}
+                            <i class="material-icons green-text">check</i>
+                            {{ else }}
+                            <i class="material-icons red-text">heart_broken</i>
+                            {{ end }}
+
+                            <h5>{{ .Name }}</h5>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="striped">
+                            {{ range $checkedProduct.CheckedRepositories }}
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        {{ if .PassedAllGuidelines }}
+                                        <i class="material-icons green-text">check</i>
+                                        {{ else }}
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        {{ end }}
+                                        <a href="{{ .RepoUrl }}">{{ .RepoName }}</a>
+                                    </div>
+                                </th>
+                                {{ range .GuidelineChecks }}
+                                    {{ if .Passed }}
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                        </div>
+                                    </td>
+                                    {{ else }}
+                                        {{ if .Optional }}
+                                        <td class="center">
+                                            <div class="valign-wrapper">
+                                                <i class="material-icons yellow-text">check</i>
+                                                <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                            </div>
+                                        </td>
+                                        {{ else }}
+                                        <td class="center">
+                                            <div class="valign-wrapper">
+                                                <i class="material-icons red-text">heart_broken</i>
+                                                <a class="tooltipped" data-position="top" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                            </div>
+                                        </td>
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                            </tr>
+                            {{ end }}
+                        </table>
+                    </div>
+                </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+        <h3>Supporting:</h3>
+        <ul class="collapsible">
+            {{ range $checkedProduct := .CheckedProducts }}
+                {{ if eq .RepoCategory "support" }}
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="valign-wrapper">
+                                {{ if .OverallPassed }}
+                                <i class="material-icons green-text">check</i>
+                                {{ else }}
+                                <i class="material-icons red-text">heart_broken</i>
+                                {{ end }}
+            
+                                <h5>{{ .Name }}</h5>
+                            </div>
+                        </div>
+                        <div class="collapsible-body">
+                            <table class="striped">
+                                {{ range $checkedProduct.CheckedRepositories }}
+                                <tr>
+                                    <th>
+                                        <div class="valign-wrapper">
+                                            {{ if .PassedAllGuidelines }}
+                                            <i class="material-icons green-text">check</i>
+                                            {{ else }}
+                                            <i class="material-icons red-text">heart_broken</i>
+                                            {{ end }}
+                                            <a href="{{ .RepoUrl }}">{{ .RepoName }}</a>
+                                        </div>
+                                    </th>
+                                    {{ range .GuidelineChecks }}
+                                        {{ if .Passed }}
+                                        <td class="center">
+                                            <div class="valign-wrapper">
+                                                <i class="material-icons green-text">check</i>
+                                                <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                            </div>
+                                        </td>
+                                        {{ else }}
+                                            {{ if .Optional }}
+                                            <td class="center">
+                                                <div class="valign-wrapper">
+                                                    <i class="material-icons yellow-text">check</i>
+                                                    <a href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                                </div>
+                                            </td>
+                                            {{ else }}
+                                            <td class="center">
+                                                <div class="valign-wrapper">
+                                                    <i class="material-icons red-text">heart_broken</i>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                                </div>
+                                            </td>
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ end }}
+                                </tr>
+                                {{ end }}
+                            </table>
+                        </div>
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+        <h3>Archived:</h3>
         <ul>
             {{ range .ArchivedRepos }}
             <div class="chip"><a href="{{ .URL }}">{{ .Name }}</a></div>
@@ -94,7 +233,7 @@
     </div>
     <div class="divider"></div>
     <div class="section">
-        <h3>Unhandled Repositories:</h3>
+        <h3>Unhandled:</h3>
         <ul>
             {{ range .UnhandledRepos }}
             <div class="chip"><a href="{{ .URL }}">{{ .Name }}</a></div>

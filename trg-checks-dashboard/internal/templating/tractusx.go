@@ -59,7 +59,7 @@ func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 
 	var checkedProducts []CheckedProduct
 	for _, p := range getProductsFromMetadata(repoInfoByRepoUrl) {
-		checkedProduct := CheckedProduct{Name: p.Name, LeadingRepo: p.LeadingRepo, OverallPassed: true}
+		checkedProduct := CheckedProduct{Name: p.Name, LeadingRepo: p.LeadingRepo, RepoCategory: p.RepoCategory, OverallPassed: true}
 		for _, r := range p.Repositories {
 			checkedRepo := runQualityChecks(r)
 			checkedProduct.OverallPassed = checkedProduct.OverallPassed && checkedRepo.PassedAllGuidelines
@@ -134,6 +134,7 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 			log.Printf("Repo %s is leading, addign name (%s) + repo URL (%s) to product", url, info.metadata.ProductName, info.metadata.LeadingRepository)
 			p.Name = info.metadata.ProductName
 			p.LeadingRepo = info.metadata.LeadingRepository
+			p.RepoCategory = info.metadata.RepoCategory
 		}
 	}
 
