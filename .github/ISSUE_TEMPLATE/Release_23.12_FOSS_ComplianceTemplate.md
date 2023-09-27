@@ -5,26 +5,20 @@ title: "[FOSS NAME] Release Compliance"
 labels: compliance
 assignees: kelaja
 ---
-
 <!-- 
 Thanks for your contribution! Please fill out this template as good as possible. 
 Important: Contributing Guidelines can be found here: https://eclipse-tractusx.github.io/docs/oss/how-to-contribute
 Checkout the repository README for process description. 
 -->
 
-
-
 ## Release Compliance 23.12
+
 Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ). (Source only accessible for Catena-X Consortia members in current transition phase)
 
-
 - [ ] **Gaia-X compliance** confirmed by dedicated expert.
-	
-    - Obtain approval from CX Gaia-X expert(s), prior to Gate review.
-
-    - Provide info as early as possible; expect optimization loops based on feedback
-
-    => check [linked PDF](https://confluence.catena-x.net/download/attachments/90498572/SD_Data_for_Onboarding.pdf?version=1&modificationDate=1690457195303&api=v2) summary for requirements (Source only accessible for Catena-X Consortia members in current transition phase).
+  - Obtain approval from CX Gaia-X expert(s), prior to Gate review.
+  - Provide info as early as possible; expect optimization loops based on feedback
+  => check [linked PDF](https://confluence.catena-x.net/download/attachments/90498572/SD_Data_for_Onboarding.pdf?version=1&modificationDate=1690457195303&api=v2) summary for requirements (Source only accessible for Catena-X Consortia members in current transition phase).
 
 - [ ] **GDPR compliance** confirmed
   (personal data; Data Protection & Privacy DPP)
@@ -45,15 +39,11 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
 
   **Contact:** SYSTEM ARCHITECT2
 
-
 - [ ] **Data Sovereignty Check**
 
   Acceptance criteria are fulfilled as described in in the following area on confluence:
-
-   - [Data Sovereignty Guardrails for Release 3.2](https://confluence.catena-x.net/x/qPTeB) (Source only accessible for Catena-X Consortia members in current transition phase.)
-
+  - [Data Sovereignty Guardrails for Release 3.2](https://confluence.catena-x.net/x/qPTeB) (Source only accessible for Catena-X Consortia members in current transition phase.)
   - Approval will be documented centrally by Expert(s)
-
   - Obtain approval from Data Sovereignty experts prior to Gate review: Experts will schedule a review with your team.
 
   Expect optimization loops based on feedback.
@@ -75,5 +65,4 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
   - The content of upcoming CX Standardization Requests (STAN) has been reviewed and feedback was provided to the responsible PCA/BDA. As per current status, the FOSS product under review will be compliant as soon as the CX Standard is published. ([Info here](https://confluence.catena-x.net/x/XtyAAQ)) (Source only accessible for Catena-X Consortia members in current transition phase.)
 
   - Minimum: PCA/BDA have finalized all release-relevant Standardization Requests (STAN). Those have passed the CX Association`s technical committee (TC4S) and are pre-published on the website. Opt-out period in progress.
-
-   - Best case: Association Board approval available and CX Standard is published on website.
+  - Best case: Association Board approval available and CX Standard is published on website.

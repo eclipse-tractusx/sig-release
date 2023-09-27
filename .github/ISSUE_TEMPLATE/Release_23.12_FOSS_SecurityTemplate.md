@@ -18,115 +18,115 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
 - [ ] Threat Modelling Analysis results
 
-Analysis completed (operations excluded):
-> List of risks generated or updated, rated & actions defined
-> Risks accepted or mitigation actions implemented and tested
-> no high threats acceptable
+	Analysis completed (operations excluded):
+	> List of risks generated or updated, rated & actions defined
+	> Risks accepted or mitigation actions implemented and tested
+	> no high threats acceptable
 
 
-**Artifact Repository:**
-confirm with SEC team for PI10
-risk register
-(decentral on Catena-X confluence)
 
-**Prime Contacts:**
-Security Team: SEC0
+	**Artifact Repository:**
+		risk register
+		(decentral on Catena-X confluence)
+	
+	**Prime Contacts:**
+		Security Team: SEC0
 
 
 - [ ] **Static Application Security Testing (SAST)**
 
->code must be scanned weekly with Veracode tool
->medium risks require mitigation statement
->high and above not accepted
+	>code must be scanned weekly with Veracode tool
+	>medium risks require mitigation statement
+	>high and above not accepted
 
-**Best Practise:**
-Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
-
-**Artifact Repository:**
-Veracode UI
-(+ GitHub Action)
-
-**Prime Contacts:**
-Security Team: SEC1
+	**Best Practise:**
+		Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
+	
+	**Artifact Repository:**
+		Veracode UI
+		(+ GitHub Action)
+	
+	**Prime Contacts:**
+		Security Team: SEC1
 
 
 
 - [ ] **Dynamic Application Security Testing (DAST)**
 
-incl API testing (if applicable)
-=> all findings assessed
-=> high & very high findings mitigated
-=> evidence by re-scan
+	incl API testing (if applicable)
+	=> all findings assessed
+	=> high & very high findings mitigated
+	=> evidence by re-scan
 
-**Best Practise:**
-Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
-
-**Artifact Repository:**
-INVICTI tool
-
-**Prime Contacts:**
-Security Team: SEC3 SEC4
+	**Best Practise:**
+	Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
+	
+	**Artifact Repository:**
+	INVICTI tool
+	
+	**Prime Contacts:**
+	Security Team: SEC3 SEC4
 
 
 - [ ] **Secret scanning**
 
-Scan executed centrally by SEC team
->ZERO valid findings
-
-**Artifact Repository:**
-Veracode or alternative tool
-GitHub Secret Scanning
-GitGuardian
-
-Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
-
-**Prime Contact:** SEC1
+	Scan executed centrally by SEC team
+	>ZERO valid findings
+	
+	**Artifact Repository:**
+	Veracode or alternative tool
+	GitHub Secret Scanning
+	GitGuardian
+	
+	Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
+	
+	**Prime Contact:** SEC1
 
 
 - [ ] **Software Composition Analysis (SCA)**
 
-Dependencies must be scanned with Veracode tool with regards to vulnerability
->high and above not accepted
->FOSS whitelist policy has to be passed
-
-**Best Practise:**
-Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
-
-**Artifact Repository:**
-Veracode UI
-(& GitHub Action)
-
-**Prime Contacts:**
-Security Team: SEC1
-
-
+	Dependencies must be scanned with Veracode tool with regards to vulnerability
+	>high and above not accepted
+	>FOSS whitelist policy has to be passed
+	
+	**Best Practise:**
+	Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
+	
+	**Artifact Repository:**
+	Veracode UI
+	(& GitHub Action)
+	
+	**Prime Contacts:**
+	Security Team: SEC1
+	
+	
 - [ ] **Container Scan conducted**
 
-All containers in GitHub Packages must be scanned
->High / Critical findings not accepted
-
-**Best Practise:**
-Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
-
-**Artifact Repository:**
-Trivy
-via nightly GitHub Action
-
-**Prime Contacts:**
-Security Team: SEC2
+	All containers in GitHub Packages must be scanned
+	>High / Critical findings not accepted
+	
+	**Best Practise:**
+	Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
+	
+	**Artifact Repository:**
+	Trivy
+	via nightly GitHub Action
+	
+	**Prime Contacts:**
+	Security Team: SEC2
 
 
 - [ ] **Infrastructure as Code**
 
 	
-IaC code must be scanned
->Error findings not accepted
-
-****Artifact Repository:****
-KICS or alternative tool
-via nightly GitHub Action
-
-Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
-
-**Prime Contacts:**
-Security Team: SEC2
+	IaC code must be scanned
+	>Error findings not accepted
+	
+	****Artifact Repository:****
+	KICS or alternative tool
+	via nightly GitHub Action
+	
+	Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
+	
+	**Prime Contacts:**
+	Security Team: SEC2

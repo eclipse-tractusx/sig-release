@@ -52,5 +52,5 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   - BOs welcome to act as tester.
   - BOs expected to participate in System Demo.
 
-  **Contracts** FOSS Product Owners &
+  **Contacts** FOSS Product Owners &
 CX Business Owners
