@@ -11,7 +11,7 @@ Important: Contributing Guidelines can be found here: https://eclipse-tractusx.g
 Checkout the repository README for process description. 
 -->
 
-## Release Compliance 23.12
+# Release Compliance 23.12
 
 Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ). (Source only accessible for Catena-X Consortia members in current transition phase)
 
