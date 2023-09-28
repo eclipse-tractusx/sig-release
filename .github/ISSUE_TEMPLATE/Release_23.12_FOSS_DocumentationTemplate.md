@@ -86,7 +86,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
     - Provide link to documentation as early as possible and mark changes to the previous version (if applicable); expect optimization loops based on feedback.
-    - see [Open APIs](https://www.openapis.org/)
+    - See [Open APIs](https://www.openapis.org/)
 
   _Contact:_ 
     - SYSTEM ARCHITECT1
@@ -103,7 +103,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
   _Best Practice:_
     - Obtain approval from Style Guideline Owner, prior to Gate review
-    - use issue, include app URL & TestUser, assign to SYSTEM ARCHITECT4, expect review loop
+    - Use issue, include app URL & TestUser, assign to SYSTEM ARCHITECT4, expect review loop
     - [Style Components](https://portal.dev.demo.catena-x.net/_storybook/?path=/story)
     - [LINK](https://confluence.catena-x.net/x/DVIAAQ) to Style Guideline (Source only accessible for Catena-X Consortia members in the current transition phase)
     - LINK to FrontEnd validations (will be added asap)
