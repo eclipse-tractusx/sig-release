@@ -25,10 +25,10 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
 - [ ] **GDPR compliance** confirmed
 
-  - assessment must be completed via Catena-X [GDPR questionnaire](https://confluence.catena-x.net/download/attachments/90498572/Catena-X%20GDPR%20Declaration%20and%20Requirements_V3.xlsx?version=1&modificationDate=1690457195339&api=v2) for personal data; Data Protection & Privacy DPP. (Source only accessible for Catena-X Consortia members in current transition phase.)
-  - either the product/service doesn`t process any relevant data,
-  - or - in case the assessment reveals potential issues - a more severe "Data Privacy Impact Assessment" shall be conducted (if applicable: robust mitigation actions must be completed)
-  Provide evidence for GDPR compliance prior to Gate review. Previous assessments remain valid, as long as approach to handling of personal data was not changed.
+  - Assessment must be completed via Catena-X [GDPR questionnaire](https://confluence.catena-x.net/download/attachments/90498572/Catena-X%20GDPR%20Declaration%20and%20Requirements_V3.xlsx?version=1&modificationDate=1690457195339&api=v2) for personal data; Data Protection & Privacy DPP. (Source only accessible for Catena-X Consortia members in current transition phase.)
+  - Either the product/service doesn`t process any relevant data,
+  - Or - in case the assessment reveals potential issues - a more severe "Data Privacy Impact Assessment" shall be conducted (if applicable: robust mitigation actions must be completed).
+  - Provide evidence for GDPR compliance prior to Gate review. Previous assessments remain valid, as long as approach to handling of personal data was not changed.
 
 - [ ] **Interoperability Check**
 
@@ -53,7 +53,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 - [ ] **Confirmation of _published_ CX Standards**
   
   - Product Owner confirms: The FOSS product under review is compliant to all relevant Catena-X Standards which are already published on the [Association website](https://catena-x.net/de/standard-library).
-    - Failure to do so may ultimately make the reference implementation useless, as the mandatory CX Certification cannot be accomplished.
+  - Failure to do so may ultimately make the reference implementation useless, as the mandatory CX Certification cannot be accomplished.
 
 - [ ] **Verification of _foreseen_ CX Standards**
   
