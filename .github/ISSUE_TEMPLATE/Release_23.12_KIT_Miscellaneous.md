@@ -165,15 +165,12 @@ Checkout the repository README for process description.
     - An appendix must be created with a list of certification criteria (e.g., test cases) for the conformity assessment process. 
 
   _Best Practice:_
-    - A KIT must link to the published logic / schema standards on the CX Website.   
+    - A KIT must link to the published logic/schema standards on the CX Website.   
     - https://catena-x.net/de/standard-library
     - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/)
     - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
     - Minimum: PCA/BDA have finalized all release-relevant Standardization Requests (STAN). Those have passed the CX Association`s technical committee (TC4S) and are pre-published on the website. Opt-out period in progress. 
-    - Best case: Association Board approval available and CX Standard is published on website. 
-
-  _Artifact Repository:_
-
+    - Best case: Association Board approval is available and CX Standard is published on website. 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -190,10 +187,6 @@ Checkout the repository README for process description.
     - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
     - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
-
-  _Artifact Repository:_
-
-
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
     - Consult: KIT-CONTACT1, KIT-CONTACT2 
@@ -207,10 +200,6 @@ Checkout the repository README for process description.
   _Best Practice:_
     - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
     - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
-
-
-  _Artifact Repository:_
-
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -253,9 +242,6 @@ Checkout the repository README for process description.
     - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
-  _Artifact Repository:_
-
-
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
     - Consult: KIT-CONTACT1, KIT-CONTACT2 
@@ -271,16 +257,13 @@ Checkout the repository README for process description.
     - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
     - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
-
-  _Artifact Repository:_
-
-
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
     - Consult: KIT-CONTACT1, KIT-CONTACT2 
     - Review by: PCA/BDA
 
-# Development View
+# Release_23.12_KIT_Development_View.md
+
 - [ ] **API Specification / Protocols**
 
   - Documentation for the development view must be available in Eclipse Tractus-X as part of the development view MD files. 
@@ -307,10 +290,6 @@ Checkout the repository README for process description.
   _Best Practice:_
     - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
     - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
-
-
-  _Artifact Repository:_
-
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -348,7 +327,8 @@ Checkout the repository README for process description.
     - Responsible for Process: EAs 
     - Review by: PCA/BDA
 
-# Operations View
+# Release_23.12_KIT_Operations_View.md
+
 - [ ] **Quick Setup Guide and Deployment Scripts in Repository**
 
   - Documentation for the operations view must be available in Eclipse Tractus-X as MD files. 
