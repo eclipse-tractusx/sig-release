@@ -1,5 +1,5 @@
 ---
-name: Release TestResults 23.12
+name: Release Test Results 23.12
 about: Use this template to track all Test-Result-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Test Results 23.12"
 labels: "test results"
@@ -15,7 +15,7 @@ Checkout the repository README for process description.
 
 # Release Test Results 23.12
 
-Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ)(Source only accessible for Catena-X Consortia members in current transition phase).
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ) (Source only accessible for Catena-X Consortia members in current transition phase).
 
 
 - [ ] **E2E System Integrations Tests**
@@ -46,6 +46,6 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
     - BOs welcome to act as tester.
     - BOs expected to participate in System Demo.
 
-  _Contacts:_
+  _Contact:_
     - FOSS Product Owners &
     - CX Business Owners
