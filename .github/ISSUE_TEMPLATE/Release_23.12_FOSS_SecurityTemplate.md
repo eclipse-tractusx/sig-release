@@ -14,27 +14,28 @@ Checkout the repository README for process description.
 
 # Release Security 23.12
 
-Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ)(Source only accessible for Catena-X Consortia members in current transition phase).
+Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ) (Source only accessible for Catena-X Consortia members in current transition phase).
 
 - [ ] **Threat Modelling Analysis results**
-  Analysis completed (operations excluded):
   
+    - Analysis completed (operations excluded):
     - List of risks generated or updated, rated & actions defined
     - Risks accepted or mitigation actions implemented and tested
-    - no high threats acceptable
+    - No high threats acceptable
 
   _Artifact Repository:_
   
-    - risk register (decentral on Catena-X confluence)
+    - Risk Register (decentral on Catena-X confluence)
 
-  _Prime Contacts:_
+  _Contact:_
   
     - Security Team: SEC0
 
 - [ ] **Static Application Security Testing (SAST)**
-  - code must be scanned weekly with Veracode tool
-  - medium risks require mitigation statement
-  - high and above not accepted
+
+  - Code must be scanned weekly with Veracode tool
+  - Medium risks require mitigation statement
+  - High and above not accepted
 
   _Best Practise:_
   
@@ -45,7 +46,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
     - Veracode UI
     - (+ GitHub Action)
 
-  _Prime Contacts:_
+  _Contact:_
   
     - Security Team: SEC1
 
@@ -80,7 +81,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - Confirm relevant repository as early as possible to SEC team to enable regular, automated scans. Evidence required for Gate approval.
 
-   _Prime Contact:_
+   _Contact:_
   
      - Security Team: SEC1
 
@@ -98,7 +99,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
     - Veracode UI
     - (& GitHub Action)
 
-  _Prime Contacts:_
+  _Contact:_
   
     - Security Team: SEC1
 
@@ -116,7 +117,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
     - Trivy
     - via nightly GitHub Action
 
-  _Prime Contacts:_
+  _Contact:_
   
     - Security Team: SEC2
 
