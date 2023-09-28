@@ -78,7 +78,8 @@ Checkout the repository README for process description.
 
 
 
-# Adoption View
+# Release_23.12_KIT_Adoption_View.md
+
 - [ ] **KIT Repo in Tractus-X**
 
   - A KIT must have an own repository in Eclipse Tractus-X. The naming of the repository must have a postfix "-kit" 
