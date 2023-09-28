@@ -136,6 +136,6 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
     - KICS or alternative tool
     - via nightly GitHub Action
 
-  _Prime Contacts:_
+  _Contact:_
   
     - Security Team: SEC2
