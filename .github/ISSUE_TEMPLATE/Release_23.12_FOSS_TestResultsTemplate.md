@@ -22,7 +22,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
   -  To pass the Consortia Gate 4, evidence has to be made available that all test criteria up to and including TRL 4 & TRL 6 have been achieved.
   - Expected evidence = outputs of TRL 4 and TRL 6.
-  - Test Management has mapped and described all mandatory tests for Consortia Quality Gates [HERE](https://confluence.catena-x.net/x/WQpHAw)(Source only accessible for Catena-X Consortia members in current transition phase).
+  - Test Management has mapped and described all mandatory tests for Consortia Quality Gates [HERE](https://confluence.catena-x.net/x/WQpHAw) (Source only accessible for Catena-X Consortia members in the current transition phase).
   - Please focus on the columns "Derived Criteria" and "Outputs"  
   - Document your test results in Catena-X JIRA XRAY
   - Use the fields “DoD” and “Status” (story & solution level) to approve requirements.
@@ -34,18 +34,18 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 - [ ] **Approval of User Journey**
 
   - CX Business Owner confirms: All acceptance criteria met (as defined in PI documentation)
-  Relevant evidence is available
+  - Relevant evidence is available
 
   _Artifact Repository_
-    - [Jira Solution Level](https://jira.catena-x.net/projects/CXSOLUTION/summary)(Source only accessible for Catena-X Consortia members in current transition phase)
+    - [Jira Solution Level](https://jira.catena-x.net/projects/CXSOLUTION/summary) (Source only accessible for Catena-X Consortia members in the current transition phase)
   
   _Best Practise_
     - PO to obtain BO approval prior to Gate review.
     - BO therefore to evaluate progress by participation at iteration demos.
     - BOs provide E2E test cases.
-    - BOs welcome to act as tester.
-    - BOs expected to participate in System Demo.
+    - BOs are welcome to act as testers.
+    - BOs expected to participate in the System Demo.
 
-  _Contact:_
-    - FOSS Product Owners &
+  _Contacts:_
+    - FOSS Product Owners
     - CX Business Owners
