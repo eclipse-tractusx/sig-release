@@ -89,7 +89,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
 - [ ] **Software Composition Analysis (SCA)**
   - Dependencies must be scanned with Veracode tool with regards to vulnerability
-  - high and above not accepted
+  - High and above not accepted
   - FOSS whitelist policy has to be passed
 
   _Best Practise:_
