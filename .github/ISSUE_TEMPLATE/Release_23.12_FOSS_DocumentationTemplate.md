@@ -50,12 +50,12 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   - The documentation is of appropriate maturity for any Operating Company with global business practice intentions.
   - In MarkDown format. Link to document available. Must point to leading repository within Tractus-X.
   
-_Best Practice_
+  _Best Practice_:
 
-  Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
+  - Process the issue and schedule an appointment with SYSTEM ARCHITECT to obtain approval prior to Gate review.
   Provide link to documentation as early as possible and mark changes to previous version (if applicable); expect optimization loops based on feedback.
 
-  User assistance ensures that for example administrators get all the information they need to accomplish their tasks with the software. Refer to a administration guide, which covers "install/deploy, configure the software" – as appropriate for the type of software and the information needs of the target group(s)
+  - User assistance ensures that for example administrators get all the information they need to accomplish their tasks with the software. Refer to a administration guide, which covers "install/deploy, configure the software" – as appropriate for the type of software and the information needs of the target group(s)
   UI text and embedded help complete the User assistance.
 
      _Contact:_ SYSTEM ARCHITECT
