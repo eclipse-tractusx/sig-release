@@ -24,7 +24,7 @@ Checkout the repository README for process description.
   _Artifact Repository:_
     - Eclipse Tractus-X repo of KIT 
 
-  _  _Contacts:__ 
+  _Contacts:_
     - Responsible: PO 
     - Review by: 
       - T-X Committer / Project Lead 
@@ -62,15 +62,15 @@ Checkout the repository README for process description.
 
 - [ ] **Provide change log page in KIT**
 
-  - Each KIT team must provide a KIT-specific release note / change log for developers \\ 
+  - Each KIT team must provide a KIT-specific release note/change log for developers
   - +++ Note: Add non-software explanation +++ 
 
   _Best Practice:_
     - http://changelog.md/ 
-    - For good practice visit: https://keepachangelog.com/en/1.0.0/ 
+    - For good practice visit: [keepachangelog](https://keepachangelog.com/en/1.0.0/)
 
   _Artifact Repository:_
-    - Provide change log page in KIT - example: https://eclipse-tractusx.github.io/docs/kits/Traceability%20Kit/Traceability%20Kit%20Changelog 
+    - Provide change log page in KIT - [example](https://eclipse-tractusx.github.io/docs/kits/Traceability%20Kit/Traceability%20Kit%20Changelog)
 
   _Contacts:_ 
     - Responsible: PO/BDA 
@@ -85,7 +85,7 @@ Checkout the repository README for process description.
   - e.g., "traceability-kit" 
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx)
 
   _Contacts:_ 
     - Responsible: PCA/BDA 
@@ -97,11 +97,11 @@ Checkout the repository README for process description.
   - Documentation must be available in Eclipse Tractus-X as part of the adoption view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/)
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F)
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -113,11 +113,11 @@ Checkout the repository README for process description.
   - Documentation must be available in Eclipse Tractus-X as part of the adoption view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -131,21 +131,21 @@ Checkout the repository README for process description.
     - The content of upcoming Semantic Model Standardization Requests (STAN) has been reviewed and feedback was provided to the responsible PCA/BDA. 
 
   - Note: 
-     - Please create and submit standards in time according to process and timeline > The standardization process: https://confluence.catena-x.net/display/CXSTAN/The+standardization+process 
+     - Please create and submit standards in time according to process and timeline > The [standardization process](https://confluence.catena-x.net/display/CXSTAN/The+standardization+process) (Source only accessible for Catena-X Consortia members in current transition phase.)
 
      - An appendix must be created with a list of certification criteria (e.g., test cases) for the conformity assessment process. 
 
   _Best Practice:_
     - A KIT must link to the published semantic model standards on the Catena-X Association website.
     - https://catena-x.net/de/standard-library 
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
     - Note: 
       - failure to do so may ultimately make the KIT useless, as the mandatory CX Certification cannot be accomplished 
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -161,11 +161,14 @@ Checkout the repository README for process description.
     - The content of upcoming Logic / Schema Standardization Requests (STAN) has been reviewed and feedback was provided to the responsible PCA/BDA. 
 
   - Note: 
-    - Please create and submit standards in time according to process and timeline > The standardization process: https://confluence.catena-x.net/display/CXSTAN/The+standardization+process 
+    - Please create and submit standards in time according to process and timeline > The [standardization process](https://confluence.catena-x.net/display/CXSTAN/The+standardization+process) (Source only accessible for Catena-X Consortia members in current transition phase.)
     - An appendix must be created with a list of certification criteria (e.g., test cases) for the conformity assessment process. 
 
   _Best Practice:_
-    - A KIT must link to the published logic / schema standards on the CX Website. https://catena-x.net/de/standard-library ---https://eclipse-tractusx.github.io/docs/artefacts/https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - A KIT must link to the published logic / schema standards on the CX Website.   
+    - https://catena-x.net/de/standard-library
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/)
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
     - Minimum: PCA/BDA have finalized all release-relevant Standardization Requests (STAN). Those have passed the CX Association`s technical committee (TC4S) and are pre-published on the website. Opt-out period in progress. 
     - Best case: Association Board approval available and CX Standard is published on website. 
 
@@ -184,8 +187,8 @@ Checkout the repository README for process description.
   - Documentation must be available in Eclipse Tractus-X as part of the adoption view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
   _Artifact Repository:_
@@ -202,8 +205,8 @@ Checkout the repository README for process description.
   - Documentation must be available in Eclipse Tractus-X as part of the adoption view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
   _Artifact Repository:_
@@ -226,12 +229,12 @@ Checkout the repository README for process description.
     - a technical policy that can be executed by the EDC 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
     - https://github.com/eclipse-tractusx/edc-legal-policies 
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -246,8 +249,8 @@ Checkout the repository README for process description.
   - Documentation must be available in Eclipse Tractus-X as part of the adoption view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
   _Artifact Repository:_
@@ -265,8 +268,8 @@ Checkout the repository README for process description.
   - Documentation must be available in Eclipse Tractus-X as part of the adoption view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
   _Artifact Repository:_
@@ -283,12 +286,12 @@ Checkout the repository README for process description.
   - Documentation for the development view must be available in Eclipse Tractus-X as part of the development view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -302,8 +305,8 @@ Checkout the repository README for process description.
   - Sample data must be available in Eclipse Tractus-X as part of the development view MD files. 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
   _Artifact Repository:_
@@ -321,10 +324,10 @@ Checkout the repository README for process description.
   - A reference implementation must follow the FOSS release gates and must be available in the corresponding repository in the Eclipse Tractus-X project. 
 
   _Best Practice:_
-    - https://confluence.catena-x.net/x/IpSmB 
+    - https://confluence.catena-x.net/x/IpSmB (Source only accessible for Catena-X Consortia members in current transition phase.)
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
@@ -338,7 +341,7 @@ Checkout the repository README for process description.
   - Documentation must be available in Eclipse Tractus-X as part of the development view MD files.
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PCA / BDA 
@@ -354,12 +357,12 @@ Checkout the repository README for process description.
     - Deployment Scripts (e.g., local, helm charts, terraform) 
 
   _Best Practice:_
-    - https://eclipse-tractusx.github.io/docs/artefacts/ 
-    - https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F 
+    - [eclipse tractusx-docs-artefacts](https://eclipse-tractusx.github.io/docs/artefacts/) 
+    - [How-to-create-a-KIT-website](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/wiki/How-to-create-a-KIT-website%3F) 
 
 
   _Artifact Repository:_
-    - https://github.com/eclipse-tractusx 
+    - [eclipse-tractusx](https://github.com/eclipse-tractusx) 
 
   _Contacts:_ 
     - Responsible: PO/BO (from relevant Domain) 
