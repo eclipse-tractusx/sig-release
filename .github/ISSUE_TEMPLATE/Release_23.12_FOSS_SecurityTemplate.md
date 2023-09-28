@@ -52,9 +52,10 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
 
 - [ ] **Dynamic Application Security Testing (DAST)**
   incl API testing (if applicable)
-  - all findings assessed
-  - high & very high findings mitigated
-  - evidence by re-scan
+
+  - All findings assessed
+  - High & Very high findings mitigated
+  - Evidence by re-scan
 
   _Best Practise:_
   
@@ -64,12 +65,13 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - INVICTI tool
 
-  _Prime Contacts:_
+  _Contact:_
   
     - Security Team: SEC3 SEC4
 
 - [ ] **Secret scanning**
-  Scan executed centrally by SEC team and ZERO valid findings
+
+  - Scan executed centrally by SEC team and ZERO valid findings
   
   _Artifact Repository:_
   
@@ -86,9 +88,9 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
      - Security Team: SEC1
 
 - [ ] **Software Composition Analysis (SCA)**
-  Dependencies must be scanned with Veracode tool with regards to vulnerability
-    - high and above not accepted
-    - FOSS whitelist policy has to be passed
+  - Dependencies must be scanned with Veracode tool with regards to vulnerability
+  - high and above not accepted
+  - FOSS whitelist policy has to be passed
 
   _Best Practise:_
   
@@ -104,8 +106,8 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
     - Security Team: SEC1
 
 - [ ] **Container Scan conducted**
-  All containers in GitHub Packages must be scanned
-  
+
+    - All containers in GitHub Packages must be scanned
     - High / Critical findings not accepted
 
   _Best Practise:_
@@ -122,7 +124,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
     - Security Team: SEC2
 
 - [ ] **Infrastructure as Code**
-  IaC code must be scanned. 
+    - IaC code must be scanned. 
     - Error findings not accepted
 
    _Best Practise:_
