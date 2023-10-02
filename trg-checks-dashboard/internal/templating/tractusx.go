@@ -144,7 +144,7 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 		products = append(products, *p)
 	}
 	sort.Slice(products, func(i, j int) bool {
-		return products[i].Name < products[j].Name
+		return strings.ToLower(products[i].Name) < strings.ToLower(products[j].Name)
 	})
 	return products
 }
