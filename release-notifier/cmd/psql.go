@@ -20,7 +20,7 @@ package cmd
 
 import (
 	"fmt"
-
+	"release-notifier/internal/webscrape"
 	"github.com/spf13/cobra"
 )
 
@@ -36,6 +36,10 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("PostgresSQL release notifier called.")
+		latest_release := webscrape.GetLatestPostgresSQLRelease()
+		if latest_release != "" {
+			fmt.Printf("Latest: %v\n",latest_release)
+		}
 	},
 }
 
