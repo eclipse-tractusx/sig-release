@@ -1,0 +1,34 @@
+stateDiagram
+    direction LR
+    ip: in preperation
+    iex: in expert assement
+    qgr: in QG Review
+    wd: Won't do
+    p: passed
+    obg: Obligations defined \n (back to PO)
+    md: Management Decision
+    inPObl: In preperation with \nObligations defined \nto pass gate
+
+    [*] --> ip
+
+    state "Happy Path" as pod {
+        direction LR
+    state "Product Owner" as po {
+      direction LR
+      ip --> iex
+      inPObl --> iex
+    }
+    state "Expert" as ex {
+      direction LR
+      iex --> qgr
+    }
+     state "Release Mangement" as rm {
+      
+        qgr --> wd
+        qgr --> p
+        qgr --> obg
+        qgr --> md
+        
+    }
+
+    }
