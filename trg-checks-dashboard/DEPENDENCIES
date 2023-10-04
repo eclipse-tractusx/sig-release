@@ -17,6 +17,7 @@ go/golang/github.com%2Fcpuguy83%2Fgo-md2man/v2/v2.0.2, MIT, approved, clearlydef
 go/golang/github.com%2Fcreack/pty/v1.1.7, MIT, approved, clearlydefined
 go/golang/github.com%2Fcreack/pty/v1.1.9, MIT, approved, clearlydefined
 go/golang/github.com%2Fcyphar/filepath-securejoin/v0.2.3, BSD-3-Clause, approved, clearlydefined
+go/golang/github.com%2Fcyphar/filepath-securejoin/v0.2.4, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.0, ISC, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.1, ISC, approved, clearlydefined
 go/golang/github.com%2Fdocopt/docopt-go/v0.0.0-20180111231733-ee0de3bc6815, MIT, approved, #5650
