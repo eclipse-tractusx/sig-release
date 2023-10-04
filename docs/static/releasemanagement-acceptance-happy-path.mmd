@@ -1,0 +1,28 @@
+stateDiagram
+    direction LR
+    ip: in preperation
+    iex: in expert assement
+    qgr: in QG Review
+    wd: Won't do
+    p: passed
+
+    [*] --> ip
+
+    state "Happy Path" as pod {
+        direction LR
+    state "Product Owner" as po {
+      direction LR
+      ip --> iex
+    }
+    state "Expert" as ex {
+      direction LR
+      iex --> qgr
+    }
+     state "Release Mangement" as rm {
+      
+        qgr --> wd
+        qgr --> p
+    }
+    
+
+    }
