@@ -130,7 +130,7 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 		log.Printf("Adding repository %s (URL: %s) to product %s (Name: %s)", info.repoName, info.repoUrl, p.Name, info.metadata.LeadingRepository)
 		p.Repositories = append(p.Repositories, Repository{Name: info.repoName, URL: info.repoUrl})
 
-		if strings.ToLower(url) == strings.ToLower(info.metadata.LeadingRepository) {
+		if strings.EqualFold(url,info.metadata.LeadingRepository) {
 			log.Printf("Repo %s is leading, addign name (%s) + repo URL (%s) to product", url, info.metadata.ProductName, info.metadata.LeadingRepository)
 			p.Name = info.metadata.ProductName
 			p.LeadingRepo = info.metadata.LeadingRepository
@@ -143,7 +143,7 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 		products = append(products, *p)
 	}
 	sort.Slice(products, func(i, j int) bool {
-		return products[i].Name < products[j].Name
+		return strings.ToLower(products[i].Name) < strings.ToLower(products[j].Name)
 	})
 	return products
 }
@@ -201,7 +201,7 @@ func getMetadataForRepo(repo Repository) *tractusx.Metadata {
 	log.Printf("Getting tractusx metadata for repository: %s", repo.Name)
 	contents, _, _, err := gitHubClient.Repositories.GetContents(context.Background(), gitHubOrg, repo.Name, ".tractusx", nil)
 	if err != nil {
-		log.Printf("Could not get .tractusx metadata for repository: %s", repo.Name)
+		log.Printf("Could not get .tractusx metadata for repository %s: %v", repo.Name, err)
 		return nil
 	}
 
