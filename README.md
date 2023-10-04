@@ -78,7 +78,7 @@ Each acceptance criteria issue in GitHub contains a note with the prime contacts
 
 ### The other Release Path
 If the evidence is not sufficient so that the criterium can not be accepted in the quality gate (QG), obligations for the product team will be defined to make a reassessment.
-![The other Path](docs/static/releasemanagement-acceptance-other-path.png)
+![The other Path](docs/static/releasemanagement-acceptance-other-path.svg)
 
 
 ## Contact
