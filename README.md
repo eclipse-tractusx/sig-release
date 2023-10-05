@@ -33,7 +33,7 @@ If we should miss that, please stick with us and just use the commenting functio
 Our issues do have important properties, that enable our planning process. These are:
 
 - __Labels:__ We use them to indicate the involved teams. A label for each involved component is added to an issue
-- __Issue Type:__ To separate between bugs and feature request, we use a custom field `Issue Type`
+- __Issue Type:__ To separate between bugs, feature requests and release criterias, we use a custom field `Issue Type`
 - __Milestone:__ Every Tractus-X release is represented by a `Milestone`. You can use this field to get a rough idea about the ETA
 - __Status:__ The status field is used to integrate the progress of an issue
 - __Iteration:__ `Milestone`s are divided in multiple iterations. The 'Iteration' field is used to do finegrained timeline planning
