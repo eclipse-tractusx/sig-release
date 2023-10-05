@@ -1,8 +1,8 @@
 ---
-name: Release MISCELLANEOUS 23.12
+name: KIT MISCELLANEOUS Release 23.12
 about: Use this template to track miscellaneous topics for your KIT with regards to the upcoming Milestone.
 title: "[KIT NAME] Release Miscellaneous"
-labels: miscellaneous
+label: kit
 assignees: kelaja
 ---
 <!-- 

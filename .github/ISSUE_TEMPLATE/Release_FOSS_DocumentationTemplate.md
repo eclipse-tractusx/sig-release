@@ -1,8 +1,8 @@
 ---
-name: Release Documentation 23.12
+name: FOSS Documentation Release 23.12
 about: Use this template to track all Documentation-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Documentation"
-labels: documentation
+labels: documentation, foss
 assignees: kelaja
 ---
 

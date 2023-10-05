@@ -1,8 +1,8 @@
 ---
-name: Release Security 23.12
+name: FOSS Security Release 23.12
 about: Use this template to track all Security-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Security 23.12"
-labels: "security analysis"
+labels: "security analysis", "foss"
 assignees: kelaja
 ---
 

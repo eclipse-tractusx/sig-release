@@ -1,8 +1,8 @@
 ---
-name: Release Operations View 23.12
+name: KIT Operations View Release 23.12
 about: Use this template to track Operations View topics for your KIT with regards to the upcoming Milestone.
 title: "[KIT NAME] Release Operations View"
-labels: "operations view"
+label: kit
 assignees: kelaja
 ---
 <!-- 

@@ -1,8 +1,8 @@
 ---
-name: Release Adoption View 23.12
+name: KIT Adoption View Release 23.12
 about: Use this template to track Adoption View topics for your KIT with regards to the upcoming Milestone.
 title: "[KIT NAME] Release Adoption View"
-labels: "adoption view"
+labels: kit
 assignees: kelaja
 ---
 <!-- 

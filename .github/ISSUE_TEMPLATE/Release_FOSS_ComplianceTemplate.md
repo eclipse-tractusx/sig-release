@@ -1,8 +1,8 @@
 ---
-name: Release Compliance 23.12
+name: Release FOSS Compliance 23.12
 about: Use this template to track all Compliance-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Compliance"
-labels: compliance
+labels: compliance, foss
 assignees: kelaja
 ---
 <!-- 

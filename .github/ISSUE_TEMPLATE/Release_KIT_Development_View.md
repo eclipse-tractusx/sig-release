@@ -1,8 +1,8 @@
 ---
-name: Release Development View 23.12
+name: KIT Development View Release 23.12
 about: Use this template to track Development View topics for your KIT with regards to the upcoming Milestone.
 title: "[KIT NAME] Release Development View"
-labels: "development view"
+label: kit
 assignees: kelaja
 ---
 <!-- 
