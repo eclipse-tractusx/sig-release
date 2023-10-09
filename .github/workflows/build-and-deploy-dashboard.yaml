@@ -21,11 +21,17 @@ name: Build and Deploy Release Check dashboard
 
 on:
   workflow_dispatch:
+    inputs:
+      github_token:
+        description: "Auth token for GitHub API requests"
+        required: false
+        default: ${{ secrets.GITHUB_TOKEN }}
   schedule:
     # Run every day at 01:00 at night
     - cron: "0 1 * * *" # UTC time
 env:
   DASHBOARD_DIR: "trg-checks-dashboard"
+  GITHUB_ACCESS_TOKEN: ${{ github.event.inputs.github_token }}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 # See: https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
@@ -48,8 +54,8 @@ jobs:
 
       - name: build static dashboard
         run: |
-          echo "::add-mask::${{ secrets.GITHUB_TOKEN }}"
-          echo "GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+          echo "::add-mask::${{ env.GITHUB_ACCESS_TOKEN}}"
+          echo "GITHUB_ACCESS_TOKEN=${{ env.GITHUB_ACCESS_TOKEN}}" >> $GITHUB_ENV
           cd ${{ env.DASHBOARD_DIR }}
           go run main.go build
         env:
