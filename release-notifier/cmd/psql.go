@@ -20,8 +20,9 @@ package cmd
 
 import (
 	"fmt"
-	"release-notifier/internal/webscrape"
 	"github.com/spf13/cobra"
+	"release-notifier/internal/mail"
+	"release-notifier/internal/webscrape"
 )
 
 // psqlCmd represents the psql command
@@ -38,7 +39,8 @@ to quickly create a Cobra application.`,
 		fmt.Println("PostgresSQL release notifier called.")
 		latest_release := webscrape.GetLatestPostgresSQLRelease()
 		if latest_release != "" {
-			fmt.Printf("Latest: %v\n",latest_release)
+			fmt.Printf("Latest: %v\n", latest_release)
+			mail.SendPSQLRelNotification(latest_release)
 		}
 	},
 }

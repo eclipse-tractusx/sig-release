@@ -17,34 +17,34 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
- package webscrape
+package webscrape
 
- import(
+import (
 	"fmt"
-	"strings"
 	"github.com/gocolly/colly"
- )
+	"strings"
+)
 
- func GetLatestPostgresSQLRelease() string {
+func GetLatestPostgresSQLRelease() string {
 	var releases []string
 
 	c := colly.NewCollector()
-	 
-	c.OnError(func(_ *colly.Response, err error) { 
-		fmt.Println("Can't load the page: ", err) 
-	}) 
 
-	c.OnHTML("h2.news", func(e *colly.HTMLElement) { 
+	c.OnError(func(_ *colly.Response, err error) {
+		fmt.Println("Can't load the page: ", err)
+	})
+
+	c.OnHTML("h2.news", func(e *colly.HTMLElement) {
 		// printing all URLs associated with the a links in the page
 		if rel_msg := e.ChildText("a"); strings.Contains(rel_msg, "Released") {
 			releases = append(releases, e.ChildText("a"))
 		}
 	})
-	
+
 	c.Visit("https://www.postgresql.org/about/newsarchive/pgsql/")
 
 	if releases == nil {
 		return ""
 	}
 	return releases[0]
- }
+}
