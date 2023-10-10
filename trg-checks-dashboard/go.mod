@@ -3,7 +3,7 @@ module trg-checks-dashboard
 go 1.20
 
 require (
-	github.com/eclipse-tractusx/tractusx-quality-checks v0.7.2
+	github.com/eclipse-tractusx/tractusx-quality-checks v0.7.3
 	github.com/google/go-github/v53 v53.2.0
 	github.com/otiai10/copy v1.12.0
 	github.com/spf13/cobra v1.7.0
