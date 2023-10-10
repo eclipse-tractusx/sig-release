@@ -16,12 +16,11 @@ go/golang/github.com%2Fcloudflare/circl/v1.3.3, BSD-3-Clause, approved, clearlyd
 go/golang/github.com%2Fcpuguy83%2Fgo-md2man/v2/v2.0.2, MIT, approved, clearlydefined
 go/golang/github.com%2Fcreack/pty/v1.1.7, MIT, approved, clearlydefined
 go/golang/github.com%2Fcreack/pty/v1.1.9, MIT, approved, clearlydefined
-go/golang/github.com%2Fcyphar/filepath-securejoin/v0.2.3, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fcyphar/filepath-securejoin/v0.2.4, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.0, ISC, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.1, ISC, approved, clearlydefined
 go/golang/github.com%2Fdocopt/docopt-go/v0.0.0-20180111231733-ee0de3bc6815, MIT, approved, #5650
-go/golang/github.com%2Feclipse-tractusx/tractusx-quality-checks/v0.7.2, Apache-2.0, approved, #10682
+go/golang/github.com%2Feclipse-tractusx/tractusx-quality-checks/v0.7.3, Apache-2.0, approved, #10682
 go/golang/github.com%2Femicklei%2Fgo-restful/v3/v3.10.1, MIT, approved, clearlydefined
 go/golang/github.com%2Femirpasic/gods/v1.12.0, BSD-2-Clause AND ISC, approved, clearlydefined
 go/golang/github.com%2Fenvoyproxy/go-control-plane/v0.9.1-0.20191026205805-5f8ba28d4473, Apache-2.0, approved, #5639
