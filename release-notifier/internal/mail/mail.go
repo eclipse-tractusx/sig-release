@@ -53,7 +53,6 @@ func SendPSQLRelNotification(release string) {
 }
 
 func sendMail(sender string, password string, recipents []string, body []byte) {
-
 	auth := smtp.PlainAuth("", sender, password, smtpServer)
 	err := smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, recipents, body)
 	if err != nil {
