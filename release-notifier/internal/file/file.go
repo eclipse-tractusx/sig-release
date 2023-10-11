@@ -23,7 +23,7 @@ import (
 	"os"
 )
 
- func GetPrevPSQLRelFromArtifact(artifact string) string {
+func GetPrevPSQLRelFromArtifact(artifact string) string {
 	data, err := os.ReadFile(artifact)
 
 	if err != nil {

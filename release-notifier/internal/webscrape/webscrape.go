@@ -22,29 +22,29 @@ package webscrape
 import (
 	"fmt"
 	"github.com/gocolly/colly"
-	"strings"
+	"regexp"
 )
 
-func GetLatestPostgresSQLRelease() string {
-	var releases []string
+// Semantic Versioning schema regex
+const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
 
+func GetLatestPSQLRelease() string {
+	var release string
+	website := "https://bitnami.com/stack/postgresql"
+
+	fmt.Println("Quering", website)
 	c := colly.NewCollector()
 
 	c.OnError(func(_ *colly.Response, err error) {
 		fmt.Println("Can't load the page: ", err)
 	})
 
-	c.OnHTML("h2.news", func(e *colly.HTMLElement) {
-		// printing all URLs associated with the a links in the page
-		if rel_msg := e.ChildText("a"); strings.Contains(rel_msg, "Released") {
-			releases = append(releases, e.ChildText("a"))
+	c.OnHTML("div.stack__header__properties__property", func(e *colly.HTMLElement) {
+		if match, _ := regexp.MatchString(regexPattern, e.ChildText("p")); match {
+			release = e.ChildText("p")
 		}
 	})
 
-	c.Visit("https://www.postgresql.org/about/newsarchive/pgsql/")
-
-	if releases == nil {
-		return ""
-	}
-	return releases[0]
+	c.Visit(website)
+	return release
 }

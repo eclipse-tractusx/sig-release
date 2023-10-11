@@ -21,9 +21,9 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"release-notifier/internal/file"
 	"release-notifier/internal/mail"
 	"release-notifier/internal/webscrape"
-	"release-notifier/internal/file"
 )
 
 // psqlCmd represents the psql command
@@ -39,7 +39,7 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("PostgresSQL release notifier called.")
 
-		latest_release := webscrape.GetLatestPostgresSQLRelease()
+		latest_release := webscrape.GetLatestPSQLRelease()
 		prev_release := file.GetPrevPSQLRelFromArtifact("psql_release")
 
 		if latest_release != prev_release {
