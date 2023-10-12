@@ -25,7 +25,7 @@ on:
       github_token:
         description: "Auth token for GitHub API requests"
         required: false
-        default: ${{ github.token }}
+        default: ${{ secrets.GITHUB_TOKEN }}
   schedule:
     # Run every day at 01:00 at night
     - cron: "0 1 * * *" # UTC time
