@@ -48,10 +48,10 @@ func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 	for _, repo := range repos {
 		metadata := getMetadataForRepo(repo)
 
-		if metadata == nil {
-			unhandledRepos = append(unhandledRepos, repo)
-		} else if repo.Archived {
+		if repo.Archived {
 			archivedRepos = append(archivedRepos, repo)
+		} else if  metadata == nil {
+			unhandledRepos = append(unhandledRepos, repo)
 		} else {
 			repoInfoByRepoUrl[repo.URL] = repoInfo{metadata: *metadata, repoName: repo.Name, repoUrl: repo.URL}
 		}
