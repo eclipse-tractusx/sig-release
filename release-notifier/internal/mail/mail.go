@@ -34,16 +34,18 @@ const recipentMail = "TRACTUSX_MAILINGLIST"
 const senderMailEnv = "DEVSECOPS_NOTIFICATION_EMAIL"
 const senderPassEnv = "DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD"
 
-func SendPSQLRelNotification(release string) {
+func SendPSQLRelNotification(newRelease string, alignedRelease string) {
 	var buff bytes.Buffer
 	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
-	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL %s Released! Update your Helm Chart dependencies.\n%s\n\n", release, mimeHeaders)))
+	buff.Write([]byte(fmt.Sprintf("Action Required: PostgreSQL New Release (%s) and Update Process\n%s\n\n", newRelease, mimeHeaders)))
 
 	t, _ := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
-		PSQLRelease string
+		NewPSQLRelease string
+		AlignedPSQLRelease string
 	}{
-		PSQLRelease: release,
+		NewPSQLRelease: newRelease,
+		AlignedPSQLRelease: alignedRelease,
 	})
 
 	sender := os.Getenv(senderMailEnv)

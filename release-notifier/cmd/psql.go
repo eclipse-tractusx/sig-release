@@ -20,6 +20,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"github.com/spf13/cobra"
 	"release-notifier/internal/file"
 	"release-notifier/internal/mail"
@@ -38,17 +39,7 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("PostgresSQL release notifier called.")
-
-		latest_release := webscrape.GetLatestPSQLRelease()
-		prev_release := file.GetPrevPSQLRelFromArtifact("psql_release")
-
-		if latest_release != prev_release {
-			fmt.Printf("New release: %v\n", latest_release)
-			mail.SendPSQLRelNotification(latest_release)
-			file.SaveLatestPSQLRel(latest_release)
-		} else {
-			fmt.Println("No new release :(")
-		}
+		psqlNotifier()
 	},
 }
 
@@ -64,4 +55,19 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// psqlCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
+
+func psqlNotifier() {
+	latestRelease := webscrape.GetLatestPSQLRelease()
+	prevRelease := file.GetPrevPSQLRelFromArtifact("psql_release")
+
+	if latestRelease != prevRelease {
+		fmt.Printf("New release is out: %v\n", latestRelease)
+		alignedRelease := os.Getenv("CURRENT_ALIGNED_PSQL_VER")
+		fmt.Printf("Current aligned version: %v\n", alignedRelease)
+		mail.SendPSQLRelNotification(latestRelease, alignedRelease)
+		file.SaveLatestPSQLRel(latestRelease)
+	} else {
+		fmt.Println("No new release :(")
+	}
 }

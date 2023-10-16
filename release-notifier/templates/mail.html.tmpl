@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PostgreSQL {{.PSQLRelease}} Released!</title>
+    <title>PostgreSQL {{.NewPSQLRelease}} Released!</title>
 </head>
 <body>
     <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
         <tr>
             <td bgcolor="#f7f7f7" align="center" style="padding: 20px 0;">
-                <h1>PostgreSQL {{.PSQLRelease}} Released!</h1>
+                <h1>PostgreSQL {{.NewPSQLRelease}} Released! Current aligned version - {{.AlignedPSQLRelease}} </h1>
             </td>
         </tr>
         <tr>
             <td>
                 <p>Dear Tractus-X Community,</p>
 
-                <p>We are excited to announce new release {{.PSQLRelease}} of PostgreSQL, the latest version of our robust open-source relational database management system (RDBMS). This release introduces new features and enhancements designed to improve our database infrastructure. To ensure that your projects remain up to date and secure, we kindly request that you update the Helm chart dependencies in your respective applications.</p>
+                <p>We are excited to announce new release {{.NewPSQLRelease}} of PostgreSQL, the latest version of our robust open-source relational database management system (RDBMS). This release introduces new features and enhancements designed to improve our database infrastructure. To ensure that your projects remain up to date and secure, we kindly request that you update the Helm chart dependencies in your respective applications.</p>
 
                 <h2>Why Update Helm Chart Dependencies?</h2>
                 <ul>
@@ -29,7 +29,7 @@
                 <h2>Action Required</h2>
                 <ol>
                     <li>Review Your Helm Charts: Examine your Helm charts and identify any dependencies on PostgreSQL.</li>
-                    <li>Update Helm Dependencies: Update the PostgreSQL Helm chart dependencies in your projects to the latest version compatible with PostgreSQL {{.PSQLRelease}}.</li>
+                    <li>Update Helm Dependencies: Update the PostgreSQL Helm chart dependencies in your projects to the latest version compatible with PostgreSQL {{.NewPSQLRelease}}.</li>
                     <li>Test Thoroughly: After updating the dependencies, thoroughly test your applications to ensure they function correctly with the new PostgreSQL version.</li>
                 </ol>
 
