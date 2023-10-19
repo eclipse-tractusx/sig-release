@@ -15,29 +15,32 @@
                 <p>Dear Tractus-X Community,</p>
 
                 <p>
-                    We're excited to inform you that PostgreSQL has released a new version, {{.NewPSQLRelease}}, and we need your attention to ensure our projects remain up-to-date and secure. Please follow the instructions below based on the type of release.
+                    We're excited to inform you that PostgreSQL has released a new version, {{.NewPSQLRelease}}, and we need your attention to ensure our projects remain up-to-date and secure. Please follow the instructions below based on the type of release (read more about <a href="https://semver.org">versioning schema</a>).
                 </p>
 
                 <h2>Current Aligned Version:</h2>
 
                 <p>
-                    Our projects are currently aligned with PostgreSQL version {{.AlignedPSQLRelease}}. 
+                    Our projects are currently aligned to PostgreSQL version {{.AlignedPSQLRelease}}. 
+                </p>
+                <p>
+                    Official information of aligned dependency versions can be found in the <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-07/#aligning-dependency-versions">TRG 5.07 - Chart Dependencies</a>.
                 </p>
 
-                <h2>Major Release (e.g., v15.0.0):</h2>
+                <h2>Major Release:</h2>
 
                 <p>
-                    If a major release has occurred, we kindly request that you initiate a discussion on our Tractus-X mailing list to address the implications and eventually agree on the upgrade plan. Major releases may involve significant changes, and we want to ensure a smooth transition. Here are the key steps to follow:
+                    If a major release has occurred, we kindly request that you initiate a discussion on our <a href="mailto:tractusx-dev@eclipse.org">Tractus-X mailing list</a> to address the implications and eventually agree on the upgrade plan. Major releases may involve significant changes, and we want to ensure a smooth transition. Here are the key steps to follow:
                 </p>
 
                 <ol>
-                    <li>Create a mailing list discussion thread with a clear title indicating the major PostgreSQL release upgrade.</li>
+                    <li>Create a  <a href="mailto:tractusx-dev@eclipse.org">mailing list</a> discussion thread with a clear title indicating the major PostgreSQL release upgrade.</li>
                     <li>Summarize the major changes in PostgreSQL v{{.NewPSQLRelease}} and discuss any potential impacts on our projects.</li>
                     <li>Collaborate with the community to outline a consensus on the upgrade.</li>
                     <li>Follow the agreed-upon <a href="www">process</a> for implementing the major release upgrade.</li>
                 </ol>
 
-                <h2>Minor Release (e.g., v15.x.x):</h2>
+                <h2>Minor or Patch Release:</h2>
 
                 <p>
                     For minor releases, we only need to update our Helm charts and their dependencies. Specifically, please update the Helm chart that includes PostgreSQL to ensure we are using the latest version, which, as of now, is PostgreSQL v{{.NewPSQLRelease}}. To do this:
@@ -45,7 +48,7 @@
 
                 <ol>
                     <li>Review Your Helm Charts: Examine your Helm charts and identify any dependencies on PostgreSQL.</li>
-                    <li>Update Helm Dependencies: Update the PostgreSQL Helm chart dependencies in your projects to the latest version compatible with PostgreSQL {{.NewPSQLRelease}}.</li>
+                    <li>Update Helm Dependencies: Update the PostgreSQL Helm chart dependencies in your projects to the latest version compatible with <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-07/#aligning-dependency-versions">aligned Major Version</a> of PostgreSQL.</li>
                     <li>Test Thoroughly: After updating the dependencies, thoroughly test your applications to ensure they function correctly with the new PostgreSQL version.</li>
                 </ol>
 
@@ -62,6 +65,9 @@
                 </p>
                 <p>
                     To access the repository for this project and explore the code, please visit the following link: [GitHub].
+                </p>
+                <p>
+                    Encourage you to visit general Tractus-X <a href="https://eclipse-tractusx.github.io/docs/oss/how-to-contribute">How to Contribute guide</a>.
                 </p>
                 <hr>
                 <p>
