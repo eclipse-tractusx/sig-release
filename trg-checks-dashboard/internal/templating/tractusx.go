@@ -89,15 +89,9 @@ func runQualityChecks(repo Repository) CheckedRepository {
 		guidelineCheck := GuidelineCheck{
 			Passed:           testResult.Passed,
 			Optional:         check.IsOptional(),
+			ErrorDescription: testResult.ErrorDescription,
 			GuidelineUrl:     check.ExternalDescription(),
 			GuidelineName:    check.Name(),
-			ErrorDescription: func() string {
-								if testResult.ErrorDescriptionWeb == "" {
-									return testResult.ErrorDescription
-								}
-								return testResult.ErrorDescriptionWeb
-								}(),
-
 		}
 		checkedRepo.GuidelineChecks = append(checkedRepo.GuidelineChecks, guidelineCheck)
 	}
