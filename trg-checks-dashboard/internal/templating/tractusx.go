@@ -23,6 +23,7 @@ import (
 	"context"
 	"log"
 	"os"
+	"path"
 	"sort"
 	"strings"
 
@@ -50,7 +51,7 @@ func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 
 		if repo.Archived {
 			archivedRepos = append(archivedRepos, repo)
-		} else if  metadata == nil {
+		} else if metadata == nil {
 			unhandledRepos = append(unhandledRepos, repo)
 		} else {
 			repoInfoByRepoUrl[repo.URL] = repoInfo{metadata: *metadata, repoName: repo.Name, repoUrl: repo.URL}
@@ -61,7 +62,14 @@ func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 	for _, p := range getProductsFromMetadata(repoInfoByRepoUrl) {
 		checkedProduct := CheckedProduct{Name: p.Name, LeadingRepo: p.LeadingRepo, RepoCategory: p.RepoCategory, OverallPassed: true}
 		for _, r := range p.Repositories {
-			checkedRepo := runQualityChecks(r)
+			dir := repoClone(r)
+			defer os.RemoveAll(dir)
+			var chartsDetails []ChartDetails
+			if strings.EqualFold(r.URL, p.LeadingRepo) {
+				chartsDetails = getChartsDetails(dir)
+				checkedProduct.ChartsDetails = chartsDetails
+			}
+			checkedRepo := runQualityChecks(r, dir)
 			checkedProduct.OverallPassed = checkedProduct.OverallPassed && checkedRepo.PassedAllGuidelines
 			checkedProduct.CheckedRepositories = append(checkedProduct.CheckedRepositories, checkedRepo)
 		}
@@ -72,13 +80,42 @@ func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 	return checkedProducts, unhandledRepos, archivedRepos
 }
 
-func runQualityChecks(repo Repository) CheckedRepository {
-	log.Printf("Starting checks for repo: %s", repo.Name)
-	checkedRepo := CheckedRepository{RepoUrl: repo.URL, RepoName: repo.Name, PassedAllGuidelines: true}
+func getChartsDetails(repoDir string) []ChartDetails {
+	log.Println("Collecting charts info.")
+	var chartsDetails []ChartDetails
 
+	chartDir := path.Join(repoDir, "charts")
+	helmCharts, err := os.ReadDir(chartDir)
+	if err != nil || len(helmCharts) == 0 {
+		return chartsDetails
+	}
+
+	for _, hc := range helmCharts {
+		if !helm.IsChartDirectory(path.Join(chartDir, hc.Name())) {
+			continue
+		}
+		chartValues := helm.GetChartValues(path.Join(chartDir, hc.Name(), "Chart.yaml"))
+		chartDetails := ChartDetails{ChartName: chartValues.Name, ChartVersion: chartValues.Version, AppVersion: chartValues.AppVersion}
+		chartsDetails = append(chartsDetails, chartDetails)
+	}
+
+	return chartsDetails
+}
+
+func repoClone(repo Repository) string {
 	dir, err := cloneRepo(repo)
 	if err != nil {
 		log.Printf("Could not clone repo %s. Error: %s", repo.URL, err)
+		return ""
+	}
+	return dir
+}
+
+func runQualityChecks(repo Repository, dir string) CheckedRepository {
+	log.Printf("Starting checks for repo: %s", repo.Name)
+	checkedRepo := CheckedRepository{RepoUrl: repo.URL, RepoName: repo.Name, PassedAllGuidelines: true}
+
+	if _, err := os.Stat(dir); dir == "" || err != nil {
 		return CheckedRepository{}
 	}
 
@@ -96,8 +133,6 @@ func runQualityChecks(repo Repository) CheckedRepository {
 		checkedRepo.GuidelineChecks = append(checkedRepo.GuidelineChecks, guidelineCheck)
 	}
 
-	// Cleanup temporary directory used to clone the repo.
-	defer os.RemoveAll(dir)
 	return checkedRepo
 }
 
@@ -130,7 +165,7 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 		log.Printf("Adding repository %s (URL: %s) to product %s (Name: %s)", info.repoName, info.repoUrl, p.Name, info.metadata.LeadingRepository)
 		p.Repositories = append(p.Repositories, Repository{Name: info.repoName, URL: info.repoUrl})
 
-		if strings.EqualFold(url,info.metadata.LeadingRepository) {
+		if strings.EqualFold(url, info.metadata.LeadingRepository) {
 			log.Printf("Repo %s is leading, addign name (%s) + repo URL (%s) to product", url, info.metadata.ProductName, info.metadata.LeadingRepository)
 			p.Name = info.metadata.ProductName
 			p.LeadingRepo = info.metadata.LeadingRepository
