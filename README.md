@@ -4,8 +4,8 @@ Welcome to SIG-Release, home of release and feature management.
 
 ## Onboarding
 
-Please check out our general [Onboarding Guide](https://eclipse-tractusx.github.io/docs/oss/getting-started) and 
-further information can be found here in the [getting started page](docs/Eclipse-Tractus-X-GitHub-getting-started.md) document. For Consortia Planning please have a look into [PI11-Consortia-Planning](docs/PI11-Planning-CX-ART-Consortia.md).
+Please check out our general [GitHub Onboarding Guide](docs/Eclipse-Tractus-X-GitHub-getting-started.md) and 
+further information can be found here in the [getting started page](https://eclipse-tractusx.github.io/docs/oss/getting-started) on our web-page. For PI11 Planning please have a look into [PI11-Consortia-Planning](docs/PI11-Planning.md).
 
 ## The planning and roadmap process
 
@@ -29,7 +29,7 @@ our [issue templates](https://github.com/eclipse-tractusx/sig-project-management
 ### What can I expect
 
 We really welcome every contribution. Every Bug report and feature proposal takes time to prepare,
-is valuable to our project and we very much appreciate this input.
+is valuable to our project, and we very much appreciate this input.
 We are giving our best to give a first feedback in one week.
 If we should miss that, please stick with us and just use the commenting function to remind us of the issue.
 
@@ -41,14 +41,14 @@ Our issues do have important properties, that enable our planning process. These
 - __Issue Type:__ To separate between bugs, feature requests and release criterias, we use a custom field `Issue Type`
 - __Milestone:__ Every Tractus-X release is represented by a `Milestone`. You can use this field to get a rough idea about the ETA
 - __Status:__ The status field is used to integrate the progress of an issue
-- __Iteration:__ `Milestone`s are divided in multiple iterations. The 'Iteration' field is used to do finegrained timeline planning
+- __Iteration:__ `Milestone`s are divided in multiple iterations. The 'Iteration' field is used to do fine-grained timeline planning
 
 ### Issue statuses
 
 The following statuses are defined:
 
 - __Inbox:__ This is the initial status of all issues. It indicates, that involved components have to be identified and additional information gathered
-- __Backlog:__ If enough information is gathered and we agreed to work on the issue, it is set from `Inbox` to `Backlog` to indicate it is ready for timeline planning
+- __Backlog:__ If enough information is gathered, and we agreed to work on the issue, it is set from `Inbox` to `Backlog` to indicate it is ready for timeline planning
 - __Work in Progress:__ The issue is actively been worked on.
 - __Done:__ All relevant parts have been implemented and released
 
@@ -56,7 +56,7 @@ The following statuses are defined:
 
 Every new feature proposal or bug report will be handled as issue in status `Inbox` initially. The alignment meetings are used to discuss the purpose and impact of the current issues.
 While in `Inbox` status, the involved components are discovered and respective `Labels` are added. If already possible, a desired `Milestone` can be set.
-Additionally an `Assignee` is selected, who will coordinate efforts to solve the issue.
+Additionally, an `Assignee` is selected, who will coordinate efforts to solve the issue.
 
 After these details are clarified, an issue is moved to `Backlog` to open it for detailed timeline planning. In this status, discussions about a fitting `Iteration` is held.
 

@@ -76,13 +76,11 @@ We utilize several boards to manage and track the progress of issues and feature
 ## General guidelines
 
 ```java
-while (FOSSactivity) {
-    beNice();
+while (Eclipse Tractus-X Activity) {
+    beNice_to_all();
     communicate();
     value(code).over(hierarchy);
-    expandMyPortfolio(events);
     act(responsibly);
-    ManageUsers(Interests[]);
     have(greatTime);}
 ```
 
