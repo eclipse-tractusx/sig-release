@@ -100,3 +100,11 @@ In case of any questions, please create a discussion in the [sig-release](https:
 ## Feedback
 
 We welcome feedback and suggestions on how we can improve our open refinement and planning processes. Please create a discussion in the [sig-release](https://github.com/eclipse-tractusx/sig-release/discussions) repository.
+
+## NOTICE
+
+This work is licensed under the [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+- SPDX-License-Identifier: Apache-2.0
+- SPDX-FileCopyrightText: 2022,2023 Contributors to the Eclipse Foundation
+- Source URL: https://github.com/eclipse-tractusx/sig-release

@@ -63,3 +63,11 @@ If you have any questions, please contact us via [GitHub Discussion](https://git
 * [GitHub Get Started](https://docs.github.com/en/get-started)
 * [GitHub Docs](https://docs.github.com/en)
 * [GitHub YouTube Channel](https://www.youtube.com/github)
+
+## NOTICE
+
+This work is licensed under the [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+- SPDX-License-Identifier: Apache-2.0
+- SPDX-FileCopyrightText: 2022,2023 Contributors to the Eclipse Foundation
+- Source URL: https://github.com/eclipse-tractusx/sig-release
