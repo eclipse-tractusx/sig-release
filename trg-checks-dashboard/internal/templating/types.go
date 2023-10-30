@@ -36,6 +36,7 @@ type CheckedProduct struct {
 	RepoCategory        string
 	OverallPassed       bool
 	CheckedRepositories []CheckedRepository
+	ChartsDetails       []ChartDetails
 }
 
 type CheckedRepository struct {
@@ -43,7 +44,6 @@ type CheckedRepository struct {
 	RepoUrl             string
 	PassedAllGuidelines bool
 	GuidelineChecks     []GuidelineCheck
-	ChartsDetails       []ChartDetails
 }
 
 type GuidelineCheck struct {
@@ -77,7 +77,7 @@ type repoInfo struct {
 }
 
 type ChartDetails struct {
-	chartName    string
-	chartVersion string
-	appVersion   string
+	ChartName    string
+	ChartVersion string
+	AppVersion   string
 }
