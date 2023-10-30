@@ -2,9 +2,14 @@
 
 Welcome to SIG-Release, home of release and feature management.
 
+## Onboarding
+
+Please check out our general [Onboarding Guide](https://eclipse-tractusx.github.io/docs/oss/getting-started) and 
+further information can be found here in the [getting started page](docs/Eclipse-Tractus-X-GitHub-getting-started.md) document. For Consortia Planning please have a look into [PI11-Consortia-Planning](docs/PI11-Planning-CX-ART-Consortia.md).
+
 ## The planning and roadmap process
 
-We follow a coordinated approach to plan improvements of Eclipse Tractus-X.
+We follow a coordinated approach to plan improvements of Eclipse Tractus-X. see also [Open Planning and Refinement](docs/Open-Refinement-and-Planning-in-Open-Source-Communities.md).
 
 While every repository in the [eclipse-tractusx](https://github.com/eclipse-tractusx) GitHub organization
 has its own issue management, the [release planning board](https://github.com/orgs/eclipse-tractusx/projects/26)
