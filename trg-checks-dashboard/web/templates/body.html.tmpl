@@ -29,15 +29,35 @@
                 {{ if and (ne .RepoCategory "special") (ne .RepoCategory "support")}}
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            {{ if .OverallPassed }}
-                            <i class="material-icons green-text">check</i>
-                            {{ else }}
-                            <i class="material-icons red-text">heart_broken</i>
-                            {{ end }}
-
-                            <h5>{{ .Name }}</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        {{ if .OverallPassed }}
+                                        <i class="material-icons green-text">check</i>
+                                        {{ else }}
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        {{ end }}
+                                        <h5>{{ .Name }}</h5>
+                                    </div>
+                                </th>
+                                {{ range $checkedProduct.ChartsDetails }}
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> {{ .ChartName }}
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>{{ .ChartVersion }}
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> {{ .AppVersion }}
+                                        </div>
+                                    </div>
+                                </td>
+                                {{ end }}
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -73,7 +93,7 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
                                             </div>
                                         </td>
                                         {{ end }}
@@ -139,7 +159,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
                                                 </div>
                                             </td>
                                             {{ end }}
@@ -206,7 +226,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="{{ .ErrorDescription }}" href="{{ .GuidelineUrl }}" target="_blank"> {{ .GuidelineName }}</a>
                                                 </div>
                                             </td>
                                             {{ end }}
