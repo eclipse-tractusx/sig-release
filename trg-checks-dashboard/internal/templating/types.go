@@ -27,7 +27,7 @@ type TemplateData struct {
 	Config
 	CheckedProducts []CheckedProduct
 	UnhandledRepos  []Repository
-	ArchivedRepos	[]Repository
+	ArchivedRepos   []Repository
 }
 
 type CheckedProduct struct {
@@ -36,6 +36,7 @@ type CheckedProduct struct {
 	RepoCategory        string
 	OverallPassed       bool
 	CheckedRepositories []CheckedRepository
+	ChartsDetails       []ChartDetails
 }
 
 type CheckedRepository struct {
@@ -59,7 +60,7 @@ type Config struct {
 
 type Repository struct {
 	Name, URL string
-	Archived bool
+	Archived  bool
 }
 
 type Product struct {
@@ -73,4 +74,10 @@ type repoInfo struct {
 	metadata tractusx.Metadata
 	repoName string
 	repoUrl  string
+}
+
+type ChartDetails struct {
+	ChartName    string
+	ChartVersion string
+	AppVersion   string
 }
