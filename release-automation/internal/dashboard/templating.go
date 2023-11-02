@@ -17,29 +17,37 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
-package templating
+package dashboard
 
 import (
-	"errors"
-	"fmt"
+	"html/template"
+	"io"
 	"log"
-	"os"
-
-	"gopkg.in/src-d/go-git.v4"
+	"path"
 )
 
-// cloneRepo creates a temporary directory and clones the given repo into it.
-// If successful, the directory, that the repo was cloned into is returned.
-// Error in case the temp dir cannot be created or the repo not cloned
-func cloneRepo(repo Repository) (string, error) {
-	dir, err := os.MkdirTemp("", fmt.Sprintf("%s-*", repo.Name))
-	if err != nil {
-		return "", errors.New("could not create temp dir to clone repo into")
-	}
-	log.Printf("Created temp dir for repo check: %s; Cloning %s", dir, repo.URL)
+const templateDir = "web/templates"
+const indexTemplate = "index.html.tmpl"
 
-	if _, err := git.PlainClone(dir, false, &git.CloneOptions{URL: repo.URL, Depth: 0}); err != nil {
-		return "", errors.New(fmt.Sprintf("Could not clone repo %s (%s)", repo.Name, repo.URL))
+var allTemplates = []string{
+	"index.html.tmpl",
+	"header.html.tmpl",
+	"body.html.tmpl",
+	"footer.html.tmpl",
+}
+
+// RenderHtmlTo does par take an w io.Writer and
+func RenderHtmlTo(w io.Writer, data *TemplateData) {
+	templates := template.Must(template.New(indexTemplate).ParseFiles(allTemplatePaths()...))
+	if err := templates.ExecuteTemplate(w, indexTemplate, data); err != nil {
+		log.Fatalf("Could not execute template: %v", err)
 	}
-	return dir, nil
+}
+
+func allTemplatePaths() []string {
+	var result []string
+	for _, t := range allTemplates {
+		result = append(result, path.Join(templateDir, t))
+	}
+	return result
 }

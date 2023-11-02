@@ -28,7 +28,7 @@ import (
 
 	cp "github.com/otiai10/copy"
 	"github.com/spf13/cobra"
-	"tractusx-release-automation/internal/templating"
+	"tractusx-release-automation/internal/dashboard"
 )
 
 const buildOutputDir = "build"
@@ -36,7 +36,7 @@ const outputFileName = "index.html"
 
 // buildCmd represents the build command
 var buildCmd = &cobra.Command{
-	Use:   "build",
+	Use:   "build-release-dashboard",
 	Short: "Create a statically compiled dashboard with release check status",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -44,9 +44,9 @@ var buildCmd = &cobra.Command{
 		copyAssets()
 
 		var outputBuffer bytes.Buffer
-		products, unhandledRepos, archivedRepos := templating.CheckProducts()
+		products, unhandledRepos, archivedRepos := dashboard.CheckProducts()
 
-		templating.RenderHtmlTo(&outputBuffer, &templating.TemplateData{Config: getConfig(), CheckedProducts: products, UnhandledRepos: unhandledRepos, ArchivedRepos: archivedRepos})
+		dashboard.RenderHtmlTo(&outputBuffer, &dashboard.TemplateData{Config: getConfig(), CheckedProducts: products, UnhandledRepos: unhandledRepos, ArchivedRepos: archivedRepos})
 
 		writeToFile(outputBuffer)
 	},
@@ -97,9 +97,9 @@ func copyAssets() {
 	}
 }
 
-func getConfig() templating.Config {
+func getConfig() dashboard.Config {
 	if os.Getenv("DASHBOARD_ASSETS_PATH") != "" {
-		return templating.Config{AssetsPath: os.Getenv("DASHBOARD_ASSETS_PATH")}
+		return dashboard.Config{AssetsPath: os.Getenv("DASHBOARD_ASSETS_PATH")}
 	}
-	return templating.Config{AssetsPath: "/assets"}
+	return dashboard.Config{AssetsPath: "/assets"}
 }
