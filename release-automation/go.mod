@@ -1,4 +1,4 @@
-module trg-checks-dashboard
+module tractusx-release-automation
 
 go 1.20
 

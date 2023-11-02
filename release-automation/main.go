@@ -19,7 +19,7 @@
 
 package main
 
-import "trg-checks-dashboard/cmd"
+import "tractusx-release-automation/cmd"
 
 func main() {
 	cmd.Execute()

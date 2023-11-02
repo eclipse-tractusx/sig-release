@@ -28,7 +28,7 @@ import (
 
 	cp "github.com/otiai10/copy"
 	"github.com/spf13/cobra"
-	"trg-checks-dashboard/internal/templating"
+	"tractusx-release-automation/internal/templating"
 )
 
 const buildOutputDir = "build"
