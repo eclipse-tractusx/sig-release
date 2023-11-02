@@ -185,8 +185,6 @@ func getOrgRepos() []Repository {
 		PerPage: 100,
 	})
 
-	log.Printf("%s", repos)
-
 	if err != nil {
 		log.Printf("Could not query repositories for GitHub organization: %v", err)
 	}
