@@ -3,12 +3,15 @@ module tractusx-release-automation
 go 1.20
 
 require (
-	github.com/eclipse-tractusx/tractusx-quality-checks v0.8.0
 	github.com/google/go-github/v53 v53.2.0
 	github.com/otiai10/copy v1.12.0
 	github.com/spf13/cobra v1.7.0
 	golang.org/x/oauth2 v0.10.0
 	gopkg.in/src-d/go-git.v4 v4.13.1
+	gopkg.in/yaml.v3 v3.0.1
+	helm.sh/helm/v3 v3.12.2
+	k8s.io/api v0.27.4
+	k8s.io/client-go v0.27.4
 )
 
 require (
@@ -74,12 +77,8 @@ require (
 	gopkg.in/src-d/go-billy.v4 v4.3.2 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
-	helm.sh/helm/v3 v3.12.2 // indirect
-	k8s.io/api v0.27.4 // indirect
 	k8s.io/apiextensions-apiserver v0.27.2 // indirect
 	k8s.io/apimachinery v0.27.4 // indirect
-	k8s.io/client-go v0.27.4 // indirect
 	k8s.io/klog/v2 v2.90.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20230501164219-8b0f38b5fd1f // indirect
 	k8s.io/utils v0.0.0-20230220204549-a5ecb0141aa5 // indirect

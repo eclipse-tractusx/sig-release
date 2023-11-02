@@ -24,12 +24,12 @@ import (
 	"os"
 	"path"
 
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/tractusx"
 	"helm.sh/helm/v3/pkg/chart/loader"
 	"helm.sh/helm/v3/pkg/engine"
 	"k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes/scheme"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 type ResourceMgmt struct {

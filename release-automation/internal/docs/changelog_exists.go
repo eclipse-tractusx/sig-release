@@ -23,7 +23,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/tractusx"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 type ChangeLogExists struct {

@@ -24,8 +24,8 @@ import (
 	"path"
 	"strings"
 
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/tractusx"
 	"tractusx-release-automation/internal/filesystem"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 var helmStructureFiles = []string{

@@ -26,13 +26,13 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/container"
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/docs"
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/helm"
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/repo"
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/tractusx"
 	"github.com/google/go-github/v53/github"
 	"golang.org/x/oauth2"
+	"tractusx-release-automation/internal/container"
+	"tractusx-release-automation/internal/docs"
+	"tractusx-release-automation/internal/helm"
+	"tractusx-release-automation/internal/repo"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 const gitHubOrg = "eclipse-tractusx"

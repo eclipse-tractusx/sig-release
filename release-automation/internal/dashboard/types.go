@@ -19,9 +19,7 @@
 
 package dashboard
 
-import (
-	"github.com/eclipse-tractusx/tractusx-quality-checks/pkg/tractusx"
-)
+import "tractusx-release-automation/internal/tractusx"
 
 type TemplateData struct {
 	Config
