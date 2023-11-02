@@ -50,7 +50,7 @@ func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 
 		if repo.Archived {
 			archivedRepos = append(archivedRepos, repo)
-		} else if  metadata == nil {
+		} else if metadata == nil {
 			unhandledRepos = append(unhandledRepos, repo)
 		} else {
 			repoInfoByRepoUrl[repo.URL] = repoInfo{metadata: *metadata, repoName: repo.Name, repoUrl: repo.URL}
@@ -131,7 +131,7 @@ func getProductsFromMetadata(metadataForRepo map[string]repoInfo) []Product {
 		log.Printf("Adding repository %s (URL: %s) to product %s (Name: %s)", info.repoName, info.repoUrl, p.Name, info.metadata.LeadingRepository)
 		p.Repositories = append(p.Repositories, Repository{Name: info.repoName, URL: info.repoUrl})
 
-		if strings.EqualFold(url,info.metadata.LeadingRepository) {
+		if strings.EqualFold(url, info.metadata.LeadingRepository) {
 			log.Printf("Repo %s is leading, addign name (%s) + repo URL (%s) to product", url, info.metadata.ProductName, info.metadata.LeadingRepository)
 			p.Name = info.metadata.ProductName
 			p.LeadingRepo = info.metadata.LeadingRepository

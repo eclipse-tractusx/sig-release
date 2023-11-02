@@ -27,7 +27,7 @@ type TemplateData struct {
 	Config
 	CheckedProducts []CheckedProduct
 	UnhandledRepos  []Repository
-	ArchivedRepos	[]Repository
+	ArchivedRepos   []Repository
 }
 
 type CheckedProduct struct {
@@ -59,7 +59,7 @@ type Config struct {
 
 type Repository struct {
 	Name, URL string
-	Archived bool
+	Archived  bool
 }
 
 type Product struct {

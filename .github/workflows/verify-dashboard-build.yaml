@@ -22,10 +22,10 @@ name: Verify Release Checks Dashboard build
 on:
   pull_request:
     paths:
-      - "trg-checks-dashboard/**"
+      - "release-automation/**"
 
 env:
-  DASHBOARD_DIR: "trg-checks-dashboard"
+  DASHBOARD_DIR: "release-automation"
 
 jobs:
   verify-dashboard-build:
