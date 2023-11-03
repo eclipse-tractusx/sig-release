@@ -30,7 +30,7 @@ import (
 const smtpServer = "smtp.gmail.com"
 const smtpPort = "587"
 const mailTemplate = "templates/mail.html.tmpl"
-const recipentMail = "TRACTUSX_MAILINGLIST"
+const recipentMailEnv = "TRACTUSX_MAILINGLIST"
 const senderMailEnv = "DEVSECOPS_NOTIFICATION_EMAIL"
 const senderPassEnv = "DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD"
 
@@ -50,7 +50,7 @@ func SendPSQLRelNotification(newRelease string, alignedRelease string) {
 
 	sender := os.Getenv(senderMailEnv)
 	password := os.Getenv(senderPassEnv)
-	recipent := os.Getenv(recipentMail)
+	recipent := os.Getenv(recipentMailEnv)
 	sendMail(sender, password, recipent, buff.Bytes())
 }
 
