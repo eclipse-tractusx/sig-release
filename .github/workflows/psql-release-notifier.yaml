@@ -49,7 +49,7 @@ jobs:
     - name: Run notifier
       run: |
         cd release-notifier
-        go run . psql
+        go run main.go psql
     - name: Upload new release artifact
       uses: actions/upload-artifact@v3
       with:
