@@ -50,13 +50,13 @@ func SendPSQLRelNotification(newRelease string, alignedRelease string) {
 
 	sender := os.Getenv(senderMailEnv)
 	password := os.Getenv(senderPassEnv)
-	recipents := []string{os.Getenv(recipentMail)}
-	sendMail(sender, password, recipents, buff.Bytes())
+	recipent := os.Getenv(recipentMail)
+	sendMail(sender, password, recipent, buff.Bytes())
 }
 
-func sendMail(sender string, password string, recipents []string, body []byte) {
+func sendMail(sender string, password string, recipent string, body []byte) {
 	auth := smtp.PlainAuth("", sender, password, smtpServer)
-	err := smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, recipents, body)
+	err := smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipent}, body)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
