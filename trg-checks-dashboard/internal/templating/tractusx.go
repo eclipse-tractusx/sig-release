@@ -64,10 +64,8 @@ func CheckProducts() ([]CheckedProduct, []Repository, []Repository) {
 		for _, r := range p.Repositories {
 			dir := repoClone(r)
 			defer os.RemoveAll(dir)
-			var chartsDetails []ChartDetails
 			if strings.EqualFold(r.URL, p.LeadingRepo) {
-				chartsDetails = getChartsDetails(dir)
-				checkedProduct.ChartsDetails = chartsDetails
+				checkedProduct.ChartsDetails = getChartsDetails(dir)
 			}
 			checkedRepo := runQualityChecks(r, dir)
 			checkedProduct.OverallPassed = checkedProduct.OverallPassed && checkedRepo.PassedAllGuidelines
