@@ -34,13 +34,19 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5></h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5></h5>
+                                    </div>
+                                </th>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -80,7 +86,7 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                             </div>
                                         </td>
                                         
@@ -100,7 +106,13 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="Dockerfile(s) use not approved images:&lt;br&gt;base AS final&lt;br&gt;base AS final" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="We want to align on docker base images. We detected a Dockerfile specifying base AS final, base AS final
+	Allowed images are: 
+	 - eclipse-temurin
+	 - nginxinc/nginx-unprivileged
+	 - mcr.microsoft.com/dotnet/runtime
+	 - mcr.microsoft.com/dotnet/aspnet
+	 - alpine" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
                                             </div>
                                         </td>
                                         
@@ -129,13 +141,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>BPDM</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>BPDM</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> bpdm
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>3.1.0-alpha.7
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 4.1.0-alpha.4
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -214,13 +246,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>BPN Discovery</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>BPN Discovery</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> bpndiscovery
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.1.12
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.2.6
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -299,13 +351,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>Country Risk</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>Country Risk</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> country-risk
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.1.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -436,7 +508,9 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="&#43; Following Helm Chart structure files are missing: &lt;br&gt;	&#43; Analysis for country-risk/Chart.yaml: &lt;br&gt;		 - Missing mandatory fields: AppVersion" href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="&#43; Following Helm Chart structure files are missing: 
+	&#43; Analysis for country-risk/Chart.yaml: 
+		 - Missing mandatory fields: AppVersion" href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
                                             </div>
                                         </td>
                                         
@@ -452,13 +526,47 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>cx-iam</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>cx-iam</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> centralidp
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>2.0.0-alpha
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 22.0.3
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> sharedidp
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>2.0.0-alpha
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 22.0.3
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -539,13 +647,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>DAPS</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>DAPS</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> daps-server
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.8.1
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.7.1
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -610,7 +738,8 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="&#43; Following Helm Chart structure files are missing: daps-server/LICENSE&lt;br&gt;	&#43; Analysis for daps-server/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="&#43; Following Helm Chart structure files are missing: daps-server/LICENSE
+	&#43; Analysis for daps-server/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
                                             </div>
                                         </td>
                                         
@@ -626,13 +755,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>DAPS_REGISTRATION_SERVICE</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>DAPS_REGISTRATION_SERVICE</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> daps-reg-service
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>2.1.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 2.1.0
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -711,13 +860,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>Demand Capacity Management</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>Demand Capacity Management</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> demand-capacity-management
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.1.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> latest
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -773,7 +942,13 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="Dockerfile(s) use not approved images:&lt;br&gt;jboss/keycloak:latest&lt;br&gt;node:16.15.1" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="We want to align on docker base images. We detected a Dockerfile specifying jboss/keycloak:latest, node:16.15.1
+	Allowed images are: 
+	 - eclipse-temurin
+	 - nginxinc/nginx-unprivileged
+	 - mcr.microsoft.com/dotnet/runtime
+	 - mcr.microsoft.com/dotnet/aspnet
+	 - alpine" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
                                             </div>
                                         </td>
                                         
@@ -784,7 +959,8 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="&#43; Following Helm Chart structure files are missing: demand-capacity-management/LICENSE, demand-capacity-management/README.md&lt;br&gt;	&#43; Analysis for demand-capacity-management/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="&#43; Following Helm Chart structure files are missing: demand-capacity-management/LICENSE, demand-capacity-management/README.md
+	&#43; Analysis for demand-capacity-management/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
                                             </div>
                                         </td>
                                         
@@ -800,13 +976,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Digital Product Pass</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Digital Product Pass</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> digital-product-pass
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.2.1
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.2.1
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -885,13 +1081,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Digital Twin Registry</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Digital Twin Registry</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> registry
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.3.27
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.3.19
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -970,13 +1186,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Discovery Finder</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Discovery Finder</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> discoveryfinder
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.1.12
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.2.5
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1057,13 +1293,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>E2E_Data_Exchange_Test_Service</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>E2E_Data_Exchange_Test_Service</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> data-exchange
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.0.9
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.0.9
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1142,13 +1398,19 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Eclipse-Tractusx Charts</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Eclipse-Tractusx Charts</h5>
+                                    </div>
+                                </th>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1233,13 +1495,19 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>Identity And Trust Specifications</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>Identity And Trust Specifications</h5>
+                                    </div>
+                                </th>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1279,7 +1547,7 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                             </div>
                                         </td>
                                         
@@ -1322,13 +1590,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Item Relationship Service</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Item Relationship Service</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> irs-helm
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>6.9.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 4.0.0
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1407,13 +1695,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Managed Identity Wallet (MIW)</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Managed Identity Wallet (MIW)</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> managed-identity-wallet
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.2.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.2.0
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1494,13 +1802,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>managed-identity-wallets-archived</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>managed-identity-wallets-archived</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> managed-identity-wallets
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.7.7
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 3.3.3
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1558,7 +1886,13 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="Dockerfile(s) use not approved images:&lt;br&gt;busybox" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="We want to align on docker base images. We detected a Dockerfile specifying busybox
+	Allowed images are: 
+	 - eclipse-temurin
+	 - nginxinc/nginx-unprivileged
+	 - mcr.microsoft.com/dotnet/runtime
+	 - mcr.microsoft.com/dotnet/aspnet
+	 - alpine" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
                                             </div>
                                         </td>
                                         
@@ -1569,7 +1903,8 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="&#43; Following Helm Chart structure files are missing: managed-identity-wallets/LICENSE&lt;br&gt;	&#43; Analysis for managed-identity-wallets/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="&#43; Following Helm Chart structure files are missing: managed-identity-wallets/LICENSE
+	&#43; Analysis for managed-identity-wallets/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
                                             </div>
                                         </td>
                                         
@@ -1585,13 +1920,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>managed-service-orchestrator</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>managed-service-orchestrator</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> managed-service-orchestrator
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.5.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.5.0
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1670,13 +2025,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>managed-simple-data-exchanger</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>managed-simple-data-exchanger</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> sde
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.0.9
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 2.1.1
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -1707,74 +2082,6 @@
                                             <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-2" target="_blank"> TRG 1.02 - INSTALL.md</a>
                                         </div>
                                     </td>
-                                    
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-4" target="_blank"> TRG 2.04 - Leading product repository</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                            </tr>
-                            
-                            <tr>
-                                <th>
-                                    <div class="valign-wrapper">
-                                        
-                                        <i class="material-icons green-text">check</i>
-                                        
-                                        <a href="https://github.com/eclipse-tractusx/managed-simple-data-exchanger-frontend">managed-simple-data-exchanger-frontend</a>
-                                    </div>
-                                </th>
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1" target="_blank"> TRG 1.01 - README.md</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                                    
-                                        
-                                        <td class="center">
-                                            <div class="valign-wrapper">
-                                                <i class="material-icons yellow-text">check</i>
-                                                <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-2" target="_blank"> TRG 1.02 - INSTALL.md</a>
-                                            </div>
-                                        </td>
-                                        
                                     
                                 
                                     
@@ -1883,6 +2190,74 @@
                                 
                             </tr>
                             
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <a href="https://github.com/eclipse-tractusx/managed-simple-data-exchanger-frontend">managed-simple-data-exchanger-frontend</a>
+                                    </div>
+                                </th>
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1" target="_blank"> TRG 1.01 - README.md</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                                    
+                                        
+                                        <td class="center">
+                                            <div class="valign-wrapper">
+                                                <i class="material-icons yellow-text">check</i>
+                                                <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-2" target="_blank"> TRG 1.02 - INSTALL.md</a>
+                                            </div>
+                                        </td>
+                                        
+                                    
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-4" target="_blank"> TRG 2.04 - Leading product repository</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                            </tr>
+                            
                         </table>
                     </div>
                 </li>
@@ -1891,16 +2266,126 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>portal</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>portal</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> localdev-portal-iam
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.1.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> portal
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.7.0-RC2
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.7.0-RC2
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
+                            
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <a href="https://github.com/eclipse-tractusx/portal-backend">portal-backend</a>
+                                    </div>
+                                </th>
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1" target="_blank"> TRG 1.01 - README.md</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                                    
+                                        
+                                        <td class="center">
+                                            <div class="valign-wrapper">
+                                                <i class="material-icons yellow-text">check</i>
+                                                <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-2" target="_blank"> TRG 1.02 - INSTALL.md</a>
+                                            </div>
+                                        </td>
+                                        
+                                    
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-4" target="_blank"> TRG 2.04 - Leading product repository</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                                    
+                                        
+                                        <td class="center">
+                                            <div class="valign-wrapper">
+                                                <i class="material-icons red-text">heart_broken</i>
+                                                <a class="tooltipped" data-position="top" data-tooltip="We want to align on docker base images. We detected a Dockerfile specifying base AS final, base AS final, base AS final, base AS final, base AS final, base AS final, base AS final, base AS final, base AS final, base AS final
+	Allowed images are: 
+	 - eclipse-temurin
+	 - nginxinc/nginx-unprivileged
+	 - mcr.microsoft.com/dotnet/runtime
+	 - mcr.microsoft.com/dotnet/aspnet
+	 - alpine" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                            </div>
+                                        </td>
+                                        
+                                    
+                                
+                                    
+                                    <td class="center">
+                                        <div class="valign-wrapper">
+                                            <i class="material-icons green-text">check</i>
+                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                        </div>
+                                    </td>
+                                    
+                                
+                            </tr>
                             
                             <tr>
                                 <th>
@@ -1964,7 +2449,10 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="&#43; Following Helm Chart structure files are missing: localdev/.helmignore&lt;br&gt;	&#43; Analysis for localdev/Chart.yaml: &lt;br&gt;		 - Missing mandatory fields: AppVersion&lt;br&gt;	&#43; Analysis for portal/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="&#43; Following Helm Chart structure files are missing: localdev/.helmignore
+	&#43; Analysis for localdev/Chart.yaml: 
+		 - Missing mandatory fields: AppVersion
+	&#43; Analysis for portal/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
                                             </div>
                                         </td>
                                         
@@ -2044,79 +2532,9 @@
                                 <th>
                                     <div class="valign-wrapper">
                                         
-                                        <i class="material-icons red-text">heart_broken</i>
-                                        
-                                        <a href="https://github.com/eclipse-tractusx/portal-backend">portal-backend</a>
-                                    </div>
-                                </th>
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1" target="_blank"> TRG 1.01 - README.md</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                                    
-                                        
-                                        <td class="center">
-                                            <div class="valign-wrapper">
-                                                <i class="material-icons yellow-text">check</i>
-                                                <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-2" target="_blank"> TRG 1.02 - INSTALL.md</a>
-                                            </div>
-                                        </td>
-                                        
-                                    
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-4" target="_blank"> TRG 2.04 - Leading product repository</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                                    
-                                        
-                                        <td class="center">
-                                            <div class="valign-wrapper">
-                                                <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="Dockerfile(s) use not approved images:&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final&lt;br&gt;base AS final" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
-                                            </div>
-                                        </td>
-                                        
-                                    
-                                
-                                    
-                                    <td class="center">
-                                        <div class="valign-wrapper">
-                                            <i class="material-icons green-text">check</i>
-                                            <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
-                                        </div>
-                                    </td>
-                                    
-                                
-                            </tr>
-                            
-                            <tr>
-                                <th>
-                                    <div class="valign-wrapper">
-                                        
                                         <i class="material-icons green-text">check</i>
                                         
-                                        <a href="https://github.com/eclipse-tractusx/portal-frontend-registration">portal-frontend-registration</a>
+                                        <a href="https://github.com/eclipse-tractusx/portal-assets">portal-assets</a>
                                     </div>
                                 </th>
                                 
@@ -2184,7 +2602,7 @@
                                         
                                         <i class="material-icons green-text">check</i>
                                         
-                                        <a href="https://github.com/eclipse-tractusx/portal-assets">portal-assets</a>
+                                        <a href="https://github.com/eclipse-tractusx/portal-frontend-registration">portal-frontend-registration</a>
                                     </div>
                                 </th>
                                 
@@ -2322,13 +2740,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>PURIS</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>PURIS</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> puris
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.0.0
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> main
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -2407,13 +2845,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Self-Description Factory</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Self-Description Factory</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> sdfactory
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>2.1.8
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 2.1.7
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -2492,13 +2950,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Semantic Hub</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Semantic Hub</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> semantic-hub
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.1.31
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.2.14
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -2577,13 +3055,19 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>Semantic Models</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>Semantic Models</h5>
+                                    </div>
+                                </th>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -2623,7 +3107,7 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                             </div>
                                         </td>
                                         
@@ -2672,13 +3156,19 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>SSI-agent-lib</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>SSI-agent-lib</h5>
+                                    </div>
+                                </th>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -2734,7 +3224,13 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="Dockerfile(s) use not approved images:&lt;br&gt;pandoc/latex:latest-ubuntu" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="We want to align on docker base images. We detected a Dockerfile specifying pandoc/latex:latest-ubuntu
+	Allowed images are: 
+	 - eclipse-temurin
+	 - nginxinc/nginx-unprivileged
+	 - mcr.microsoft.com/dotnet/runtime
+	 - mcr.microsoft.com/dotnet/aspnet
+	 - alpine" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
                                             </div>
                                         </td>
                                         
@@ -2763,13 +3259,33 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>Traceability FOSS</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>Traceability FOSS</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> traceability-foss
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.3.20
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 9.0.0-rc1
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -2827,7 +3343,13 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="Dockerfile(s) use not approved images:&lt;br&gt;cypress/included:12.3.0" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="We want to align on docker base images. We detected a Dockerfile specifying cypress/included:12.3.0
+	Allowed images are: 
+	 - eclipse-temurin
+	 - nginxinc/nginx-unprivileged
+	 - mcr.microsoft.com/dotnet/runtime
+	 - mcr.microsoft.com/dotnet/aspnet
+	 - alpine" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
                                             </div>
                                         </td>
                                         
@@ -2852,13 +3374,61 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>Tractus-X EDC</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>Tractus-X EDC</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> tractusx-connector
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.6.0-rc1
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.6.0-rc1
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> tractusx-connector-azure-vault
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.6.0-rc1
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.6.0-rc1
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> tractusx-connector-memory
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>0.6.0-rc1
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 0.6.0-rc1
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -2925,7 +3495,10 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="&#43; Following Helm Chart structure files are missing: tractusx-connector/.helmignore, tractusx-connector-azure-vault/.helmignore&lt;br&gt;	&#43; Analysis for tractusx-connector/Chart.yaml: &lt;br&gt;	&#43; Analysis for tractusx-connector-azure-vault/Chart.yaml: &lt;br&gt;	&#43; Analysis for tractusx-connector-memory/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="&#43; Following Helm Chart structure files are missing: tractusx-connector/.helmignore, tractusx-connector-azure-vault/.helmignore
+	&#43; Analysis for tractusx-connector/Chart.yaml: 
+	&#43; Analysis for tractusx-connector-azure-vault/Chart.yaml: 
+	&#43; Analysis for tractusx-connector-memory/Chart.yaml: " href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
                                             </div>
                                         </td>
                                         
@@ -2941,13 +3514,61 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons green-text">check</i>
-                            
-
-                            <h5>Tractus-X Knowledge Agents EDC Extensions (KA-EDC)</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons green-text">check</i>
+                                        
+                                        <h5>Tractus-X Knowledge Agents EDC Extensions (KA-EDC)</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> agent-connector
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.10.2-SNAPSHOT
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.10.2-SNAPSHOT
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> agent-connector-azure-vault
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.10.2-SNAPSHOT
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.10.2-SNAPSHOT
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> agent-connector-memory
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.10.2-SNAPSHOT
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.10.2-SNAPSHOT
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -3028,13 +3649,61 @@
                 
                 <li>
                     <div class="collapsible-header">
-                        <div class="valign-wrapper">
-                            
-                            <i class="material-icons red-text">heart_broken</i>
-                            
-
-                            <h5>Tractus-X Knowledge Agents Reference Implementations (KA-RI)</h5>
-                        </div>
+                        <table class="striped">
+                            <tr>
+                                <th>
+                                    <div class="valign-wrapper">
+                                        
+                                        <i class="material-icons red-text">heart_broken</i>
+                                        
+                                        <h5>Tractus-X Knowledge Agents Reference Implementations (KA-RI)</h5>
+                                    </div>
+                                </th>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> conforming-agent
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.10.2-SNAPSHOT
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.10.2-SNAPSHOT
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> provisioning-agent
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.10.2-SNAPSHOT
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.10.2-SNAPSHOT
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="right">
+                                    <div class="chip yellow accent-4">
+                                        <b>Helm chart:</b> remoting-agent
+                                    </div>
+                                    <div class="valign-wrapper">
+                                        <div class="chip orange lighten-2">
+                                            <b>Helm ver:</b>1.10.2-SNAPSHOT
+                                        </div>
+                                        <div class="chip orange lighten-2">
+                                            <b>App ver:</b> 1.10.2-SNAPSHOT
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                            </tr>
+                        </table>
                     </div>
                     <div class="collapsible-body">
                         <table class="striped">
@@ -3092,7 +3761,13 @@
                                         <td class="center">
                                             <div class="valign-wrapper">
                                                 <i class="material-icons red-text">heart_broken</i>
-                                                <a class="tooltipped" data-position="top" data-html="true" data-tooltip="Dockerfile(s) use not approved images:&lt;br&gt;ontop/ontop:5.0.2&lt;br&gt;tomcat:9-jre11-temurin" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
+                                                <a class="tooltipped" data-position="top" data-tooltip="We want to align on docker base images. We detected a Dockerfile specifying ontop/ontop:5.0.2, tomcat:9-jre11-temurin
+	Allowed images are: 
+	 - eclipse-temurin
+	 - nginxinc/nginx-unprivileged
+	 - mcr.microsoft.com/dotnet/runtime
+	 - mcr.microsoft.com/dotnet/aspnet
+	 - alpine" href="https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02" target="_blank"> TRG 4.02 - Base images</a>
                                             </div>
                                         </td>
                                         
@@ -3270,7 +3945,7 @@
                                             
                                             <i class="material-icons green-text">check</i>
                                             
-                                            <a href="https://github.com/eclipse-tractusx/tractusx-quality-checks">tractusx-quality-checks</a>
+                                            <a href="https://github.com/eclipse-tractusx/sig-infra">sig-infra</a>
                                         </div>
                                     </th>
                                     
@@ -3338,7 +4013,7 @@
                                             
                                             <i class="material-icons green-text">check</i>
                                             
-                                            <a href="https://github.com/eclipse-tractusx/sig-infra">sig-infra</a>
+                                            <a href="https://github.com/eclipse-tractusx/tractusx-quality-checks">tractusx-quality-checks</a>
                                         </div>
                                     </th>
                                     
@@ -3655,7 +4330,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
@@ -3744,7 +4419,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
@@ -3853,7 +4528,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
@@ -3882,7 +4557,9 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="&#43; Following Helm Chart structure files are missing: &lt;br&gt;	&#43; Analysis for umbrella/Chart.yaml: &lt;br&gt;		 - Missing mandatory fields: AppVersion" href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="&#43; Following Helm Chart structure files are missing: 
+	&#43; Analysis for umbrella/Chart.yaml: 
+		 - Missing mandatory fields: AppVersion" href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-02" target="_blank"> TRG 5.02 - Chart structure</a>
                                                 </div>
                                             </td>
                                             
@@ -3948,7 +4625,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
@@ -4037,7 +4714,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
@@ -4156,7 +4833,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
@@ -4245,7 +4922,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
@@ -4429,7 +5106,7 @@
                                             <td class="center">
                                                 <div class="valign-wrapper">
                                                     <i class="material-icons red-text">heart_broken</i>
-                                                    <a class="tooltipped" data-position="top" data-html="true" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
+                                                    <a class="tooltipped" data-position="top" data-tooltip="A CHANGELOG.md file has to be present, describing the changes on between your releases" href="https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3" target="_blank"> TRG 1.03 - CHANGELOG.md</a>
                                                 </div>
                                             </td>
                                             
