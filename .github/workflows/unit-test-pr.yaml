@@ -17,34 +17,24 @@
 # SPDX-License-Identifier: Apache-2.0
 # #############################################################################
 ---
-name: Verify Release Checks Dashboard build
+
+name: "Run unit-tests"
 
 on:
   pull_request:
-    paths:
-      - "release-automation/**"
-
-env:
-  DASHBOARD_DIR: "release-automation"
 
 jobs:
-  verify-dashboard-build:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
-      - name: setup Go
-        uses: actions/setup-go@v4
+      - uses: actions/checkout@v3
         with:
-          go-version-file: "${{ env.DASHBOARD_DIR }}/go.mod"
+          fetch-depth: 0
 
-      - name: Run tests
-        run: |
-          cd ${{ env.DASHBOARD_DIR }}
-          go test ./...
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: "release-automation/go.mod"
 
-      - name: Run build
-        run: |
-          cd ${{ env.DASHBOARD_DIR }}
-          go build main.go
+      - name: Run all unit tests
+        run: cd release-automation && go test ./...
