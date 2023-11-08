@@ -10,7 +10,7 @@ Currently it supports PostgreSQL only with potential to grow and support other a
 **Objective:** To streamline the process of initiating and implementing a major release upgrade, ensuring community consensus, documentation alignment, and effective communication.
 
 1. **Initiation of Discussion:**
-   - A community member recognizes the need for a major release upgrade, after receiving notification of a new release and initiates a discussion on the Tractus-X mailing list.
+   - A community member recognizes the need for a major release upgrade of a helm chart dependency, after receiving notification of a new release and initiates a discussion on the Tractus-X mailing list.
    - In the discussion, the member provides a brief summary of the major changes, improvements, or new features that the upgrade will introduce.
 
 2. **Collaborate and Consensus:**
