@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"os"
 	"github.com/spf13/cobra"
-	"release-notifier/internal/file"
+	"release-notifier/internal/cache"
 	"release-notifier/internal/mail"
 	"release-notifier/internal/webscrape"
 )
@@ -59,14 +59,14 @@ func init() {
 
 func psqlNotifier() {
 	latestRelease := webscrape.GetLatestPSQLRelease()
-	prevRelease := file.GetPrevPSQLRelFromArtifact("psql_release")
+	prevRelease := cache.GetPrevPSQLRelFromArtifact("psql_release")
 
 	if latestRelease != prevRelease {
 		fmt.Printf("New release is out: %v\n", latestRelease)
 		alignedRelease := os.Getenv("CURRENT_ALIGNED_PSQL_VER")
 		fmt.Printf("Current aligned version: %v\n", alignedRelease)
 		mail.SendPSQLRelNotification(latestRelease, alignedRelease)
-		file.SaveLatestPSQLRel(latestRelease)
+		cache.SaveLatestPSQLRel(latestRelease)
 	} else {
 		fmt.Println("No new release :(")
 	}
