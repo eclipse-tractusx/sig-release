@@ -136,7 +136,8 @@ func runQualityChecks(repo Repository, dir string) CheckedRepository {
 
 func initializeChecksForDirectory(dir string) []tractusx.QualityGuideline {
 	var checks []tractusx.QualityGuideline
-
+	tractusx.ErrorOutputFormat = tractusx.WebErrOutputFormat
+	
 	checks = append(checks, docs.NewReadmeExists(dir))
 	checks = append(checks, docs.NewInstallExists(dir))
 	checks = append(checks, docs.NewChangelogExists(dir))
