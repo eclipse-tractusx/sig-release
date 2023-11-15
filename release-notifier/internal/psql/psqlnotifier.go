@@ -89,5 +89,5 @@ func Notify(newRelease string, alignedRelease string) {
 		AlignedPSQLRelease: alignedRelease,
 	})
 
-	mail.SendMailNotification(buff.Bytes())
+	mail.SendMail(buff.Bytes())
 }

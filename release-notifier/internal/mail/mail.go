@@ -32,7 +32,7 @@ const senderMailEnv = "DEVSECOPS_NOTIFICATION_EMAIL"
 const senderPassEnv = "DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD"
 
 
-func SendMailNotification(body []byte) {
+func SendMail(body []byte) {
 	sender := os.Getenv(senderMailEnv)
 	password := os.Getenv(senderPassEnv)
 	recipent := os.Getenv(recipentMailEnv)
