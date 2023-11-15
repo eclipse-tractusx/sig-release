@@ -34,6 +34,7 @@ type CheckedProduct struct {
 	RepoCategory        string
 	OverallPassed       bool
 	CheckedRepositories []CheckedRepository
+	ChartsDetails       []ChartDetails
 }
 
 type CheckedRepository struct {
@@ -71,4 +72,10 @@ type repoInfo struct {
 	metadata tractusx.Metadata
 	repoName string
 	repoUrl  string
+}
+
+type ChartDetails struct {
+	ChartName    string
+	ChartVersion string
+	AppVersion   string
 }
