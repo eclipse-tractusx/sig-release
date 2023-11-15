@@ -36,7 +36,7 @@ const outputFileName = "index.html"
 
 // buildCmd represents the build command
 var buildCmd = &cobra.Command{
-	Use:   "build-release-dashboard",
+	Use:   "buildDashboard",
 	Short: "Create a statically compiled dashboard with release check status",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
