@@ -17,26 +17,33 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
-package webscrape
+package psql
 
 import (
+	"bytes"
 	"fmt"
-	"github.com/gocolly/colly"
+	"log"
+	"os"
 	"regexp"
+	"text/template"
+	"release-notifier/internal/mail"
+	"github.com/gocolly/colly"
 )
+
+const mailTemplate = "templates/mail-psql.html.tmpl"
 
 // Semantic Versioning schema regex
 const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
 
-func GetLatestPSQLRelease() string {
+func GetLatestRel() string {
 	var release string
 	website := "https://bitnami.com/stack/postgresql"
 
-	fmt.Println("Quering", website)
+	log.Println("Quering", website)
 	c := colly.NewCollector()
 
 	c.OnError(func(_ *colly.Response, err error) {
-		fmt.Println("Can't load the page: ", err)
+		log.Println("Can't load the page: ", err)
 	})
 
 	c.OnHTML("div.stack__header__properties__property", func(e *colly.HTMLElement) {
@@ -47,4 +54,40 @@ func GetLatestPSQLRelease() string {
 
 	c.Visit(website)
 	return release
+}
+
+func GetPrevRelFromArtifact(artifact string) string {
+	data, err := os.ReadFile(artifact)
+
+	if err != nil {
+		return ""
+	}
+
+	release := string(data)
+	return release
+}
+
+func SaveLatestRel(release string) {
+	err := os.WriteFile("psql_release", []byte(release), 0644)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+
+func Notify(newRelease string, alignedRelease string) {
+	var buff bytes.Buffer
+	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
+	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL New Release (%s) and Update Process\n%s\n\n", newRelease, mimeHeaders)))
+
+	t, _ := template.ParseFiles(mailTemplate)
+	t.Execute(&buff, struct {
+		NewPSQLRelease string
+		AlignedPSQLRelease string
+	}{
+		NewPSQLRelease: newRelease,
+		AlignedPSQLRelease: alignedRelease,
+	})
+
+	mail.SendMailNotification(buff.Bytes())
 }

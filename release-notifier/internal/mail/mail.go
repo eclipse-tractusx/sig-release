@@ -20,46 +20,28 @@
 package mail
 
 import (
-	"bytes"
-	"fmt"
+	"log"
 	"net/smtp"
 	"os"
-	"text/template"
 )
 
 const smtpServer = "smtp.gmail.com"
 const smtpPort = "587"
-const mailTemplate = "templates/mail.html.tmpl"
 const recipentMailEnv = "TRACTUSX_MAILINGLIST"
 const senderMailEnv = "DEVSECOPS_NOTIFICATION_EMAIL"
 const senderPassEnv = "DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD"
 
-func SendPSQLRelNotification(newRelease string, alignedRelease string) {
-	var buff bytes.Buffer
-	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
-	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL New Release (%s) and Update Process\n%s\n\n", newRelease, mimeHeaders)))
 
-	t, _ := template.ParseFiles(mailTemplate)
-	t.Execute(&buff, struct {
-		NewPSQLRelease string
-		AlignedPSQLRelease string
-	}{
-		NewPSQLRelease: newRelease,
-		AlignedPSQLRelease: alignedRelease,
-	})
-
+func SendMailNotification(body []byte) {
 	sender := os.Getenv(senderMailEnv)
 	password := os.Getenv(senderPassEnv)
 	recipent := os.Getenv(recipentMailEnv)
-	sendMail(sender, password, recipent, buff.Bytes())
-}
 
-func sendMail(sender string, password string, recipent string, body []byte) {
 	auth := smtp.PlainAuth("", sender, password, smtpServer)
 	err := smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipent}, body)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		os.Exit(1)
 	}
-	fmt.Println("Email Sent!")
+	log.Println("Email Sent!")
 }
