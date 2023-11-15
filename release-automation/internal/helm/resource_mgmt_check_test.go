@@ -20,6 +20,7 @@
 package helm
 
 import (
+	"errors"
 	"os"
 	"path"
 	"testing"
@@ -65,6 +66,37 @@ func TestShouldFailIfMemRequestIsNotEqualMemLimitsAtSTS(t *testing.T) {
 	}
 }
 
+func TestShouldCapitalizeFirstLetterOfErrorMessage(t *testing.T) {
+	testCases := []struct {
+		err            error
+		expectedString string
+		errorIfFailing string
+	}{
+		{
+			err:            errors.New("requested CPU can't be the same as Limit CPU. Limit should be 2-3 times higher"),
+			expectedString: "Requested CPU can't be the same as Limit CPU. Limit should be 2-3 times higher",
+			errorIfFailing: "Should capitalize first letter of regular error string",
+		},
+		{
+			err:            errors.New("CPU or Memory not defined in resources Limits"),
+			expectedString: "CPU or Memory not defined in resources Limits",
+			errorIfFailing: "Should keep acronyms capitalized",
+		},
+		{
+			err:            errors.New("justOneWord"),
+			expectedString: "JustOneWord",
+			errorIfFailing: "A single word should also be capitalized",
+		},
+	}
+
+	for _, testCase := range testCases {
+		capitalizedString := firstCharUppercase(testCase.err)
+		if capitalizedString != testCase.expectedString {
+			t.Errorf("%s, \n\texpected:\t%s\n\tgot:\t\t%s", testCase.errorIfFailing, testCase.expectedString, capitalizedString)
+		}
+	}
+}
+
 func copyFile(dest string, source string, t *testing.T) {
 	templateFile, err := os.ReadFile(source)
 	if err != nil {
@@ -77,10 +109,10 @@ func copyFile(dest string, source string, t *testing.T) {
 }
 
 func setupChartBasics(dir string, values string, t *testing.T) {
-	testchartPath := path.Join("test", "charts", "testchart")
+	testChartPath := path.Join("test", "charts", "testchart")
 	_ = os.MkdirAll(path.Join(dir, "charts", "testchart", "templates"), 0770)
-	copyFile(path.Join(dir, "charts", "testchart", "values.yaml"), path.Join(testchartPath, values), t)
-	copyFile(path.Join(dir, "charts", "testchart", "Chart.yaml"), path.Join(testchartPath, "Chart.yaml"), t)
+	copyFile(path.Join(dir, "charts", "testchart", "values.yaml"), path.Join(testChartPath, values), t)
+	copyFile(path.Join(dir, "charts", "testchart", "Chart.yaml"), path.Join(testChartPath, "Chart.yaml"), t)
 }
 
 func setupK8SObject(dir string, manifest string, values string, t *testing.T) {

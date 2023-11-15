@@ -20,10 +20,14 @@
 package helm
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path"
+	"strings"
 
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 	"helm.sh/helm/v3/pkg/chart/loader"
 	"helm.sh/helm/v3/pkg/engine"
 	"k8s.io/api/apps/v1"
@@ -75,15 +79,14 @@ func (r *ResourceMgmt) Test() *tractusx.QualityResult {
 
 		renderedChartManifests, errDesc := renderChart(path.Join(chartDir, helmchart.Name()))
 		if renderedChartManifests == nil {
-			errorDescription += errDesc
+			errorDescription += errDesc.Error()
 			continue
 		}
 
 		for manifestName, manifestContent := range renderedChartManifests {
-			isValid, errMsg := validateResourceSetting(manifestContent)
-			if !isValid {
-				errorDescription += fmt.Sprintf("\n\t[%s]: %s", manifestName, errMsg)
-				continue
+			err = validateResourceSetting(manifestContent)
+			if err != nil {
+				errorDescription += fmt.Sprintf("\n\t[%s]: %s.", manifestName, firstCharUppercase(err))
 			}
 		}
 	}
@@ -94,14 +97,15 @@ func (r *ResourceMgmt) Test() *tractusx.QualityResult {
 	return &tractusx.QualityResult{Passed: true}
 }
 
-func validateResourceSetting(k8sManifest string) (bool, string) {
+func validateResourceSetting(k8sManifest string) error {
 	var containers []core.Container
 
 	decode := scheme.Codecs.UniversalDeserializer().Decode
 	obj, groupVersionKind, err := decode([]byte(k8sManifest), nil, nil)
 
+	// Resource settings treated as valid, if manifest could not be decoded
 	if err != nil {
-		return true, ""
+		return nil
 	}
 
 	switch groupVersionKind.Kind {
@@ -113,31 +117,32 @@ func validateResourceSetting(k8sManifest string) (bool, string) {
 
 	for _, c := range containers {
 		if c.Resources.Requests == nil {
-			return false, "No resources requests found in the manifest."
+			return errors.New("no resources requests found in the manifest")
 		}
 		if c.Resources.Requests.Cpu().IsZero() || c.Resources.Requests.Memory().IsZero() {
-			return false, "CPU or Memory not defined in resources Requests."
+			return errors.New("CPU or Memory not defined in resources Requests")
 		}
 		if c.Resources.Limits == nil {
-			return false, "No resources limits found in the manifest."
+			return errors.New("no resources limits found in the manifest")
 		}
 		if c.Resources.Limits.Cpu().IsZero() || c.Resources.Limits.Memory().IsZero() {
-			return false, "CPU or Memory not defined in resources Limits."
+			return errors.New("CPU or Memory not defined in resources Limits")
 		}
 		if c.Resources.Requests.Cpu().MilliValue() == c.Resources.Limits.Cpu().MilliValue() {
-			return false, "Requested CPU can't be the same as Limit CPU. Limit should be 2-3 times higher."
+			return errors.New("requested CPU can't be the same as Limit CPU. Limit should be 2-3 times higher")
 		}
 		if c.Resources.Requests.Memory().MilliValue() != c.Resources.Limits.Memory().MilliValue() {
-			return false, "Requested Memory size must be equal to Limit Memory size."
+			return errors.New("requested Memory size must be equal to Limit Memory size")
 		}
 	}
-	return true, ""
+	return nil
 }
 
-func renderChart(chartPath string) (map[string]string, string) {
+func renderChart(chartPath string) (map[string]string, error) {
 	loadedChart, err := loader.Load(chartPath)
 	if err != nil {
-		return nil, fmt.Sprintf("\n\tCan't read %s helm chart.", chartPath)
+		fmt.Printf("Chart loading error: %s\n", err)
+		return nil, errors.New(fmt.Sprintf("\n\tCan't read %s helm chart.", chartPath))
 	}
 
 	finalValues := map[string]interface{}{
@@ -147,7 +152,19 @@ func renderChart(chartPath string) (map[string]string, string) {
 
 	renderedChart, err := engine.Render(loadedChart, finalValues)
 	if err != nil {
-		return nil, fmt.Sprintf("\n\tUnable to render helm chart %s.", chartPath)
+		fmt.Printf("Chart rendering error: %s\n", err)
+		return nil, errors.New(fmt.Sprintf("\n\tUnable to render helm chart %s.", chartPath))
 	}
-	return renderedChart, ""
+	return renderedChart, nil
+}
+
+func firstCharUppercase(err error) string {
+	split := strings.Split(err.Error(), " ")
+	result := cases.Title(language.English, cases.NoLower).String(split[0])
+
+	if len(split) > 1 {
+		result = result + " " + strings.Join(split[1:], " ")
+	}
+
+	return result
 }
