@@ -37,4 +37,4 @@ jobs:
         id: run-dash
         uses: eclipse-tractusx/sig-infra/.github/actions/run-dash@main
         with:
-          dash_input: "release-automation/go.sum"
+          dash_input: "dash-input.sum"
