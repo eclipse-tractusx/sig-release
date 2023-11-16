@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Action Required: PostgreSQL New Release (v{{.NewPSQLRelease}}) and Update Process</title>
+</head>
+<body>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+        <tr>
+            <td bgcolor="#f7f7f7" align="center" style="padding: 20px 0;">
+                <h1>PostgreSQL {{.NewPSQLRelease}} Released!</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Dear Tractus-X Community,</p>
+
+                <p>
+                    We're excited to inform you that PostgreSQL has released a new version, {{.NewPSQLRelease}}, and we need your attention to ensure our projects remain up-to-date and secure. Please follow the instructions below based on the type of release (read more about <a href="https://semver.org">versioning schema</a>).
+                </p>
+
+                <h2>Current Aligned Version:</h2>
+
+                <p>
+                    Our projects are currently aligned to PostgreSQL version {{.AlignedPSQLRelease}}. 
+                </p>
+                <p>
+                    Official information of aligned dependency versions can be found in the <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-07/#aligning-dependency-versions">TRG 5.07 - Chart Dependencies</a>.
+                </p>
+
+                <h2>Major Release:</h2>
+
+                <p>
+                    If a major release has occurred, we kindly request that you initiate a discussion on our <a href="mailto:tractusx-dev@eclipse.org">Tractus-X mailing list</a> to address the implications and eventually agree on the upgrade plan. Major releases may involve significant changes, and we want to ensure a smooth transition. Here are the key steps to follow:
+                </p>
+
+                <ol>
+                    <li>Create a  <a href="mailto:tractusx-dev@eclipse.org">mailing list</a> discussion thread with a clear title indicating the major PostgreSQL release upgrade.</li>
+                    <li>Summarize the major changes in PostgreSQL v{{.NewPSQLRelease}} and discuss any potential impacts on our projects.</li>
+                    <li>Collaborate with the community to outline a consensus on the upgrade.</li>
+                    <li>Follow the agreed-upon <a href="www">process</a> for implementing the major release upgrade.</li>
+                </ol>
+
+                <h2>Minor or Patch Release:</h2>
+
+                <p>
+                    For minor releases, we only need to update our Helm charts and their dependencies. Specifically, please update the Helm chart that includes PostgreSQL to ensure we are using the latest version, which, as of now, is PostgreSQL v{{.NewPSQLRelease}}. To do this:
+                </p>
+
+                <ol>
+                    <li>Review Your Helm Charts: Examine your Helm charts and identify any dependencies on PostgreSQL.</li>
+                    <li>Update Helm Dependencies: Update the PostgreSQL Helm chart dependencies in your projects to the latest version compatible with <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-07/#aligning-dependency-versions">aligned Major Version</a> of PostgreSQL.</li>
+                    <li>Test Thoroughly: After updating the dependencies, thoroughly test your applications to ensure they function correctly with the new PostgreSQL version.</li>
+                </ol>
+
+
+
+                <h2>Resources</h2>
+                <p>You can find the latest PostgreSQL Helm charts on bitnami official Helm chart repository: <a href="https://bitnami.com/stack/postgresql/helm">Bitnami Helm Chart Repository</a>.</p>
+
+                <p>Detailed documentation on how to update Helm chart dependencies can be found here: <a href="[Documentation Link]">Documentation Link</a>.</p>
+
+                <h2>Contribution</h2>
+                <p>
+                    We would like to invite you to contribute to this project and provide your valuable insights. Your feedback and suggestions will be greatly appreciated as we continue to refine and expand the functionality of our release notification tool.
+                </p>
+                <p>
+                    To access the repository for this project and explore the code, please visit the following link: [GitHub].
+                </p>
+                <p>
+                    Encourage you to visit general Tractus-X <a href="https://eclipse-tractusx.github.io/docs/oss/how-to-contribute">How to Contribute guide</a>.
+                </p>
+                <hr>
+                <p>
+                    We greatly appreciate your commitment to keeping our open source projects up-to-date and secure. Your collaboration is vital to the success of our community.
+                </p>
+
+                <p>
+                    If you encounter any issues or have questions during the upgrade process, please don't hesitate to reach out to <a href="https://github.com/eclipse-tractusx/sig-infra/issues/new/choose">DevSecOps team</a>.
+                </p>
+
+
+                <p>Best regards,</p>
+                <p>DevSecOps Team</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
