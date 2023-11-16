@@ -57,7 +57,7 @@ func init() {
 
 func psqlNotifier() {
 	latestRelease := psql.GetLatestRel()
-	prevRelease := psql.GetPrevRelFromArtifact("psql_release")
+	prevRelease := psql.GetPrevRelFromArtifact()
 
 	if latestRelease != prevRelease {
 		log.Printf("New release is out: %v\n", latestRelease)

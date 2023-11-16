@@ -31,6 +31,7 @@ import (
 )
 
 const mailTemplate = "templates/mail-psql.html.tmpl"
+const artifactName = "psql_release"
 
 // Semantic Versioning schema regex
 const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
@@ -56,8 +57,8 @@ func GetLatestRel() string {
 	return release
 }
 
-func GetPrevRelFromArtifact(artifact string) string {
-	data, err := os.ReadFile(artifact)
+func GetPrevRelFromArtifact() string {
+	data, err := os.ReadFile(artifactName)
 
 	if err != nil {
 		return ""
@@ -68,7 +69,7 @@ func GetPrevRelFromArtifact(artifact string) string {
 }
 
 func SaveLatestRel(release string) {
-	err := os.WriteFile("psql_release", []byte(release), 0644)
+	err := os.WriteFile(artifactName, []byte(release), 0644)
 
 	if err != nil {
 		log.Fatalln(err)
