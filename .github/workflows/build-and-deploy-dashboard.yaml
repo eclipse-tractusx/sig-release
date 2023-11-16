@@ -29,7 +29,7 @@ on:
     # Run every day at 01:00 at night
     - cron: "0 1 * * *" # UTC time
 env:
-  DASHBOARD_DIR: "trg-checks-dashboard"
+  DASHBOARD_DIR: "release-automation"
   GITHUB_ACCESS_TOKEN: ${{ github.event.inputs.github_token != '' && github.event.inputs.github_token || secrets.GITHUB_TOKEN }}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -56,7 +56,7 @@ jobs:
           echo "::add-mask::${{ env.GITHUB_ACCESS_TOKEN}}"
           echo "GITHUB_ACCESS_TOKEN=${{ env.GITHUB_ACCESS_TOKEN}}" >> $GITHUB_ENV
           cd ${{ env.DASHBOARD_DIR }}
-          go run main.go build
+          go run main.go buildDashboard
         env:
           DASHBOARD_ASSETS_PATH: "/sig-release/assets"
 
