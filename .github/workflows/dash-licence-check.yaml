@@ -32,9 +32,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+      - name: Concatenate dependencies
+        run: cat release-automation/go.sum release-notifier/go.sum > dash-input.sum
       - name: Run dash
         id: run-dash
         uses: eclipse-tractusx/sig-infra/.github/actions/run-dash@main
         with:
-          dash_input: "release-automation/go.sum"
+          dash_input: "dash-input.sum"
