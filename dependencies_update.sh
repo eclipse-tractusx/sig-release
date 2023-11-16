@@ -7,3 +7,4 @@
 # i.e: $ export DASH_LICENSE_TOOL="/Users/xyz/Downloads/org.eclipse.dash.licenses-1.0.3-20231116.065040-178.jar"
 
 cat release-automation/go.sum release-notifier/go.sum > dash-input.sum && java -jar $DASH_LICENSE_TOOL dash-input.sum -summary DEPENDENCIES
+rm dash-input.sum
