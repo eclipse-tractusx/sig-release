@@ -20,12 +20,16 @@
 name: PostgreSQL new release notifier
 
 on:
-    workflow_dispatch:
-    schedule:
-        # Run every day at 01:00 at night
-        - cron: "0 1 * * *" # UTC time
+  workflow_dispatch:
+    inputs:
+      recipient:
+        description: "Recipent email"
+        required: false
+  schedule:
+      # Run every day at 01:00 at night
+      - cron: "0 1 * * *" # UTC time
 env:
-    TRACTUSX_MAILINGLIST: _CHANGE_ME_@MAIL.COM 
+    TRACTUSX_MAILINGLIST: ${{ github.event.inputs.recipient != '' && github.event.inputs.recipient || '_CHANGE_ME_@MAIL.COM'  }}
     DEVSECOPS_NOTIFICATION_EMAIL: eclipse.tractusx@gmail.com
     DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD: ${{ secrets.NOTIFICATION_EMAIL_PASSWORD }}
     CURRENT_ALIGNED_PSQL_VER: 15.0.0
