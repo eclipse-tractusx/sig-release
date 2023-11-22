@@ -79,7 +79,7 @@ func SaveLatestRel(release string) {
 func Notify(newRelease string, alignedRelease string) {
 	var buff bytes.Buffer
 	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
-	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL New Release (%s) and Update Process\n%s\n\n", newRelease, mimeHeaders)))
+	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
 
 	t, _ := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
