@@ -16,5 +16,31 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
- 
+
  package k8s
+
+ import (
+	"fmt"
+	"strings"
+
+	"github.com/gocolly/colly"
+)
+
+ func GetLatestRel() string {
+	var release []string
+	website := "https://kubernetes.io/releases/"
+
+	fmt.Println("Quering", website)
+	c := colly.NewCollector()
+
+	c.OnError(func(_ *colly.Response, err error) {
+		fmt.Println("Can't load the page: ", err)
+	})
+
+	c.OnHTML("span.release-inline-value", func(e *colly.HTMLElement) {
+		release = append(release, e.Text)
+	})
+
+	c.Visit(website)
+	return strings.Split(release[0], " ")[0]
+}

@@ -19,7 +19,8 @@
 package cmd
 
 import (
-	"fmt"
+	"log"
+	"release-notifier/internal/k8s"
 
 	"github.com/spf13/cobra"
 )
@@ -27,15 +28,17 @@ import (
 // k8sCmd represents the k8s command
 var k8sCmd = &cobra.Command{
 	Use:   "k8s",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Sends out notification of new Kubernetes release",
+	Long: `Sends out notification of new Kubernetes release
+	to a mailinglist:
 
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("k8s called")
+		log.Println("PostgresSQL release notifier called.")
+		latestRelease := k8s.GetLatestRel()
+		log.Println("Latest release:", latestRelease)
 	},
 }
 
