@@ -17,24 +17,32 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
- package k8s
+package k8s
 
- import (
+import (
+	"bytes"
 	"fmt"
+	"log"
+	"os"
+	"release-notifier/internal/mail"
 	"strings"
+	"text/template"
 
 	"github.com/gocolly/colly"
 )
+
+const mailTemplate = "templates/mail-k8s.html.tmpl"
+const artifactName = "k8s_release"
 
  func GetLatestRel() string {
 	var release []string
 	website := "https://kubernetes.io/releases/"
 
-	fmt.Println("Quering", website)
+	log.Println("Quering", website)
 	c := colly.NewCollector()
 
 	c.OnError(func(_ *colly.Response, err error) {
-		fmt.Println("Can't load the page: ", err)
+		log.Println("Can't load the page: ", err)
 	})
 
 	c.OnHTML("span.release-inline-value", func(e *colly.HTMLElement) {
@@ -43,4 +51,40 @@
 
 	c.Visit(website)
 	return strings.Split(release[0], " ")[0]
+}
+
+func GetPrevRelFromArtifact() string {
+	data, err := os.ReadFile(artifactName)
+
+	if err != nil {
+		return ""
+	}
+
+	release := string(data)
+	return release
+}
+
+func SaveLatestRel(release string) {
+	err := os.WriteFile(artifactName, []byte(release), 0644)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+
+func Notify(newRelease string, alignedRelease string) {
+	var buff bytes.Buffer
+	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
+	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: Kubernetes New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
+
+	t, _ := template.ParseFiles(mailTemplate)
+	t.Execute(&buff, struct {
+		NewK8SRelease string
+		AlignedK8SRelease string
+	}{
+		NewK8SRelease: newRelease,
+		AlignedK8SRelease: alignedRelease,
+	})
+
+	mail.SendMail(buff.Bytes())
 }
