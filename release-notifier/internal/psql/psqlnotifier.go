@@ -24,7 +24,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"regexp"
 	"text/template"
 	"release-notifier/internal/mail"
 	"github.com/gocolly/colly"
@@ -32,9 +31,6 @@ import (
 
 const mailTemplate = "templates/mail-psql.html.tmpl"
 const artifactName = "psql_release"
-
-// Semantic Versioning schema regex
-const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
 
 func GetLatestRel() string {
 	var release string
@@ -48,9 +44,7 @@ func GetLatestRel() string {
 	})
 
 	c.OnHTML("div.stack__header__properties__property", func(e *colly.HTMLElement) {
-		if match, _ := regexp.MatchString(regexPattern, e.ChildText("p")); match {
-			release = e.ChildText("p")
-		}
+		release = e.ChildText("p")
 	})
 
 	c.Visit(website)
