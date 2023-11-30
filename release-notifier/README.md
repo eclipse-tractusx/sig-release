@@ -36,13 +36,13 @@ Release notifier uses currently two account for its work:
 
 4. **Update Aligned Version in the TRG Document:**
    - Community member updates aligned version in the respective Tractus-X Release Guide following the [process](https://eclipse-tractusx.github.io/docs/release/).
-      - PostgreSQL: [TRG 5.07](https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-07)
-      - Kubernetes: [TRG 5.10](https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-10)
+      - **PostgreSQL**: [TRG 5.07](https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-07)
+      - **Kubernetes**: [TRG 5.10](https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-10)
 
 5. **Update GitHub Workflow:**
    - Within the project's GitHub repository, update environment variable to reflect the agreed-upon version for the major release.
-      - PostgreSQL: CURRENT_ALIGNED_PSQL_VER at [release-notifier](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L35) workflow
-      - Kubernetes: CURRENT_ALIGNED_K8S_VER at [release-notifier](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L36)  workflow
+      - **PostgreSQL**: CURRENT_ALIGNED_PSQL_VER at [release-notifier](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L35) workflow
+      - **Kubernetes**: CURRENT_ALIGNED_K8S_VER at [release-notifier](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L36)  workflow
 
 6. **Send Communication:**
    - Once the TRG and GitHub workflow are aligned with the new version, member prepares a formal communication.
@@ -50,8 +50,8 @@ Release notifier uses currently two account for its work:
 
 7. **Implementation:**
    - The upgrade is carried out as per the defined upgrade plan, with close attention to the documentation, codebase, and any testing or validation procedures as required.
-      - PostgreSQL: [upgrade plan](TBP)
-      - Kubernetes: [upgrade plan](TBP)
+      - **PostgreSQL**: [upgrade plan](TBP)
+      - **Kubernetes**: [upgrade plan](TBP)
 
 9. **Ongoing Feedback and Improvement:**
    - Continuous feedback from the community is encouraged and used to further improve the upgrade process for future releases.
