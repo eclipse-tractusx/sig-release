@@ -1,9 +1,22 @@
-# Release notifier
+# Release Notifier
 
 Welcome to Release Notifier tool.
 
 Release notifier tool was designed to keep community informed about new releases and updates.
 Currently it supports PostgreSQL & Kubernetes with potential to grow and support other applications.
+
+## Technical Accounts
+
+Release notifier uses currently two account for its work:
+- Gmail account for email notification purpose:
+   * eclipse.tractusx [at] gmail.com
+   * google account password and application secret (to send email) are stored in Vault
+   * recovery email set to webmaster [at] eclipse-foundation.org.
+
+- Eclipse Foundation account:
+   * username: eclipsetractusx
+   * password: stored in Vault
+
 
 ## Upgrade Alignment Process Description
 
@@ -28,8 +41,8 @@ Currently it supports PostgreSQL & Kubernetes with potential to grow and support
 
 5. **Update GitHub Workflow:**
    - Within the project's GitHub repository, update environment variable to reflect the agreed-upon version for the major release.
-      - PostgreSQL: CURRENT_ALIGNED_PSQL_VER at [release-notifier workflow](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L35) 
-      - Kubernetes: CURRENT_ALIGNED_K8S_VER at [release-notifier workflow](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L36) 
+      - PostgreSQL: CURRENT_ALIGNED_PSQL_VER at [release-notifier](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L35) workflow
+      - Kubernetes: CURRENT_ALIGNED_K8S_VER at [release-notifier](https://github.com/eclipse-tractusx/sig-release/blob/main/.github/workflows/release-notifier.yaml#L36)  workflow
 
 6. **Send Communication:**
    - Once the TRG and GitHub workflow are aligned with the new version, member prepares a formal communication.
