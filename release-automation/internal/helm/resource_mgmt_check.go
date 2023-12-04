@@ -72,12 +72,13 @@ func (r *ResourceMgmt) Test() *tractusx.QualityResult {
 	}
 
 	var errorDescription string
-	for _, helmchart := range helmCharts {
-		if !helmchart.IsDir() {
+	for _, helmChart := range helmCharts {
+		helmChartPath := path.Join(chartDir, helmChart.Name())
+		if !helmChart.IsDir() || !IsChartDirectory(helmChartPath) {
 			continue
 		}
 
-		renderedChartManifests, errDesc := renderChart(path.Join(chartDir, helmchart.Name()))
+		renderedChartManifests, errDesc := renderChart(helmChartPath)
 		if renderedChartManifests == nil {
 			errorDescription += errDesc.Error()
 			continue
@@ -143,6 +144,25 @@ func renderChart(chartPath string) (map[string]string, error) {
 	if err != nil {
 		fmt.Printf("Chart loading error: %s\n", err)
 		return nil, errors.New(fmt.Sprintf("\n\tCan't read %s helm chart.", chartPath))
+	}
+
+	subChartsPath := path.Join(chartPath,"charts")
+	if fi, err := os.Stat(subChartsPath); err == nil && fi.IsDir() {
+		subCharts, err := os.ReadDir(subChartsPath)
+		if err == nil && len(subCharts) > 0 {
+			for _, subChart := range subCharts {
+				subChartPath := path.Join(subChartsPath, subChart.Name())
+				if !subChart.IsDir() || !IsChartDirectory(subChartPath) {
+					continue
+				}
+
+				loadedSubChart,err := loader.Load(path.Join(subChartsPath, subChart.Name()))
+				if err != nil {
+					return nil, errors.New(fmt.Sprintf("\n\tCan't read %s helm subchart.", subChartPath))
+				}
+				loadedChart.Values[subChart.Name()] = loadedSubChart.Values
+			}
+		}
 	}
 
 	finalValues := map[string]interface{}{
