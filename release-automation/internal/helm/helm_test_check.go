@@ -17,13 +17,19 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
- package helm
+package helm
 
- import (
+import (
+	"bufio"
+	"log"
+	"os"
+	"path"
+	"regexp"
+	"strings"
 	"tractusx-release-automation/internal/tractusx"
- )
+)
 
- type HelmTestCheck struct {
+type HelmTestCheck struct {
 	baseDir string
 }
 
@@ -48,6 +54,40 @@ func (r *HelmTestCheck) IsOptional() bool {
 }
 
 func (r *HelmTestCheck) Test() *tractusx.QualityResult {
+	workflowsDir := path.Join(r.baseDir, ".github/workflows")
+	if fi, err := os.Stat(workflowsDir); err != nil || !fi.IsDir() {
+		return &tractusx.QualityResult{ErrorDescription: "Expected GitHub workflows directory doesn't exist in repository."}
+	}
+	workflows, err := os.ReadDir(workflowsDir)
+	if err != nil || len(workflows) == 0 {
+		return &tractusx.QualityResult{ErrorDescription: "No workflows found in repository."}
+	}
+	for _, workflow := range workflows {
+		if workflow.IsDir() {
+			continue
+		}
+		file, err := os.Open(path.Join(r.baseDir, ".github/workflows", workflow.Name()))
+		if err != nil {
+			log.Println("Can't read workflow: ", err)
+			continue
+		}
+		scanner := bufio.NewScanner(file)
+		scanner.Split(bufio.ScanLines)
+		var lines []string
 
-	return &tractusx.QualityResult{Passed: true}
+		for scanner.Scan() {
+			lines = append(lines, scanner.Text())
+		}
+		file.Close()
+		helmTestCommandRegexp := `^.*\bct\s*lint\b.*`
+		re := regexp.MustCompile(helmTestCommandRegexp)
+		for _, line := range lines {
+			trimmed := strings.TrimSpace(line)
+			if  re.MatchString(trimmed) && trimmed[0] != '#' {
+				return &tractusx.QualityResult{Passed: true}
+			}
+		}
+	}
+
+	return &tractusx.QualityResult{ErrorDescription: "Helm test workflow not found."}
 }
