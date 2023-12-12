@@ -19,22 +19,21 @@
 
 package helm
 
-
 type GitHubWorkflow struct {
-	Name string `yaml:"name"`
-	On map[string]interface{} `yaml:"on"`
-	Jobs map[string]Job 
+	Name string                 `yaml:"name"`
+	On   map[string]interface{} `yaml:"on"`
+	Jobs map[string]Job
 }
 
 type Job struct {
 	RunsOn string `yaml:"runs-on"`
-	Steps	[]Step
+	Steps  []Step
 }
 
 type Step struct {
 	Name string `yaml:"name"`
 	Uses string `yaml:"uses"`
-	Run string `yaml:"run"`
+	Run  string `yaml:"run"`
 }
 
 type Trigger struct {
