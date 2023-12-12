@@ -34,7 +34,7 @@ type Job struct {
 type Step struct {
 	Name string `yaml:"name"`
 	Uses string `yaml:"uses"`
-	Run string `yaml:"runs"`
+	Run string `yaml:"run"`
 }
 
 type Trigger struct {
