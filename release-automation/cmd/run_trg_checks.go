@@ -57,6 +57,7 @@ var checkLocalCmd = &cobra.Command{
 			repo.NewDefaultBranch(),
 			repo.NewLeadingRepositoryDefined(basedir),
 			repo.NewRepoStructureExists(basedir),
+			helm.NewHelmWorkflowCheck(basedir),
 		}
 
 		runner := testrunner.NewTestRunner(releaseGuidelines)
