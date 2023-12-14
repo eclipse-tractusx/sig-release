@@ -55,7 +55,7 @@ func (r *HelmWorkflowCheck) IsOptional() bool {
 }
 
 func (r *HelmWorkflowCheck) Test() *tractusx.QualityResult {
-	if fi, err := os.Stat("charts"); err != nil || !fi.IsDir() {
+	if fi, err := os.Stat(path.Join(r.baseDir, "charts")); err != nil || !fi.IsDir() {
 		return &tractusx.QualityResult{Passed: true}
 	}
 	workflowsDir := path.Join(r.baseDir, ".github/workflows")
