@@ -55,6 +55,9 @@ func (r *HelmWorkflowCheck) IsOptional() bool {
 }
 
 func (r *HelmWorkflowCheck) Test() *tractusx.QualityResult {
+	if fi, err := os.Stat("charts"); err != nil || !fi.IsDir() {
+		return &tractusx.QualityResult{Passed: true}
+	}
 	workflowsDir := path.Join(r.baseDir, ".github/workflows")
 	if fi, err := os.Stat(workflowsDir); err != nil || !fi.IsDir() {
 		return &tractusx.QualityResult{ErrorDescription: "Expected GitHub workflows directory doesn't exist in repository."}
