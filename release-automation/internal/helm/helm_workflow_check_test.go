@@ -36,8 +36,19 @@ func TestShouldPassIfNoChartsDirPresent(t *testing.T) {
 		t.Errorf("Should pass, no charts directory present.")
 	}
 }
+func TestShouldFailIfNoWorkflowDirPresent(t *testing.T) {
+	dir := t.TempDir()
+	_ = os.Mkdir(path.Join(dir, "charts"), 0770)
+	_ = os.Mkdir(path.Join(dir, ".github"), 0770)
+	result := NewHelmWorkflowCheck(dir).Test()
+
+	if result.Passed {
+		t.Errorf("Should fail, no workflow directory present.")
+	}
+}
 func TestShouldPassIfWorkflowContainsHelmLintInstall(t *testing.T) {
 	dir := t.TempDir()
+	_ = os.Mkdir(path.Join(dir, "charts"), 0770)
 	workflowDir := path.Join(dir, ".github", "workflows")
 	_ = os.MkdirAll(workflowDir, 0770)
 	copyTestFileTo(validHelmTestWorkflow, workflowDir, t)
@@ -51,6 +62,7 @@ func TestShouldPassIfWorkflowContainsHelmLintInstall(t *testing.T) {
 
 func TestShouldFailIfWorkflowHasNoHelmLint(t *testing.T) {
 	dir := t.TempDir()
+	_ = os.Mkdir(path.Join(dir, "charts"), 0770)
 	workflowDir := path.Join(dir, ".github", "workflows")
 	_ = os.MkdirAll(workflowDir, 0770)
 	copyTestFileTo(invalidHelmTestWorkflow, workflowDir, t)
