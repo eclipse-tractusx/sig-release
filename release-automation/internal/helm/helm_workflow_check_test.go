@@ -28,6 +28,14 @@ import (
 const validHelmTestWorkflow = "helm_test_workflow_valid.yaml"
 const invalidHelmTestWorkflow = "helm_test_workflow_invalid.yaml"
 
+func TestShouldPassIfNoChartsDirPresent(t *testing.T) {
+	dir := t.TempDir()
+	result := NewHelmWorkflowCheck(dir).Test()
+
+	if !result.Passed {
+		t.Errorf("Should pass, no charts directory present.")
+	}
+}
 func TestShouldPassIfWorkflowContainsHelmLintInstall(t *testing.T) {
 	dir := t.TempDir()
 	workflowDir := path.Join(dir, ".github", "workflows")
