@@ -51,8 +51,7 @@ func GetLatestRel() string {
 		}
 		r, err := semver.NewVersion(strings.Split(e.Text," ")[0])
 		if err != nil {
-			log.Println("Error parsing version.")
-			os.Exit(-1)
+			return
 		}
 		if r.Compare(release) == 1 {
 			release = r
