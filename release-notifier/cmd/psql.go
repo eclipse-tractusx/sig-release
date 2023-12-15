@@ -19,10 +19,9 @@
 package cmd
 
 import (
+	"github.com/spf13/cobra"
 	"log"
 	"os"
-	"regexp"
-	"github.com/spf13/cobra"
 	"release-notifier/internal/psql"
 )
 
@@ -57,13 +56,10 @@ func init() {
 }
 
 func psqlNotifier() {
-	// Semantic Versioning schema regex
-	const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
-
 	latestRelease := psql.GetLatestRel()
 	prevRelease := psql.GetPrevRelFromArtifact()
 
-	if match, _ := regexp.MatchString(regexPattern, latestRelease); match && latestRelease != prevRelease {
+	if latestRelease != prevRelease && latestRelease != "" {
 		log.Printf("New release is out: %v\n", latestRelease)
 		alignedRelease := os.Getenv("CURRENT_ALIGNED_PSQL_VER")
 		log.Printf("Current aligned version: %v\n", alignedRelease)

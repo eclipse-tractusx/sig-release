@@ -22,11 +22,12 @@ package psql
 import (
 	"bytes"
 	"fmt"
+	"github.com/Masterminds/semver/v3"
+	"github.com/gocolly/colly"
 	"log"
 	"os"
-	"text/template"
 	"release-notifier/internal/mail"
-	"github.com/gocolly/colly"
+	"text/template"
 )
 
 const mailTemplate = "templates/mail-psql.html.tmpl"
@@ -44,7 +45,11 @@ func GetLatestRel() string {
 	})
 
 	c.OnHTML("div.stack__header__properties__property", func(e *colly.HTMLElement) {
-		release = e.ChildText("p")
+		r, err := semver.NewVersion(e.ChildText("p"))
+		if err != nil {
+			return
+		}
+		release = r.String()
 	})
 
 	c.Visit(website)
@@ -77,10 +82,10 @@ func Notify(newRelease string, alignedRelease string) {
 
 	t, _ := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
-		NewPSQLRelease string
+		NewPSQLRelease     string
 		AlignedPSQLRelease string
 	}{
-		NewPSQLRelease: newRelease,
+		NewPSQLRelease:     newRelease,
 		AlignedPSQLRelease: alignedRelease,
 	})
 
