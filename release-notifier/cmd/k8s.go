@@ -21,7 +21,6 @@ package cmd
 import (
 	"log"
 	"os"
-	"regexp"
 	"release-notifier/internal/k8s"
 
 	"github.com/spf13/cobra"
@@ -58,13 +57,10 @@ func init() {
 }
 
 func k8sNotifier() {
-	// Semantic Versioning schema regex
-	const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
-
 	latestRelease := k8s.GetLatestRel()
 	prevRelease := k8s.GetPrevRelFromArtifact()
 
-	if match, _ := regexp.MatchString(regexPattern, latestRelease); match && latestRelease != prevRelease {
+	if latestRelease != prevRelease && latestRelease != "0.0.0" {
 		log.Printf("New release is out: %v\n", latestRelease)
 		alignedRelease := os.Getenv("CURRENT_ALIGNED_K8S_VER")
 		log.Printf("Current aligned version: %v\n", alignedRelease)

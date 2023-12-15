@@ -22,20 +22,20 @@ package k8s
 import (
 	"bytes"
 	"fmt"
+	"github.com/Masterminds/semver/v3"
+	"github.com/gocolly/colly"
 	"log"
 	"os"
 	"release-notifier/internal/mail"
 	"strings"
 	"text/template"
-
-	"github.com/gocolly/colly"
 )
 
 const mailTemplate = "templates/mail-k8s.html.tmpl"
 const artifactName = "k8s_release"
 
- func GetLatestRel() string {
-	var release []string
+func GetLatestRel() string {
+	release, _ := semver.NewVersion("0.0.0")
 	website := "https://kubernetes.io/releases/"
 
 	log.Println("Quering", website)
@@ -46,11 +46,21 @@ const artifactName = "k8s_release"
 	})
 
 	c.OnHTML("span.release-inline-value", func(e *colly.HTMLElement) {
-		release = append(release, e.Text)
+		if !strings.Contains(e.Text, "release") {
+			return
+		}
+		r, err := semver.NewVersion(strings.Split(e.Text," ")[0])
+		if err != nil {
+			log.Println("Error parsing version.")
+			os.Exit(-1)
+		}
+		if r.Compare(release) == 1 {
+			release = r
+		}
 	})
 
 	c.Visit(website)
-	return strings.Split(release[0], " ")[0]
+	return release.String()
 }
 
 func GetPrevRelFromArtifact() string {
@@ -79,10 +89,10 @@ func Notify(newRelease string, alignedRelease string) {
 
 	t, _ := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
-		NewK8SRelease string
+		NewK8SRelease     string
 		AlignedK8SRelease string
 	}{
-		NewK8SRelease: newRelease,
+		NewK8SRelease:     newRelease,
 		AlignedK8SRelease: alignedRelease,
 	})
 
