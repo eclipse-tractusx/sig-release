@@ -1,2 +1,7 @@
 .vscode/
 .idea/
+dash-input.sum
+release-notifier/k8s_release
+release-notifier/psql_release
+release-automation/tractusx-release-automation
+release-notifier/release-notifier
