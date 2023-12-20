@@ -40,7 +40,7 @@ func SendMail(body []byte) {
 	auth := smtp.PlainAuth("", sender, password, smtpServer)
 	err := smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipent}, body)
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 		os.Exit(1)
 	}
 	log.Println("Email Sent!")

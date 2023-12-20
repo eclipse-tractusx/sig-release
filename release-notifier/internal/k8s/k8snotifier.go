@@ -49,7 +49,7 @@ func GetLatestRel() string {
 		if !strings.Contains(e.Text, "release") {
 			return
 		}
-		r, err := semver.NewVersion(strings.Split(e.Text," ")[0])
+		r, err := semver.NewVersion(strings.Split(e.Text, " ")[0])
 		if err != nil {
 			return
 		}
@@ -86,7 +86,7 @@ func Notify(newRelease string, alignedRelease string) {
 	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
 	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: Kubernetes New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
 
-	t, _ := template.ParseFiles(mailTemplate)
+	t, err := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
 		NewK8SRelease     string
 		AlignedK8SRelease string
@@ -94,6 +94,10 @@ func Notify(newRelease string, alignedRelease string) {
 		NewK8SRelease:     newRelease,
 		AlignedK8SRelease: alignedRelease,
 	})
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
 
 	mail.SendMail(buff.Bytes())
 }

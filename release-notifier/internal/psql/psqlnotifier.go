@@ -80,7 +80,7 @@ func Notify(newRelease string, alignedRelease string) {
 	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
 	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
 
-	t, _ := template.ParseFiles(mailTemplate)
+	t, err := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
 		NewPSQLRelease     string
 		AlignedPSQLRelease string
@@ -88,6 +88,10 @@ func Notify(newRelease string, alignedRelease string) {
 		NewPSQLRelease:     newRelease,
 		AlignedPSQLRelease: alignedRelease,
 	})
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
 
 	mail.SendMail(buff.Bytes())
 }
