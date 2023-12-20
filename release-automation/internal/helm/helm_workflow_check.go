@@ -67,7 +67,7 @@ func (r *HelmWorkflowCheck) Test() *tractusx.QualityResult {
 		return &tractusx.QualityResult{ErrorDescription: "No workflows found in repository."}
 	}
 	for _, workflow := range workflows {
-		if workflow.IsDir() {
+		if workflow.IsDir() || strings.HasPrefix(workflow.Name(), ".") {
 			continue
 		}
 
@@ -134,7 +134,7 @@ func loadGitHubWorkflowFromFile(filePath string) (GitHubWorkflow, error) {
 	err = yaml.Unmarshal(data, &w)
 	if err != nil {
 		log.Printf("Unable to parse YAML file: %v.\n", filePath)
-		return GitHubWorkflow{}, fmt.Errorf("unable to parse workflow: %v", err)
+		return GitHubWorkflow{}, fmt.Errorf("unable to parse %v workflow: %v", filePath, err)
 	}
 
 	return w, nil
