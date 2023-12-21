@@ -92,9 +92,16 @@ func isValidHelmTestWorkflow(workflow GitHubWorkflow) bool {
 		hasHelmInstallRun     bool
 	)
 
-	for trigger := range workflow.On {
-		if strings.EqualFold(trigger, "workflow_dispatch") {
-			hasDispatchTrigger = true
+	switch on := workflow.On.(type) {
+		case []interface{}:
+			for _, t := range on {
+				if strings.EqualFold(t.(string), "workflow_dispatch") {
+					hasDispatchTrigger = true
+				}
+			}
+		case map[string]interface{}:
+			if _, exist := on["workflow_dispatch"]; exist {
+				hasDispatchTrigger = true
 		}
 	}
 
