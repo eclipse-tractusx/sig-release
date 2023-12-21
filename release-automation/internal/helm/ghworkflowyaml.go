@@ -21,7 +21,7 @@ package helm
 
 type GitHubWorkflow struct {
 	Name string                 `yaml:"name"`
-	On   map[string]interface{} `yaml:"on"`
+	On interface{} `yaml:"on"`
 	Jobs map[string]Job
 }
 
