@@ -33,7 +33,7 @@ runs:
   using: composite
   steps:
     - name: Download quality checks binary
-      run: curl -OL https://github.com/eclipse-tractusx/release-automation/releases/download/v${{ inputs.version }}/release-automation-${{ inputs.version }}-${{ inputs.platform }}
+      run: curl -OL https://github.com/eclipse-tractusx/sig-release/releases/download/v${{ inputs.version }}/release-automation-${{ inputs.version }}-${{ inputs.platform }}
       shell: bash
 
     - name: Make binary executable
