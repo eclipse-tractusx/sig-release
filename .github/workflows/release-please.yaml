@@ -1,0 +1,85 @@
+on:
+  push:
+    branches:
+      - main
+permissions:
+    contents: write
+    pull-requests: write
+name: Create release-automation GitHub Release
+env:
+  APP_NAME: 'release-automation'
+
+jobs:
+    prepare-release:
+        runs-on: ubuntu-latest
+        outputs:
+          upload_url: ${{ steps.release.outputs[format('{0}--upload_url', env.APP_NAME)] }}
+          release_created: ${{ steps.release.outputs[format('{0}--release_created', env.APP_NAME)] }}
+          version: ${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }}.${{ steps.release.outputs[format('{0}--minor', env.APP_NAME)] }}.${{ steps.release.outputs[format('{0}--patch', env.APP_NAME)] }}
+        steps:
+        - uses: google-github-actions/release-please-action@v4
+          name: Prepare release
+          id: release
+          with:
+            path: ${{ env.APP_NAME }}
+            release-type: go
+        - uses: actions/checkout@v4
+        - name: Tag major and minor versions
+          if: ${{ steps.release.outputs.release-automation--release_created }}
+          run: |
+            git config user.name github-actions[bot]
+            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+            git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/eclipse-tractusx/sig-release.git"
+            git tag -d v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }} || true
+            git tag -d v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }}.${{ steps.release.outputs[format('{0}--minor', env.APP_NAME)] }} || true
+            git push origin :v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }} || true
+            git push origin :v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }}.${{ steps.release.outputs[format('{0}--minor', env.APP_NAME)] }} || true
+            git tag -a v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }} -m "Release v${{ steps.release.outputs.release-automation--major }}"
+            git tag -a v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)]}}.${{ steps.release.outputs[format('{0}--minor', env.APP_NAME)] }} -m "Release v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }}.${{ steps.release.outputs[format('{0}--minor', env.APP_NAME)] }}"
+            git push origin v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)]}}
+            git push origin v${{ steps.release.outputs[format('{0}--major',env.APP_NAME)] }}.${{ steps.release.outputs[format('{0}--minor', env.APP_NAME)] }}
+    build-assets:
+      if: ${{ needs.prepare-release.outputs.release_created }}
+      runs-on: ubuntu-latest
+      needs: prepare-release
+      strategy:
+        matrix:
+          goos: [linux, windows, darwin]
+          goarch: [amd64]
+          include:
+            - goos: darwin
+              goarch: arm64
+      steps:
+        - uses: actions/checkout@v4
+        - name: Set up Go
+          uses: actions/setup-go@v4
+          with:
+            go-version-file: 'release-automation/go.mod'
+        - name: Build windows binary
+          if: ${{ matrix.goos == 'windows' }} 
+          run: env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o  ${{ github.workspace }}/bin/${{ env.APP_NAME }}-${{ needs.prepare-release.outputs.version }}-${{ matrix.goos }}-${{ matrix.goarch }}.exe
+          working-directory:  ${{ github.workspace }}/${{ env.APP_NAME }}
+        - name: Upload windows release assets
+          if: ${{ matrix.goos == 'windows' }} 
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ needs.prepare-release.outputs.upload_url }}
+            asset_path: ${{ github.workspace }}/bin/${{ env.APP_NAME }}-${{ needs.prepare-release.outputs.version }}-${{ matrix.goos }}-${{ matrix.goarch }}.exe
+            asset_name: ${{ env.APP_NAME }}-${{ needs.prepare-release.outputs.version }}-${{ matrix.goos }}-${{ matrix.goarch }}.exe
+            asset_content_type: application/octet-stream
+        - name: Build other binaries
+          if: ${{ matrix.goos != 'windows' }} 
+          run: env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o  ${{ github.workspace }}/bin/${{ env.APP_NAME }}-${{ needs.prepare-release.outputs.version }}-${{ matrix.goos }}-${{ matrix.goarch }}
+          working-directory:  ${{ github.workspace }}/${{ env.APP_NAME }}
+        - name: Upload other release assets
+          if: ${{ matrix.goos != 'windows' }} 
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ needs.prepare-release.outputs.upload_url }}
+            asset_path: ${{ github.workspace }}/bin/${{ env.APP_NAME }}-${{ needs.prepare-release.outputs.version }}-${{ matrix.goos }}-${{ matrix.goarch }}
+            asset_name: ${{ env.APP_NAME }}-${{ needs.prepare-release.outputs.version }}-${{ matrix.goos }}-${{ matrix.goarch }}
+            asset_content_type: application/octet-stream
