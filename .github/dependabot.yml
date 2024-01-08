@@ -1,0 +1,8 @@
+version: 2
+updates:
+  # Maintain dependencies for release-automation
+  - package-ecosystem: "gomod"
+    directory: "/release-automation"
+    open-pull-requests-limit: 3
+    schedule:
+      interval: "weekly"
