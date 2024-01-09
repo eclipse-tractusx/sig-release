@@ -6,3 +6,10 @@ updates:
     open-pull-requests-limit: 3
     schedule:
       interval: "weekly"
+
+# Maintain dependencies for release-notifier
+  - package-ecosystem: "gomod"
+    directory: "/release-notifier"
+    open-pull-requests-limit: 3
+    schedule:
+      interval: "weekly"
