@@ -1,7 +1,7 @@
 ---
-name: FOSS TestResults Release 23.12
+name: FOSS TestResults Release 24.03
 about: Use this template to track all Test-Result-relevant topics for your component with regards to the upcoming Milestone.
-title: "[FOSS NAME] Release Test Results 23.12"
+title: "[FOSS NAME] Release Test Results"
 labels: foss, "test results"
 assignees: kelaja
 ---
@@ -13,12 +13,15 @@ Important: Contributing Guidelines can be found here: https://eclipse-tractusx.g
 Checkout the repository README for process description. 
 -->
 
-# Release Test Results 23.12
+# Release Test Results 24.03
 
 Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ)(Source only accessible for Catena-X Consortia members in current transition phase).
 
 
 - [ ] **E2E System Integrations Tests**
+- [ ] **Approval of User Journey**
+
+### E2E System Integrations Tests
 
   -  To pass the Consortia Gate 4, evidence has to be made available that all test criteria up to and including TRL 4 & TRL 6 have been achieved.
   - Expected evidence = outputs of TRL 4 and TRL 6.
@@ -31,7 +34,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   _Contact:_
     - TEST MANAGEMENT
 
-- [ ] **Approval of User Journey**
+### Approval of User Journey
 
   - CX Business Owner confirms: All acceptance criteria met (as defined in PI documentation)
   Relevant evidence is available

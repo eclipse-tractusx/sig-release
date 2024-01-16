@@ -1,7 +1,7 @@
 ---
-name: FOSS Security Release 23.12
+name: FOSS Security Release 24.03
 about: Use this template to track all Security-relevant topics for your component with regards to the upcoming Milestone.
-title: "[FOSS NAME] Release Security 23.12"
+title: "[FOSS NAME] Release Security 24.03"
 labels: foss, "security analysis"
 assignees: kelaja
 ---
@@ -12,11 +12,21 @@ Important: Contributing Guidelines can be found here: https://eclipse-tractusx.g
 Checkout the repository README for process description. 
 -->
 
-# Release Security 23.12
+# Release Security 24.03
 
 Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ)(Source only accessible for Catena-X Consortia members in current transition phase).
 
-- [ ] **Threat Modelling Analysis results**
+
+- [ ] **Threat Modelling Analysis results**
+- [ ] **Static Application Security Testing (SAST)**
+- [ ] **Dynamic Application Security Testing (DAST)**
+- [ ] **Secret scanning**
+- [ ] **Software Composition Analysis (SCA)**
+- [ ] **Container Scan conducted**
+- [ ] **Infrastructure as Code**
+
+
+### Threat Modelling Analysis results
   Analysis completed (operations excluded):
   
     - List of risks generated or updated, rated & actions defined
@@ -31,7 +41,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - Security Team: SEC0
 
-- [ ] **Static Application Security Testing (SAST)**
+### Static Application Security Testing (SAST)
   - code must be scanned weekly with Veracode tool
   - medium risks require mitigation statement
   - high and above not accepted
@@ -49,7 +59,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - Security Team: SEC1
 
-- [ ] **Dynamic Application Security Testing (DAST)**
+### Dynamic Application Security Testing (DAST)
   incl API testing (if applicable)
   - all findings assessed
   - high & very high findings mitigated
@@ -67,7 +77,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - Security Team: SEC3 SEC4
 
-- [ ] **Secret scanning**
+### Secret scanning
   Scan executed centrally by SEC team and ZERO valid findings
   
   _Artifact Repository:_
@@ -84,7 +94,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
      - Security Team: SEC1
 
-- [ ] **Software Composition Analysis (SCA)**
+### Software Composition Analysis (SCA)
   Dependencies must be scanned with Veracode tool with regards to vulnerability
     - high and above not accepted
     - FOSS whitelist policy has to be passed
@@ -102,7 +112,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - Security Team: SEC1
 
-- [ ] **Container Scan conducted**
+### Container Scan conducted
   All containers in GitHub Packages must be scanned
   
     - High / Critical findings not accepted
@@ -120,7 +130,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   
     - Security Team: SEC2
 
-- [ ] **Infrastructure as Code**
+### Infrastructure as Code
   IaC code must be scanned. 
     - Error findings not accepted
 

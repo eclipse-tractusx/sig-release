@@ -1,5 +1,5 @@
 ---
-name: FOSS Documentation Release 23.12
+name: FOSS Documentation Release 24.03
 about: Use this template to track all Documentation-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Documentation"
 labels: documentation, foss
@@ -14,11 +14,20 @@ Important: Contributing Guidelines can be found here: https://eclipse-tractusx.g
 Checkout the repository README for process description. 
 -->
 
-# Release Documentation 23.12
+# Release Documentation 24.03
 
 Source in Catena-X Confluence and Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ) (Source only accessible for Catena-X Consortia members in current transition phase).
 
-- [ ] **Source Code**
+
+- [ ] **Source Code**
+- [ ] **Architecture Documents**
+- [ ] **Administrator`s Guide** (User assistance)
+- [ ] **End-User Manual** (User assistance)
+- [ ] **Interfaces Documentation**
+- [ ] **UX consistency** Style Guideline for User Interfaces
+
+
+### Source Code
 
   - Code is centrally managed in Eclipse Tractus-X repository.
   - All active and relevant [Release Guidelines](https://eclipse-tractusx.github.io/docs/release) are fulfilled (with confirmation by DevSecOps SystemTeam).
@@ -33,7 +42,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   _Contact:_
     - DevSecOps System Team
   
-- [ ] **Architecture Documents**
+### Architecture Documents
 
   - Arc42 documentation completed for relevant product version.
   - In MarkDown format. Link to document available. Must point to leading repository within Tractus-X. Process the JIRA ticket and schedule an appointment with Expert to obtain approval prior to Gate review.
@@ -45,7 +54,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   _Contact:_
     - SYSTEM ARCHITECT
 
-- [ ] **Administrator`s Guide** (User assistance)
+### Administrator`s Guide (User assistance)
 
   - Admin Guide is available with the software at the same time
   - Admin Guide is correct and up to date; english is a must
@@ -62,7 +71,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   _Contact:_
     - SYSTEM ARCHITECT
 
-- [ ] **End-User Manual** (User assistance)
+### End-User Manual (User assistance)
   - End-User Manual is available with the software at the same time
   - End-User Manual is correct and up to date; english is a must
   - The documentation is of appropriate maturity to be handed over from the CX Consortia to any Operations Company with global business practice intentions.
@@ -77,7 +86,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   _Contact:_
     - SYSTEM ARCHITECT
 
-- [ ] **Interfaces Documentation**
+### Interfaces Documentation
   - API documentation contains all relevant interfaces for integration testing and is completed for relevant product version.
   - Link to document available.
   - Interface contract signed by all involved parties.
@@ -91,7 +100,7 @@ Source in Catena-X Confluence and Expert Contacts [here](https://confluence.cate
   _Contact:_ 
     - SYSTEM ARCHITECT
 
-- [ ] **UX consistency** Style Guideline for User Interfaces
+### UX consistency Style Guideline for User Interfaces
   
     - Mandatory for FrontEnd modules where the IP is Open Source or owned by Catena-X.
     - User Interfaces are in line with the Catena-X Style Guidelines

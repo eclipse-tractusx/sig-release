@@ -1,5 +1,5 @@
 ---
-name: FOSS Release Compliance 23.12
+name: FOSS Release Compliance 24.03
 about: Use this template to track all Compliance-relevant topics for your component with regards to the upcoming Milestone.
 title: "[FOSS NAME] Release Compliance"
 labels: compliance, foss
@@ -11,19 +11,27 @@ Important: Contributing Guidelines can be found here: https://eclipse-tractusx.g
 Checkout the repository README for process description. 
 -->
 
-# Release Compliance 23.12
+# Release Compliance 24.03
 
-Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ). (Source only accessible for Catena-X Consortia members in current transition phase)
+Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena-x.net/x/DOZkBQ). (Sources only accessible for Catena-X Consortia members in current transition phase)
 
 - [ ] **Gaia-X compliance** confirmed by dedicated expert.
+- [ ] **GDPR compliance** confirmed
+- [ ] **Interoperability Check**
+- [ ] **Data Sovereignty Check**
+- [ ] **Confirmation of _published_ CX Standards**
+- [ ] **Verification of _foreseen_ CX Standards**
+
+
+### Gaia-X compliance confirmed by dedicated expert.
   - Obtain approval from CX Gaia-X expert(s), prior to Gate review.
   - Provide info as early as possible; expect optimization loops based on feedback
   => check [linked PDF](https://confluence.catena-x.net/download/attachments/90498572/SD_Data_for_Onboarding.pdf?version=1&modificationDate=1690457195303&api=v2) summary for requirements (Source only accessible for Catena-X Consortia members in current transition phase).
 
   _Contact:_
-     - Release Mangement
+     - [Release Mangement](https://confluence.catena-x.net/x/DOZkBQ).
 
-- [ ] **GDPR compliance** confirmed
+### GDPR compliance confirmed
   (personal data; Data Protection & Privacy DPP)
   - assessment must be completed via Catena-X [GDPR questionnaire](https://confluence.catena-x.net/download/attachments/90498572/Catena-X%20GDPR%20Declaration%20and%20Requirements_V3.xlsx?version=1&modificationDate=1690457195339&api=v2) (Source only accessible for Catena-X Consortia members in current transition phase.)
   - either the product/service doesn`t process any relevant data,
@@ -31,9 +39,9 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
   Provide evidence for GDPR compliance prior to Gate review. Previous assessments remain valid, as long as approach to handling of personal data was not changed.
 
    _Contact:_
-     - Release Mangement
+     - [Release Mangement](https://confluence.catena-x.net/x/DOZkBQ).
 
-- [ ] **Interoperability Check**
+### Interoperability Check
 
   Acceptance criteria are fulfilled as described in in the following area on confluence: [Interoperability Quality Gate Requirements](https://confluence.catena-x.net/x/DkwjB) (Source only accessible for Catena-X Consortia members in current transition phase.)
 
@@ -44,9 +52,9 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
   Therefore consult the [regular office hours](https://confluence.catena-x.net/x/fzkAAQ) as early as possible; expect optimization loops based on feedback. (Source only accessible for Catena-X Consortia members in current transition phase.)
 
   _Contact:_
-    - SYSTEM ARCHITECT2
+    - [SYSTEM ARCHITECT2](https://confluence.catena-x.net/x/DOZkBQ).
 
-- [ ] **Data Sovereignty Check**
+### Data Sovereignty Check
 
   Acceptance criteria are fulfilled as described in in the following area on confluence:
   - [Data Sovereignty Guardrails for Release 3.2](https://confluence.catena-x.net/x/qPTeB) (Source only accessible for Catena-X Consortia members in current transition phase.)
@@ -56,17 +64,17 @@ Source in Catena-X Confluence + Expert Contacts [here](https://confluence.catena
   Expect optimization loops based on feedback.
 
   _Contact:_
-    - SYSTEM ARCHITECT3,
-    - SYSTEM ARCHITECT4
+    - [SYSTEM ARCHITECT3](https://confluence.catena-x.net/x/DOZkBQ),
+    - [SYSTEM ARCHITECT4](https://confluence.catena-x.net/x/DOZkBQ).
 
-- [ ] **Confirmation of _published_ CX Standards**
+### Confirmation of _published_ CX Standards
   
   Product Owner confirms:
 
   - The FOSS product under review is compliant to all relevant Catena-X Standards which are already published on the [Association website](https://catena-x.net/de/standard-library).
   - Failure to do so may ultimately make the reference implementation useless, as the mandatory CX Certification cannot be accomplished.
 
-- [ ] **Verification of _foreseen_ CX Standards**
+### Verification of _foreseen_ CX Standards
   
   Product Owner confirms:
 
