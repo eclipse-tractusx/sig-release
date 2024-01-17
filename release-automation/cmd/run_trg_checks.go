@@ -54,7 +54,7 @@ var checkLocalCmd = &cobra.Command{
 			docs.NewReadmeExists(basedir),
 			helm.NewHelmStructureExists(basedir),
 			helm.NewResourceMgmt(basedir),
-			repo.NewDefaultBranch(),
+			repo.NewDefaultBranch(basedir),
 			repo.NewLeadingRepositoryDefined(basedir),
 			repo.NewRepoStructureExists(basedir),
 		}

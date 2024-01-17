@@ -28,10 +28,11 @@ import (
 )
 
 type defaultBranch struct {
+	baseDir string
 }
 
-func NewDefaultBranch() tractusx.QualityGuideline {
-	return &defaultBranch{}
+func NewDefaultBranch(baseDir string) tractusx.QualityGuideline {
+	return &defaultBranch{baseDir}
 }
 
 func (d defaultBranch) Name() string {
@@ -47,7 +48,7 @@ func (d defaultBranch) ExternalDescription() string {
 }
 
 func (d defaultBranch) Test() *tractusx.QualityResult {
-	repoInfo := getRepoInfo(GetRepoBaseInfo())
+	repoInfo := getRepoInfo(GetRepoBaseInfo(d.baseDir))
 
 	if *repoInfo.Fork {
 		// There is no need to enforce default branches on forks
