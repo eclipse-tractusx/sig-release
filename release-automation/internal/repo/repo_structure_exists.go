@@ -69,10 +69,14 @@ func (c RepoStructureExists) Test() *tractusx.QualityResult {
 		path.Join(c.baseDir, "SECURITY.md"),
 	}
 
-	mandatoryForLeadingRepo := []string{"docs", "charts"}
+	mandatoryForLeadingRepo := []string{
+		path.Join(c.baseDir, "docs"),
+		path.Join(c.baseDir, "charts"),
+	}
+
 	printer := &tractusx.StdoutPrinter{}
 
-	if isLeadingRepo() {
+	if isLeadingRepo(c.baseDir) {
 		listOfMandatoryFilesToBeChecked = append(listOfMandatoryFilesToBeChecked, mandatoryForLeadingRepo...)
 	}
 
