@@ -23,6 +23,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"path"
 
 	"github.com/go-ini/ini"
 	"tractusx-release-automation/internal/tractusx"
@@ -38,7 +39,7 @@ type RepoInfo struct {
 // It leverages environment variables typically available in GitHub workflows.
 // As fallback option, the local git config (.git/config) file is used.
 // Results are returned as *RepoInfo
-func GetRepoBaseInfo() *RepoInfo {
+func GetRepoBaseInfo(repoDir string) *RepoInfo {
 	const (
 		BASEURL = "https://github.com/"
 		SSHBASE = "git@github.com:"
@@ -57,7 +58,7 @@ func GetRepoBaseInfo() *RepoInfo {
 	}
 
 	// Parse local git configuration when executing locally
-	cfg, err := ini.Load(".git/config")
+	cfg, err := ini.Load(path.Join(repoDir, ".git/config"))
 	if err != nil {
 		fmt.Printf("Failed to read file: %v", err)
 	}
@@ -79,9 +80,9 @@ func GetRepoBaseInfo() *RepoInfo {
 	return &result
 }
 
-func isLeadingRepo() bool {
-	metadata, err := tractusx.MetadataFromLocalFile("./")
-	repoInfo := GetRepoBaseInfo()
+func isLeadingRepo(repoDir string) bool {
+	metadata, err := tractusx.MetadataFromLocalFile(repoDir)
+	repoInfo := GetRepoBaseInfo(repoDir)
 	fullRepoName := "https://github.com/eclipse-tractusx/" + (*repoInfo).Reponame
 
 	if err != nil || metadata.LeadingRepository != fullRepoName {
