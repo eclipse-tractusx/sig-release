@@ -1,4 +1,6 @@
-Welcome to our Wiki page on the open refinement and planning processes for our open source community. Effective planning and transparent communication are critical for the success of our open source project. Here, we'll outline how our community can participate in and leverage these processes to ensure smooth and efficient collaboration.
+Welcome to our guide on the open refinement and planning processes for our open source community.
+Effective planning and transparent communication are critical for the success of our project.
+Here, we'll outline how our community can participate and leverage these processes to ensure smooth and efficient collaboration.
 
 ## Overview
 
@@ -16,18 +18,18 @@ Open refinement and planning allow the community to:
 
 ### During Planning
 
-* Release Planning Board will be used from GitHub [Release Planning / Release View](https://github.com/orgs/eclipse-tractusx/projects/26)
-* Finally attach all related UserStories/Tasks/Issues that have been planned for that feature
+* The Release Planning Board will be used: [Release Planning / Release View](https://github.com/orgs/eclipse-tractusx/projects/26)
+* Finally, attach all related UserStories/Tasks/Issues that have been planned for that feature
 * Set the target Release milestone
 
-## How to Create Features in the `sig-release` Repository
+## How to plan and track features `sig-release`
 
 1. **Issue Creation**: Anyone in the community can suggest a new feature by creating an issue in the `sig-release` repository.
 2. **Issue Type**: When creating your issue, it's crucial to specify the `Issue Type`:
    * `feature`: For new open features.
    * `bug`: For bugs or issues with existing features.
-3. **Labels**: Use relevant labels to further categorize and provide context to your feature (in any cases, please select also your specific product label). Other than that, please select the `Prep-PI11` label to indicate that the feature is being prepared for the next release.
-4. **Milestone**: Use relevant milestone for the next release, if you already know, it will be implemented. Currently, its `24.03`. Officially, the milestone is set during the planning meeting.
+3. **Labels**: Use relevant labels to further categorize and provide context to your feature (in any case, please also select your specific product label).
+4. **Milestone**: Use relevant milestone for the next release, if you already know, it will be implemented. Officially, the milestone is set during the planning meeting.
 
 **Good to know:** Use the [Release Planning / Inbox](https://github.com/orgs/eclipse-tractusx/projects/26/views/9) board to add new open features. There is the last row with the functionality to add new issues.
 
@@ -104,5 +106,5 @@ We welcome feedback and suggestions on how we can improve our open refinement an
 This work is licensed under the [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 - SPDX-License-Identifier: Apache-2.0
-- SPDX-FileCopyrightText: 2022,2023 Contributors to the Eclipse Foundation
+- SPDX-FileCopyrightText: 2022,2024 Contributors to the Eclipse Foundation
 - Source URL: https://github.com/eclipse-tractusx/sig-release
