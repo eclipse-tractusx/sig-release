@@ -20,6 +20,8 @@ Please be aware, that not every feature request can be integrated and that we al
 
 Every Release planning will be kicked off by two public alignment sessions. The dates and further details will be shared via
 [tractusx-dev](https://accounts.eclipse.org/mailing-list/tractusx-dev) mailing list.
+In addition to that, you can also find public meetings and info about how to join on our
+[Open Meetings](https://eclipse-tractusx.github.io/community/open-meetings) community page. 
 Issues or bug reports, that should be discussed in these meetings, have to be opened prior to the meeting via
 our [issue templates](https://github.com/eclipse-tractusx/sig-release/issues/new/choose).
 
