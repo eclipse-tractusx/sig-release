@@ -41,7 +41,6 @@ Our issues do have important properties, that enable our planning process. These
 - __Issue Type:__ To separate between bugs, feature requests and release criterias, we use a custom field `Issue Type`
 - __Milestone:__ Every Tractus-X release is represented by a `Milestone`. You can use this field to get a rough idea about the ETA
 - __Status:__ The status field is used to integrate the progress of an issue
-- __Iteration:__ `Milestone`s are divided in multiple iterations. The 'Iteration' field is used to do fine-grained timeline planning
 
 ### Issue statuses
 
