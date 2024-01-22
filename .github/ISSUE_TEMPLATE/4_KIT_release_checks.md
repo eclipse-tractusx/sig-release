@@ -3,7 +3,6 @@ name: KIT Release Checks
 about: Use this template to track KIT release checks
 title: "[KIT NAME] Release Checks"
 labels: kit
-assignees: kelaja
 ---
 
 This issue tracks all relevant release checks for KITs.
