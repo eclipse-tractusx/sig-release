@@ -50,4 +50,4 @@ __Optional:__
 
 # Helpful Links
 
-- [Catena-X standard library](https://catena-x.net/de/standard-library)
+- [Catena-X standard library](https://catena-x.net/en/standard-library)

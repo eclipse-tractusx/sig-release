@@ -22,7 +22,7 @@ This issue tracks all compliance related checks, that need to be performed for a
 - [ ] **GDPR** compliance confirmed (personal data, data protection + privacy DPP)
 - [ ] **Interoperability** checks performed
 - [ ] **Data Sovereignty** checks performed
-- [ ] Compliant with relevant _published_ **CX Standards** (see the [Catena-X standard library](https://catena-x.net/de/standard-library))
+- [ ] Compliant with relevant _published_ **CX Standards** (see the [Catena-X standard library](https://catena-x.net/en/standard-library))
 
 # Documentation
 
@@ -54,4 +54,4 @@ This issue tracks all compliance related checks, that need to be performed for a
 # Helpful Links
 
 - [Eclipse Tractus-X openAPI specs on SwaggerHub](https://app.swaggerhub.com/search?owner=eclipse-tractusx-bot)
-- [Catena-X standard library](https://catena-x.net/de/standard-library)
+- [Catena-X standard library](https://catena-x.net/en/standard-library)
