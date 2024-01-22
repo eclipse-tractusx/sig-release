@@ -7,6 +7,17 @@ labels: kit
 
 This issue tracks all relevant release checks for KITs.
 
+## Release Info
+
+Please provide information on what you want to be included in the Eclipse Tractus-X release.
+If you are not owner of this issue, please provide the information as comment to the issue.
+
+If changes to your KIT are not yet live on [our website](https://eclipse-tractusx.github.io/developer), link the open PR introducing the changes for this release.
+
+If changes are already live, also point out the PRs witch included the changes for this version if possible.
+
+- [PR number](pr-url)
+
 # Adoption View
 
 - [ ] **Vision and Mission** statement present
