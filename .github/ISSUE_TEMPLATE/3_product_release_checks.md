@@ -5,6 +5,15 @@ title: "[Product] Release Checks"
 labels: compliance, documentation, "security analysis", "test results"
 ---
 
+## Release Info
+
+Please provide information on what you want to be included in the Eclipse Tractus-X release.
+If you are not owner of this issue, please provide the information as comment to the issue.
+
+**Version to be included in Eclipse Tractus-X release**: *version placeholder*
+
+**Leading product repository:** *repository link*
+
 # Compliance Verifications
 
 This issue tracks all compliance related checks, that need to be performed for a product release in Eclipse Tractus-X.
