@@ -92,7 +92,7 @@ go/golang/github.com%2Fmodern-go/reflect2/v1.0.2, Apache-2.0, approved, clearlyd
 go/golang/github.com%2Fmunnerz/goautoneg/v0.0.0-20191010083416-a7dc8b61c822, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fonsi%2Fginkgo/v2/v2.9.4, MIT AND BSD-3-Clause, approved, #10740
 go/golang/github.com%2Fonsi/gomega/v1.27.6, MIT, approved, clearlydefined
-go/golang/github.com%2Fotiai10/copy/v1.12.0, MIT, approved, clearlydefined
+go/golang/github.com%2Fotiai10/copy/v1.14.0, MIT, approved, #10853
 go/golang/github.com%2Fotiai10/mint/v1.5.1, MIT, approved, clearlydefined
 go/golang/github.com%2Fpelletier/go-buffruneio/v0.2.0, MIT, approved, clearlydefined
 go/golang/github.com%2Fpkg/errors/v0.8.1, BSD-2-Clause, approved, clearlydefined
@@ -166,6 +166,7 @@ go/golang/golang.org%2Fx/sync/v0.0.0-20190911185100-cd5d95a43a6e, BSD-3-Clause, 
 go/golang/golang.org%2Fx/sync/v0.0.0-20201020160332-67f06af15bc9, BSD-3-Clause, approved, #5719
 go/golang/golang.org%2Fx/sync/v0.0.0-20220722155255-886fb9371eb4, BSD-3-Clause, approved, #5719
 go/golang/golang.org%2Fx/sync/v0.1.0, BSD-3-Clause, approved, #6375
+go/golang/golang.org%2Fx/sync/v0.3.0, BSD-3-Clause, approved, #10747
 go/golang/golang.org%2Fx/sys/v0.0.0-20190215142949-d0b11bdaac8a, Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause, approved, #3437
 go/golang/golang.org%2Fx/sys/v0.0.0-20190221075227-b4e8571b14e0, Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause, approved, #3437
 go/golang/golang.org%2Fx/sys/v0.0.0-20190412213103-97732733099d, Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause, approved, #3437
