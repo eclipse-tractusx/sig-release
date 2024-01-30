@@ -65,7 +65,7 @@ func ChartYamlFromFile(ymlfile string) *Chartyaml {
 
 func (c *Chartyaml) IsVersionValid() bool {
 	/*
-		Below regular expresion is used to verify version string according to Semantic Versioning schema (https://semver.org).
+		Below regular expression is used to verify version string according to Semantic Versioning schema (https://semver.org).
 		Following examples match:
 		- "1.2.3"
 		- "1.0.0-alpha"
@@ -78,7 +78,7 @@ func (c *Chartyaml) IsVersionValid() bool {
 
 	match, err := regexp.MatchString(regexPattern, c.Version)
 	if err != nil {
-		fmt.Println("Error occured when validating semantic version.")
+		fmt.Println("Error occurred when validating semantic version.")
 		return false
 	}
 	return match

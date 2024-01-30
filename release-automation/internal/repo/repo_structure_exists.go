@@ -69,17 +69,21 @@ func (c RepoStructureExists) Test() *tractusx.QualityResult {
 		path.Join(c.baseDir, "SECURITY.md"),
 	}
 
-	mandatoryForLeadingRepo := []string{"docs", "charts"}
+	mandatoryForLeadingRepo := []string{
+		path.Join(c.baseDir, "docs"),
+		path.Join(c.baseDir, "charts"),
+	}
+
 	printer := &tractusx.StdoutPrinter{}
 
-	if isLeadingRepo() {
+	if isLeadingRepo(c.baseDir) {
 		listOfMandatoryFilesToBeChecked = append(listOfMandatoryFilesToBeChecked, mandatoryForLeadingRepo...)
 	}
 
 	missingMandatoryFiles := filesystem.CheckMissingFiles(listOfMandatoryFilesToBeChecked)
 	missingOptionalFiles := filesystem.CheckMissingFiles(listOfOptionalFilesToBeChecked)
 	if dependencyFiles := filesystem.FindPrefixedFiles(c.baseDir, "DEPENDENCIES"); dependencyFiles == nil {
-		missingMandatoryFiles = append(missingMandatoryFiles, "DEPENDENCIES")
+		missingMandatoryFiles = append(missingMandatoryFiles, path.Join(c.baseDir, "DEPENDENCIES"))
 	}
 
 	if len(missingOptionalFiles) > 0 {
@@ -90,7 +94,11 @@ func (c RepoStructureExists) Test() *tractusx.QualityResult {
 	}
 
 	if len(missingMandatoryFiles) > 0 {
-		return &tractusx.QualityResult{ErrorDescription: "The check detected following mandatory files missing: " + strings.Join(missingMandatoryFiles, ", ")}
+		cleanMissingFiles := []string{}
+		for _, missingFile := range missingMandatoryFiles {
+			cleanMissingFiles = append(cleanMissingFiles, strings.Split(missingFile, c.baseDir)[1][1:])
+		}
+		return &tractusx.QualityResult{ErrorDescription: "The check detected following mandatory files missing: " + strings.Join(cleanMissingFiles, ", ")}
 	}
 
 	return &tractusx.QualityResult{Passed: true}
