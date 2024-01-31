@@ -20,28 +20,21 @@
 package mail
 
 import (
-	"log"
 	"net/smtp"
 	"os"
 )
 
 const smtpServer = "smtp.gmail.com"
 const smtpPort = "587"
-const recipentMailEnv = "TRACTUSX_MAILINGLIST"
+const recipientMailEnv = "TRACTUSX_MAILINGLIST"
 const senderMailEnv = "DEVSECOPS_NOTIFICATION_EMAIL"
 const senderPassEnv = "DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD"
 
-
-func SendMail(body []byte) {
+func SendMail(body []byte) error {
 	sender := os.Getenv(senderMailEnv)
 	password := os.Getenv(senderPassEnv)
-	recipent := os.Getenv(recipentMailEnv)
+	recipient := os.Getenv(recipientMailEnv)
 
 	auth := smtp.PlainAuth("", sender, password, smtpServer)
-	err := smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipent}, body)
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
-	}
-	log.Println("Email Sent!")
+	return smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipient}, body)
 }
