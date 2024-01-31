@@ -20,7 +20,6 @@ package cmd
 
 import (
 	"log"
-	"os"
 	"release-notifier/internal/k8s"
 
 	"github.com/spf13/cobra"
@@ -31,14 +30,19 @@ var k8sCmd = &cobra.Command{
 	Use:   "k8s",
 	Short: "Sends out notification of new Kubernetes release",
 	Long: `Sends out notification of new Kubernetes release
-	to a mailinglist:
+	to a mailing list:
 
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Println("Kubernetes release notifier called.")
-		k8sNotifier()
+		if k8s.IsNewRelease () {
+			if err := k8s.Notify(); err != nil {
+				log.Fatalln(err)
+			}
+			log.Println("Email Sent!")
+		}
 	},
 }
 
@@ -54,19 +58,4 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// k8sCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
-func k8sNotifier() {
-	latestRelease := k8s.GetLatestRel()
-	prevRelease := k8s.GetPrevRelFromArtifact()
-
-	if latestRelease != prevRelease && latestRelease != "0.0.0" {
-		log.Printf("New release is out: %v\n", latestRelease)
-		alignedRelease := os.Getenv("CURRENT_ALIGNED_K8S_VER")
-		log.Printf("Current aligned version: %v\n", alignedRelease)
-		k8s.Notify(latestRelease, alignedRelease)
-		k8s.SaveLatestRel(latestRelease)
-	} else {
-		log.Println("No new release :(")
-	}
 }
