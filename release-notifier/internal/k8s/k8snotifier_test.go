@@ -53,12 +53,8 @@ func TestShouldPassIfEmailContainsRefReleases(t *testing.T) {
 	_ = os.WriteFile(artifactName, []byte(fakeRelease), 0644)
 	defer os.Remove(artifactName)
 	os.Setenv("CURRENT_ALIGNED_K8S_VER", fakeAligned)
-	mailContent, err := buildContent("../../templates/mail-k8s.html.tmpl")
-	if err != nil {
-		println(err)
-	}
+	mailContent, _ := buildContent("../../templates/mail-k8s.html.tmpl")
 	if !strings.Contains(string(mailContent), fakeRelease) || !strings.Contains(string(mailContent), fakeAligned) {
 		t.Errorf("Test should pass, content was given new and aligned releases.")
 	}
 }
-

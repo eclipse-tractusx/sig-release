@@ -37,7 +37,7 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Println("Kubernetes release notifier called.")
-		if k8s.IsNewRelease () {
+		if k8s.IsNewRelease() {
 			if err := k8s.Notify(); err != nil {
 				log.Fatalln(err)
 			}
