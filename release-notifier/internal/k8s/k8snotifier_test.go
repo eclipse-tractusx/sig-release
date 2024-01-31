@@ -20,7 +20,9 @@
 package k8s
 
 import (
+	"os"
 	"regexp"
+	"strings"
 	"testing"
 )
 
@@ -28,9 +30,35 @@ func TestShouldPassIfNewReleaseIsSemVer(t *testing.T) {
 	// Semantic Versioning schema regex
 	const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
 
-	newRelease := GetLatestRel()
+	newRelease := getLatestRel()
 	if match, _ := regexp.MatchString(regexPattern, newRelease); !match {
 		t.Errorf("Test should pass, it returns semver string.")
 	}
 
 }
+
+func TestShouldPassIfNewReleaseGetsPersisted(t *testing.T) {
+	fakeRelease := "0.0.1"
+	_ = os.WriteFile(artifactName, []byte("0.0.1"), 0644)
+	defer os.Remove(artifactName)
+	IsNewRelease()
+	newRelease := getRelFromArtifact()
+	if strings.EqualFold(newRelease, fakeRelease) {
+		t.Errorf("Test should pass, the new release should not be equal to fake.")
+	}
+}
+
+func TestShouldPassIfEmailContainsRefReleases(t *testing.T) {
+	fakeRelease, fakeAligned := "0.0.2", "0.0.1"
+	_ = os.WriteFile(artifactName, []byte(fakeRelease), 0644)
+	defer os.Remove(artifactName)
+	os.Setenv("CURRENT_ALIGNED_K8S_VER", fakeAligned)
+	mailContent, err := buildContent("../../templates/mail-k8s.html.tmpl")
+	if err != nil {
+		println(err)
+	}
+	if !strings.Contains(string(mailContent), fakeRelease) || !strings.Contains(string(mailContent), fakeAligned) {
+		t.Errorf("Test should pass, content was given new and aligned releases.")
+	}
+}
+
