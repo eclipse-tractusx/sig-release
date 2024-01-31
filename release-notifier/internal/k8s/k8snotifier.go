@@ -34,11 +34,11 @@ import (
 const mailTemplate = "templates/mail-k8s.html.tmpl"
 const artifactName = "k8s_release"
 
-func GetLatestRel() string {
+func getLatestRel() string {
 	release, _ := semver.NewVersion("0.0.0")
 	website := "https://kubernetes.io/releases/"
 
-	log.Println("Quering", website)
+	log.Println("Querying", website)
 	c := colly.NewCollector()
 
 	c.OnError(func(_ *colly.Response, err error) {
@@ -62,7 +62,7 @@ func GetLatestRel() string {
 	return release.String()
 }
 
-func GetPrevRelFromArtifact() string {
+func getRelFromArtifact() string {
 	data, err := os.ReadFile(artifactName)
 
 	if err != nil {
@@ -73,19 +73,27 @@ func GetPrevRelFromArtifact() string {
 	return release
 }
 
-func SaveLatestRel(release string) {
-	err := os.WriteFile(artifactName, []byte(release), 0644)
-
-	if err != nil {
-		log.Fatalln(err)
+func IsNewRelease() bool {
+	latestRelease := getLatestRel()
+	prevRelease := getRelFromArtifact()
+	if latestRelease != prevRelease {
+		log.Printf("New release is out: %v\n", latestRelease)
+		if err := os.WriteFile(artifactName, []byte(latestRelease), 0644); err != nil {
+			log.Fatalln(err)
+			return false
+		}
+		return true
 	}
+	log.Println("No new release :(")
+	return false
 }
 
-func Notify(newRelease string, alignedRelease string) {
+func buildContent(mailTemplate string) ([]byte, error) {
+	newRelease := getRelFromArtifact()
+	alignedRelease := os.Getenv("CURRENT_ALIGNED_K8S_VER")
 	var buff bytes.Buffer
 	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
 	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: Kubernetes New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
-
 	t, err := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
 		NewK8SRelease     string
@@ -95,9 +103,15 @@ func Notify(newRelease string, alignedRelease string) {
 		AlignedK8SRelease: alignedRelease,
 	})
 	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
+		return nil, err
 	}
+	return buff.Bytes(), nil
+}
 
-	mail.SendMail(buff.Bytes())
+func Notify() error {
+	content, err := buildContent(mailTemplate)
+	if err != nil {
+		return err
+	}
+	return mail.SendMail(content)
 }
