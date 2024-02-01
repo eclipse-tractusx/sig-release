@@ -25,7 +25,7 @@ import (
 	"log"
 	"os"
 
-	"gopkg.in/src-d/go-git.v4"
+	"github.com/go-git/go-git/v5"
 )
 
 // cloneRepo creates a temporary directory and clones the given repo into it.
