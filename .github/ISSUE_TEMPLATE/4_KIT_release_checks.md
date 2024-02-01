@@ -15,38 +15,39 @@ If you are not owner of this issue, please provide the information as comment to
 If changes to your KIT are not yet live on [our website](https://eclipse-tractusx.github.io/developer), link the open PR introducing the changes for this release.
 
 If changes are already live, also point out the PRs witch included the changes for this version if possible.
+Please refer to TRG 8.03 for the classification of mandatory and optional artefacts.
 
 - [PR number](pr-url)
+
+# General
+
+- [ ] **CHANGELOG** available and maintained
 
 # Adoption View
 
 - [ ] **Vision and Mission** statement present
-- [ ] **Business value** statement present
-- [ ] **Semantic Model Standards** submitted and published
-- [ ] **Business process** documentation available
-- [ ] **Architecture documentation** available
-- [ ] **Access and usage policies** documented
-
-__Optional:__
-
+- [ ] **Business Value** statement present
+- [ ] **Semantic Models** linked and described
+- [ ] **Logic / Schema** available and described
+- [ ] **Business Process** documentation available
+- [ ] **Access and Usage Policies** documented
+- [ ] **Standards** submitted / published via the Catena-X e.V. process and linked with current version (e.g., semantic models)
 - [ ] **Tutorials** available
 - [ ] **White Paper** available
+- [ ] **Notice** CC BY 4.0 licence statement available
 
 # Development View
 
-- [ ] **API specification and protocols** published on [SwaggerHub](https://app.swaggerhub.com/search?owner=eclipse-tractusx-bot)
-- [ ] **Sample data** available
-- [ ] **Reference implementation** available
-- [ ] **Architecture documents** available
+- [ ] **API Specification** published on [SwaggerHub](https://app.swaggerhub.com/search?owner=eclipse-tractusx-bot)
+- [ ] **Protocols** available (e.g., dataspace protocol)
+- [ ] **Sample Data** available
+- [ ] **Architecture** integration into the overall Catena-X architecture and / or product architecture (e.g., Arc42) available.
+- [ ] **Reference Implementation** available
 
 # Operation View
 
-- [ ] **Setup guide** available
-
-# General Checks
-
-- [ ] **Developer journey** approved
-- [ ] **CHANGELOG** maintained
+- [ ] **Setup Guide** available (e.g., installation guides)
+- [ ] **Deployment Script** available (e.g., helm charts)
 
 # Helpful Links
 
