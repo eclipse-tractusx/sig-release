@@ -115,6 +115,17 @@ func TestShouldPassAlpineAsPlainBaseImage(t *testing.T) {
 	}
 }
 
+func TestShouldFailImageAlpineBased(t *testing.T) {
+	tmpDir := t.TempDir()
+	file := dockerFileWithBaseImage("postgres:15.4-alpine3.17")
+	_ = file.writeTo(tmpDir)
+
+	result := NewAllowedBaseImage(tmpDir).Test()
+	if result.Passed {
+		t.Errorf("Check should fail, not approved base image (alpine based).")
+	}
+}
+
 func TestShouldAllowBaseImagesFromWhitelist(t *testing.T) {
 	baseImageAllowList = []string{"my/baseimage", "my/other/baseimage"}
 
