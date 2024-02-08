@@ -71,8 +71,7 @@ func (a *AllowedBaseImage) Test() *tractusx.QualityResult {
 			fmt.Printf("Could not read dockerfile from Path %s\n", dockerfilePath)
 			continue
 		}
-
-		if !isAllowedBaseImage(file.baseImage()) {
+		if !isAllowedBaseImage(strings.Split(file.baseImage(), ":")[0]) {
 			checkPassed = false
 			deniedBaseImages = append(deniedBaseImages, file.baseImage())
 		}

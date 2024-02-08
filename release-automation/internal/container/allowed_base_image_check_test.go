@@ -104,6 +104,28 @@ func TestShouldFailIfAtLeastOneDockerfileWithUnallowedBaseImageIsFound(t *testin
 	}
 }
 
+func TestShouldPassAlpineAsPlainBaseImage(t *testing.T) {
+	tmpDir := t.TempDir()
+	file := dockerFileWithBaseImage("alpine:3.19.1")
+	_ = file.writeTo(tmpDir)
+
+	result := NewAllowedBaseImage(tmpDir).Test()
+	if !result.Passed {
+		t.Errorf("Check should pass, pure alpine base image is allowed.")
+	}
+}
+
+func TestShouldFailImageAlpineBased(t *testing.T) {
+	tmpDir := t.TempDir()
+	file := dockerFileWithBaseImage("postgres:15.4-alpine3.17")
+	_ = file.writeTo(tmpDir)
+
+	result := NewAllowedBaseImage(tmpDir).Test()
+	if result.Passed {
+		t.Errorf("Check should fail, not approved base image (alpine based).")
+	}
+}
+
 func TestShouldAllowBaseImagesFromWhitelist(t *testing.T) {
 	baseImageAllowList = []string{"my/baseimage", "my/other/baseimage"}
 
@@ -184,3 +206,4 @@ func saveMetadataConfigToSkip(dockerfilePath string, dir string) {
 	bytes, _ := yaml.Marshal(&metadata)
 	_ = os.WriteFile(path.Join(dir, ".tractusx"), bytes, 0644)
 }
+
