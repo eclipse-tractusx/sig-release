@@ -16,26 +16,27 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # #############################################################################
----
 
-name: "3rd Party Dependency Check (Eclipse Dash Tool)"
+version: 2
+updates:
+  # Maintain dependencies for release-automation
+  - package-ecosystem: "gomod"
+    directory: "/release-automation"
+    open-pull-requests-limit: 3
+    schedule:
+      interval: "weekly"
 
-on:
-  pull_request:
+# Maintain dependencies for release-notifier
+  - package-ecosystem: "gomod"
+    directory: "/release-notifier"
+    open-pull-requests-limit: 3
+    schedule:
+      interval: "weekly"
 
-permissions:
-  contents: write
-
-jobs:
-  check-3rd-party-licences:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Concatenate dependencies
-        run: cat release-automation/go.sum release-notifier/go.sum > dash-input.sum
-      - name: Run dash
-        id: run-dash
-        uses: eclipse-tractusx/sig-infra/.github/actions/run-dash@main
-        with:
-          dash_input: "dash-input.sum"
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    # Workflow files stored in the default location of `.github/workflows`. (You don't need to specify `/.github/workflows` for `directory`. You can use `directory: "/"`.)
+    directory: "/"
+    open-pull-requests-limit: 3
+    schedule:
+      interval: "weekly"

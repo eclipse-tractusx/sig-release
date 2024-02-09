@@ -141,11 +141,11 @@ func initializeChecksForDirectory(dir string) []tractusx.QualityGuideline {
 	checks = append(checks, docs.NewReadmeExists(dir))
 	checks = append(checks, docs.NewInstallExists(dir))
 	checks = append(checks, docs.NewChangelogExists(dir))
-	//checks = append(checks, repo.NewRepoStructureExists(dir))
+	checks = append(checks, repo.NewRepoStructureExists(dir))
 	checks = append(checks, repo.NewLeadingRepositoryDefined(dir))
 	checks = append(checks, container.NewAllowedBaseImage(dir))
 	checks = append(checks, helm.NewHelmStructureExists(dir))
-
+	checks = append(checks, helm.NewHelmWorkflowCheck(dir))
 	return checks
 }
 

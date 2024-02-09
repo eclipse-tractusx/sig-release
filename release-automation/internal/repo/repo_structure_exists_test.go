@@ -22,7 +22,7 @@ package repo
 import (
 	"os"
 	"testing"
-
+	"path"
 	"tractusx-release-automation/internal/filesystem"
 )
 
@@ -44,15 +44,14 @@ var listOfDirsToBeCreated = []string{
 const metadataTestFile = "./test/metadata_test_template.yaml"
 
 func TestShouldPassIfRepoStructureExistsWithoutOptional(t *testing.T) {
-	setEnv(t)
-	defer os.Remove(".tractusx")
+	dir := t.TempDir()
+	setEnv(dir, t)
 
-	filesystem.CreateFiles(listOfFilesToBeCreated)
-	filesystem.CreateDirs(listOfDirsToBeCreated)
+	filesystem.CreateFiles(createFilesPaths(dir, listOfFilesToBeCreated))
+	filesystem.CreateDirs(createFilesPaths(dir, listOfDirsToBeCreated))
 
-	repostructureTest := NewRepoStructureExists("./")
-	result := repostructureTest.Test()
-	filesystem.CleanFiles(append(listOfFilesToBeCreated, listOfDirsToBeCreated...))
+	repoStructureTest := NewRepoStructureExists(dir)
+	result := repoStructureTest.Test()
 
 	if !result.Passed {
 		t.Errorf("Structure exists with optional files, but test still fails.")
@@ -60,17 +59,17 @@ func TestShouldPassIfRepoStructureExistsWithoutOptional(t *testing.T) {
 }
 
 func TestShouldPassIfRepoStructureExistsWithOptional(t *testing.T) {
-	setEnv(t)
-	defer os.Remove(".tractusx")
+	dir := t.TempDir()
+	setEnv(dir, t)
 
 	listOfFilesToBeCreated = append(listOfFilesToBeCreated, []string{"INSTALL.md", "AUTHORS.md"}...)
 
-	filesystem.CreateFiles(listOfFilesToBeCreated)
-	filesystem.CreateDirs(listOfDirsToBeCreated)
+	filesystem.CreateFiles(createFilesPaths(dir, listOfFilesToBeCreated))
+	filesystem.CreateDirs(createFilesPaths(dir, listOfDirsToBeCreated))
 
-	repostructureTest := NewRepoStructureExists("./")
-	result := repostructureTest.Test()
-	filesystem.CleanFiles(append(listOfFilesToBeCreated, listOfDirsToBeCreated...))
+
+	repoStructureTest := NewRepoStructureExists(dir)
+	result := repoStructureTest.Test()
 
 	if !result.Passed {
 		t.Errorf("Structure exists without optional files, but test still fails.")
@@ -79,12 +78,12 @@ func TestShouldPassIfRepoStructureExistsWithOptional(t *testing.T) {
 }
 
 func TestShouldFailIfRepoStructureIsMissing(t *testing.T) {
-	setEnv(t)
-	defer os.Remove(".tractusx")
+	dir := t.TempDir()
+	setEnv(dir, t)
 
-	repostructureTest := NewRepoStructureExists("./")
+	repoStructureTest := NewRepoStructureExists(dir)
 
-	result := repostructureTest.Test()
+	result := repoStructureTest.Test()
 
 	if result.Passed {
 		t.Errorf("RepoStructureExist should fail if repo structure exists.")
@@ -92,24 +91,23 @@ func TestShouldFailIfRepoStructureIsMissing(t *testing.T) {
 }
 
 func TestShouldPassWithMultipleDependenciesFiles(t *testing.T) {
-	setEnv(t)
-	defer os.Remove(".tractusx")
+	dir := t.TempDir()
+	setEnv(dir, t)
 
 	newListOfFilesToBeCreated := append(listOfFilesToBeCreated[:len(listOfFilesToBeCreated)-1], []string{"DEPENDENCIES_FRONTEND", "DEPENDENCIES_BACKEND"}...)
-	filesystem.CreateFiles(newListOfFilesToBeCreated)
-	filesystem.CreateDirs(listOfDirsToBeCreated)
+	filesystem.CreateFiles(createFilesPaths(dir, newListOfFilesToBeCreated))
+	filesystem.CreateDirs(createFilesPaths(dir, listOfDirsToBeCreated))
 
-	repostructureTest := NewRepoStructureExists("./")
-	result := repostructureTest.Test()
-	filesystem.CleanFiles(append(newListOfFilesToBeCreated, listOfDirsToBeCreated...))
+	repoStructureTest := NewRepoStructureExists(dir)
+	result := repoStructureTest.Test()
 
 	if !result.Passed {
 		t.Errorf("There is multiple DEPENDENCIES files, test should pass.")
 	}
 }
 
-func setEnv(t *testing.T) {
-	copyTemplateFileTo(".tractusx", t)
+func setEnv(dir string, t *testing.T) {
+	copyTemplateFileTo(path.Join(dir,".tractusx"), t)
 	_ = os.Setenv("GITHUB_REPOSITORY", "eclipse-tractusx/sig-infra")
 	_ = os.Setenv("GITHUB_REPOSITORY_OWNER", "tester")
 }
@@ -123,4 +121,12 @@ func copyTemplateFileTo(path string, t *testing.T) {
 	if err != nil {
 		t.Errorf("Could not copy template file to designated path")
 	}
+}
+
+func createFilesPaths(dir string, files []string) []string {
+	fullPaths := []string{}
+	for _, file := range files {
+		fullPaths = append(fullPaths, path.Join(dir, file))
+	}
+	return fullPaths
 }

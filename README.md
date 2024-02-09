@@ -1,30 +1,29 @@
 # SIG-Release
 
 Welcome to SIG-Release, home of release and feature management.
-
-## Onboarding
-
-Please check out our general [GitHub Onboarding Guide](docs/Eclipse-Tractus-X-GitHub-getting-started.md) and 
-further information can be found here in the [getting started page](https://eclipse-tractusx.github.io/docs/oss/getting-started) on our web-page. For PI11 Planning please have a look into [PI11-Consortia-Planning](docs/PI11-Planning.md).
+If you are new to this repository, you might find the [getting started guide](docs/getting-started.md) useful.
+If you are interested in the current state of planning, have a look at our [Release Planning Board](https://github.com/orgs/eclipse-tractusx/projects/26)
 
 ## The planning and roadmap process
 
-We follow a coordinated approach to plan improvements of Eclipse Tractus-X. see also [Open Planning and Refinement](docs/Open-Refinement-and-Planning-in-Open-Source-Communities.md).
+We follow a coordinated approach to plan improvements of Eclipse Tractus-X. see also [Open Planning and Refinement](docs/open-refinement-and-planning.md).
 
 While every repository in the [eclipse-tractusx](https://github.com/eclipse-tractusx) GitHub organization
-has its own issue management, the [release planning board](https://github.com/orgs/eclipse-tractusx/projects/26)
+has its own issue management, the [Release Planning Board](https://github.com/orgs/eclipse-tractusx/projects/26)
 is used to align the overarching Tractus-X releases.
 
 ### How can I get involved
 
 In case you experienced a bug, unexpected behaviour, or you want to propose enhancements to Eclipse Tractus-X,
-feel free to use one of the provided [issue templates](https://github.com/eclipse-tractusx/sig-project-management/issues/new/choose) and describe your request.
+feel free to use one of the provided [issue templates](https://github.com/eclipse-tractusx/sig-release/issues/new/choose) and describe your request.
 Please be aware, that not every feature request can be integrated and that we also cannot treat every issue with the highest priority.
 
 Every Release planning will be kicked off by two public alignment sessions. The dates and further details will be shared via
 [tractusx-dev](https://accounts.eclipse.org/mailing-list/tractusx-dev) mailing list.
+In addition to that, you can also find public meetings and info about how to join on our
+[Open Meetings](https://eclipse-tractusx.github.io/community/open-meetings) community page. 
 Issues or bug reports, that should be discussed in these meetings, have to be opened prior to the meeting via
-our [issue templates](https://github.com/eclipse-tractusx/sig-project-management/issues/new/choose).
+our [issue templates](https://github.com/eclipse-tractusx/sig-release/issues/new/choose).
 
 ### What can I expect
 
@@ -41,7 +40,6 @@ Our issues do have important properties, that enable our planning process. These
 - __Issue Type:__ To separate between bugs, feature requests and release criterias, we use a custom field `Issue Type`
 - __Milestone:__ Every Tractus-X release is represented by a `Milestone`. You can use this field to get a rough idea about the ETA
 - __Status:__ The status field is used to integrate the progress of an issue
-- __Iteration:__ `Milestone`s are divided in multiple iterations. The 'Iteration' field is used to do fine-grained timeline planning
 
 ### Issue statuses
 
