@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.0.0...v1.1.0) (2024-02-09)
+
+
+### Features
+
+* add repo structure check to dashboard ([31fbee9](https://github.com/eclipse-tractusx/sig-release/commit/31fbee9344e1b1a4ef3280e6c78ba65564e5d21d))
+
+
+### Bug Fixes
+
+* add mandatory files full paths + call isLeadingRepo with a custom dir ([be73b49](https://github.com/eclipse-tractusx/sig-release/commit/be73b492cb3aeab50173867f32969b34be1d1338))
+* amend base image check to alpine types ([917a81c](https://github.com/eclipse-tractusx/sig-release/commit/917a81ce4a9de64318ef37193080e48465c939c1))
+* call default branch check with a custom dir ([4ed3ff9](https://github.com/eclipse-tractusx/sig-release/commit/4ed3ff93d9fbe0738e44c63cc96b5b93c9104c24))
+* repo structure check unit tests ([1a3b084](https://github.com/eclipse-tractusx/sig-release/commit/1a3b084132eb74983ebf9c3271e213546ac124d4))
+* typos expression & occurred ([53498cd](https://github.com/eclipse-tractusx/sig-release/commit/53498cdc3bd549a6acdeb7be3d94511e9f668dad))
+
 ## 1.0.0 (2024-01-11)
 
 
