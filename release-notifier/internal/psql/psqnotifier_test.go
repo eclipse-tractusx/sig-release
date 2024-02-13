@@ -17,24 +17,20 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
-package mail
+package psql
 
 import (
-	"net/smtp"
-	"os"
+	"regexp"
+	"testing"
 )
 
-const smtpServer = "smtp.gmail.com"
-const smtpPort = "587"
-const recipientMailEnv = "TRACTUSX_MAILINGLIST"
-const senderMailEnv = "DEVSECOPS_NOTIFICATION_EMAIL"
-const senderPassEnv = "DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD"
+func TestShouldPassIfNewReleaseIsSemVer(t *testing.T) {
+	// Semantic Versioning schema regex
+	const regexPattern = `^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`
 
-func SendMail(body []byte) error {
-	sender := os.Getenv(senderMailEnv)
-	password := os.Getenv(senderPassEnv)
-	recipient := os.Getenv(recipientMailEnv)
+	newRelease := GetLatestRel()
+	if match, _ := regexp.MatchString(regexPattern, newRelease); !match {
+		t.Errorf("Test should pass, it returns semver string.")
+	}
 
-	auth := smtp.PlainAuth("", sender, password, smtpServer)
-	return smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipient}, body)
 }

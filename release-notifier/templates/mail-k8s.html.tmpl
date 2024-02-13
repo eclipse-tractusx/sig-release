@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Action Required: Kubernetes New Release (v{{.NewK8SRelease}})</title>
+</head>
+<body>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+        <tr>
+            <td bgcolor="#f7f7f7" align="center" style="padding: 20px 0;">
+                <h1>Kubernetes {{.NewK8SRelease}} Released!</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Dear Tractus-X Community,</p>
+
+                <p>We're excited to inform you that Kubernetes has released a new version, {{.NewK8SRelease}}, and we need your attention to ensure our projects remain up to date and secure. Please follow the instructions below.</p>
+
+                <h3>Current Aligned Version:</h3>
+
+                <p>
+                    Our projects are currently aligned to Kubernetes version {{.AlignedK8SRelease}}. 
+                </p>
+                <p>
+                    Information of aligned Kubernetes versions can be found in the <a href="https://eclipse-tractusx.github.io/docs/release/trg-5/trg-5-10">TRG 5.10 - Kubernetes versions</a>.
+                </p>
+
+                <h3>Upgrade process:</h3>
+
+                <p>To guarantee a seamless integration with our infrastructure, we kindly request that you await the corresponding release for Azure Kubernetes before proceeding with any upgrades.</p>
+                <p>Once the Azure Kubernetes respective release is available, we recommend updating all existing clusters promptly. Furthermore, please review and adjust the versions of kind (Kubernetes in Docker) specified in your GitHub Actions workflows to maintain compatibility and ensure optimal performance during the upgrade process.</p>
+                <p>Follow the <a href="https://github.com/eclipse-tractusx/sig-release/blob/main/release-notifier/README.md#upgrade-alignment-process-description">process</a> to streamline documentation and communication alignment.</p>
+
+
+                <h3>Resources</h3>
+                <p>More information about latest release can be found on the official <a href="https://kubernetes.io/releases/">Kubernetes website</a>.</p>
+
+                <h3>Contribution</h3>
+                <p>
+                    We would like to invite you to contribute to this project and provide your valuable insights. Your feedback and suggestions will be greatly appreciated as we continue to refine and expand the functionality of our release notification tool.
+                </p>
+                <p>
+                    To access the repository for this project and explore the code, please visit the following link: <a href="https://github.com/eclipse-tractusx/sig-release/tree/main/release-notifier">sig-release/release-notifier</a>.
+                </p>
+                <p>
+                    Encourage you to visit general Tractus-X <a href="https://eclipse-tractusx.github.io/docs/oss/how-to-contribute">How to Contribute guide</a>.
+                </p>
+                <hr>
+                <p>
+                    We greatly appreciate your commitment to keeping our open source projects up-to-date and secure. Your collaboration is vital to the success of our community.
+                </p>
+                <p>
+                    In the event of any issues with the release notification, please refer to the guide available at <a href="https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow">Disabling and enabling a workflow</a> for step by step instruction on disabling the GitHub Workflow.
+                </p>
+                <p>
+                    If you encounter any issues or have questions during the upgrade process, please don't hesitate to reach out to <a href="https://github.com/eclipse-tractusx/sig-infra/issues/new/choose">DevSecOps team</a>.
+                </p>
+
+
+                <p>Best regards,</p>
+                <p>DevSecOps Team</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

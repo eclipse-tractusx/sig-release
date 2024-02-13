@@ -17,22 +17,23 @@
 # SPDX-License-Identifier: Apache-2.0
 # #############################################################################
 
-name: PostgreSQL new release notifier
+name: Kubernetes & PostegreSQL release notifier
 
 on:
   workflow_dispatch:
     inputs:
       recipient:
-        description: "Recipent email"
+        description: "Notification recipent email"
         required: false
   schedule:
       # Run every day at 01:00 at night
       - cron: "0 1 * * *" # UTC time
 env:
-    TRACTUSX_MAILINGLIST: ${{ github.event.inputs.recipient != '' && github.event.inputs.recipient || '_CHANGE_ME_@MAIL.COM'  }}
+    TRACTUSX_MAILINGLIST: ${{ github.event.inputs.recipient != '' && github.event.inputs.recipient || 'tractusx-dev@eclipse.org'  }}
     DEVSECOPS_NOTIFICATION_EMAIL: eclipse.tractusx@gmail.com
     DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD: ${{ secrets.NOTIFICATION_EMAIL_PASSWORD }}
     CURRENT_ALIGNED_PSQL_VER: 15.0.0
+    CURRENT_ALIGNED_K8S_VER: 1.27.0
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -48,14 +49,17 @@ jobs:
         workflow: ${{ github.event.workflow_run.workflow_id }}
         workflow_conclusion: success
         if_no_artifact_found: warn
-        name: psql_release
+        name: releases_artifact
         path: release-notifier/
     - name: Run notifier
       run: |
         cd release-notifier
         go run main.go psql
-    - name: Upload new release artifact
+        go run main.go k8s
+    - name: Upload release artifact
       uses: actions/upload-artifact@v3
       with:
-        name: psql_release
-        path: release-notifier/psql_release
+        name: releases_artifact
+        path: |
+          release-notifier/k8s_release
+          release-notifier/psql_release

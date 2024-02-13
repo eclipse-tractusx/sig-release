@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
-package psql
+package k8s
 
 import (
 	"bytes"
@@ -27,36 +27,42 @@ import (
 	"log"
 	"os"
 	"release-notifier/internal/mail"
+	"strings"
 	"text/template"
 )
 
-const mailTemplate = "templates/mail-psql.html.tmpl"
-const artifactName = "psql_release"
+const mailTemplate = "templates/mail-k8s.html.tmpl"
+const artifactName = "k8s_release"
 
-func GetLatestRel() string {
-	var release string
-	website := "https://bitnami.com/stack/postgresql"
+func getLatestRel() string {
+	release, _ := semver.NewVersion("0.0.0")
+	website := "https://kubernetes.io/releases/"
 
-	log.Println("Quering", website)
+	log.Println("Querying", website)
 	c := colly.NewCollector()
 
 	c.OnError(func(_ *colly.Response, err error) {
 		log.Println("Can't load the page: ", err)
 	})
 
-	c.OnHTML("div.stack__header__properties__property", func(e *colly.HTMLElement) {
-		r, err := semver.NewVersion(e.ChildText("p"))
+	c.OnHTML("span.release-inline-value", func(e *colly.HTMLElement) {
+		if !strings.Contains(e.Text, "release") {
+			return
+		}
+		r, err := semver.NewVersion(strings.Split(e.Text, " ")[0])
 		if err != nil {
 			return
 		}
-		release = r.String()
+		if r.Compare(release) == 1 {
+			release = r
+		}
 	})
 
 	c.Visit(website)
-	return release
+	return release.String()
 }
 
-func GetPrevRelFromArtifact() string {
+func getRelFromArtifact() string {
 	data, err := os.ReadFile(artifactName)
 
 	if err != nil {
@@ -67,31 +73,45 @@ func GetPrevRelFromArtifact() string {
 	return release
 }
 
-func SaveLatestRel(release string) {
-	err := os.WriteFile(artifactName, []byte(release), 0644)
-
-	if err != nil {
-		log.Fatalln(err)
+func IsNewRelease() bool {
+	latestRelease := getLatestRel()
+	prevRelease := getRelFromArtifact()
+	if latestRelease != prevRelease {
+		log.Printf("New release is out: %v\n", latestRelease)
+		if err := os.WriteFile(artifactName, []byte(latestRelease), 0644); err != nil {
+			log.Fatalln(err)
+			return false
+		}
+		return true
 	}
+	log.Println("No new release :(")
+	return false
 }
 
-func Notify(newRelease string, alignedRelease string) {
+func buildContent(mailTemplate string) ([]byte, error) {
+	newRelease := getRelFromArtifact()
+	alignedRelease := os.Getenv("CURRENT_ALIGNED_K8S_VER")
 	var buff bytes.Buffer
 	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
-	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
-
+	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: Kubernetes New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
 	t, err := template.ParseFiles(mailTemplate)
 	t.Execute(&buff, struct {
-		NewPSQLRelease     string
-		AlignedPSQLRelease string
+		NewK8SRelease     string
+		AlignedK8SRelease string
 	}{
-		NewPSQLRelease:     newRelease,
-		AlignedPSQLRelease: alignedRelease,
+		NewK8SRelease:     newRelease,
+		AlignedK8SRelease: alignedRelease,
 	})
 	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
+		return nil, err
 	}
+	return buff.Bytes(), nil
+}
 
-	mail.SendMail(buff.Bytes())
+func Notify() error {
+	content, err := buildContent(mailTemplate)
+	if err != nil {
+		return err
+	}
+	return mail.SendMail(content)
 }

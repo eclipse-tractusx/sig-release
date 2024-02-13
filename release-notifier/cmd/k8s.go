@@ -19,53 +19,43 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"log"
-	"os"
-	"release-notifier/internal/psql"
+	"release-notifier/internal/k8s"
+
+	"github.com/spf13/cobra"
 )
 
-// psqlCmd represents the psql command
-var psqlCmd = &cobra.Command{
-	Use:   "psql",
-	Short: "Sends out notification of new PostgresSQL release",
-	Long: `Sends out notification of new PostgresSQL release
-to a mailinglist:
+// k8sCmd represents the k8s command
+var k8sCmd = &cobra.Command{
+	Use:   "k8s",
+	Short: "Sends out notification of new Kubernetes release",
+	Long: `Sends out notification of new Kubernetes release
+	to a mailing list:
 
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		log.Println("PostgresSQL release notifier called.")
-		psqlNotifier()
+		log.Println("Kubernetes release notifier called.")
+		if k8s.IsNewRelease() {
+			if err := k8s.Notify(); err != nil {
+				log.Fatalln(err)
+			}
+			log.Println("Email Sent!")
+		}
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(psqlCmd)
+	rootCmd.AddCommand(k8sCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// psqlCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// k8sCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// psqlCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
-func psqlNotifier() {
-	latestRelease := psql.GetLatestRel()
-	prevRelease := psql.GetPrevRelFromArtifact()
-
-	if latestRelease != prevRelease && latestRelease != "" {
-		log.Printf("New release is out: %v\n", latestRelease)
-		alignedRelease := os.Getenv("CURRENT_ALIGNED_PSQL_VER")
-		log.Printf("Current aligned version: %v\n", alignedRelease)
-		psql.Notify(latestRelease, alignedRelease)
-		psql.SaveLatestRel(latestRelease)
-	} else {
-		log.Println("No new release :(")
-	}
+	// k8sCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
