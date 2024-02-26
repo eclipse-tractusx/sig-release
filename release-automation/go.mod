@@ -14,7 +14,7 @@ require (
 	golang.org/x/oauth2 v0.17.0
 	golang.org/x/text v0.14.0
 	gopkg.in/yaml.v3 v3.0.1
-	helm.sh/helm/v3 v3.14.0
+	helm.sh/helm/v3 v3.14.2
 	k8s.io/api v0.29.2
 	k8s.io/client-go v0.29.2
 )
