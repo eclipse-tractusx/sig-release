@@ -118,7 +118,7 @@ func getDockerfilePathsToIgnore(dir string) []string {
 
 func containsString(slice []string, element string) bool {
 	for _, v := range slice {
-		if v == element {
+		if strings.Contains(element, v) {
 			return true
 		}
 	}
