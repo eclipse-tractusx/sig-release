@@ -18,4 +18,35 @@
  ******************************************************************************/
 
  package exception
- 
+
+ import (
+	"os"
+	"log"
+	"gopkg.in/yaml.v3"
+)
+
+ type Exception struct {
+	Trg string `yaml:"trg"`
+	Repositories []string `yaml:"repository"`
+ }
+
+ type Config struct {
+	Exceptions []Exception `yaml:"exceptions"`
+ }
+
+ func getExceptionsFromFile(filepath string) *Config {
+	data, err := os.ReadFile(filepath)
+	if err != nil {
+		log.Printf("Unable to read %v.\n", filepath)
+		return nil
+	}
+
+	var c Config
+	err = yaml.Unmarshal(data, &c)
+	if err != nil {
+		log.Printf("Unable to parse YAML file: %v.\n", filepath)
+		return nil
+	}
+
+	return &c
+ }
