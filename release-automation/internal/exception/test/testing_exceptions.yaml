@@ -1,0 +1,4 @@
+exceptions:
+  - trg: "1.23"
+    repository:
+    - "testing-repo"

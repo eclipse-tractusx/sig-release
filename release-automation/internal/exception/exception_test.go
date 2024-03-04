@@ -18,4 +18,21 @@
  ******************************************************************************/
 
  package exception
- 
+
+ import (
+	"testing"
+)
+
+func TestShouldPassIfParsesExceptionDataFile(t *testing.T) {
+	exceptions := getExceptionsFromFile("test/exceptions_test.yaml")
+	for _,e := range exceptions.Exceptions {
+		if e.Trg == "1.23" {
+			for _, r := range e.Repositories {
+				if r == "testing-repo" {
+					return
+				}
+			}
+		}
+	}
+	t.Errorf("Couldn't parse testing exceptions file.")
+}
