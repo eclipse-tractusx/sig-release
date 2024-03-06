@@ -17,13 +17,17 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
- package exception
+package exception
 
- import (
+import (
+	"fmt"
 	"os"
-	"log"
+	"strings"
+
 	"gopkg.in/yaml.v3"
 )
+
+const ExceptionsData = "internal/exception/exceptions.yaml"
 
  type Exception struct {
 	Trg string `yaml:"trg"`
@@ -34,19 +38,32 @@
 	Exceptions []Exception `yaml:"exceptions"`
  }
 
- func getExceptionsFromFile(filepath string) *Config {
+ func GetExceptionsFromFile(filepath string) (*Config, error) {
 	data, err := os.ReadFile(filepath)
 	if err != nil {
-		log.Printf("Unable to read %v.\n", filepath)
-		return nil
+		return nil, fmt.Errorf("unable to read %v", filepath)
 	}
 
 	var c Config
 	err = yaml.Unmarshal(data, &c)
 	if err != nil {
-		log.Printf("Unable to parse YAML file: %v.\n", filepath)
-		return nil
+		return nil, fmt.Errorf("unable to parse YAML file: %v", filepath)
 	}
 
-	return &c
+	return &c, nil
  }
+
+// Checks if repository has exception for specific TRG
+func (c *Config) IsExceptioned(trg string, repository string) bool {
+	for _, e := range c.Exceptions {
+		if e.Trg == trg {
+			for _, r := range e.Repositories {
+				if strings.EqualFold(r, repository) {
+					fmt.Println("#### Found repo in exception!")
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
