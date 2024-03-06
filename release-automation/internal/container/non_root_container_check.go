@@ -22,7 +22,7 @@ package container
 import (
 	"fmt"
 	"regexp"
-
+	"strings"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -52,7 +52,7 @@ func (n NonRootContainer) ExternalDescription() string {
 
 func (n NonRootContainer) Test() *tractusx.QualityResult {
 	checkPassed := true
-	var errorDescription string
+	errorDescription := ""
 	dockerfiles := findDockerfilesAt(n.baseDir)
 
 	for _, dockerfilePath := range dockerfiles {
@@ -63,10 +63,9 @@ func (n NonRootContainer) Test() *tractusx.QualityResult {
 
 		if !validateUser(file.user()) {
 			checkPassed = false
-			if len(errorDescription) > 0 {
-				errorDescription = errorDescription + "\nInvalid user specified in Dockerfile: " + dockerfilePath
-			} else {
-				errorDescription = "Invalid user specified in Dockerfile: " + dockerfilePath
+			errorDescription += "\nInvalid user specified in Dockerfile: " + strings.Split(dockerfilePath, n.baseDir)[1][1:]
+			if tractusx.CliErrOutputFormat == tractusx.WebErrOutputFormat {
+				errorDescription += "<br>"
 			}
 		}
 	}
