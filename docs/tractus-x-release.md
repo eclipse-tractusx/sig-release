@@ -1,5 +1,8 @@
 # Tractus-X Release
 
+Details about a Tractus-X release can be found in the dedicated repository [eclipse-tractusx/tractus-x-release](https://github.com/eclipse-tractusx/tractus-x-release).
+There, you can also find details about the [release process](https://github.com/eclipse-tractusx/tractus-x-release/blob/main/RELEASE.md).
+
 ## Artifacts
 
 - Changelog (overarching features)
@@ -8,7 +11,7 @@
 
 ## Versioning
 
-- Semantic Versioning
+- Calendar versioning
 
 ## Process
 
