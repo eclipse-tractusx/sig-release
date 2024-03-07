@@ -1,0 +1,8 @@
+exceptions:
+  - trg: "TRG 4.02 - Base images"
+    repository:
+    - "https://github.com/eclipse-tractusx/policy-hub"
+    - "https://github.com/eclipse-tractusx/portal-backend"
+  - trg: "TRG 5.09 - Helm test"
+    repository:
+    - "https://github.com/eclipse-tractusx/tractusx-edc"

@@ -59,7 +59,6 @@ func (c *Config) IsExceptioned(trg string, repository string) bool {
 		if e.Trg == trg {
 			for _, r := range e.Repositories {
 				if strings.EqualFold(r, repository) {
-					fmt.Println("#### Found repo in exception!")
 					return true
 				}
 			}
