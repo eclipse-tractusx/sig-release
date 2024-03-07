@@ -6,15 +6,15 @@ If you are interested in the current state of planning, have a look at our [Rele
 
 ## The planning and roadmap process
 
-For detailed proecess descriptions, see [the planning documentation](./docs/planning.md).
+For detailed process descriptions, see [the planning documentation](./docs/planning.md).
 
 ## Release
 
 In Tractus-X, we differentiate two different types of releases.
 
-See [the product release documentation](./docs/product_release.md), for information about singular product releases.
+See [product release](./docs/product_release.md), for information about singular product releases.
 
-See [the Tractus-X release documentation](./docs/tractus-x-release.md), for our overarching release strategy
+See [Tractus-X release](./docs/tractus-x-release.md), for our overarching release strategy.
 
 ## Contact
 

@@ -2,9 +2,9 @@
 
 ## Artifacts
 
+- GitHub release (Changelog + Sourcecode)
 - Container images
 - Helm Chart
-- GitHub release (Changelog + Sourcecode)
 
 ## Versioning
 

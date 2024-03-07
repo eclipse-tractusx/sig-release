@@ -2,8 +2,9 @@
 
 ## Artifacts
 
+- Changelog (overarching features)
 - Umbrella Helm Chart(s)
-- Changelog (overarching feat)
+- Overarching architecture documentation (if available)
 
 ## Versioning
 
@@ -15,7 +16,7 @@
 - Prior to release, a Tractus-X umbrella Chart release candidate branch is created
 - Producs issue PRs with their release candidate
 
-## Quality Assurance
+### Quality Assurance
 
 - User Journey tests (e2e) defined in e2e-testing repo
 - User Journey tests automatically executed via `helm test` (nightly + on every product rc PR)
