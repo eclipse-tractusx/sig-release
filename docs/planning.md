@@ -1,6 +1,6 @@
 # Release and Roadmap Process
 
-We follow a coordinated approach to plan improvements of Eclipse Tractus-X. see also [Open Planning and Refinement](docs/open-refinement-and-planning.md).
+We follow a coordinated approach to plan improvements of Eclipse Tractus-X. See also [Open Planning and Refinement](open-refinement-and-planning.md).
 
 While every repository in the [eclipse-tractusx](https://github.com/eclipse-tractusx) GitHub organization
 has its own issue management, the [Release Planning Board](https://github.com/orgs/eclipse-tractusx/projects/26)
@@ -31,7 +31,7 @@ If we should miss that, please stick with us and just use the commenting functio
 Our issues do have important properties, that enable our planning process. These are:
 
 - __Labels:__ We use them to indicate the involved teams (kit or foss component). A label for each involved component is added to an issue
-- __Issue Type:__ To separate between bugs, feature requests and release criterias, we use a custom field `Issue Type`
+- __Issue Type:__ To separate between bugs, feature requests and release criteria, we use a custom field `Issue Type`
 - __Milestone:__ Every Tractus-X release is represented by a `Milestone`. You can use this field to get a rough idea about the ETA
 - __Status:__ The status field is used to integrate the progress of an issue
 
@@ -41,7 +41,7 @@ The following statuses are defined:
 
 - __Inbox:__ This is the initial status of all issues. It indicates, that involved components have to be identified and additional information gathered
 - __Backlog:__ If enough information is gathered, and we agreed to work on the issue, it is set from `Inbox` to `Backlog` to indicate it is ready for timeline planning
-- __Work in Progress:__ The issue is actively been worked on.
+- __Work in Progress:__ The issue is actively being worked on.
 - __Done:__ All relevant parts have been implemented and released
 
 ### Issue process
