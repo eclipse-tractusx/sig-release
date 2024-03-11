@@ -17,15 +17,18 @@
  * SPDX-License-Identifier: Apache-2.0
  ******************************************************************************/
 
- package exception
+package exception
 
- import (
+import (
+	"fmt"
+	"os"
 	"testing"
 )
 
 func TestShouldPassIfParsesExceptionDataFile(t *testing.T) {
-	config, _ := GetExceptionsFromFile("test/exceptions_test.yaml")
-	for _,e := range config.Exceptions {
+	data, _ := getExceptionsFromFile("test/exceptions_test.yaml")
+	config, _ := parseData(data)
+	for _, e := range config.Exceptions {
 		if e.Trg == "1.23" {
 			for _, r := range e.Repositories {
 				if r == "testing-repo" {
@@ -38,15 +41,25 @@ func TestShouldPassIfParsesExceptionDataFile(t *testing.T) {
 }
 
 func TestShouldPassIfExceptionExistForSpecificRepository(t *testing.T) {
-	config, _ := GetExceptionsFromFile("test/exceptions_test.yaml")
+	data, _ := getExceptionsFromFile("test/exceptions_test.yaml")
+	config, _ := parseData(data)
 	if !config.IsExceptioned("1.23", "testing-repo") {
 		t.Errorf("Test should pass, test data contains the exception.")
 	}
 }
 
 func TestShouldFailIfExceptionExistForSpecificRepository(t *testing.T) {
-	config, _ := GetExceptionsFromFile("test/exceptions_test.yaml")
+	data, _ := getExceptionsFromFile("test/exceptions_test.yaml")
+	config, _ := parseData(data)
 	if config.IsExceptioned("1.23", "no-exception-repo") {
 		t.Errorf("Test should fail, there is no exception for testing repo.")
 	}
+}
+
+func getExceptionsFromFile(filepath string) ([]byte, error) {
+	data, err := os.ReadFile(filepath)
+	if err != nil {
+		return nil, fmt.Errorf("unable to read %v", filepath)
+	}
+	return data, nil
 }
