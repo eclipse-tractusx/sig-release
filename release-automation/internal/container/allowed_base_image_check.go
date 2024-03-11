@@ -20,9 +20,10 @@
 package container
 
 import (
-	"fmt"
+	"log"
 	"strings"
-
+	"tractusx-release-automation/internal/exception"
+	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -55,6 +56,16 @@ func (a *AllowedBaseImage) ExternalDescription() string {
 }
 
 func (a *AllowedBaseImage) Test() *tractusx.QualityResult {
+	config, err := exception.GetData()
+	if err != nil {
+		log.Println("Can't process exceptions.")
+	} else {
+		repoInfo := repo.GetRepoBaseInfo(a.baseDir)
+		if config.IsExceptioned(a.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+			return &tractusx.QualityResult{Passed: true}
+		}
+	}
+
 	foundDockerFiles := findDockerfilesAt(a.baseDir)
 	dockerfilesToSkip := getDockerfilePathsToIgnore(a.baseDir)
 
@@ -62,13 +73,13 @@ func (a *AllowedBaseImage) Test() *tractusx.QualityResult {
 	var deniedBaseImages []string
 	for _, dockerfilePath := range foundDockerFiles {
 		if containsString(dockerfilesToSkip, dockerfilePath) {
-			fmt.Printf("Dockerfile at path %s configured to skip", dockerfilePath)
+			log.Printf("Dockerfile at path %s configured to skip", dockerfilePath)
 			continue
 		}
 
 		file, err := dockerfileFromPath(dockerfilePath)
 		if err != nil {
-			fmt.Printf("Could not read dockerfile from Path %s\n", dockerfilePath)
+			log.Printf("Could not read dockerfile from Path %s\n", dockerfilePath)
 			continue
 		}
 		if !isAllowedBaseImage(strings.Split(file.baseImage(), ":")[0]) {
