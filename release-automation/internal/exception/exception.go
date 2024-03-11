@@ -21,37 +21,56 @@ package exception
 
 import (
 	"fmt"
-	"os"
-	"strings"
-
 	"gopkg.in/yaml.v3"
+	"io"
+	"net/http"
+	"strings"
 )
 
-const ExceptionsData = "internal/exception/exceptions.yaml"
+const ExceptionsData = "https://raw.githubusercontent.com/eclipse-tractusx/sig-release/main/release-automation/internal/exception/exceptions.yaml"
 
- type Exception struct {
-	Trg string `yaml:"trg"`
+type Exception struct {
+	Trg          string   `yaml:"trg"`
 	Repositories []string `yaml:"repository"`
- }
+}
 
- type Config struct {
+type Config struct {
 	Exceptions []Exception `yaml:"exceptions"`
- }
+}
 
- func GetExceptionsFromFile(filepath string) (*Config, error) {
-	data, err := os.ReadFile(filepath)
+func GetData() (*Config, error) {
+	data, err := fetchYaml(ExceptionsData)
 	if err != nil {
-		return nil, fmt.Errorf("unable to read %v", filepath)
+		return nil, fmt.Errorf("unable to fetch YAML data from url: %v", ExceptionsData)
 	}
+	config, err := parseData(data)
+	if err != nil {
+		return nil, fmt.Errorf("unable to parse exceptions")
+	}
+	return config, nil
+}
 
+func fetchYaml(url string) ([]byte, error) {
+	response, err := http.Get(url)
+	if err != nil {
+		return nil, fmt.Errorf("unable to get %v", url)
+	}
+	defer response.Body.Close()
+	data, err := io.ReadAll(response.Body)
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}
+
+func parseData(data []byte) (*Config, error) {
 	var c Config
-	err = yaml.Unmarshal(data, &c)
+	err := yaml.Unmarshal(data, &c)
 	if err != nil {
-		return nil, fmt.Errorf("unable to parse YAML file: %v", filepath)
+		return nil, fmt.Errorf("unable to parse YAML data")
 	}
-
 	return &c, nil
- }
+}
 
 // Checks if repository has exception for specific TRG
 func (c *Config) IsExceptioned(trg string, repository string) bool {
