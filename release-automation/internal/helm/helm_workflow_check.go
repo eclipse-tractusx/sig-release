@@ -21,6 +21,7 @@ package helm
 
 import (
 	"fmt"
+	"gopkg.in/yaml.v3"
 	"log"
 	"os"
 	"path"
@@ -29,7 +30,6 @@ import (
 	"tractusx-release-automation/internal/exception"
 	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
-	"gopkg.in/yaml.v3"
 )
 
 type HelmWorkflowCheck struct {
@@ -104,15 +104,15 @@ func isValidHelmTestWorkflow(workflow GitHubWorkflow) bool {
 	)
 
 	switch on := workflow.On.(type) {
-		case []interface{}:
-			for _, t := range on {
-				if strings.EqualFold(t.(string), "workflow_dispatch") {
-					hasDispatchTrigger = true
-				}
-			}
-		case map[string]interface{}:
-			if _, exist := on["workflow_dispatch"]; exist {
+	case []interface{}:
+		for _, t := range on {
+			if strings.EqualFold(t.(string), "workflow_dispatch") {
 				hasDispatchTrigger = true
+			}
+		}
+	case map[string]interface{}:
+		if _, exist := on["workflow_dispatch"]; exist {
+			hasDispatchTrigger = true
 		}
 	}
 
