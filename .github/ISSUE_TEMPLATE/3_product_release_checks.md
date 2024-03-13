@@ -9,6 +9,7 @@ labels: compliance, documentation, "security analysis", "test results"
 
 Please provide information on what you want to be included in the Eclipse Tractus-X release.
 If you are not owner of this issue, please provide the information as comment to the issue.
+To receive review from committer or subject matter expert, assign the issue to the person.
 
 **Version to be included in Eclipse Tractus-X release**: *version placeholder*
 
