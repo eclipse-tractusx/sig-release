@@ -23,9 +23,10 @@ import (
 	"fmt"
 	"path"
 	"strings"
-
 	"tractusx-release-automation/internal/filesystem"
+	"log"
 	"tractusx-release-automation/internal/tractusx"
+	"tractusx-release-automation/internal/exception"
 )
 
 type RepoStructureExists struct {
@@ -53,6 +54,15 @@ func (c RepoStructureExists) ExternalDescription() string {
 }
 
 func (c RepoStructureExists) Test() *tractusx.QualityResult {
+	config, err := exception.GetData()
+	if err != nil {
+		log.Println("Can't process exceptions.")
+	} else {
+		repoInfo := GetRepoBaseInfo(c.baseDir)
+		if config.IsExceptioned(c.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+			return &tractusx.QualityResult{Passed: true}
+		}
+	}
 	// Slices containing required files and folders in the repo structure.
 	// Before modification make sure you align to TRG 2.03 guideline.
 	listOfOptionalFilesToBeChecked := []string{
