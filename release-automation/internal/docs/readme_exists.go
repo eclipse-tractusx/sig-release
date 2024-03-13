@@ -22,8 +22,10 @@ package docs
 import (
 	"os"
 	"path"
-
+	"log"
 	"tractusx-release-automation/internal/tractusx"
+	"tractusx-release-automation/internal/repo"
+	"tractusx-release-automation/internal/exception"
 )
 
 type ReadmeExists struct {
@@ -51,7 +53,16 @@ func (r *ReadmeExists) ExternalDescription() string {
 }
 
 func (r *ReadmeExists) Test() *tractusx.QualityResult {
-	_, err := os.Stat(path.Join(r.baseDir, "README.md"))
+	config, err := exception.GetData()
+	if err != nil {
+		log.Println("Can't process exceptions.")
+	} else {
+		repoInfo := repo.GetRepoBaseInfo(r.baseDir)
+		if config.IsExceptioned(r.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+			return &tractusx.QualityResult{Passed: true}
+		}
+	}
+	_, err = os.Stat(path.Join(r.baseDir, "README.md"))
 
 	if err != nil {
 		return &tractusx.QualityResult{ErrorDescription: "Did not find a README.md file in current directory!"}
