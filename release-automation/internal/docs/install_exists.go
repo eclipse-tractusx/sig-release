@@ -22,8 +22,10 @@ package docs
 import (
 	"os"
 	"path"
-
+	"log"
 	"tractusx-release-automation/internal/tractusx"
+	"tractusx-release-automation/internal/repo"
+	"tractusx-release-automation/internal/exception"
 )
 
 type InstallExists struct {
@@ -48,7 +50,17 @@ func (i *InstallExists) ExternalDescription() string {
 }
 
 func (i *InstallExists) Test() *tractusx.QualityResult {
-	_, err := os.Stat(path.Join(i.baseDir, "INSTALL.md"))
+	config, err := exception.GetData()
+	if err != nil {
+		log.Println("Can't process exceptions.")
+	} else {
+		repoInfo := repo.GetRepoBaseInfo(i.baseDir)
+		if config.IsExceptioned(i.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+			return &tractusx.QualityResult{Passed: true}
+		}
+	}
+
+	_, err = os.Stat(path.Join(i.baseDir, "INSTALL.md"))
 
 	if err != nil {
 		return &tractusx.QualityResult{
