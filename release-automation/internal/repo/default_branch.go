@@ -24,7 +24,9 @@ import (
 	"fmt"
 
 	"github.com/google/go-github/v53/github"
+	"log"
 	"tractusx-release-automation/internal/tractusx"
+	"tractusx-release-automation/internal/exception"
 )
 
 type defaultBranch struct {
@@ -48,7 +50,16 @@ func (d defaultBranch) ExternalDescription() string {
 }
 
 func (d defaultBranch) Test() *tractusx.QualityResult {
-	repoInfo := getRepoInfo(GetRepoBaseInfo(d.baseDir))
+	config, err := exception.GetData()
+	r := GetRepoBaseInfo(d.baseDir)
+	if err != nil {
+		log.Println("Can't process exceptions.")
+	} else {
+		if config.IsExceptioned(d.Name(), "https://github.com/eclipse-tractusx/"+r.Reponame) {
+			return &tractusx.QualityResult{Passed: true}
+		}
+	}
+	repoInfo := getRepoInfo(r)
 
 	if *repoInfo.Fork {
 		// There is no need to enforce default branches on forks
