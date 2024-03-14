@@ -52,7 +52,7 @@ func GetData() (*Config, error) {
 
 func fetchYaml(url string) ([]byte, error) {
 	response, err := http.Get(url)
-	if err != nil {
+	if err != nil || response.StatusCode > 299 {
 		return nil, fmt.Errorf("unable to get %v", url)
 	}
 	defer response.Body.Close()
