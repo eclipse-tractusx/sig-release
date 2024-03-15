@@ -25,8 +25,8 @@ import (
 
 	"github.com/google/go-github/v53/github"
 	"log"
-	"tractusx-release-automation/internal/tractusx"
 	"tractusx-release-automation/internal/exception"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 type defaultBranch struct {

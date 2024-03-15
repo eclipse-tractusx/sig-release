@@ -20,10 +20,10 @@
 package repo
 
 import (
-	"strings"
 	"log"
-	"tractusx-release-automation/internal/tractusx"
+	"strings"
 	"tractusx-release-automation/internal/exception"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 type LeadingRepositoryDefined struct {

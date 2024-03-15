@@ -21,11 +21,11 @@ package container
 
 import (
 	"fmt"
-	"regexp"
 	"log"
-	"tractusx-release-automation/internal/tractusx"
-	"tractusx-release-automation/internal/repo"
+	"regexp"
 	"tractusx-release-automation/internal/exception"
+	"tractusx-release-automation/internal/repo"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 // validateUserRegex is used to match valid username/uid, group-name/gid

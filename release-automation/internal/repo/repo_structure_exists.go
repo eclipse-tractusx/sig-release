@@ -21,12 +21,12 @@ package repo
 
 import (
 	"fmt"
+	"log"
 	"path"
 	"strings"
-	"tractusx-release-automation/internal/filesystem"
-	"log"
-	"tractusx-release-automation/internal/tractusx"
 	"tractusx-release-automation/internal/exception"
+	"tractusx-release-automation/internal/filesystem"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 type RepoStructureExists struct {

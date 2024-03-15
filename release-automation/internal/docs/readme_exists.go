@@ -20,12 +20,12 @@
 package docs
 
 import (
+	"log"
 	"os"
 	"path"
-	"log"
-	"tractusx-release-automation/internal/tractusx"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/exception"
+	"tractusx-release-automation/internal/repo"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 type ReadmeExists struct {
