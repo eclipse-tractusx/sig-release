@@ -18,10 +18,28 @@
 # *******************************************************************************
 
 exceptions:
+  - trg: "TRG 1.01 - README.md"
+    repository:
+  - trg: "TRG 1.02 - INSTALL.md"
+    repository:
+  - trg: "TRG 1.03 - CHANGELOG.md"
+    repository:
+  - trg: "TRG 2.01 - Default Branch"
+    repository:
+  - trg: "TRG 2.03 - Repo structure"
+    repository:
+  - trg: "TRG 2.04 - Leading product repository"
+    repository:
   - trg: "TRG 4.02 - Base images"
     repository:
     - "https://github.com/eclipse-tractusx/policy-hub"
     - "https://github.com/eclipse-tractusx/portal-backend"
+  - trg: "TRG 4.03 - Non-root container"
+    repository:
+  - trg: "TRG 5.02 - Chart structure"
+    repository:
+  - trg: "TRG 5.04 - Resources Management"
+    repository:
   - trg: "TRG 5.09 - Helm test"
     repository:
     - "https://github.com/eclipse-tractusx/tractusx-edc"
