@@ -3,6 +3,8 @@ name: KIT Release Checks
 about: Use this template to track KIT release checks
 title: "[KIT NAME] Release Checks"
 labels: kit
+issue_type : "release_ac"
+milestone: "24.05"
 ---
 
 This issue tracks all relevant release checks for KITs.
@@ -15,13 +17,14 @@ If you are not owner of this issue, please provide the information as comment to
 If changes to your KIT are not yet live on [our website](https://eclipse-tractusx.github.io/developer), link the open PR introducing the changes for this release.
 
 If changes are already live, also point out the PRs witch included the changes for this version if possible.
-Please refer to TRG 8.03 for the classification of mandatory and optional artefacts.
 
 - [PR number](pr-url)
 
 # General
 
 - [ ] **CHANGELOG** available and maintained
+- [ ] [**Tractus-X Release Guidelines**](https://eclipse-tractusx.github.io/docs/release) fulfilled (relevant KIT TRGs tba)
+
 
 # Adoption View
 
