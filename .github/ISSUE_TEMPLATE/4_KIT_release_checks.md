@@ -13,6 +13,7 @@ This issue tracks all relevant release checks for KITs.
 
 Please provide information on what you want to be included in the Eclipse Tractus-X release.
 If you are not owner of this issue, please provide the information as comment to the issue.
+Make sure to assign this issue to expert(s) for their approval, as soon as you have finished preparation.
 
 If changes to your KIT are not yet live on [our website](https://eclipse-tractusx.github.io/developer), link the open PR introducing the changes for this release.
 
