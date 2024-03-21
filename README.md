@@ -73,6 +73,10 @@ When doing so, make sure you link to the overarching issue in your component iss
 The release participation can be initiated by creating issues for the acceptance criteria check from the Issue templates.
 Each release the templates for the acceptance criteria will be renewed. There are two paths for processing the acceptance criteria for an application team to participate in a release.
 
+### Guidance on how to use the issue Templates
+
+Select issue type "release_ac" to make the issue visible in the [Release Management Kanban Board](https://github.com/orgs/eclipse-tractusx/projects/26/views/17). Futhermore select the appropriate milestone to distingush the ticket from other releases.
+
 ### The Release Happy Path for the Acceptance Criteria
 
 The three process steps to get to the status you need to pass the Q-Gate are shown in the happy path process flow.
