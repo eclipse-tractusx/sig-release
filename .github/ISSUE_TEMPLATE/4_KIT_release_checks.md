@@ -3,11 +3,13 @@ name: KIT Release Checks
 about: Use this template to track KIT release checks
 title: "[KIT NAME] Release Checks"
 labels: kit
-issue_type : "release_ac"
 milestone: "24.05"
 ---
 
 This issue tracks all relevant release checks for KITs.
+
+> [!IMPORTANT]  
+> Select issue type "release_ac" to make the issue visible in the [Release Management Kanban Board](https://github.com/orgs/eclipse-tractusx/projects/26/views/17)
 
 ## Release Info
 
