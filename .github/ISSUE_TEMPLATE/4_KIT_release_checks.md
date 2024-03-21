@@ -3,19 +3,21 @@ name: KIT Release Checks
 about: Use this template to track KIT release checks
 title: "[KIT NAME] Release Checks"
 labels: kit
-milestone: "24.05"
 ---
 
-This issue tracks all relevant release checks for KITs.
+This issue tracks all relevant release checks for your KIT.
 
 > [!IMPORTANT]  
-> Select issue type "release_ac" to make the issue visible in the [Release Management Kanban Board](https://github.com/orgs/eclipse-tractusx/projects/26/views/17)
+> Follow the [guidance on how to use the templates](https://github.com/eclipse-tractusx/sig-release/blob/main/README.md#release-management-acceptance-criteria).
 
 ## Release Info
 
 Please provide information on what you want to be included in the Eclipse Tractus-X release.
 If you are not owner of this issue, please provide the information as comment to the issue.
 Make sure to assign this issue to expert(s) for their approval, as soon as you have finished preparation.
+Best practice: have a professional Peer review your prepared content before you submit for expert approvals.
+
+**Version to be included in Eclipse Tractus-X release:** *version placeholder*
 
 If changes to your KIT are not yet live on [our website](https://eclipse-tractusx.github.io/developer), link the open PR introducing the changes for this release.
 
