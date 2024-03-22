@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/eclipse-tractusx/sig-release/compare/v1.1.0...v1.1.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* replace equal comparison by contains function ([dbed67d](https://github.com/eclipse-tractusx/sig-release/commit/dbed67d7d88724f84961fb3d638aeabcd3cdb0b3))
+
 ## [1.1.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.0.0...v1.1.0) (2024-02-09)
 
 
