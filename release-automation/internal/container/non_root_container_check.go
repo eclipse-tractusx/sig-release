@@ -21,10 +21,7 @@ package container
 
 import (
 	"fmt"
-	"log"
 	"regexp"
-	"tractusx-release-automation/internal/exception"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -52,16 +49,11 @@ func (n NonRootContainer) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-03"
 }
 
+func (n NonRootContainer) BaseDir() string {
+	return n.baseDir
+}
+
 func (n NonRootContainer) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := repo.GetRepoBaseInfo(n.baseDir)
-		if config.IsExceptioned(n.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
 	checkPassed := true
 	var errorDescription string
 	dockerfiles := findDockerfilesAt(n.baseDir)
