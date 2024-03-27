@@ -20,11 +20,8 @@
 package docs
 
 import (
-	"log"
 	"os"
 	"path"
-	"tractusx-release-automation/internal/exception"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -49,18 +46,12 @@ func (i *InstallExists) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-2"
 }
 
-func (i *InstallExists) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := repo.GetRepoBaseInfo(i.baseDir)
-		if config.IsExceptioned(i.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
+func (i *InstallExists) BaseDir() string {
+	return i.baseDir
+}
 
-	_, err = os.Stat(path.Join(i.baseDir, "INSTALL.md"))
+func (i *InstallExists) Test() *tractusx.QualityResult {
+	_, err := os.Stat(path.Join(i.baseDir, "INSTALL.md"))
 
 	if err != nil {
 		return &tractusx.QualityResult{

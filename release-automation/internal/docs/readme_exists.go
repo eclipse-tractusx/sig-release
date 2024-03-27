@@ -20,11 +20,8 @@
 package docs
 
 import (
-	"log"
 	"os"
 	"path"
-	"tractusx-release-automation/internal/exception"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -52,17 +49,12 @@ func (r *ReadmeExists) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1"
 }
 
+func (r *ReadmeExists) BaseDir() string {
+	return r.baseDir
+}
+
 func (r *ReadmeExists) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := repo.GetRepoBaseInfo(r.baseDir)
-		if config.IsExceptioned(r.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
-	_, err = os.Stat(path.Join(r.baseDir, "README.md"))
+	_, err := os.Stat(path.Join(r.baseDir, "README.md"))
 
 	if err != nil {
 		return &tractusx.QualityResult{ErrorDescription: "Did not find a README.md file in current directory!"}

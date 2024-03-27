@@ -20,11 +20,8 @@
 package docs
 
 import (
-	"log"
 	"os"
 	"path"
-	"tractusx-release-automation/internal/exception"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -52,18 +49,12 @@ func (c ChangeLogExists) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-3"
 }
 
-func (c ChangeLogExists) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := repo.GetRepoBaseInfo(c.baseDir)
-		if config.IsExceptioned(c.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
+func (c ChangeLogExists) BaseDir() string {
+	return c.baseDir
+}
 
-	_, err = os.Stat(path.Join(c.baseDir, "CHANGELOG.md"))
+func (c ChangeLogExists) Test() *tractusx.QualityResult {
+	_, err := os.Stat(path.Join(c.baseDir, "CHANGELOG.md"))
 
 	if err != nil {
 		return &tractusx.QualityResult{ErrorDescription: "A CHANGELOG.md file has to be present, describing the changes on between your releases"}
