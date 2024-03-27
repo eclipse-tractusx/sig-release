@@ -27,8 +27,6 @@ import (
 	"path"
 	"regexp"
 	"strings"
-	"tractusx-release-automation/internal/exception"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -56,16 +54,11 @@ func (r *HelmWorkflowCheck) IsOptional() bool {
 	return false
 }
 
+func (r *HelmWorkflowCheck) BaseDir() string {
+	return r.baseDir
+}
+
 func (r *HelmWorkflowCheck) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := repo.GetRepoBaseInfo(r.baseDir)
-		if config.IsExceptioned(r.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
 	if fi, err := os.Stat(path.Join(r.baseDir, "charts")); err != nil || !fi.IsDir() {
 		return &tractusx.QualityResult{Passed: true}
 	}

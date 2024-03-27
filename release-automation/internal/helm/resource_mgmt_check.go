@@ -29,12 +29,9 @@ import (
 	"k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes/scheme"
-	"log"
 	"os"
 	"path"
 	"strings"
-	"tractusx-release-automation/internal/exception"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -62,16 +59,11 @@ func (r *ResourceMgmt) IsOptional() bool {
 	return false
 }
 
+func (r *ResourceMgmt) BaseDir() string {
+	return r.baseDir
+}
+
 func (r *ResourceMgmt) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := repo.GetRepoBaseInfo(r.baseDir)
-		if config.IsExceptioned(r.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
 	chartDir := path.Join(r.baseDir, "charts")
 	if fi, err := os.Stat(chartDir); err != nil || !fi.IsDir() {
 		return &tractusx.QualityResult{Passed: true}

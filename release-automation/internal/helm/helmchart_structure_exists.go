@@ -21,13 +21,10 @@ package helm
 
 import (
 	"errors"
-	"log"
 	"os"
 	"path"
 	"strings"
-	"tractusx-release-automation/internal/exception"
 	"tractusx-release-automation/internal/filesystem"
-	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -62,16 +59,11 @@ func (r *HelmStructureExists) IsOptional() bool {
 	return false
 }
 
+func (r *HelmStructureExists) BaseDir() string {
+	return r.baseDir
+}
+
 func (r *HelmStructureExists) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := repo.GetRepoBaseInfo(r.baseDir)
-		if config.IsExceptioned(r.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
 	chartDir := path.Join(r.baseDir, "charts")
 	helmCharts, err := os.ReadDir(chartDir)
 	if err != nil || len(helmCharts) == 0 {
