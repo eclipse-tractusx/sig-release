@@ -22,8 +22,8 @@ package testrunner
 import (
 	"errors"
 	"fmt"
-
 	"github.com/fatih/color"
+	"log"
 	"tractusx-release-automation/internal/exception"
 	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
@@ -47,7 +47,7 @@ func (runner *GuidelineTestRunner) Run() error {
 		config, err := exception.GetData()
 		exceptionPresent := false
 		if err != nil {
-			runner.printer.LogWarning("Can't process exceptions.")
+			log.Println("Can't process exceptions.")
 		} else {
 			repoInfo := repo.GetRepoBaseInfo(guideline.BaseDir())
 			if config.IsExceptioned(guideline.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
