@@ -18,6 +18,8 @@ Have your prepared content reviewed by a professional peer group before submitti
 Best practice: have a professional Peer review your prepared content before you submit for expert approvals.
 
 **Version to be included in Eclipse Tractus-X release:** *version placeholder*
+- KIT semantic version of change log.
+- Date of KIT publication must be aligned with overall release date.
 
 If changes to your KIT are not yet live on [our website](https://eclipse-tractusx.github.io/developer), link the open PR introducing the changes for this release.
 
