@@ -2,14 +2,16 @@
 name: Product Release Checks
 about: Use this template to track all release checks for your component
 title: "[Product] Release Checks"
-labels: compliance, documentation, "security analysis", "test results"
 ---
+
+> [!IMPORTANT]  
+> Follow the [guidance on how to use the templates](https://github.com/eclipse-tractusx/sig-release/blob/main/README.md#release-management-acceptance-criteria).
 
 ## Release Info
 
 Please provide information on what you want to be included in the Eclipse Tractus-X release.
 If you are not owner of this issue, please provide the information as comment to the issue.
-To receive review from committer or subject matter expert, assign the issue to the person.
+Make sure to assign this issue to expert(s) for their approval, as soon as you have finished preparation. Multiple assignees allowed; they will un-assign themselves once review completed.
 
 **Version to be included in Eclipse Tractus-X release**: *version placeholder*
 
@@ -17,35 +19,21 @@ To receive review from committer or subject matter expert, assign the issue to t
 
 # Compliance Verifications
 
-This issue tracks all compliance related checks, that need to be performed for a product release in Eclipse Tractus-X.
+This issue tracks all checks, that need to be performed for a product release in Eclipse Tractus-X. 
 
-- [ ] **Gaia-X** compliance confirmed
-- [ ] **GDPR** compliance confirmed (personal data, data protection + privacy DPP)
 - [ ] **Interoperability** checks performed
 - [ ] **Data Sovereignty** checks performed
-- [ ] Compliant with relevant _published_ **CX Standards** (see the [Catena-X standard library](https://catena-x.net/en/standard-library))
 
-# Documentation
+# General Checks
 
-- [ ] **Arc24** documentation up-to-date
-- [ ] **Administrators Guide** up-to-date
-- [ ] **End-User manual** up-to-date
-- [ ] **Interface documentation** up-to-date
+- [ ] [**Tractus-X Release Guidelines**](https://eclipse-tractusx.github.io/docs/release)(TRGs) fulfilled
+
+> [!NOTE]
+> Note: most criteria for documentation and security are now covered in TRGs
 
 # Security Checks
 
 - [ ] **Thread Modelling Analysis** passed
-- [ ] **Static Application Security Testing** (SAST) scans passed
-- [ ] **Dynamic Application Security Testing** (DAST) tests passed
-- [ ] **Secret Scans** passed
-- [ ] **Software Composition Analysis** (SCA) passed
-- [ ] **Container Scans** passed
-- [ ] **Infrastructure as Code** (IaC) scans passed
-
-# General Checks
-
-- [ ] [**Tractus-X Release Guidelines**](https://eclipse-tractusx.github.io/docs/release) fulfilled
-- [ ] Compliant with the **Style Guide**
 
 # Test Results
 
@@ -55,4 +43,3 @@ This issue tracks all compliance related checks, that need to be performed for a
 # Helpful Links
 
 - [Eclipse Tractus-X openAPI specs on SwaggerHub](https://app.swaggerhub.com/search?owner=eclipse-tractusx-bot)
-- [Catena-X standard library](https://catena-x.net/en/standard-library)
