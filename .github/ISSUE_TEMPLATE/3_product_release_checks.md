@@ -2,7 +2,6 @@
 name: Product Release Checks
 about: Use this template to track all release checks for your component
 title: "[Product] Release Checks"
-labels: foss
 ---
 
 > [!IMPORTANT]  
