@@ -30,7 +30,7 @@ If changes are already live, also point out the PRs witch included the changes f
 # General
 
 - [ ] **CHANGELOG** available and maintained
-- [ ] [**Tractus-X Release Guidelines**](https://eclipse-tractusx.github.io/docs/release) fulfilled (relevant KIT TRGs tba)
+- [ ] [**Tractus-X Release Guidelines**](https://eclipse-tractusx.github.io/docs/release) fulfilled
 
 
 # Adoption View
