@@ -27,7 +27,7 @@ import (
 	"strings"
 )
 
-const ExceptionsData = "https://raw.githubusercontent.com/eclipse-tractusx/sig-release/main/release-automation/internal/exception/exceptions.yaml"
+const ExceptionsData = "https://raw.githubusercontent.com/eclipse-tractusx/sig-release/main/release-automation/exceptions.yaml"
 
 type Exception struct {
 	Trg          string   `yaml:"trg"`
