@@ -24,8 +24,6 @@ import (
 	"fmt"
 
 	"github.com/google/go-github/v53/github"
-	"log"
-	"tractusx-release-automation/internal/exception"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -49,16 +47,12 @@ func (d defaultBranch) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-1"
 }
 
+func (d *defaultBranch) BaseDir() string {
+	return d.baseDir
+}
+
 func (d defaultBranch) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
 	r := GetRepoBaseInfo(d.baseDir)
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		if config.IsExceptioned(d.Name(), "https://github.com/eclipse-tractusx/"+r.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
 	repoInfo := getRepoInfo(r)
 
 	if *repoInfo.Fork {

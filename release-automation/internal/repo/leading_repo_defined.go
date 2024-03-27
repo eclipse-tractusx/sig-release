@@ -20,9 +20,7 @@
 package repo
 
 import (
-	"log"
 	"strings"
-	"tractusx-release-automation/internal/exception"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -50,16 +48,11 @@ func (l *LeadingRepositoryDefined) IsOptional() bool {
 	return false
 }
 
+func (l *LeadingRepositoryDefined) BaseDir() string {
+	return l.baseDir
+}
+
 func (l *LeadingRepositoryDefined) Test() *tractusx.QualityResult {
-	config, err := exception.GetData()
-	if err != nil {
-		log.Println("Can't process exceptions.")
-	} else {
-		repoInfo := GetRepoBaseInfo(l.baseDir)
-		if config.IsExceptioned(l.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-			return &tractusx.QualityResult{Passed: true}
-		}
-	}
 	metadata, err := tractusx.MetadataFromLocalFile(l.baseDir)
 	if err != nil {
 		return &tractusx.QualityResult{ErrorDescription: "Failed! The leadingRepository property must be defined in .tractusx metadata file. Could not load metadata"}
