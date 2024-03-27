@@ -16,6 +16,7 @@ Please provide information on what you want to be included in the Eclipse Tractu
 If you are not owner of this issue, please provide the information as comment to the issue.
 Have your prepared content reviewed by a professional peer group before submitting it for committer approval.
 Best practice: have a professional Peer review your prepared content before you submit for expert approvals.
+Please link the open or merged PR that includes the changes.
 
 **Version to be included in Eclipse Tractus-X release:** *version placeholder*
 - KIT semantic version of change log.
