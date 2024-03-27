@@ -5,23 +5,34 @@ title: "[KIT NAME] Release Checks"
 labels: kit
 ---
 
-This issue tracks all relevant release checks for KITs.
+This issue tracks all relevant release checks for your KIT.
+
+> [!IMPORTANT]  
+> Follow the [guidance on how to use the templates](https://github.com/eclipse-tractusx/sig-release/blob/main/README.md#release-management-acceptance-criteria).
 
 ## Release Info
 
 Please provide information on what you want to be included in the Eclipse Tractus-X release.
 If you are not owner of this issue, please provide the information as comment to the issue.
+Have your prepared content reviewed by a professional peer group before submitting it for committer approval.
+Best practice: have a professional Peer review your prepared content before you submit for expert approvals.
+Please link the open or merged PR that includes the changes.
+
+**Version to be included in Eclipse Tractus-X release:** *version placeholder*
+- KIT semantic version of change log.
+- Date of KIT publication must be aligned with overall release date.
 
 If changes to your KIT are not yet live on [our website](https://eclipse-tractusx.github.io/developer), link the open PR introducing the changes for this release.
 
 If changes are already live, also point out the PRs witch included the changes for this version if possible.
-Please refer to TRG 8.03 for the classification of mandatory and optional artefacts.
 
 - [PR number](pr-url)
 
 # General
 
 - [ ] **CHANGELOG** available and maintained
+- [ ] [**Tractus-X Release Guidelines**](https://eclipse-tractusx.github.io/docs/release) fulfilled
+
 
 # Adoption View
 
