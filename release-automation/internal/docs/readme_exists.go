@@ -22,7 +22,6 @@ package docs
 import (
 	"os"
 	"path"
-
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -48,6 +47,10 @@ func (r *ReadmeExists) Description() string {
 
 func (r *ReadmeExists) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-1"
+}
+
+func (r *ReadmeExists) BaseDir() string {
+	return r.baseDir
 }
 
 func (r *ReadmeExists) Test() *tractusx.QualityResult {

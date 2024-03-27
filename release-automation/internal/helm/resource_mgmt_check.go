@@ -22,10 +22,6 @@ package helm
 import (
 	"errors"
 	"fmt"
-	"os"
-	"path"
-	"strings"
-
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"helm.sh/helm/v3/pkg/chart/loader"
@@ -33,6 +29,9 @@ import (
 	"k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes/scheme"
+	"os"
+	"path"
+	"strings"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -58,6 +57,10 @@ func (r *ResourceMgmt) ExternalDescription() string {
 
 func (r *ResourceMgmt) IsOptional() bool {
 	return false
+}
+
+func (r *ResourceMgmt) BaseDir() string {
+	return r.baseDir
 }
 
 func (r *ResourceMgmt) Test() *tractusx.QualityResult {
@@ -146,7 +149,7 @@ func renderChart(chartPath string) (map[string]string, error) {
 		return nil, errors.New(fmt.Sprintf("\n\tCan't read %s helm chart.", chartPath))
 	}
 
-	subChartsPath := path.Join(chartPath,"charts")
+	subChartsPath := path.Join(chartPath, "charts")
 	if fi, err := os.Stat(subChartsPath); err == nil && fi.IsDir() {
 		subCharts, err := os.ReadDir(subChartsPath)
 		if err == nil && len(subCharts) > 0 {
@@ -156,7 +159,7 @@ func renderChart(chartPath string) (map[string]string, error) {
 					continue
 				}
 
-				loadedSubChart,err := loader.Load(path.Join(subChartsPath, subChart.Name()))
+				loadedSubChart, err := loader.Load(path.Join(subChartsPath, subChart.Name()))
 				if err != nil {
 					return nil, errors.New(fmt.Sprintf("\n\tCan't read %s helm subchart.", subChartPath))
 				}

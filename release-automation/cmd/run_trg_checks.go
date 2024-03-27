@@ -47,16 +47,16 @@ var checkLocalCmd = &cobra.Command{
 		}
 
 		var releaseGuidelines = []tractusx.QualityGuideline{
+			docs.NewReadmeExists(basedir),
+			docs.NewInstallExists(basedir),
+			docs.NewChangelogExists(basedir),
+			repo.NewDefaultBranch(basedir),
+			repo.NewRepoStructureExists(basedir),
+			repo.NewLeadingRepositoryDefined(basedir),
 			container.NewAllowedBaseImage(basedir),
 			container.NewNonRootContainer(basedir),
-			docs.NewChangelogExists(basedir),
-			docs.NewInstallExists(basedir),
-			docs.NewReadmeExists(basedir),
 			helm.NewHelmStructureExists(basedir),
 			helm.NewResourceMgmt(basedir),
-			repo.NewDefaultBranch(basedir),
-			repo.NewLeadingRepositoryDefined(basedir),
-			repo.NewRepoStructureExists(basedir),
 			helm.NewHelmWorkflowCheck(basedir),
 		}
 

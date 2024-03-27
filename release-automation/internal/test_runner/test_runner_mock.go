@@ -29,6 +29,7 @@ type Guideline struct {
 	name                string
 	description         string
 	externalDescription string
+	baseDir             string
 	isOptional          bool
 }
 
@@ -50,6 +51,10 @@ func (f FailingQualityGuideline) Description() string {
 
 func (f FailingQualityGuideline) ExternalDescription() string {
 	return f.externalDescription
+}
+
+func (p FailingQualityGuideline) BaseDir() string {
+	return p.baseDir
 }
 
 func (f FailingQualityGuideline) Test() *tractusx.QualityResult {
@@ -74,6 +79,10 @@ func (p PassingQualityGuideline) Description() string {
 
 func (p PassingQualityGuideline) ExternalDescription() string {
 	return p.externalDescription
+}
+
+func (p PassingQualityGuideline) BaseDir() string {
+	return p.baseDir
 }
 
 func (p PassingQualityGuideline) Test() *tractusx.QualityResult {

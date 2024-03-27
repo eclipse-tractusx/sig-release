@@ -21,7 +21,6 @@ package repo
 
 import (
 	"strings"
-
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -47,6 +46,10 @@ func (l *LeadingRepositoryDefined) ExternalDescription() string {
 
 func (l *LeadingRepositoryDefined) IsOptional() bool {
 	return false
+}
+
+func (l *LeadingRepositoryDefined) BaseDir() string {
+	return l.baseDir
 }
 
 func (l *LeadingRepositoryDefined) Test() *tractusx.QualityResult {

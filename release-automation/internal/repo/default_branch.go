@@ -47,8 +47,13 @@ func (d defaultBranch) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-1"
 }
 
+func (d *defaultBranch) BaseDir() string {
+	return d.baseDir
+}
+
 func (d defaultBranch) Test() *tractusx.QualityResult {
-	repoInfo := getRepoInfo(GetRepoBaseInfo(d.baseDir))
+	r := GetRepoBaseInfo(d.baseDir)
+	repoInfo := getRepoInfo(r)
 
 	if *repoInfo.Fork {
 		// There is no need to enforce default branches on forks

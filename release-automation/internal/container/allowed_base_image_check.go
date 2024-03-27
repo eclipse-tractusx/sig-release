@@ -20,9 +20,8 @@
 package container
 
 import (
-	"fmt"
+	"log"
 	"strings"
-
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -54,6 +53,10 @@ func (a *AllowedBaseImage) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-02"
 }
 
+func (a *AllowedBaseImage) BaseDir() string {
+	return a.baseDir
+}
+
 func (a *AllowedBaseImage) Test() *tractusx.QualityResult {
 	foundDockerFiles := findDockerfilesAt(a.baseDir)
 	dockerfilesToSkip := getDockerfilePathsToIgnore(a.baseDir)
@@ -62,13 +65,13 @@ func (a *AllowedBaseImage) Test() *tractusx.QualityResult {
 	var deniedBaseImages []string
 	for _, dockerfilePath := range foundDockerFiles {
 		if containsString(dockerfilesToSkip, dockerfilePath) {
-			fmt.Printf("Dockerfile at path %s configured to skip", dockerfilePath)
+			log.Printf("Dockerfile at path %s configured to skip", dockerfilePath)
 			continue
 		}
 
 		file, err := dockerfileFromPath(dockerfilePath)
 		if err != nil {
-			fmt.Printf("Could not read dockerfile from Path %s\n", dockerfilePath)
+			log.Printf("Could not read dockerfile from Path %s\n", dockerfilePath)
 			continue
 		}
 		if !isAllowedBaseImage(strings.Split(file.baseImage(), ":")[0]) {

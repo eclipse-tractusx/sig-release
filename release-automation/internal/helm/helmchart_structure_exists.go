@@ -24,7 +24,6 @@ import (
 	"os"
 	"path"
 	"strings"
-
 	"tractusx-release-automation/internal/filesystem"
 	"tractusx-release-automation/internal/tractusx"
 )
@@ -58,6 +57,10 @@ func (r *HelmStructureExists) ExternalDescription() string {
 
 func (r *HelmStructureExists) IsOptional() bool {
 	return false
+}
+
+func (r *HelmStructureExists) BaseDir() string {
+	return r.baseDir
 }
 
 func (r *HelmStructureExists) Test() *tractusx.QualityResult {
