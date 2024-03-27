@@ -14,7 +14,7 @@ This issue tracks all relevant release checks for your KIT.
 
 Please provide information on what you want to be included in the Eclipse Tractus-X release.
 If you are not owner of this issue, please provide the information as comment to the issue.
-Make sure to assign this issue to expert(s) for their approval, as soon as you have finished preparation.
+Have your prepared content reviewed by a professional peer group before submitting it for committer approval.
 Best practice: have a professional Peer review your prepared content before you submit for expert approvals.
 
 **Version to be included in Eclipse Tractus-X release:** *version placeholder*
