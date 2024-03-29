@@ -50,6 +50,7 @@ go/golang/github.com%2Fgolang/groupcache/v0.0.0-20210331224755-41bb18bfe9da, Apa
 go/golang/github.com%2Fgolang/protobuf/v1.5.0, BSD-3-Clause, approved, #5706
 go/golang/github.com%2Fgolang/protobuf/v1.5.2, BSD-3-Clause, approved, #5706
 go/golang/github.com%2Fgolang/protobuf/v1.5.3, BSD-3-Clause, approved, #5706
+go/golang/github.com%2Fgolang/protobuf/v1.5.4, BSD-3-Clause, approved, #5706
 go/golang/github.com%2Fgoogle%2Fgo-github/v53/v53.2.0, BSD-3-Clause, approved, #9796
 go/golang/github.com%2Fgoogle/gnostic-models/v0.6.9-0.20230804172637-c7be7c783f49, Apache-2.0, approved, #10742
 go/golang/github.com%2Fgoogle/go-cmp/v0.5.2, BSD-3-Clause, approved, #5689
@@ -223,6 +224,7 @@ go/golang/google.golang.org/appengine/v1.6.8, Apache-2.0 AND BSD-3-Clause, appro
 go/golang/google.golang.org/protobuf/v1.26.0, BSD-3-Clause, approved, #5710
 go/golang/google.golang.org/protobuf/v1.26.0-rc.1, BSD-3-Clause, approved, #5710
 go/golang/google.golang.org/protobuf/v1.31.0, BSD-3-Clause, approved, #9281
+go/golang/google.golang.org/protobuf/v1.33.0, BSD-3-Clause, approved, #14189
 go/golang/gopkg.in/check.v1/v0.0.0-20161208181325-20d25e280405, BSD-3-Clause AND BSD-2-Clause, approved, #6054
 go/golang/gopkg.in/check.v1/v1.0.0-20190902080502-41f04d3bba15, BSD-3-Clause AND BSD-2-Clause, approved, #6113
 go/golang/gopkg.in/check.v1/v1.0.0-20201130134442-10cb98267c6c, BSD-3-Clause AND BSD-2-Clause, approved, #6113
@@ -236,9 +238,9 @@ go/golang/gopkg.in/yaml.v3/v3.0.0-20200313102051-9f266ea9e77c, Apache-2.0, appro
 go/golang/gopkg.in/yaml.v3/v3.0.1, Apache-2.0, approved, clearlydefined
 go/golang/helm.sh%2Fhelm/v3/v3.14.3, Apache-2.0 AND (Apache-2.0 AND BSD-3-Clause) AND BSD-3-Clause AND (Apache-2.0 AND MIT), approved, #12931
 go/golang/k8s.io%2Fklog/v2/v2.110.1, Apache-2.0, approved, #12928
-go/golang/k8s.io/api/v0.29.2, Apache-2.0, approved, clearlydefined
+go/golang/k8s.io/api/v0.29.3, Apache-2.0, approved, clearlydefined
 go/golang/k8s.io/apiextensions-apiserver/v0.29.0, Apache-2.0, approved, clearlydefined
-go/golang/k8s.io/apimachinery/v0.29.2, Apache-2.0 AND BSD-3-Clause, approved, #12934
+go/golang/k8s.io/apimachinery/v0.29.3, Apache-2.0 AND BSD-3-Clause, approved, #12934
 go/golang/k8s.io/client-go/v0.29.2, Apache-2.0 AND BSD-3-Clause, approved, #12933
 go/golang/k8s.io/kube-openapi/v0.0.0-20231010175941-2dd684a91f00, Apache-2.0 AND CC-BY-4.0, approved, #6065
 go/golang/k8s.io/utils/v0.0.0-20230726121419-3b25d923346b, Apache-2.0 AND BSD-3-Clause, approved, #6095
