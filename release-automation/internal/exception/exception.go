@@ -28,6 +28,7 @@ import (
 )
 
 const ExceptionsData = "https://raw.githubusercontent.com/eclipse-tractusx/sig-release/main/release-automation/exceptions.yaml"
+
 type Exception struct {
 	Trg          string   `yaml:"trg"`
 	Repositories []string `yaml:"repository"`
@@ -48,11 +49,7 @@ func GetData() (ExceptionsMap, error) {
 	if err != nil {
 		return nil, fmt.Errorf("unable to parse exceptions")
 	}
-	var exMap = make(map[string][]string)
-	for _, e := range config.Exceptions {
-		exMap[e.Trg] = e.Repositories
-	}
-	return exMap, nil
+	return exceptionsMapFromConfig(config), nil
 }
 
 func fetchYaml(url string) ([]byte, error) {
@@ -86,4 +83,12 @@ func (m ExceptionsMap) IsExceptioned(trg string, repository string) bool {
 		}
 	}
 	return false
+}
+
+func exceptionsMapFromConfig(c *config) ExceptionsMap {
+	var m = make(map[string][]string)
+	for _, e := range c.Exceptions {
+		m[e.Trg] = e.Repositories
+	}
+	return m
 }

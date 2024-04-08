@@ -43,7 +43,8 @@ func TestShouldPassIfParsesExceptionDataFile(t *testing.T) {
 func TestShouldPassIfExceptionExistForSpecificRepository(t *testing.T) {
 	data, _ := getExceptionsFromFile("test/exceptions_test.yaml")
 	config, _ := parseData(data)
-	if !config.IsExceptioned("1.23", "testing-repo") {
+	m := exceptionsMapFromConfig(config)
+	if !m.IsExceptioned("1.23", "testing-repo") {
 		t.Errorf("Test should pass, test data contains the exception.")
 	}
 }
@@ -51,7 +52,8 @@ func TestShouldPassIfExceptionExistForSpecificRepository(t *testing.T) {
 func TestShouldFailIfExceptionExistForSpecificRepository(t *testing.T) {
 	data, _ := getExceptionsFromFile("test/exceptions_test.yaml")
 	config, _ := parseData(data)
-	if config.IsExceptioned("1.23", "no-exception-repo") {
+	m := exceptionsMapFromConfig(config)
+	if m.IsExceptioned("1.23", "no-exception-repo") {
 		t.Errorf("Test should fail, there is no exception for testing repo.")
 	}
 }
