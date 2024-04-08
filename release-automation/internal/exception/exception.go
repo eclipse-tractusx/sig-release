@@ -28,17 +28,18 @@ import (
 )
 
 const ExceptionsData = "https://raw.githubusercontent.com/eclipse-tractusx/sig-release/main/release-automation/exceptions.yaml"
-
 type Exception struct {
 	Trg          string   `yaml:"trg"`
 	Repositories []string `yaml:"repository"`
 }
 
-type Config struct {
+type config struct {
 	Exceptions []Exception `yaml:"exceptions"`
 }
 
-func GetData() (*Config, error) {
+type ExceptionsMap map[string][]string
+
+func GetData() (ExceptionsMap, error) {
 	data, err := fetchYaml(ExceptionsData)
 	if err != nil {
 		return nil, fmt.Errorf("unable to fetch YAML data from url: %v", ExceptionsData)
@@ -47,7 +48,11 @@ func GetData() (*Config, error) {
 	if err != nil {
 		return nil, fmt.Errorf("unable to parse exceptions")
 	}
-	return config, nil
+	var exMap = make(map[string][]string)
+	for _, e := range config.Exceptions {
+		exMap[e.Trg] = e.Repositories
+	}
+	return exMap, nil
 }
 
 func fetchYaml(url string) ([]byte, error) {
@@ -63,8 +68,8 @@ func fetchYaml(url string) ([]byte, error) {
 	return data, nil
 }
 
-func parseData(data []byte) (*Config, error) {
-	var c Config
+func parseData(data []byte) (*config, error) {
+	var c config
 	err := yaml.Unmarshal(data, &c)
 	if err != nil {
 		return nil, fmt.Errorf("unable to parse YAML data")
@@ -73,14 +78,11 @@ func parseData(data []byte) (*Config, error) {
 }
 
 // Checks if repository has exception for specific TRG
-func (c *Config) IsExceptioned(trg string, repository string) bool {
-	for _, e := range c.Exceptions {
-		if e.Trg == trg {
-			for _, r := range e.Repositories {
-				if strings.EqualFold(r, repository) {
-					return true
-				}
-			}
+func (m ExceptionsMap) IsExceptioned(trg string, repository string) bool {
+	repos := m[trg]
+	for _, r := range repos {
+		if strings.EqualFold(r, repository) {
+			return true
 		}
 	}
 	return false
