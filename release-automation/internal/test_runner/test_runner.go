@@ -44,13 +44,13 @@ func (runner *GuidelineTestRunner) Run() error {
 	for i, guideline := range runner.guidelines {
 		runner.printer.Print(fmt.Sprintf("\n%v. Testing Quality Guideline: %s", i+1, guideline.Name()))
 
-		config, err := exception.GetData()
+		m, err := exception.GetData()
 		exceptionPresent := false
 		if err != nil {
 			log.Println("Can't process exceptions.")
 		} else {
 			repoInfo := repo.GetRepoBaseInfo(guideline.BaseDir())
-			if config.IsExceptioned(guideline.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+			if m.IsExceptioned(guideline.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
 				result = &tractusx.QualityResult{Passed: true}
 				exceptionPresent = true
 			}

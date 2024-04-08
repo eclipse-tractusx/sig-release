@@ -120,13 +120,13 @@ func runQualityChecks(repository Repository, dir string) CheckedRepository {
 	}
 
 	for _, check := range initializeChecksForDirectory(dir) {
-		config, err := exception.GetData()
+		m, err := exception.GetData()
 		exceptionPresent := false
 		if err != nil {
 			log.Println("Can't process exceptions.")
 		} else {
-			repoInfo := repo.GetRepoBaseInfo(check.BaseDir())
-			if config.IsExceptioned(check.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+			repoInfo := repo.GetRepoBaseInfo(dir)
+			if m.IsExceptioned(check.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
 				testResult = &tractusx.QualityResult{Passed: true}
 				exceptionPresent = true
 			}
