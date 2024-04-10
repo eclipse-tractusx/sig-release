@@ -223,7 +223,6 @@ go/golang/golang.org%2Fx/xerrors/v0.0.0-20200804184101-5ec99f83aff1, BSD-3-Claus
 go/golang/google.golang.org/appengine/v1.6.8, Apache-2.0 AND BSD-3-Clause, approved, #5810
 go/golang/google.golang.org/protobuf/v1.26.0, BSD-3-Clause, approved, #5710
 go/golang/google.golang.org/protobuf/v1.26.0-rc.1, BSD-3-Clause, approved, #5710
-go/golang/google.golang.org/protobuf/v1.31.0, BSD-3-Clause, approved, #9281
 go/golang/google.golang.org/protobuf/v1.33.0, BSD-3-Clause, approved, #14189
 go/golang/gopkg.in/check.v1/v0.0.0-20161208181325-20d25e280405, BSD-3-Clause AND BSD-2-Clause, approved, #6054
 go/golang/gopkg.in/check.v1/v1.0.0-20190902080502-41f04d3bba15, BSD-3-Clause AND BSD-2-Clause, approved, #6113
