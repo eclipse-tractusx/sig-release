@@ -162,7 +162,7 @@ go/golang/golang.org%2Fx/net/v0.6.0, BSD-3-Clause AND (BSD-2-Clause AND BSD-3-Cl
 go/golang/golang.org%2Fx/net/v0.7.0, BSD-3-Clause AND (BSD-2-Clause AND BSD-3-Clause), approved, #11429
 go/golang/golang.org%2Fx/net/v0.8.0, BSD-3-Clause AND (BSD-2-Clause AND BSD-3-Clause), approved, #8203
 go/golang/golang.org%2Fx/net/v0.9.0, BSD-3-Clause AND (BSD-2-Clause AND BSD-3-Clause), approved, #11430
-go/golang/golang.org%2Fx/oauth2/v0.18.0, BSD-3-Clause, approved, clearlydefined
+go/golang/golang.org%2Fx/oauth2/v0.19.0, BSD-3-Clause, approved, clearlydefined
 go/golang/golang.org%2Fx/sync/v0.0.0-20190423024810-112230192c58, BSD-3-Clause, approved, #5719
 go/golang/golang.org%2Fx/sync/v0.0.0-20190911185100-cd5d95a43a6e, BSD-3-Clause, approved, #5719
 go/golang/golang.org%2Fx/sync/v0.0.0-20201020160332-67f06af15bc9, BSD-3-Clause, approved, #5719
