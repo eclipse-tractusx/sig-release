@@ -22,8 +22,8 @@ package repo
 import (
 	"fmt"
 	"os"
-	"strings"
 	"path"
+	"strings"
 
 	"github.com/go-ini/ini"
 	"tractusx-release-automation/internal/tractusx"

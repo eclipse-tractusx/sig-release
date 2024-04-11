@@ -206,4 +206,3 @@ func saveMetadataConfigToSkip(dockerfilePath string, dir string) {
 	bytes, _ := yaml.Marshal(&metadata)
 	_ = os.WriteFile(path.Join(dir, ".tractusx"), bytes, 0644)
 }
-

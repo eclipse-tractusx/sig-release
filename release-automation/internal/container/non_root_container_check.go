@@ -22,7 +22,6 @@ package container
 import (
 	"fmt"
 	"regexp"
-
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -48,6 +47,10 @@ func (n NonRootContainer) Description() string {
 
 func (n NonRootContainer) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-03"
+}
+
+func (n NonRootContainer) BaseDir() string {
+	return n.baseDir
 }
 
 func (n NonRootContainer) Test() *tractusx.QualityResult {

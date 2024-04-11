@@ -54,6 +54,10 @@ func (r *HelmWorkflowCheck) IsOptional() bool {
 	return false
 }
 
+func (r *HelmWorkflowCheck) BaseDir() string {
+	return r.baseDir
+}
+
 func (r *HelmWorkflowCheck) Test() *tractusx.QualityResult {
 	if fi, err := os.Stat(path.Join(r.baseDir, "charts")); err != nil || !fi.IsDir() {
 		return &tractusx.QualityResult{Passed: true}
@@ -93,15 +97,15 @@ func isValidHelmTestWorkflow(workflow GitHubWorkflow) bool {
 	)
 
 	switch on := workflow.On.(type) {
-		case []interface{}:
-			for _, t := range on {
-				if strings.EqualFold(t.(string), "workflow_dispatch") {
-					hasDispatchTrigger = true
-				}
-			}
-		case map[string]interface{}:
-			if _, exist := on["workflow_dispatch"]; exist {
+	case []interface{}:
+		for _, t := range on {
+			if strings.EqualFold(t.(string), "workflow_dispatch") {
 				hasDispatchTrigger = true
+			}
+		}
+	case map[string]interface{}:
+		if _, exist := on["workflow_dispatch"]; exist {
+			hasDispatchTrigger = true
 		}
 	}
 

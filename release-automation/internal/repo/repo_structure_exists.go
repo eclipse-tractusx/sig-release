@@ -23,7 +23,6 @@ import (
 	"fmt"
 	"path"
 	"strings"
-
 	"tractusx-release-automation/internal/filesystem"
 	"tractusx-release-automation/internal/tractusx"
 )
@@ -50,6 +49,10 @@ func (c RepoStructureExists) Description() string {
 
 func (c RepoStructureExists) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-3"
+}
+
+func (c RepoStructureExists) BaseDir() string {
+	return c.baseDir
 }
 
 func (c RepoStructureExists) Test() *tractusx.QualityResult {

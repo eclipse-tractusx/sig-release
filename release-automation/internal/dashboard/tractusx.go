@@ -31,6 +31,7 @@ import (
 	"golang.org/x/oauth2"
 	"tractusx-release-automation/internal/container"
 	"tractusx-release-automation/internal/docs"
+	"tractusx-release-automation/internal/exception"
 	"tractusx-release-automation/internal/helm"
 	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
@@ -109,16 +110,31 @@ func repoClone(repo Repository) string {
 	return dir
 }
 
-func runQualityChecks(repo Repository, dir string) CheckedRepository {
-	log.Printf("Starting checks for repo: %s", repo.Name)
-	checkedRepo := CheckedRepository{RepoUrl: repo.URL, RepoName: repo.Name, PassedAllGuidelines: true}
+func runQualityChecks(repository Repository, dir string) CheckedRepository {
+	var testResult *tractusx.QualityResult
+	log.Printf("Starting checks for repo: %s", repository.Name)
+	checkedRepo := CheckedRepository{RepoUrl: repository.URL, RepoName: repository.Name, PassedAllGuidelines: true}
 
 	if _, err := os.Stat(dir); dir == "" || err != nil {
 		return CheckedRepository{}
 	}
 
 	for _, check := range initializeChecksForDirectory(dir) {
-		testResult := check.Test()
+		m, err := exception.GetData()
+		exceptionPresent := false
+		if err != nil {
+			log.Println("Can't process exceptions.")
+		} else {
+			repoInfo := repo.GetRepoBaseInfo(dir)
+			if m.IsExceptioned(check.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+				testResult = &tractusx.QualityResult{Passed: true}
+				exceptionPresent = true
+			}
+		}
+		if !exceptionPresent {
+			testResult = check.Test()
+		}
+
 		checkedRepo.PassedAllGuidelines = checkedRepo.PassedAllGuidelines && (testResult.Passed || check.IsOptional())
 
 		guidelineCheck := GuidelineCheck{
