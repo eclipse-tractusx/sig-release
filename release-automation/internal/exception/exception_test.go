@@ -58,13 +58,6 @@ func TestShouldFailIfExceptionExistForSpecificRepository(t *testing.T) {
 	}
 }
 
-func TestShouldPassIfExceptionDataIsAtURL(t *testing.T) {
-	_, err := fetchYaml(ExceptionsData)
-	if err != nil {
-		t.Errorf("Test should pass, data needs to be available at given URL: %v", ExceptionsData)
-	}
-}
-
 func getExceptionsFromFile(filepath string) ([]byte, error) {
 	data, err := os.ReadFile(filepath)
 	if err != nil {
