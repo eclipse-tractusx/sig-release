@@ -33,7 +33,7 @@ import (
 const mailTemplate = "templates/mail-psql.html.tmpl"
 const artifactName = "psql_release"
 
-func GetLatestRel() string {
+func getLatestRel() string {
 	var release string
 	website := "https://bitnami.com/stack/postgresql"
 
@@ -56,7 +56,7 @@ func GetLatestRel() string {
 	return release
 }
 
-func GetPrevRelFromArtifact() string {
+func getRelFromArtifact() string {
 	data, err := os.ReadFile(artifactName)
 
 	if err != nil {
@@ -67,31 +67,42 @@ func GetPrevRelFromArtifact() string {
 	return release
 }
 
-func SaveLatestRel(release string) {
-	err := os.WriteFile(artifactName, []byte(release), 0644)
-
-	if err != nil {
-		log.Fatalln(err)
+func IsNewRelease() bool {
+	latestRelease := getLatestRel()
+	prevRelease := getRelFromArtifact()
+	if latestRelease != prevRelease {
+		log.Printf("New release is out: %v\n", latestRelease)
+		if err := os.WriteFile(artifactName, []byte(latestRelease), 0644); err != nil {
+			log.Fatalln(err)
+			return false
+		}
+		return true
 	}
+	log.Println("No new release :(")
+	return false
 }
 
-func Notify(newRelease string, alignedRelease string) {
+func buildContent(mailTemplate string) ([]byte, error) {
 	var buff bytes.Buffer
-	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
-	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: PostgreSQL New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
-
 	t, err := template.ParseFiles(mailTemplate)
+	if err != nil {
+		return nil, err
+	}
 	t.Execute(&buff, struct {
 		NewPSQLRelease     string
 		AlignedPSQLRelease string
 	}{
-		NewPSQLRelease:     newRelease,
-		AlignedPSQLRelease: alignedRelease,
+		NewPSQLRelease:     getRelFromArtifact(),
+		AlignedPSQLRelease: os.Getenv("CURRENT_ALIGNED_PSQL_VER"),
 	})
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
-	}
+	return buff.Bytes(), nil
+}
 
-	mail.SendMail(buff.Bytes())
+func Notify() error {
+	body, err := buildContent(mailTemplate)
+	if err != nil {
+		return err
+	}
+	subject := fmt.Sprintf("Action Required: PostgreSQL New Release (%s)", getRelFromArtifact())
+	return mail.SendMail(subject, body)
 }
