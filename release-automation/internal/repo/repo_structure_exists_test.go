@@ -21,8 +21,8 @@ package repo
 
 import (
 	"os"
-	"testing"
 	"path"
+	"testing"
 	"tractusx-release-automation/internal/filesystem"
 )
 
@@ -67,7 +67,6 @@ func TestShouldPassIfRepoStructureExistsWithOptional(t *testing.T) {
 	filesystem.CreateFiles(createFilesPaths(dir, listOfFilesToBeCreated))
 	filesystem.CreateDirs(createFilesPaths(dir, listOfDirsToBeCreated))
 
-
 	repoStructureTest := NewRepoStructureExists(dir)
 	result := repoStructureTest.Test()
 
@@ -107,7 +106,7 @@ func TestShouldPassWithMultipleDependenciesFiles(t *testing.T) {
 }
 
 func setEnv(dir string, t *testing.T) {
-	copyTemplateFileTo(path.Join(dir,".tractusx"), t)
+	copyTemplateFileTo(path.Join(dir, ".tractusx"), t)
 	_ = os.Setenv("GITHUB_REPOSITORY", "eclipse-tractusx/sig-infra")
 	_ = os.Setenv("GITHUB_REPOSITORY_OWNER", "tester")
 }
