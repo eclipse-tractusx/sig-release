@@ -21,7 +21,6 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 	"log"
-	"os"
 	"release-notifier/internal/psql"
 )
 
@@ -35,10 +34,15 @@ to a mailinglist:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		log.Println("PostgresSQL release notifier called.")
-		psqlNotifier()
-	},
+Run: func(cmd *cobra.Command, args []string) {
+	log.Println("PostgreSQL release notifier called.")
+	if psql.IsNewRelease() {
+		if err := psql.Notify(); err != nil {
+			log.Fatalln(err)
+		}
+		log.Println("Email Sent!")
+	}
+},
 }
 
 func init() {
@@ -55,17 +59,3 @@ func init() {
 	// psqlCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func psqlNotifier() {
-	latestRelease := psql.GetLatestRel()
-	prevRelease := psql.GetPrevRelFromArtifact()
-
-	if latestRelease != prevRelease && latestRelease != "" {
-		log.Printf("New release is out: %v\n", latestRelease)
-		alignedRelease := os.Getenv("CURRENT_ALIGNED_PSQL_VER")
-		log.Printf("Current aligned version: %v\n", alignedRelease)
-		psql.Notify(latestRelease, alignedRelease)
-		psql.SaveLatestRel(latestRelease)
-	} else {
-		log.Println("No new release :(")
-	}
-}

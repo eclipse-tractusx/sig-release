@@ -89,29 +89,26 @@ func IsNewRelease() bool {
 }
 
 func buildContent(mailTemplate string) ([]byte, error) {
-	newRelease := getRelFromArtifact()
-	alignedRelease := os.Getenv("CURRENT_ALIGNED_K8S_VER")
 	var buff bytes.Buffer
-	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
-	buff.Write([]byte(fmt.Sprintf("Subject: Action Required: Kubernetes New Release (%s)\n%s\n\n", newRelease, mimeHeaders)))
 	t, err := template.ParseFiles(mailTemplate)
+	if err != nil {
+		return nil, err
+	}
 	t.Execute(&buff, struct {
 		NewK8SRelease     string
 		AlignedK8SRelease string
 	}{
-		NewK8SRelease:     newRelease,
-		AlignedK8SRelease: alignedRelease,
+		NewK8SRelease:     getRelFromArtifact(),
+		AlignedK8SRelease: os.Getenv("CURRENT_ALIGNED_K8S_VER"),
 	})
-	if err != nil {
-		return nil, err
-	}
 	return buff.Bytes(), nil
 }
 
 func Notify() error {
-	content, err := buildContent(mailTemplate)
+	body, err := buildContent(mailTemplate)
 	if err != nil {
 		return err
 	}
-	return mail.SendMail(content)
+	subject := fmt.Sprintf("Action Required: Kubernetes New Release (%s)", getRelFromArtifact())
+	return mail.SendMail(subject, body)
 }
