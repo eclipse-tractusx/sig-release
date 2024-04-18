@@ -49,22 +49,25 @@ Additionally, manual e2e tests may apply. Environment and execution tbd.
 
 ### Operational steps to conclude the TX release
 
-Pre-requisites
-!!! If the last release, approved by the Eclipse Foundation, is more than a year old, you have to initiate a new release on the Eclipse Tractus-X Project page at least a week prior to the planned release date (see the Release steps)
-•	Helm chart versions and app versions for all products intended for the release
-•	An official announcement text highlighting release features, vital for the announcement email
-•	An optional official announcement image usable for the Eclipse Tractus-X Project page
+#### Pre-requisites
 
-1. Verify the presence of all helm chart versions in the release helm repository
-1. Verify all referenced links are working (documentation, kits, etc.)
-1. Create a Pull Request with the new changelog entry
-1.	Gather feedback and proceed with the merge
-1.	Create a GitHub release and incorporate the new changelog entry
-1.	Insert the new changelog entry under versions on the eclipse-tractusx changelog page
-1.	Register a new Tractus-X Release on the Eclipse Tractus-X Project page (Navigate to the Create new release button/link on the right side)
-1.	Modify the Download section on the Eclipse Tractus-X Project page via the Downloads, Software Repositories, and Marketplace -> Downloads Message section
-1. Compose an email to the tractusx-dev mailing list announcing the new release
-      Example:
+- __!!!__ If the last release, approved by the Eclipse Foundation, is more than a year old, you have to initiate a new release on the [Eclipse Tractus-X Project page](https://projects.eclipse.org/projects/automotive.tractusx) at least a week prior to the planned release date (see the [Release steps](#release-steps))
+- Helm chart versions and app versions for all products intended for the release
+- An official announcement text highlighting release features, vital for the announcement email
+- An optional official announcement image usable for the Eclipse Tractus-X Project page
+
+#### Release Steps
+
+- Verify the presence of all helm chart versions in the release helm repository
+- Verify all referenced links are working (documentation, kits, etc.)
+- Create a Pull Request with the new changelog entry
+- Gather feedback and proceed with the merge
+- Create a GitHub release and incorporate the new changelog entry
+- Insert the new changelog entry under versions on the [eclipse-tractusx changelog page](https://eclipse-tractusx.github.io/CHANGELOG/)
+- Register a new Tractus-X Release on the [Eclipse Tractus-X Project page](https://projects.eclipse.org/projects/automotive.tractusx) (Navigate to the Create new release button/link on the right side)
+- Modify the Download section on the [Eclipse Tractus-X Project page](https://projects.eclipse.org/projects/automotive.tractusx) via the Downloads, Software Repositories, and Marketplace -> Downloads Message section
+- Compose an email to the [tractusx-dev mailing list](mailto:tractusx-dev@eclipse.org) announcing the new release
+- Example:
 
 ```
 Subject line: [tractusx-dev] Announcing Tractus-X 24.03 - Latest Release Now Available 🎉
