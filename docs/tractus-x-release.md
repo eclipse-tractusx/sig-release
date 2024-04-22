@@ -1,6 +1,6 @@
 ## Intro
 
-Tractus-X operates on a quarterly release cycle. Each quarter, a new Tractus-X release following CalVer is released. Each Tractus-X release contains multiple products product_release.md.
+Tractus-X operates on a quarterly release cycle. Each quarter, a new Tractus-X release following [CalVer](https://calver.org) is released. Each Tractus-X release contains multiple [products](product_release.md).
 
 Once per year, Tractus-X releases a major release, making the remaining three releases minor releases. A major release may contain critical breaking changes that have a major impact on data space participants, such as changes to enablement services.
 
@@ -37,9 +37,9 @@ Once feature work on product level is initiated, the quality assurance of the fo
 
 Reference onion rings: (add URL)
 
-Example for cxOS (https://catena-x.net/fileadmin/_online_media_/231006_Whitepaper_Tractus-X.pdf (https://catena-x.net/fileadmin/_online_media_/231006_Whitepaper_Tractus-X.pdf):
+Example for the Catena-X Operation System ("cxOS") [231006_Whitepaper_Tractus-X.pdf](https://catena-x.net/fileadmin/_online_media_/231006_Whitepaper_Tractus-X.pdf):
 
-A configured umbrella helm chart starts-up all relevant products. No matter if carry-over versions of a previous TX release or evolutions of the current iteration. User Journey tests (e2e) are automatically performed - customized for the respective bundle of products and within given boundary conditions.
+A configured umbrella helm chart starts-up all relevant products. No matter if carry-over product versions of a previous TX release or product evolutions, developed within the current iteration. User Journey tests (e2e) are automatically performed - customized for the respective bundle of products and within given boundary conditions.
 
 Any findings are looped back to the product development teams. Product teams are obliged to fix any defects which prevent successful testing of the bundle.
 
@@ -107,7 +107,7 @@ The stable channel is used by the release management group, to publish all helm 
 
 ## Versioning
 
-- Calendar versioning
+- [Calendar versioning](https://calver.org)
 
 
 ### Quality Assurance

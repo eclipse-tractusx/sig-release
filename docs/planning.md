@@ -53,7 +53,7 @@ As soon as actual work is started in the selected iteration, the issue is set to
 ### Issue hierarchy (WIP)
 
 @stephanbcbauer to formulate details
-=> detailled features are planned and executed within the repositories of the respective product. Summary features are planned and managed on "SIG release" level...
+=> detailed features are planned and executed within the repositories of the respective product. Summary features are planned and managed on "SIG release" level...
 
 
 ### Planning product changes

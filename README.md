@@ -10,9 +10,9 @@ To make adopting the latest [Catena-X Standards](https://catena-x.net/de/standar
 
 ## Release Cycle - major vs. minor release
 
-Tractus-X operates on a quarterly release cycle. Each quarter, a new Tractus-X release tractus-x-release.md following [CalVer](https://calver.org) is released.
+Tractus-X operates on a quarterly release cycle. Each quarter, a new [Tractus-X release](docs/tractus-x-release.md) following [CalVer](https://calver.org) is released.
 
-Each Tractus-X release contains [multiple products](product_release.md).
+Each Tractus-X release contains [multiple products](docs/product_release.md).
 
 Once per year, Tractus-X releases a major release, making the remaining three releases minor releases. A major release may contain critical breaking changes that have a major impact on data space participants, such as changes to enablement services. A minor release contains backward compatible functionality. In addition, patch versions provide backward compatible bug and security fixes.
 
