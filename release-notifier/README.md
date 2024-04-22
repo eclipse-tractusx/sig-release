@@ -8,15 +8,15 @@ Currently it supports PostgreSQL & Kubernetes with potential to grow and support
 ## Technical Accounts
 
 Release notifier uses currently two account for its work:
+
 - Gmail account for email notification purpose:
-   * eclipse.tractusx [at] gmail.com
-   * google account password and application secret (to send email) are stored in Vault
-   * recovery email set to webmaster [at] eclipse-foundation.org.
+  - eclipse.tractusx [at] gmail.com
+  - google account password and application secret (to send email) are stored in Vault
+  - recovery email set to webmaster [at] eclipse-foundation.org.
 
 - Eclipse Foundation account:
-   * username: eclipsetractusx
-   * password: stored in Vault
-
+  - username: eclipsetractusx
+  - password: stored in Vault
 
 ## Upgrade Alignment Process Description
 
@@ -50,10 +50,10 @@ Release notifier uses currently two account for its work:
 
 7. **Implementation:**
    - The upgrade is carried out as per the defined upgrade plan, with close attention to the documentation, codebase, and any testing or validation procedures as required.
-      - **PostgreSQL**: [upgrade plan](TBP)
-      - **Kubernetes**: [upgrade plan](TBP)
+      - **PostgreSQL**: [upgrade plan](https://github.com/bitnami/charts/tree/main/bitnami/postgresql#upgrading)
+      - **Kubernetes**: [upgrade plan](https://learn.microsoft.com/en-us/azure/aks/upgrade-aks-cluster)
 
-9. **Ongoing Feedback and Improvement:**
+8. **Ongoing Feedback and Improvement:**
    - Continuous feedback from the community is encouraged and used to further improve the upgrade process for future releases.
 
 By following this well-defined process, you ensure that major release upgrades are initiated, executed, and communicated effectively while maintaining community consensus and alignment with documentation. This promotes transparency, minimizes disruptions, and fosters a collaborative atmosphere within Tractus-X community.
