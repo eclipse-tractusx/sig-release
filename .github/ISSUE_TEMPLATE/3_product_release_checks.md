@@ -33,7 +33,7 @@ This issue tracks all checks, that need to be performed for a product release in
 
 # Security Checks
 
-- [ ] **Thread Modelling Analysis** passed
+- [ ] **Threat Modeling Analysis** passed
 
 # Test Results
 
