@@ -20,7 +20,7 @@ go/golang/github.com%2Fbwesterb/go-ristretto/v1.2.3, MIT, approved, clearlydefin
 go/golang/github.com%2Fcloudflare/circl/v1.3.3, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fcloudflare/circl/v1.3.7, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fcpuguy83%2Fgo-md2man/v2/v2.0.3, MIT, approved, clearlydefined
-go/golang/github.com%2Fcreack/pty/v1.1.9, MIT, approved, clearlydefined
+go/golang/github.com%2Fcreack/pty/v1.1.9, BSD-3-Clause AND MIT, approved, #14623
 go/golang/github.com%2Fcyphar/filepath-securejoin/v0.2.4, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.0, ISC, approved, clearlydefined
 go/golang/github.com%2Fdavecgh/go-spew/v1.1.1, ISC, approved, clearlydefined
@@ -197,7 +197,7 @@ go/golang/golang.org%2Fx/term/v0.5.0, BSD-3-Clause, approved, #9280
 go/golang/golang.org%2Fx/term/v0.6.0, BSD-3-Clause, approved, #9290
 go/golang/golang.org%2Fx/term/v0.7.0, BSD-3-Clause, approved, #11432
 go/golang/golang.org%2Fx/text/v0.13.0, BSD-3-Clause, approved, #10752
-go/golang/golang.org%2Fx/text/v0.14.0, BSD-3-Clause AND LicenseRef-IP-Rights-Grant, approved, #12660
+go/golang/golang.org%2Fx/text/v0.15.0, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #15055
 go/golang/golang.org%2Fx/text/v0.3.0, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #6122
 go/golang/golang.org%2Fx/text/v0.3.3, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #6126
 go/golang/golang.org%2Fx/text/v0.3.6, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #6123
