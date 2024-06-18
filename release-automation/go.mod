@@ -11,7 +11,7 @@ require (
 	github.com/google/go-github/v53 v53.2.0
 	github.com/otiai10/copy v1.14.0
 	github.com/spf13/cobra v1.8.0
-	golang.org/x/oauth2 v0.19.0
+	golang.org/x/oauth2 v0.21.0
 	golang.org/x/text v0.15.0
 	gopkg.in/yaml.v3 v3.0.1
 	helm.sh/helm/v3 v3.14.4
