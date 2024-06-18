@@ -21,14 +21,18 @@ package k8s
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
-	"github.com/Masterminds/semver/v3"
-	"github.com/gocolly/colly"
+	"io"
 	"log"
+	"net/http"
 	"os"
 	"release-notifier/internal/mail"
 	"strings"
 	"text/template"
+
+	"github.com/Masterminds/semver/v3"
+	"github.com/gocolly/colly"
 )
 
 const mailTemplate = "templates/mail-k8s.html.tmpl"
@@ -74,7 +78,7 @@ func getRelFromArtifact() string {
 }
 
 func IsNewRelease() bool {
-	latestRelease := getLatestRel()
+	latestRelease := getLatestRel2("kubernetes")
 	prevRelease := getRelFromArtifact()
 	if latestRelease != prevRelease {
 		log.Printf("New release is out: %v\n", latestRelease)
@@ -111,4 +115,79 @@ func Notify() error {
 	}
 	subject := fmt.Sprintf("Action Required: Kubernetes New Release (%s)", getRelFromArtifact())
 	return mail.SendMail(subject, body)
+}
+
+type Project struct {
+	Id string `yaml:"id"`
+	Name string `yaml:"name"`
+}
+
+type ProjectSet struct {
+	Projects []Project
+}
+
+type Release struct {
+	Version string `yaml:"version"`
+}
+
+type ReleasesSet struct {
+	Releases []Release
+}
+
+func getLatestRel2(product string) string {
+    url := "https://api.newreleases.io/v1/projects"
+
+    req, err := http.NewRequest("GET", url, nil)
+    if err != nil {
+        log.Fatalln("Error creating request:", err)
+    }
+	apiKey := os.Getenv("NEWRELEASESIO_APIKEY")
+    req.Header.Add("X-Key", apiKey)
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatalln("Error making request:", err)
+    }
+    defer resp.Body.Close()
+
+	projects := ProjectSet{}
+    body, err := io.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatalln("Error reading response body:", err)
+    }
+	err = json.Unmarshal(body, &projects)
+    if err != nil {
+        log.Fatalf("Error unmarshaling JSON: %v", err)
+    }
+	for _, p := range projects.Projects {
+		if strings.EqualFold(p.Name, fmt.Sprintf("%s/%s", product, product)) {
+			fmt.Println(p)
+			url = fmt.Sprintf("%s/%s/releases", url, p.Id)
+		}
+	}
+
+	fmt.Println(url)
+	req, err = http.NewRequest("GET", url, nil)
+	req.Header.Add("X-Key", apiKey)
+    if err != nil {
+        log.Fatalln("Error creating request:", err)
+    }
+	resp, err = client.Do(req)
+    if err != nil {
+        log.Fatalln("Error making request:", err)
+    }
+    defer resp.Body.Close()
+
+	releases := ReleasesSet{}
+    body, err = io.ReadAll(resp.Body)
+	if err != nil {
+        log.Fatalln("Error reading response body:", err)
+    }
+	err = json.Unmarshal(body, &releases)
+    if err != nil {
+        log.Fatalf("Error unmarshaling JSON: %v", err)
+    }
+	fmt.Println(releases)
+	os.Exit(0)
+	return ""
 }
