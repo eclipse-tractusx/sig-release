@@ -33,7 +33,7 @@ env:
     DEVSECOPS_NOTIFICATION_EMAIL: eclipse.tractusx@gmail.com
     DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD: ${{ secrets.NOTIFICATION_EMAIL_PASSWORD }}
     CURRENT_ALIGNED_PSQL_VER: 15.0.0
-    CURRENT_ALIGNED_K8S_VER: 1.27.0
+    CURRENT_ALIGNED_K8S_VER: 1.28.9
 jobs:
   notify:
     runs-on: ubuntu-latest
