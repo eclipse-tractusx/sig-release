@@ -30,41 +30,10 @@ import (
 	"release-notifier/internal/mail"
 	"strings"
 	"text/template"
-
-	"github.com/Masterminds/semver/v3"
-	"github.com/gocolly/colly"
 )
 
 const mailTemplate = "templates/mail-k8s.html.tmpl"
 const artifactName = "k8s_release"
-
-func getLatestRel() string {
-	release, _ := semver.NewVersion("0.0.0")
-	website := "https://kubernetes.io/releases/"
-
-	log.Println("Querying", website)
-	c := colly.NewCollector()
-
-	c.OnError(func(_ *colly.Response, err error) {
-		log.Println("Can't load the page: ", err)
-	})
-
-	c.OnHTML("span.release-inline-value", func(e *colly.HTMLElement) {
-		if !strings.Contains(e.Text, "release") {
-			return
-		}
-		r, err := semver.NewVersion(strings.Split(e.Text, " ")[0])
-		if err != nil {
-			return
-		}
-		if r.Compare(release) == 1 {
-			release = r
-		}
-	})
-
-	c.Visit(website)
-	return release.String()
-}
 
 func getRelFromArtifact() string {
 	data, err := os.ReadFile(artifactName)
@@ -78,7 +47,7 @@ func getRelFromArtifact() string {
 }
 
 func IsNewRelease() bool {
-	latestRelease := getLatestRel2("kubernetes")
+	latestRelease := getLatestRel("kubernetes")
 	prevRelease := getRelFromArtifact()
 	if latestRelease != prevRelease {
 		log.Printf("New release is out: %v\n", latestRelease)
@@ -130,12 +99,9 @@ type Release struct {
 	Version string `yaml:"version"`
 }
 
-type ReleasesSet struct {
-	Releases []Release
-}
-
-func getLatestRel2(product string) string {
+func getLatestRel(product string) string {
     url := "https://api.newreleases.io/v1/projects"
+	release := ""
 
     req, err := http.NewRequest("GET", url, nil)
     if err != nil {
@@ -161,33 +127,30 @@ func getLatestRel2(product string) string {
     }
 	for _, p := range projects.Projects {
 		if strings.EqualFold(p.Name, fmt.Sprintf("%s/%s", product, product)) {
-			fmt.Println(p)
-			url = fmt.Sprintf("%s/%s/releases", url, p.Id)
+			url = fmt.Sprintf("%s/%s/latest-release", url, p.Id)
+
+			req, err = http.NewRequest("GET", url, nil)
+			req.Header.Add("X-Key", apiKey)
+			if err != nil {
+				log.Fatalln("Error creating request:", err)
+			}
+			resp, err = client.Do(req)
+			if err != nil {
+				log.Fatalln("Error making request:", err)
+			}
+			defer resp.Body.Close()
+
+			r := Release{}
+			body, err = io.ReadAll(resp.Body)
+			if err != nil {
+				log.Fatalln("Error reading response body:", err)
+			}
+			err = json.Unmarshal(body, &r)
+			if err != nil {
+				log.Fatalf("Error unmarshaling JSON: %v", err)
+			}
+			release = r.Version[1:]
 		}
 	}
-
-	fmt.Println(url)
-	req, err = http.NewRequest("GET", url, nil)
-	req.Header.Add("X-Key", apiKey)
-    if err != nil {
-        log.Fatalln("Error creating request:", err)
-    }
-	resp, err = client.Do(req)
-    if err != nil {
-        log.Fatalln("Error making request:", err)
-    }
-    defer resp.Body.Close()
-
-	releases := ReleasesSet{}
-    body, err = io.ReadAll(resp.Body)
-	if err != nil {
-        log.Fatalln("Error reading response body:", err)
-    }
-	err = json.Unmarshal(body, &releases)
-    if err != nil {
-        log.Fatalf("Error unmarshaling JSON: %v", err)
-    }
-	fmt.Println(releases)
-	os.Exit(0)
-	return ""
+	return release
 }
