@@ -35,13 +35,11 @@ Products **must** opt-in to the process in order to be included in a Tractus-X r
 
 Once feature work on product level is initiated, the quality assurance of the foreseen release package runs in parallel. The vehicle of Umbrella helm charts is used to continuously test pre-defined product bundles. Automatically and environment-less.
 
-Reference onion rings: (add URL)
-
 Example for the Catena-X Operation System ("cxOS") [231006_Whitepaper_Tractus-X.pdf](https://catena-x.net/fileadmin/_online_media_/231006_Whitepaper_Tractus-X.pdf):
 
-A configured umbrella helm chart starts-up all relevant products. No matter if carry-over product versions of a previous TX release or product evolutions, developed within the current iteration. User Journey tests (e2e) are automatically performed - customized for the respective bundle of products and within given boundary conditions.
+A configured umbrella helm chart starts-up all relevant products. No matter if carry-over versions of a previous Tractus-X release or evolutions of the current iteration. User Journey tests (e2e) are automatically performed - customized for the respective bundle of products and within given boundary conditions.
 
-Any findings are looped back to the product development teams. Product teams are obliged to fix any defects which prevent successful testing of the bundle.
+Any findings are looped back to the [product development teams](product_release.md). Product teams are obliged to fix any defects which prevent successful testing of the bundle.
 
 A bundle is ready for Tractus-X release, once product feature work is completed for all products and e2e-testing was successful without critical findings.
 Additionally, manual e2e tests may apply. Environment and execution tbd.
