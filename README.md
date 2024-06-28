@@ -16,7 +16,7 @@ Each Tractus-X release contains [multiple products](docs/product_release.md).
 
 Once per year, Tractus-X releases a major release, making the remaining three releases minor releases. A major release may contain critical breaking changes that have a major impact on data space participants, such as changes to enablement services. A minor release contains backward compatible functionality. In addition, patch versions provide backward compatible bug and security fixes.
 
-Please check the Change Log(s) for content, known knowns, and backward compatibility since the [calendar versioning scheme](https://calver.org) shows the year and month of release.
+Please check the [Change Log(s)](CHANGELOG.md) for content, known knowns, and backward compatibility since the [calendar versioning scheme](https://calver.org) shows the year and month of release.
 
 See [planning](./docs/planning.md), for information about planning and roadmap process.
 See [product release](./docs/product_release.md), for information about singular product releases.
