@@ -1,3 +1,7 @@
+# Product Release
+
+## Intro
+
 Product releases are done by creating a GitHub release. Every release is following the [Semantic Versioning](https://semver.org/) pattern and must be marked in the git history via tag.
 If suitable for the product teams development process, release candidate versions can help to provide early previews of a product for integration testing.
 

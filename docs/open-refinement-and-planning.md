@@ -1,3 +1,5 @@
+# Open Refinement and Planning
+
 Welcome to our guide on the open refinement and planning processes for our open source community.
 Effective planning and transparent communication are critical for the success of our project.
 Here, we'll outline how our community can participate and leverage these processes to ensure smooth and efficient collaboration.
