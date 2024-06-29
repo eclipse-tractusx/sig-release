@@ -62,6 +62,16 @@ skipReleaseChecks:
     - "path/to/Dockerfile/only/used/in/testing-pipeline/Dockerfile.ui-tests"
 ```
 
+## OpenAPI Specification
+
+It is possible and highly recommended to list OpenAPI specifications related to your product in the respective section `openApiSpecs` of metadata file as in the example below:
+
+```yaml
+openApiSpecs:
+- "https://raw.githubusercontent.com/eclipse-tractus/<your-product-repo>/product_version_openapi.yaml"
+```
+
+Provided specifications are used by automation to generate and publish Swagger UI documentations.
 
 ## Full example
 
@@ -86,5 +96,7 @@ repositories:
 skipReleaseChecks:
   alignedBaseImage:
     - "/path/to/non-published/Dockerfile"
+openApiSpecs:
+- "https://raw.githubusercontent.com/eclipse-tractus/<your-product-repo>/product_version_openapi.yaml"
 
 ```
