@@ -26,10 +26,6 @@ Make sure to open and fill in a separate **documentation issue** in your product
 > [!NOTE]
 > Note: most criteria for documentation and security are now covered in TRGs
 
-# Security Checks
-
-- [ ] **Threat Modeling Analysis** passed
-
 # Test Results
 
 - [ ] **E2E Integration Test** passed
