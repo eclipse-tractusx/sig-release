@@ -17,13 +17,6 @@ Make sure to assign this issue to expert(s) for their approval, as soon as you h
 
 **Leading product repository:** *repository link*
 
-# Compliance Verifications
-
-This issue tracks all checks, that need to be performed for a product release in Eclipse Tractus-X.
-
-- [ ] **Interoperability** checks performed
-- [ ] **Data Sovereignty** checks performed
-
 # General Checks
 
 - [ ] [**Tractus-X Release Guidelines**](https://eclipse-tractusx.github.io/docs/release)(TRGs) fulfilled
