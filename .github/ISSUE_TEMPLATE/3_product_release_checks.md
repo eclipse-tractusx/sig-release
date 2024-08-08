@@ -37,7 +37,10 @@ By documenting these features, you will contribute to a smoother and more effici
 
 List your features here:
 
-- [ ]
+- Link to feature
+
+> [!NOTE]
+> Note: all features needs to be closed to get approval
 
 # Summary
 Please provide a short summary about the new values/benefits of the new features here.
