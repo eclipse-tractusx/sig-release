@@ -39,6 +39,9 @@ List your features here:
 
 - [ ]
 
+# Summary
+Please provide a short summary about the new values/benefits of the new features here.
+
 # Test Results
 
 - [ ] **E2E Integration Test** passed
