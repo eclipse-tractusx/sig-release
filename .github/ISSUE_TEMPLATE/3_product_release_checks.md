@@ -27,6 +27,7 @@ Make sure to open and fill in a separate **documentation issue** in your product
 > Note: most criteria for documentation and security are now covered in TRGs
 
 # Features
+
 Please provide a list of all features that have been developed in the current phase. This list is essential for several reasons:
 
 - **Test Preparation:** Identifying new features will help in the creation of new end-to-end (E2E) tests and ensure that the relevant aspects are thoroughly tested.
@@ -43,6 +44,7 @@ List your features here:
 > Note: all features needs to be closed to get approval
 
 # Summary
+
 Please provide a short summary about the new values/benefits of the new features here.
 
 # Test Results
