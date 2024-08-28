@@ -16,6 +16,12 @@ Please provide information on what you want to be included in the Eclipse Tractu
 If you are not owner of this issue, please provide the information as comment to the issue.
 Make sure to assign this issue to expert(s) for their approval, as soon as you have finished preparation. Multiple assignees allowed; they will un-assign themselves once review completed.
 
+**Responsible contacts**:
+<!-- For this new release -->
+- Committer: *GitHub handle*
+- ExpertGroup: *GitHub handle*
+- Technical contact: *GitHub handle*
+
 **Version to be included in Eclipse Tractus-X release**:
 <!-- Responsibility: Committer -->
 
