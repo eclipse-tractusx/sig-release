@@ -45,41 +45,23 @@ Make sure to open and fill in a separate **documentation issue** in your product
 <!-- Responsibility: Committer, Testmanagement -->
 
 - [ ] Feature works as expected and described
-- [ ] Backward compatibility maintained
+- [ ] Backward compatibility maintained (depending Major/ Minor) 
 
 ## Performance
 <!-- Responsibility: Testmanagement -->
 
-- [ ] No performance degradation
-- [ ] Memory usage is within acceptable limits
-- [ ] No unnecessary computations or redundant operations
+- [ ] Memory and CPU usage is within acceptable limits oriented with goldilocks 
 
 ## Testing
 <!-- Responsibility: Committer, Testmanagement -->
 
-- [ ] Code is tested in different environments (GitHub Actions, local, int, etc.)
 - [ ] Unit tests cover all new features
 - [ ] Integration tests are updated
 - [ ] E2E/Integration test passed
 - [ ] Regressions tests passed
 - [ ] User Journey approved
 
-## Documentation
-<!-- Responsibility: Committer -->
-
-- [ ] Documentation is updated to reflect changes
-- [ ] README and other project documentation are clear and up-to-date
-
-## Deployment Readiness
-<!-- Responsibility: Committer, Testmanagement, Releasemanagement -->
-
-- [ ] Release notes/Change logs are updated
-- [ ] Migration scripts/documentation are included if necessary (Ensure that any database or infrastructure migrations are included).
-- [ ] Known knowns
-  - topic 1
-  - topic 2
-
-## Feature summery
+## Feature summary
 <!-- 
 Responsibility:
 - Committer -> adding the features
@@ -102,6 +84,22 @@ By documenting these features, you will contribute to a smoother and more effici
 | linked feature 1 | Test status | note 1 |
 | linked feature 2 | Test status | note 2 |
 | linked feature 3 | Test status | note 3 |
+
+## Documentation
+<!-- Responsibility: Committer -->
+
+- [ ] Documentation (related to new implemented features e.g. migration, api) is updated to reflect changes
+- [ ] README and other project documentation are clear and up-to-date
+
+## Deployment Readiness
+<!-- Responsibility: Committer, Testmanagement, Releasemanagement -->
+
+- [ ] Release notes/Change logs are updated
+- [ ] Migration scripts/documentation are included if necessary (Ensure that any database or infrastructure migrations are included).
+- [ ] Known knowns
+  - topic 1
+  - topic 2
+
 
 ## Summary
 <!-- Responsibility: Committer -->
