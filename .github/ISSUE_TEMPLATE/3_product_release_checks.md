@@ -59,7 +59,6 @@ Make sure to open and fill in a separate **documentation issue** in your product
 - [ ] Integration tests are updated
 - [ ] E2E/Integration test passed
 - [ ] Regressions tests passed
-- [ ] User Journey approved
 
 ## Feature summary
 <!-- 
@@ -85,12 +84,6 @@ By documenting these features, you will contribute to a smoother and more effici
 | linked feature 2 | Test status | note 2 |
 | linked feature 3 | Test status | note 3 |
 
-## Documentation
-<!-- Responsibility: Committer -->
-
-- [ ] Documentation (related to new implemented features e.g. migration, api) is updated to reflect changes
-- [ ] README and other project documentation are clear and up-to-date
-
 ## Release Documentation
 <!-- Responsibility: Committer, Testmanagement, Releasemanagement -->
 
@@ -99,7 +92,6 @@ By documenting these features, you will contribute to a smoother and more effici
 - [ ] Known knowns
   - topic 1
   - topic 2
-
 
 ## Summary
 <!-- Responsibility: Committer -->
