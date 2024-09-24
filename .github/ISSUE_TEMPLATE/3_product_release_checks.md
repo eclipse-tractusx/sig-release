@@ -20,7 +20,7 @@ Make sure to assign this issue to expert(s) for their approval, as soon as you h
 <!-- For this new release -->
 - Committer: *GitHub handle*
 - ExpertGroup: *GitHub handle*
-- Technical contact: *GitHub handle*
+- Contributor contact: *GitHub handle*
 
 **Version to be included in Eclipse Tractus-X release**:
 <!-- Responsibility: Committer -->
