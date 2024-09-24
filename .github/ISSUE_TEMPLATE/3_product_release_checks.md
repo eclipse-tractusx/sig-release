@@ -91,7 +91,7 @@ By documenting these features, you will contribute to a smoother and more effici
 - [ ] Documentation (related to new implemented features e.g. migration, api) is updated to reflect changes
 - [ ] README and other project documentation are clear and up-to-date
 
-## Deployment Readiness
+## Release Documentation
 <!-- Responsibility: Committer, Testmanagement, Releasemanagement -->
 
 - [ ] Release notes/Change logs are updated
