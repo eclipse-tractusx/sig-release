@@ -94,7 +94,7 @@ By documenting these features, you will contribute to a smoother and more effici
 ## Release Documentation
 <!-- Responsibility: Committer, Testmanagement, Releasemanagement -->
 
-- [ ] Release notes/Change logs are updated
+- [ ] Release notes/Changelogs are updated
 - [ ] Migration scripts/documentation are included if necessary (Ensure that any database or infrastructure migrations are included).
 - [ ] Known knowns
   - topic 1
