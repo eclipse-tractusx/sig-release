@@ -16,6 +16,18 @@ If possible, please provide insight in what and how many components and teams mi
 If there are dependencies to other features please name it.
 -->
 
+### Architecture Management Committee Check
+<!--
+The Architecture Management Committee monitors and controls the overarching architecture. It is essential that all applications and documentations follows a baseline set of standards and guidelines. These small checks ensure that the proposed change does not compromise our general principles.
+-->
+The following items are ensured (answer: yes) after this issue is implemented:
+
+- [ ] **Architecture:** This issue is compliant with the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture) and its existing standards and protocols
+- [ ] **Data Sovereignty:** All data sharing activities across company boundaries follow the [Dataspace Protocol](https://docs.internationaldataspaces.org/dataspace-protocol/overview/readme) via a compliant Connector (like the [tractusx-edc](https://github.com/eclipse-tractusx/tractusx-edc) or similar, see [Connector KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/connector-kit))
+- [ ] **Interoperability:** Digital Twins are used (compliant to the [Digital Twin KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/digital-twin-kit) and the [Industry Core KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/industry-core-kit))
+- [ ] **Data Format:** The data model is based on a [published Semantic Model](https://github.com/eclipse-tractusx/sldt-semantic-models)
+
+**Justification:** _(Only needs to be filled out if at lease one checkbox item could not be answered with "yes")_
 ## Acceptance Criteria
 <!--
 Add all Acceptence Criteria. These criteria are important for the definition of done
