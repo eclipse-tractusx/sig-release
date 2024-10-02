@@ -88,4 +88,4 @@ The following items are ensured (answer: yes) after this issue is implemented:
 - [ ] I'm willing to contribute to this feature
 - [ ] I provide necessary developer resources
 
-PLease see here an [example feature](https://github.com/eclipse-tractusx/sig-release/issues/882)
+Please see here an [example feature](https://github.com/eclipse-tractusx/sig-release/issues/882)
