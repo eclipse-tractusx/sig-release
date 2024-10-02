@@ -33,7 +33,7 @@ env:
     DEVSECOPS_NOTIFICATION_EMAIL: eclipse.tractusx@gmail.com
     DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD: ${{ secrets.NOTIFICATION_EMAIL_PASSWORD }}
     CURRENT_ALIGNED_PSQL_VER: 15.0.0
-    CURRENT_ALIGNED_K8S_VER: 1.27.0
+    CURRENT_ALIGNED_K8S_VER: 1.28.9
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
       with:
         go-version: '>=1.20.7'
     - name: Download artifact
-      uses: dawidd6/action-download-artifact@v3
+      uses: dawidd6/action-download-artifact@v6
       with:
         workflow: ${{ github.event.workflow_run.workflow_id }}
         workflow_conclusion: success

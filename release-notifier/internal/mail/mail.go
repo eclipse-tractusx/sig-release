@@ -20,6 +20,7 @@
 package mail
 
 import (
+	"fmt"
 	"net/smtp"
 	"os"
 )
@@ -30,11 +31,13 @@ const recipientMailEnv = "TRACTUSX_MAILINGLIST"
 const senderMailEnv = "DEVSECOPS_NOTIFICATION_EMAIL"
 const senderPassEnv = "DEVSECOPS_NOTIFICATION_EMAIL_PASSWORD"
 
-func SendMail(body []byte) error {
+func SendMail(subject string, body []byte) error {
 	sender := os.Getenv(senderMailEnv)
 	password := os.Getenv(senderPassEnv)
 	recipient := os.Getenv(recipientMailEnv)
 
+	msg := []byte(fmt.Sprintf("To: %s\nSubject: %s\nMIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n\n\n", recipient, subject))
+	msg = append(msg, body...)
 	auth := smtp.PlainAuth("", sender, password, smtpServer)
-	return smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipient}, body)
+	return smtp.SendMail(smtpServer+":"+smtpPort, auth, sender, []string{recipient}, msg)
 }

@@ -45,6 +45,8 @@ type QualityGuideline interface {
 	Description() string
 	// ExternalDescription returns a URL to more information about the QualityGuideline.
 	ExternalDescription() string
+	// BaseDir returns repository local path.
+	BaseDir() string
 	// Test executes the test and returns QualityResult. If any error occurs it
 	// returns QualityResult.Passed false.
 	Test() *QualityResult

@@ -22,8 +22,10 @@ package testrunner
 import (
 	"errors"
 	"fmt"
-
 	"github.com/fatih/color"
+	"log"
+	"tractusx-release-automation/internal/exception"
+	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -37,11 +39,26 @@ func NewTestRunner(tests []tractusx.QualityGuideline) *GuidelineTestRunner {
 }
 
 func (runner *GuidelineTestRunner) Run() error {
+	var result *tractusx.QualityResult
 	allPassed := true
 	for i, guideline := range runner.guidelines {
 		runner.printer.Print(fmt.Sprintf("\n%v. Testing Quality Guideline: %s", i+1, guideline.Name()))
 
-		result := guideline.Test()
+		m, err := exception.GetData()
+		exceptionPresent := false
+		if err != nil {
+			log.Println("Can't process exceptions.")
+		} else {
+			repoInfo := repo.GetRepoBaseInfo(guideline.BaseDir())
+			if m.IsExceptioned(guideline.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+				result = &tractusx.QualityResult{Passed: true}
+				exceptionPresent = true
+			}
+		}
+
+		if !exceptionPresent {
+			result = guideline.Test()
+		}
 		if guideline.IsOptional() && !result.Passed {
 			runner.printer.LogWarning(
 				fmt.Sprintf("Warning! Test failed, but test '%s' is marked as optional.\nMore infos:\n\t%s\n\t%s",

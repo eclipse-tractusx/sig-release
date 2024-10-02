@@ -22,7 +22,7 @@ package container
 import (
 	"fmt"
 	"regexp"
-
+	"strings"
 	"tractusx-release-automation/internal/tractusx"
 )
 
@@ -50,9 +50,13 @@ func (n NonRootContainer) ExternalDescription() string {
 	return "https://eclipse-tractusx.github.io/docs/release/trg-4/trg-4-03"
 }
 
+func (n NonRootContainer) BaseDir() string {
+	return n.baseDir
+}
+
 func (n NonRootContainer) Test() *tractusx.QualityResult {
 	checkPassed := true
-	var errorDescription string
+	errorDescription := ""
 	dockerfiles := findDockerfilesAt(n.baseDir)
 
 	for _, dockerfilePath := range dockerfiles {
@@ -63,10 +67,12 @@ func (n NonRootContainer) Test() *tractusx.QualityResult {
 
 		if !validateUser(file.user()) {
 			checkPassed = false
-			if len(errorDescription) > 0 {
-				errorDescription = errorDescription + "\nInvalid user specified in Dockerfile: " + dockerfilePath
-			} else {
-				errorDescription = "Invalid user specified in Dockerfile: " + dockerfilePath
+			if n.baseDir != "./" {
+				dockerfilePath = strings.Split(dockerfilePath, n.baseDir)[1]
+			}
+			errorDescription += "\nInvalid user specified in Dockerfile: " + dockerfilePath[1:]
+			if tractusx.CliErrOutputFormat == tractusx.WebErrOutputFormat {
+				errorDescription += "<br>"
 			}
 		}
 	}
