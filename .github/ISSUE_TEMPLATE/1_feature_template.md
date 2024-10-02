@@ -8,6 +8,8 @@ about: propose a new functionality
 A clear and concise description of what the desired feature will look like. 
 What is the purpose, what´s the expected result. 
 Please describe.
+
+Please see here an [example feature](https://github.com/eclipse-tractusx/sig-release/issues/882)
 -->
 
 ## Feature Team
@@ -70,22 +72,34 @@ Add all Acceptence Criteria. These criteria are important for the definition of 
 2. Expectation
 3. Expectation
 
-### Architecture Management Committee Check
+### Architectural Relevance
 <!--
 The Architecture Management Committee monitors and controls the overarching architecture. It is essential that all applications and documentations follows a baseline set of standards and guidelines. These small checks ensure that the proposed change does not compromise our general principles.
 -->
 The following items are ensured (answer: yes) after this issue is implemented:
 
-- [ ] **Architecture:** This issue is compliant with the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture) and its existing standards and protocols
-- [ ] **Data Sovereignty:** All data sharing activities across company boundaries follow the [Dataspace Protocol](https://docs.internationaldataspaces.org/dataspace-protocol/overview/readme) via a compliant Connector (like the [tractusx-edc](https://github.com/eclipse-tractusx/tractusx-edc) or similar, see [Connector KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/connector-kit))
-- [ ] **Interoperability:** Digital Twins are used (compliant to the [Digital Twin KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/digital-twin-kit) and the [Industry Core KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/industry-core-kit))
-- [ ] **Data Format:** The data model is based on a [published Semantic Model](https://github.com/eclipse-tractusx/sldt-semantic-models)
+- [ ] This feature aligns with our current architectural guidelines
+  - **Data Sovereignty:** All data sharing activities across company boundaries follow the [Dataspace Protocol](https://docs.internationaldataspaces.org/dataspace-protocol/overview/readme) via a compliant Connector (like the [tractusx-edc](https://github.com/eclipse-tractusx/tractusx-edc) or similar, see [Connector KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/connector-kit))
+    - [ ] [CX-0010 Business Partner Number](https://catenax-ev.github.io/docs/next/standards/CX-0010-BusinessPartnerNumber)
+    - [ ] [CX-0013 Identity of Member Companies](https://catenax-ev.github.io/docs/next/standards/CX-0013-IdentityOfMemberCompanies)
+    - [ ] [CX-0018 Eclipse Data Space Connector (EDC)](https://catenax-ev.github.io/docs/next/standards/CX-0018-EclipseDataSpaceConnector)
+    - [ ] [CX-0049 DID Document Schema](https://catenax-ev.github.io/docs/next/standards/CX-0049-DIDDocumentSchema)
+    - [ ] [CX-0050 Framework Agreement Credential](https://catenax-ev.github.io/docs/next/standards/CX-0050-FrameworkAgreementCredential)
+    - [ ] [CX-0149 Verified Company Identity](https://catenax-ev.github.io/docs/next/standards/CX-0149-Dataspaceidentityandidentification)
+  - **Interoperability:** Digital Twins are used (compliant to the [Digital Twin KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/digital-twin-kit) and the [Industry Core KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/industry-core-kit))
+    - [ ] [CX-0001 EDC Discovery API](https://catenax-ev.github.io/docs/next/standards/CX-0001-EDCDiscoveryAPI)
+    - [ ] [CX-0002 Digital Twins in Catena-X](https://catenax-ev.github.io/docs/next/standards/CX-0002-DigitalTwinsInCatenaX)
+    - [ ] [CX-0018 Eclipse Data Space Connector (EDC)](https://catenax-ev.github.io/docs/next/standards/CX-0018-EclipseDataSpaceConnector)
+  - **Data Format:**
+    - [ ] The data model is based on a [published Semantic Model](https://github.com/eclipse-tractusx/sldt-semantic-models)
+- [ ] The impact on the overall system architecture has been assessed? Please have a look here on the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture)
+- [ ] Potential risks or conflicts with existing architecture has been assessed
+- [ ] The feature doesnt introduce any new dependencies or requires changes to current architectural components
+- [ ] Architectural stakeholders (e.g., architects, technical leads) has been consulted
 
-**Justification:** _(Only needs to be filled out if at lease one checkbox item could not be answered with "yes")_
+**Justification:** _(Only needs to be filled out if at lease one checkbox item could not be answered with "yes" -> please contact also the Architectjure Management Committee)_
 
 ## Additional information
 <!-- this is only needed, if contributors and committers are not known during feature creation -->
 - [ ] I'm willing to contribute to this feature
 - [ ] I provide necessary developer resources
-
-Please see here an [example feature](https://github.com/eclipse-tractusx/sig-release/issues/882)
