@@ -94,8 +94,6 @@ The following items are ensured (answer: yes) after this issue is implemented:
     - [ ] The data model is based on a [published Semantic Model](https://github.com/eclipse-tractusx/sldt-semantic-models)
 - [ ] The impact on the overall system architecture has been assessed? The feature does not require changes to the architecture or any existing standard? Please have a look here on the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture)
 - [ ] Potential risks or conflicts with existing architecture has been assessed
-- [ ] The feature doesnt introduce any new dependencies or requires changes to current architectural components
-- [ ] Architectural stakeholders (e.g., architects, technical leads) has been consulted
 
 **Justification:** _(Fill this out, if at least one of the checkboxes above cannot be ticked. Contact the Architecture Management Committee to get an approval for the justification)_
 
