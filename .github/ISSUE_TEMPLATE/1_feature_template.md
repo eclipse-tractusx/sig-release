@@ -92,14 +92,14 @@ The following items are ensured (answer: yes) after this issue is implemented:
     - [ ] [CX-0018 Eclipse Data Space Connector (EDC)](https://catenax-ev.github.io/docs/next/standards/CX-0018-EclipseDataSpaceConnector)
   - **Data Format:**
     - [ ] The data model is based on a [published Semantic Model](https://github.com/eclipse-tractusx/sldt-semantic-models)
-- [ ] The impact on the overall system architecture has been assessed? Please have a look here on the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture)
+- [ ] The impact on the overall system architecture has been assessed? The feature does not require changes to the architecture or any existing standard? Please have a look here on the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture)
 - [ ] Potential risks or conflicts with existing architecture has been assessed
 - [ ] The feature doesnt introduce any new dependencies or requires changes to current architectural components
 - [ ] Architectural stakeholders (e.g., architects, technical leads) has been consulted
 
-**Justification:** _(Only needs to be filled out if at lease one checkbox item could not be answered with "yes" -> please contact also the Architectjure Management Committee)_
+**Justification:** _(Fill this out, if at least one of the checkboxes above cannot be ticked. Contact the Architecture Management Committee to get an approval for the justification)_
 
 ## Additional information
 <!-- this is only needed, if contributors and committers are not known during feature creation -->
-- [ ] I'm willing to contribute to this feature
+- [ ] I leave this unticked as it is natural for me, that I only propose features for which I commit the proper invest to get them implemented. If I have to tick it, I understand that contributing a feature without the capacity to implement it is very bad style, but I humbly ask for support because I still think this is a great idea. 
 - [ ] I provide necessary developer resources
