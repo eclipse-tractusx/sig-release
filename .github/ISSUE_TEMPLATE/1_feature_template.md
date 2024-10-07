@@ -32,7 +32,7 @@ Please see here an [example feature](https://github.com/eclipse-tractusx/sig-rel
 <!--  do we increase security/efficiency/ reduce complexity? -->
 
 ## What are the Risks/Dependencies ?
-<!--  breaking change ? do you have interface partner you need to align with ? -->
+<!--  breaking change ? do you have interface partner you need to align with ? does it require review from the architecture team? -->
 
 ## Detailed explanation
 <!-- explain the idea in detail , what is the current situation , what needs to be changed  -->
