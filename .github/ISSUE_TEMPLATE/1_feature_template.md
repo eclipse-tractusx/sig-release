@@ -3,7 +3,7 @@ name: Propose a Feature
 about: propose a new functionality
 ---
 
-# Description
+# Overview
 <!-- 
 A clear and concise description of what the desired feature will look like. 
 What is the purpose, what´s the expected result. 
@@ -11,6 +11,22 @@ Please describe.
 
 Please see here an [example feature](https://github.com/eclipse-tractusx/sig-release/issues/882)
 -->
+
+## Explain the topic in 2 sentences
+<!-- provide a short overview -->
+
+## What's the benefit?
+<!--  do we increase security/efficiency/ reduce complexity? -->
+
+## What are the Risks/Dependencies ?
+<!--  breaking change? Do you have an interface partner you need to align with? does it require review from the architecture team? -->
+
+## Detailed explanation
+<!-- explain the idea in detail , what is the current situation , what needs to be changed  -->
+
+### Current implementation
+
+### Proposed improvements
 
 ## Feature Team
 
@@ -25,41 +41,24 @@ Please see here an [example feature](https://github.com/eclipse-tractusx/sig-rel
 - Committer 2
 <!--  can be delivered after Planning Phase 1 -->
 
-## Explain the topic in 2 sentences
-<!-- provide a short overview -->
-
-## What's the benefit?
-<!--  do we increase security/efficiency/ reduce complexity? -->
-
-## What are the Risks/Dependencies ?
-<!--  breaking change ? do you have interface partner you need to align with ? does it require review from the architecture team? -->
-
-## Detailed explanation
-<!-- explain the idea in detail , what is the current situation , what needs to be changed  -->
-
-### Current implementation
-
-### Proposed improvements
-
 ## User Stories
-<!--  define the sub-issues that lead to the full developement of this feature -->
+<!--  define the sub-issues that lead to the full development of this feature -->
 - Issue 1, linked to specific repository
 - Issue 2, linked to another specific repository
 
 ## Acceptance Criteria
 <!--
-Add all Acceptence Criteria. These criteria are important for the definition of done
+Add all Acceptance Criteria. These criteria are important for the definition of done
 -->
 - [ ] Criteria 1
 - [ ] Criteria 2
 - [ ] Criteria 3
 
-## Test cases
+## Test Cases
 <!-- add testcases - proposed structure (Description/Steps/Expected Result) -->
 
-### TestCase 1
+### Test Case 1
 <!--  description -->
-
 #### Steps
 
 1. Do something
@@ -72,7 +71,7 @@ Add all Acceptence Criteria. These criteria are important for the definition of 
 2. Expectation
 3. Expectation
 
-### Architectural Relevance
+## Architectural Relevance
 <!--
 The Architecture Management Committee monitors and controls the overarching architecture. It is essential that all applications and documentations follows a baseline set of standards and guidelines. These small checks ensure that the proposed change does not compromise our general principles.
 -->
@@ -92,12 +91,12 @@ The following items are ensured (answer: yes) after this issue is implemented:
     - [ ] [CX-0018 Data Space Connectivity (EDC)](https://catenax-ev.github.io/docs/next/standards/CX-0018-DataspaceConnectivity)
   - **Data Format:**
     - [ ] The data model is based on a [published Semantic Model](https://github.com/eclipse-tractusx/sldt-semantic-models)
-- [ ] The impact on the overall system architecture has been assessed? The feature does not require changes to the architecture or any existing standard? Please have a look here on the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture)
+- [ ] The impact on the overall system architecture has been assessed. The Feature does not require changes to the architecture or any existing standard? Please have a look here on the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture)
 - [ ] Potential risks or conflicts with existing architecture has been assessed
 
 **Justification:** _(Fill this out, if at least one of the checkboxes above cannot be ticked. Contact the Architecture Management Committee to get an approval for the justification)_
 
 ## Additional information
 <!-- this is only needed, if contributors and committers are not known during feature creation -->
-- [ ] I leave this unticked as it is natural for me, that I only propose features for which I commit the proper invest to get them implemented. If I have to tick it, I understand that contributing a feature without the capacity to implement it is very bad style, but I humbly ask for support because I still think this is a great idea.
+- [ ] I leave this unticked as it is natural for me that I only propose features for which I commit the proper investment to get them implemented. If I have to tick it, I understand that contributing a feature without the capacity to implement it is very bad style, but I humbly ask for support because I still think this is a great idea.
 - [ ] I provide necessary developer resources
