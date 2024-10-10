@@ -98,5 +98,4 @@ The following items are ensured (answer: yes) after this issue is implemented:
 
 ## Additional information
 <!-- this is only needed, if contributors and committers are not known during feature creation -->
-- [ ] I leave this unticked as it is natural for me that I only propose features for which I commit the proper investment to get them implemented. If I have to tick it, I understand that contributing a feature without the capacity to implement it is very bad style, but I humbly ask for support because I still think this is a great idea.
-- [ ] I provide necessary developer resources
+- [ ] I am aware that my request may not be developed if no developer can be found for it. I'll try to contribute a developer (bring your own developer)
