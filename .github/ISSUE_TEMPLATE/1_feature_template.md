@@ -77,7 +77,7 @@ The Architecture Management Committee monitors and controls the overarching arch
 -->
 The following items are ensured (answer: yes) after this issue is implemented.
 
-In the context of standards [126](https://catenax-ev.github.io/docs/standards/CX-0126-IndustryCorePartType) and [127](https://catenax-ev.github.io/docs/standards/CX-0127-IndustryCorePartInstance), typically only one is applicable, depending on the specific use case. Please cross out the standard that does not apply.
+In the context of the standards [126](https://catenax-ev.github.io/docs/standards/CX-0126-IndustryCorePartType) and [127](https://catenax-ev.github.io/docs/standards/CX-0127-IndustryCorePartInstance), typically only one is applicable, depending on the specific use case. Please cross out one of the two standard that does not apply.
 
 - [ ] This feature aligns with our current architectural guidelines
   - **Data Sovereignty:** All data sharing activities across company boundaries follow the [Catena-X Regulatory Framework](https://catenax-ev.github.io/docs/next/regulatory-framework/governance-framework), in particular the [Data Exchange Governance](https://catenax-ev.github.io/docs/next/regulatory-framework/20000ft/data-exchange-governance), and the [Dataspace Protocol](https://docs.internationaldataspaces.org/dataspace-protocol/overview/readme) via a compliant Connector (like the [tractusx-edc](https://github.com/eclipse-tractusx/tractusx-edc) or similar, see [Connector KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/connector-kit))
