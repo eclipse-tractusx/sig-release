@@ -44,7 +44,6 @@ In the context of the standards [126](https://catenax-ev.github.io/docs/standard
     - [ ] [CX-0001 EDC Discovery API](https://catenax-ev.github.io/docs/next/standards/CX-0001-EDCDiscoveryAPI)
     - [ ] [CX-0002 Digital Twins in Catena-X](https://catenax-ev.github.io/docs/next/standards/CX-0002-DigitalTwinsInCatenaX)
     - [ ] [CX-0018 Dataspace Connectivity](https://catenax-ev.github.io/docs/next/standards/CX-0018-DataspaceConnectivity)
-
     - [ ] [CX-0126 Industry Core: Part Type 2.0.0](https://catenax-ev.github.io/docs/standards/CX-0126-IndustryCorePartType)
     - [ ] [CX-0127 Industry Core: Part Instance 2.0.0](https://catenax-ev.github.io/docs/standards/CX-0127-IndustryCorePartInstance)
   - **Data Format:**
