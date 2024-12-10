@@ -75,7 +75,9 @@ Add all Acceptance Criteria. These criteria are important for the definition of 
 <!--
 The Architecture Management Committee monitors and controls the overarching architecture. It is essential that all applications and documentations follows a baseline set of standards and guidelines. These small checks ensure that the proposed change does not compromise our general principles.
 -->
-The following items are ensured (answer: yes) after this issue is implemented:
+The following items are ensured (answer: yes) after this issue is implemented.
+
+In the context of the standards [126](https://catenax-ev.github.io/docs/standards/CX-0126-IndustryCorePartType) and [127](https://catenax-ev.github.io/docs/standards/CX-0127-IndustryCorePartInstance), typically only one is applicable, depending on the specific use case. Please cross out one of the two standards that does not apply.
 
 - [ ] This feature aligns with our current architectural guidelines
   - **Data Sovereignty:** All data sharing activities across company boundaries follow the [Catena-X Regulatory Framework](https://catenax-ev.github.io/docs/next/regulatory-framework/governance-framework), in particular the [Data Exchange Governance](https://catenax-ev.github.io/docs/next/regulatory-framework/20000ft/data-exchange-governance), and the [Dataspace Protocol](https://docs.internationaldataspaces.org/dataspace-protocol/overview/readme) via a compliant Connector (like the [tractusx-edc](https://github.com/eclipse-tractusx/tractusx-edc) or similar, see [Connector KIT](https://eclipse-tractusx.github.io/docs-kits/next/category/connector-kit))
@@ -89,6 +91,8 @@ The following items are ensured (answer: yes) after this issue is implemented:
     - [ ] [CX-0001 EDC Discovery API](https://catenax-ev.github.io/docs/next/standards/CX-0001-EDCDiscoveryAPI)
     - [ ] [CX-0002 Digital Twins in Catena-X](https://catenax-ev.github.io/docs/next/standards/CX-0002-DigitalTwinsInCatenaX)
     - [ ] [CX-0018 Data Space Connectivity (EDC)](https://catenax-ev.github.io/docs/next/standards/CX-0018-DataspaceConnectivity)
+    - [ ] [CX-0126 Industry Core: Part Type 2.0.0](https://catenax-ev.github.io/docs/standards/CX-0126-IndustryCorePartType)
+    - [ ] [CX-0127 Industry Core: Part Instance 2.0.0](https://catenax-ev.github.io/docs/standards/CX-0127-IndustryCorePartInstance)
   - **Data Format:**
     - [ ] The data model is based on a [published Semantic Model](https://github.com/eclipse-tractusx/sldt-semantic-models)
 - [ ] The impact on the overall system architecture has been assessed. The Feature does not require changes to the architecture or any existing standard? Please have a look here on the [overarching architecture](https://eclipse-tractusx.github.io/docs/tutorials/e2e/inform/architecture)
