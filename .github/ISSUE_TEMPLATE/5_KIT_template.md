@@ -28,6 +28,6 @@ labels: kit
 
 - [ ] This feature aligns with our current set of standards
 
-## Helpfull links
+## Helpful links
 
 - [Catena-X standard library](https://catenax-ev.github.io/docs/next/standards/overview)
