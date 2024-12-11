@@ -8,8 +8,8 @@ labels: kit
 ## Description
 <!-- Please provide a short description -->
 
-## Impact
-<!-- Please name the impact -->
+## Major Changes / Major Adjustments
+<!-- Please specify the nature and impact of the changes -->
 - Impact 1
 
 ## KIT Team
@@ -24,9 +24,6 @@ labels: kit
 - Committer 1
 - Committer 2
 
-## Standard Relevance
-
-- [ ] This feature aligns with our current set of standards
 
 ## Helpful links
 
