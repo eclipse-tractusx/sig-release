@@ -103,4 +103,4 @@ Please provide a short summary about the new values/benefits of the new features
 
 ## Helpful Links
 
-- [Eclipse Tractus-X openAPI specs on SwaggerHub](https://app.swaggerhub.com/search?owner=eclipse-tractusx-bot)
+- [Eclipse Tractus-X API Hub](https://eclipse-tractusx.github.io/api-hub)
