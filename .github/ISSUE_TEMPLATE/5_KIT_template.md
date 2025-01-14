@@ -24,7 +24,6 @@ labels: kit
 - Committer 1
 - Committer 2
 
-
 ## Helpful links
 
 - [Catena-X standard library](https://catenax-ev.github.io/docs/next/standards/overview)
