@@ -86,7 +86,7 @@ By documenting these features, you will contribute to a smoother and more effici
 
 ## Standard summary
 
-Please provide a list of all standards that have been affected. By documenting these standards, you will contribute to a smoother and more efficient release process.
+<!-- Please provide a list of all standards that have been affected. By documenting these standards, you will contribute to a smoother and more efficient release process. -->
 
 - [ ] standard name
 
