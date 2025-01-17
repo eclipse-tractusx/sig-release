@@ -29,7 +29,7 @@ go/golang/github.com%2Felazarl/goproxy/v0.0.0-20230808193330-2592e75ae04a, BSD-3
 go/golang/github.com%2Femicklei%2Fgo-restful/v3/v3.11.0, MIT, approved, clearlydefined
 go/golang/github.com%2Femirpasic/gods/v1.18.1, BSD-2-Clause AND ISC, approved, clearlydefined
 go/golang/github.com%2Fevanphx/json-patch/v5.7.0, BSD-3-Clause, approved, #12932
-go/golang/github.com%2Ffatih/color/v1.16.0, MIT, approved, #13166
+go/golang/github.com%2Ffatih/color/v1.17.0, MIT, restricted, clearlydefined
 go/golang/github.com%2Ffrankban/quicktest/v1.14.4, LGPL-3.0-only AND MIT, approved, #10723
 go/golang/github.com%2Fgliderlabs/ssh/v0.3.7, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgo-git%2Fgo-billy/v5/v5.5.0, Apache-2.0, approved, clearlydefined
