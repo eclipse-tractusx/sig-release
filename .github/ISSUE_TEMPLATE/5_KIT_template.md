@@ -1,5 +1,6 @@
 ---
 name: Propose KIT
+about: Propose a new KIT or adapt given one
 labels: kit
 ---
 
