@@ -2,6 +2,7 @@ go/golang/dario.cat/mergo/v1.0.0, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2FBurntSushi/toml/v1.3.2, MIT AND BSD-3-Clause, approved, #10744
 go/golang/github.com%2FMasterminds%2Fsemver/v3/v3.2.0, MIT, approved, clearlydefined
 go/golang/github.com%2FMasterminds%2Fsemver/v3/v3.2.1, MIT, approved, clearlydefined
+go/golang/github.com%2FMasterminds%2Fsemver/v3/v3.3.0, MIT, approved, clearlydefined
 go/golang/github.com%2FMasterminds%2Fsprig/v3/v3.2.3, MIT, approved, clearlydefined
 go/golang/github.com%2FMasterminds/goutils/v1.1.1, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2FMicrosoft/go-winio/v0.5.2, MIT AND BSD-3-Clause, approved, #5617
