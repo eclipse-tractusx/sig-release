@@ -22,7 +22,7 @@ replicaCount: 1
 
 image:
     # -- Image to use for deploying an application
-  repository: ghcr.io/catenax-ng/fake-image
+  repository: ghcr.io/eclipse-tractusx/fake-image
     # -- Set the Image Pull Policy
   pullPolicy: Always
     # -- Image tage is defined in chart appVersion
