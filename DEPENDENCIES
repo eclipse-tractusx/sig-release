@@ -33,14 +33,14 @@ go/golang/github.com%2Ffxamacker%2Fcbor/v2/v2.8.0, MIT, approved, #20694
 go/golang/github.com%2Fgliderlabs/ssh/v0.3.8, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgo-git%2Fgo-billy/v5/v5.6.2, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgo-git%2Fgo-git-fixtures/v4/v4.3.2-0.20231010084843-55a94097c399, Apache-2.0, approved, clearlydefined
-go/golang/github.com%2Fgo-git%2Fgo-git/v5/v5.16.0, , restricted, clearlydefined
+go/golang/github.com%2Fgo-git%2Fgo-git/v5/v5.16.0, Apache-2.0 AND MIT, approved, #20740
 go/golang/github.com%2Fgo-git/gcfg/v1.5.1-0.20230307220236-3a3c6141e376, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgo-ini/ini/v1.67.0, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgo-logr/logr/v1.4.2, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgo-openapi/jsonpointer/v0.21.1, Apache-2.0, approved, #20690
 go/golang/github.com%2Fgo-openapi/jsonreference/v0.21.0, Apache-2.0, approved, #20705
 go/golang/github.com%2Fgo-openapi/swag/v0.23.1, Apache-2.0 AND (Apache-2.0 AND MIT), approved, #20689
-go/golang/github.com%2Fgo-task%2Fslim-sprig/v3/v3.0.0, MIT, restricted, clearlydefined
+go/golang/github.com%2Fgo-task%2Fslim-sprig/v3/v3.0.0, MIT, approved, #20739
 go/golang/github.com%2Fgobwas/glob/v0.2.3, MIT, approved, clearlydefined
 go/golang/github.com%2Fgobwas/glob/v0.2.3, MIT, approved, clearlydefined
 go/golang/github.com%2Fgocolly/colly/v1.2.0, Apache-2.0, approved, clearlydefined
