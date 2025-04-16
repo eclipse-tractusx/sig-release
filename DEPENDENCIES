@@ -15,7 +15,7 @@ go/golang/github.com%2FMicrosoft/go-winio/v0.6.1, MIT AND BSD-3-Clause, approved
 go/golang/github.com%2FMicrosoft/go-winio/v0.6.2, MIT AND BSD-3-Clause, approved, #10746
 go/golang/github.com%2FProtonMail/go-crypto/v1.0.0, BSD-3-Clause AND BSD-2-Clause, approved, #14232
 go/golang/github.com%2FProtonMail/go-crypto/v1.2.0, BSD-3-Clause AND BSD-2-Clause, approved, #20700
-go/golang/github.com%2FPuerkitoBio/goquery/v1.10.3, BSD-3-Clause AND (BSD-3-Clause AND CC-BY-3.0 AND LicenseRef-scancode-unknown), restricted, #20677
+go/golang/github.com%2FPuerkitoBio/goquery/v1.10.3, BSD-3-Clause, approved, #20677
 go/golang/github.com%2FPuerkitoBio/goquery/v1.8.1, BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-3.0, approved, #11436
 go/golang/github.com%2Fandybalholm/cascadia/v1.3.1, BSD-2-Clause, approved, clearlydefined
 go/golang/github.com%2Fandybalholm/cascadia/v1.3.2, BSD-2-Clause, approved, clearlydefined
