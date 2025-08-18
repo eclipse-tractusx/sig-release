@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -157,6 +158,8 @@ func initializeChecksForDirectory(dir string) []tractusx.QualityGuideline {
 	checks = append(checks, docs.NewReadmeExists(dir))
 	checks = append(checks, docs.NewInstallExists(dir))
 	checks = append(checks, docs.NewChangelogExists(dir))
+	checks = append(checks, docs.NewAdminGuideExists(dir))
+	checks = append(checks, docs.NewArchitectureDocumentationExists(dir))
 	checks = append(checks, repo.NewDefaultBranch(dir))
 	checks = append(checks, repo.NewRepoStructureExists(dir))
 	checks = append(checks, repo.NewLeadingRepositoryDefined(dir))

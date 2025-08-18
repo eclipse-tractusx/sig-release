@@ -8,6 +8,14 @@ are gathered to provided an overview on product basis.
 
 ## Development
 
+### Local Testing
+
+You need to define the GITHUB_ACCESS_TOKEN to create the dashboard as you'll else will run into a 403 RATE LIMIT. Having a the GitHub CLI installed, you can use the following command to set it:
+
+```bash
+export GITHUB_ACCESS_TOKEN=$(gh auth token)
+```
+
 ### Styling
 
 We are using [Materialize](https://materializecss.com) as frontend framework to style this page.
