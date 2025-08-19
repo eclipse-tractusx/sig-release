@@ -62,6 +62,33 @@ skipReleaseChecks:
     - "path/to/Dockerfile/only/used/in/testing-pipeline/Dockerfile.ui-tests"
 ```
 
+### Define Deviating Architecture Doc Folder for Built Documentation (TRG 1.05)
+
+[TRG 1.05](https://eclipse-tractusx.github.io/docs/release/trg-1/trg-1-05/) foresees the architecture documentation in `docs/architecture`. If you use e.g. AsciiDoc you might want to specify a deviating directory as you commonly have `src` folder that needs to be compiled / built.
+
+```yaml
+# section to explicitly reconfigure certain release guideline checks
+configureReleaseChecks:
+  # Define a deviation from docs/architecture/ for your arc42
+  ArchitectureDocEntryPath: docs/src/architecture/
+```
+
+### Exclude Markdown / AsciiDoc Files from Notice Section Check (TRG 7.07)
+
+As defined in [TRG 7.07](https://eclipse-tractusx.github.io/docs/release/trg-7/trg-7-07#how-to-include-legal-notices), all documents need to have a notice section at the end of the file specifying in heading 2 a notice file.
+
+By default, the `.github` directory is excluded from this check, but all other files are validated.
+
+```yaml
+# section to explicitly skip certain release guideline checks
+skipReleaseChecks:
+  # Skip the Notice section for non-distributed artefacts that don't need a notice section
+  LegalNoticeNonCode:
+    # exclude the directory src/assets
+    # this makes sense e.g. if you have a workflow that replaces a user_guide during release / distribution in the frontend that includes a notice section but you place a dummy file there.
+    - frontend/src/assets/
+```
+
 ## OpenAPI Specification
 
 It is possible and highly recommended to list OpenAPI specifications related to your product in the respective section `openApiSpecs` of metadata file as in the example below:

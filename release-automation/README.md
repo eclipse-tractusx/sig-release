@@ -8,6 +8,24 @@ are gathered to provided an overview on product basis.
 
 ## Development
 
+To run the go program locally, do as follows:
+
+```bash
+# build the program
+cd release-automation
+go build -o release-automation
+PROGRAM_PATH=$(pwd)/release-automation
+# executable is created in release-automation/release-automation
+# you can now run the program with $PROGRAM_PATH
+
+# Example: run trg checks locally
+cd <root-of-your-repo>
+$PROGRAM_PATH checkLocal ./
+```
+
+> [!Tip]
+> Please refer to the [cobra command files](./cmd) to learn more about to running the commands.
+
 ### Local Testing
 
 You need to define the GITHUB_ACCESS_TOKEN to create the dashboard as you'll else will run into a 403 RATE LIMIT. Having a the GitHub CLI installed, you can use the following command to set it:
