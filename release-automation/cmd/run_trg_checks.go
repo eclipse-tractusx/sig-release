@@ -24,7 +24,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/spf13/cobra"
 	"tractusx-release-automation/internal/container"
 	"tractusx-release-automation/internal/docs"
 	"tractusx-release-automation/internal/helm"
@@ -32,6 +31,8 @@ import (
 	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/test_runner"
 	"tractusx-release-automation/internal/tractusx"
+
+	"github.com/spf13/cobra"
 )
 
 // checkLocalCmd represents the checkLocal command
@@ -48,7 +49,6 @@ var checkLocalCmd = &cobra.Command{
 			basedir = "./"
 		}
 
-		// TODO implement product-wise release guidelines
 		var releaseGuidelines = []tractusx.QualityGuideline{
 			docs.NewReadmeExists(basedir),
 			docs.NewInstallExists(basedir),

@@ -46,7 +46,8 @@ type Repository struct {
 }
 
 type SkipReleaseChecks struct {
-	AlignedBaseImages []string `yaml:"alignedBaseImage"`
+	AlignedBaseImages   []string `yaml:"alignedBaseImage"`
+	LegalNoticesNonCode []string `yaml:"legalNoticesNonCode"`
 }
 
 type ConfigureReleaseChecks struct {
