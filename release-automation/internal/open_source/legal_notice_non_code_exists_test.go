@@ -98,7 +98,6 @@ func TestShouldPassIfInvalidFilesAreExcluded(t *testing.T) {
 
 	exclusionSlice := []string{
 		"subdir/missing_copyright_and_excluded.md",
-		//".github/*",
 	}
 
 	saveMetadataConfigToExclude(exclusionSlice, dir)

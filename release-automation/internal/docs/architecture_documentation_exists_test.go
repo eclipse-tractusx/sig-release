@@ -100,16 +100,6 @@ func TestShouldFailIfArchitectureDocumentationFromTractusxFileDoesNotExist(t *te
 	}
 }
 
-//func TestProvideErrorDescriptionOnFailingTest(t *testing.T) {
-//	expectedError := "Did not find a README.md file in current directory!"
-//
-//	result := NewReadmeExists("./").Test()
-//
-//	if result.ErrorDescription != expectedError {
-//		t.Errorf("Readme check does not provide correct error description on failing check! \nexprected: %s, \ngot: %s", expectedError, result.ErrorDescription)
-//	}
-//}
-
 func TestShouldPassIfArchitectureDocumentationMdExists(t *testing.T) {
 
 	tmpDir := t.TempDir()
@@ -155,19 +145,6 @@ func TestShouldPassIfArchitectureDocumentationAdocExists(t *testing.T) {
 	}
 
 }
-
-//func TestShouldFindReadmeAtGivenBasePath(t *testing.T) {
-//	dir := t.TempDir()
-//	if _, err := os.Create(path.Join(dir, "README.md")); err != nil {
-//		t.Errorf("Could not create README.md for test")
-//	}
-//
-//	result := NewReadmeExists(dir).Test()
-//
-//	if !result.Passed {
-//		t.Errorf("Could not find README.md at given base path")
-//	}
-//}
 
 func saveMetadataConfigToSkip(architectureDocPath string, dir string) {
 	metadata := tractusx.Metadata{

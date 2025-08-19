@@ -27,7 +27,6 @@ import (
 	"testing"
 )
 
-// TODO: outsource the function as a supporting function for tests
 func TestPassIfAnyMarkdownFileIsPresent(t *testing.T) {
 	dir := t.TempDir()
 	filePath := path.Join(dir, "docs", "admin", "README.md")
@@ -77,7 +76,6 @@ func TestFailIfMarkdownFileIsMissing(t *testing.T) {
 	}
 }
 
-// TODO why does go show an error, if I name this differently?
 func TestProvidesErrorDescriptionIfFailing(t *testing.T) {
 	result := NewChangelogExists("./").Test()
 
