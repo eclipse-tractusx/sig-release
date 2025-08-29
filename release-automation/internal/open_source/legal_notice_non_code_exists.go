@@ -38,10 +38,7 @@ var consideredFileRegexes = []string{
 
 var excludedFileGlobs = []string{
 	".github/",
-	"CHANGELOG.md",
 	"CODE_OF_CONDUCT.md",
-	"CONTRIBUTING.md",
-	"INSTALL.md",
 	"SECURITY.md",
 	"NOTICE.md",
 	"**/NOTICE.md",
