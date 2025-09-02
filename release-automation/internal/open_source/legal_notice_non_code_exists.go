@@ -161,7 +161,7 @@ func checkNoticeSection(filePath string) (bool, error) {
 	isValid := false
 
 	//log.Printf("File %s has lastHeading '%s'.", filePath, lastHeading)
-	// we could use strings.ToUpper(lastHeading) if we would like to not explictly check the UPPERCASENES
+	// we could use strings.ToUpper(lastHeading) if we would like to not explicitly check the UPPERCASENES
 	if lastHeading == "NOTICE" {
 		isValid = hasSPDX && hasCopyright && hasSourceURL
 	} else {
