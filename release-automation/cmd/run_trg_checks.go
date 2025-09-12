@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -23,13 +24,15 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/spf13/cobra"
 	"tractusx-release-automation/internal/container"
 	"tractusx-release-automation/internal/docs"
 	"tractusx-release-automation/internal/helm"
+	"tractusx-release-automation/internal/open_source"
 	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/test_runner"
 	"tractusx-release-automation/internal/tractusx"
+
+	"github.com/spf13/cobra"
 )
 
 // checkLocalCmd represents the checkLocal command
@@ -50,6 +53,8 @@ var checkLocalCmd = &cobra.Command{
 			docs.NewReadmeExists(basedir),
 			docs.NewInstallExists(basedir),
 			docs.NewChangelogExists(basedir),
+			docs.NewAdminGuideExists(basedir),
+			docs.NewArchitectureDocumentationExists(basedir),
 			repo.NewDefaultBranch(basedir),
 			repo.NewRepoStructureExists(basedir),
 			repo.NewLeadingRepositoryDefined(basedir),
@@ -58,6 +63,7 @@ var checkLocalCmd = &cobra.Command{
 			helm.NewHelmStructureExists(basedir),
 			helm.NewResourceMgmt(basedir),
 			helm.NewHelmWorkflowCheck(basedir),
+			open_source.NewNoticeForNonCodeExists(basedir),
 		}
 
 		runner := testrunner.NewTestRunner(releaseGuidelines)
