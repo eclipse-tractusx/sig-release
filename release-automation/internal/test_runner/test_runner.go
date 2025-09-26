@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -22,20 +23,22 @@ package testrunner
 import (
 	"errors"
 	"fmt"
-	"github.com/fatih/color"
 	"log"
 	"tractusx-release-automation/internal/exception"
 	"tractusx-release-automation/internal/repo"
 	"tractusx-release-automation/internal/tractusx"
+
+	"github.com/fatih/color"
 )
 
 type GuidelineTestRunner struct {
 	guidelines []tractusx.QualityGuideline
 	printer    tractusx.Printer
+	metadata   tractusx.Metadata
 }
 
-func NewTestRunner(tests []tractusx.QualityGuideline) *GuidelineTestRunner {
-	return &GuidelineTestRunner{guidelines: tests, printer: &StdoutPrinter{}}
+func NewTestRunner(tests []tractusx.QualityGuideline, metadata tractusx.Metadata) *GuidelineTestRunner {
+	return &GuidelineTestRunner{guidelines: tests, printer: &StdoutPrinter{}, metadata: metadata}
 }
 
 func (runner *GuidelineTestRunner) Run() error {
@@ -50,7 +53,15 @@ func (runner *GuidelineTestRunner) Run() error {
 			log.Println("Can't process exceptions.")
 		} else {
 			repoInfo := repo.GetRepoBaseInfo(guideline.BaseDir())
+			// Exclude if
+			// - exception configured for specific repository for specific TRG
+			// - guideline does not apply to present repository
 			if m.IsExceptioned(guideline.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
+				runner.printer.Print(fmt.Sprintf("Test skippped. Exception exists for test '%s' and repo '%s'.", guideline.Name(), repoInfo.Reponame))
+				result = &tractusx.QualityResult{Passed: true}
+				exceptionPresent = true
+			} else if !guideline.IsApplicableToCategory(runner.metadata.RepoCategory) {
+				runner.printer.Print(fmt.Sprintf("Test skippped. Test '%s' is not applicable to repo category '%s'.", guideline.Name(), repoInfo.Reponame))
 				result = &tractusx.QualityResult{Passed: true}
 				exceptionPresent = true
 			}

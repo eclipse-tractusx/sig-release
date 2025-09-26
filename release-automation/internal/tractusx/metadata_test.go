@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -29,7 +30,7 @@ import (
 var metadataFromTestTemplate = Metadata{
 	ProductName:       "sig-infra",
 	LeadingRepository: "https://github.com/eclipse-tractusx/sig-infra",
-	RepoCategory:      "special",
+	RepoCategory:      RepoCategorySpecial,
 	Repositories: []Repository{
 		{
 			Name:             "sig-infra",

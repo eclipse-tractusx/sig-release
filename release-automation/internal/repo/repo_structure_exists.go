@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -74,6 +75,9 @@ func (c RepoStructureExists) Test() *tractusx.QualityResult {
 
 	mandatoryForLeadingRepo := []string{
 		path.Join(c.baseDir, "docs"),
+	}
+
+	mandatoryForLeadingProductRepo := []string{
 		path.Join(c.baseDir, "charts"),
 	}
 
@@ -81,6 +85,10 @@ func (c RepoStructureExists) Test() *tractusx.QualityResult {
 
 	if isLeadingRepo(c.baseDir) {
 		listOfMandatoryFilesToBeChecked = append(listOfMandatoryFilesToBeChecked, mandatoryForLeadingRepo...)
+
+		if isProductRepo(c.baseDir) {
+			listOfMandatoryFilesToBeChecked = append(listOfMandatoryFilesToBeChecked, mandatoryForLeadingProductRepo...)
+		}
 	}
 
 	missingMandatoryFiles := filesystem.CheckMissingFiles(listOfMandatoryFilesToBeChecked)
@@ -99,10 +107,19 @@ func (c RepoStructureExists) Test() *tractusx.QualityResult {
 	if len(missingMandatoryFiles) > 0 {
 		cleanMissingFiles := []string{}
 		for _, missingFile := range missingMandatoryFiles {
-			cleanMissingFiles = append(cleanMissingFiles, strings.Split(missingFile, c.baseDir)[1][1:])
+			// if a mandatory folder is missing, the path does not contain the base dir and thus mustn't be removed
+			if strings.HasPrefix(missingFile, c.baseDir) {
+				cleanMissingFiles = append(cleanMissingFiles, strings.Split(missingFile, c.baseDir)[1][1:])
+			} else {
+				cleanMissingFiles = append(cleanMissingFiles, missingFile)
+			}
 		}
 		return &tractusx.QualityResult{ErrorDescription: "The check detected following mandatory files missing: " + strings.Join(cleanMissingFiles, ", ")}
 	}
 
 	return &tractusx.QualityResult{Passed: true}
+}
+
+func (a *RepoStructureExists) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct || category == tractusx.RepoCategorySupport || category == tractusx.RepoCategorySpecial
 }

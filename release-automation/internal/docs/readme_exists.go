@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -60,4 +61,8 @@ func (r *ReadmeExists) Test() *tractusx.QualityResult {
 		return &tractusx.QualityResult{ErrorDescription: "Did not find a README.md file in current directory!"}
 	}
 	return &tractusx.QualityResult{Passed: true}
+}
+
+func (a *ReadmeExists) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct || category == tractusx.RepoCategorySupport || category == tractusx.RepoCategorySpecial
 }

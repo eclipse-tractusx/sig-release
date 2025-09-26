@@ -33,7 +33,7 @@ const MetadataFilename = ".tractusx"
 type Metadata struct {
 	ProductName            string       `yaml:"product"`
 	LeadingRepository      string       `yaml:"leadingRepository"`
-	RepoCategory           string       `yaml:"repoCategory"`
+	RepoCategory           RepoCategory `yaml:"repoCategory"`
 	Repositories           []Repository `yaml:"repositories"`
 	SkipReleaseChecks      `yaml:"skipReleaseChecks"`
 	ConfigureReleaseChecks `yaml:"configureReleaseChecks"`
@@ -87,3 +87,7 @@ func MetadataFromLocalFile(dir string) (*Metadata, error) {
 
 	return file, nil
 }
+
+//func (m *Metadata) RepoCategory() RepoCategory {
+//	return ParseRepoCategory(m.RepoCategoryRaw)
+//}

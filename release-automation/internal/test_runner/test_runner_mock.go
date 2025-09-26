@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -21,20 +22,56 @@ package testrunner
 
 import (
 	"fmt"
-
 	"tractusx-release-automation/internal/tractusx"
 )
 
+const DEFAULT_REPO_CATEOGRY = tractusx.RepoCategorySpecial
+
+func DefaultMetadata() tractusx.Metadata {
+	return tractusx.Metadata{
+		ProductName:       "sig-infra",
+		LeadingRepository: "https://github.com/eclipse-tractusx/sig-infra",
+		RepoCategory:      DEFAULT_REPO_CATEOGRY,
+		Repositories: []tractusx.Repository{
+			{
+				Name:             "sig-infra",
+				UsageDescription: "Contains issue templates and workflows",
+				Url:              "https://github.com/eclipse-tractusx/sig-infra",
+			},
+			{
+				Name:             "charts",
+				UsageDescription: "Central Helm repository containing all released charts of Tractus-X",
+				Url:              "https://github.com/eclipse-tractusx/charts",
+			},
+		},
+		SkipReleaseChecks: tractusx.SkipReleaseChecks{
+			AlignedBaseImages: []string{
+				"/path/to/non-published/Dockerfile",
+			},
+		},
+		ConfigureReleaseChecks: tractusx.ConfigureReleaseChecks{},
+	}
+}
+
 type Guideline struct {
-	name                string
-	description         string
-	externalDescription string
-	baseDir             string
-	isOptional          bool
+	name                 string
+	description          string
+	externalDescription  string
+	baseDir              string
+	isOptional           bool
+	metadataRepoCategory tractusx.RepoCategory
 }
 
 type FailingQualityGuideline struct {
 	Guideline
+}
+
+func (f FailingQualityGuideline) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	// fallback: return true if no category has been set
+	if f.metadataRepoCategory == tractusx.RepoCategoryUnknown {
+		return true
+	}
+	return f.metadataRepoCategory == category
 }
 
 func (f FailingQualityGuideline) IsOptional() bool {
@@ -63,6 +100,14 @@ func (f FailingQualityGuideline) Test() *tractusx.QualityResult {
 
 type PassingQualityGuideline struct {
 	Guideline
+}
+
+func (p PassingQualityGuideline) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	// fallback: return true if no category has been set
+	if p.metadataRepoCategory == tractusx.RepoCategoryUnknown {
+		return true
+	}
+	return p.metadataRepoCategory == category
 }
 
 func (p PassingQualityGuideline) IsOptional() bool {

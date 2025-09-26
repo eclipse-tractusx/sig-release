@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -25,8 +26,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/go-ini/ini"
 	"tractusx-release-automation/internal/tractusx"
+
+	"github.com/go-ini/ini"
 )
 
 // RepoInfo is a struct to keep basic information about a repository
@@ -61,6 +63,7 @@ func GetRepoBaseInfo(repoDir string) *RepoInfo {
 	cfg, err := ini.Load(path.Join(repoDir, ".git/config"))
 	if err != nil {
 		fmt.Printf("Failed to read file: %v", err)
+		return &RepoInfo{Owner: "unknown", Reponame: "unknown"}
 	}
 
 	url := cfg.Section(SECTION).Key("url").String()
@@ -86,6 +89,16 @@ func isLeadingRepo(repoDir string) bool {
 	fullRepoName := "https://github.com/eclipse-tractusx/" + (*repoInfo).Reponame
 
 	if err != nil || metadata.LeadingRepository != fullRepoName {
+		return false
+	}
+
+	return true
+}
+
+func isProductRepo(repoDir string) bool {
+	metadata, err := tractusx.MetadataFromLocalFile(repoDir)
+
+	if err != nil || metadata.RepoCategory != tractusx.RepoCategoryProduct {
 		return false
 	}
 
