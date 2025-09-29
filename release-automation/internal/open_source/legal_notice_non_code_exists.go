@@ -43,6 +43,8 @@ var excludedFileGlobs = []string{
 	"NOTICE.md",
 	"**/NOTICE.md",
 	"**/DOCKER_NOTICE.md",
+	"node_modules/",
+	"**/node_modules/",
 }
 
 type NoticeForNonCodeExists struct {
@@ -244,4 +246,8 @@ func getExcludedGlobs(dir string) []string {
 	}
 
 	return append(excludedFileGlobs, file.LegalNoticesNonCode...)
+}
+
+func (a *NoticeForNonCodeExists) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct || category == tractusx.RepoCategorySupport || category == tractusx.RepoCategorySpecial
 }

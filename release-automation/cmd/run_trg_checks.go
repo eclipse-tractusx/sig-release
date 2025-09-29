@@ -49,7 +49,18 @@ var checkLocalCmd = &cobra.Command{
 			basedir = "./"
 		}
 
-		var releaseGuidelines = []tractusx.QualityGuideline{
+		metadata, err := tractusx.MetadataFromLocalFile(basedir)
+		if err != nil {
+			fmt.Println("Error occurred! Metadata file (.tractusx) missing at root directory of repo. Please check out TRG 2.05: https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-05")
+			os.Exit(1)
+		}
+
+		if metadata.RepoCategory == tractusx.RepoCategoryUnknown {
+			fmt.Println("Error occurred! Metadata file (.tractusx) contains no or unknown repository category. Please check out TRG 2.05: https://eclipse-tractusx.github.io/docs/release/trg-2/trg-2-05")
+			os.Exit(1)
+		}
+
+		allReleaseGuidelines := []tractusx.QualityGuideline{
 			docs.NewReadmeExists(basedir),
 			docs.NewInstallExists(basedir),
 			docs.NewChangelogExists(basedir),
@@ -66,8 +77,10 @@ var checkLocalCmd = &cobra.Command{
 			open_source.NewNoticeForNonCodeExists(basedir),
 		}
 
-		runner := testrunner.NewTestRunner(releaseGuidelines)
-		err := runner.Run()
+		//applicableGuidelines := getApplicableGuidelines(allReleaseGuidelines, metadata.RepoCategory)
+
+		runner := testrunner.NewTestRunner(allReleaseGuidelines, *metadata)
+		err = runner.Run()
 
 		if err != nil {
 			fmt.Println("Error occurred! Check command output for details on failed checks")
@@ -76,6 +89,16 @@ var checkLocalCmd = &cobra.Command{
 
 		os.Exit(0)
 	},
+}
+
+func getApplicableGuidelines(allGuidelines []tractusx.QualityGuideline, category tractusx.RepoCategory) []tractusx.QualityGuideline {
+	var applicable []tractusx.QualityGuideline
+	for _, guideline := range allGuidelines {
+		if guideline.IsApplicableToCategory(category) {
+			applicable = append(applicable, guideline)
+		}
+	}
+	return applicable
 }
 
 func init() {
