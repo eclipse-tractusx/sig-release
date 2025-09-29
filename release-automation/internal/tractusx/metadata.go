@@ -87,7 +87,3 @@ func MetadataFromLocalFile(dir string) (*Metadata, error) {
 
 	return file, nil
 }
-
-//func (m *Metadata) RepoCategory() RepoCategory {
-//	return ParseRepoCategory(m.RepoCategoryRaw)
-//}

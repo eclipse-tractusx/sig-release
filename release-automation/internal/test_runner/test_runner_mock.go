@@ -25,13 +25,13 @@ import (
 	"tractusx-release-automation/internal/tractusx"
 )
 
-const DEFAULT_REPO_CATEOGRY = tractusx.RepoCategorySpecial
+const DEFAULT_REPO_CATEGORY = tractusx.RepoCategorySpecial
 
 func DefaultMetadata() tractusx.Metadata {
 	return tractusx.Metadata{
 		ProductName:       "sig-infra",
 		LeadingRepository: "https://github.com/eclipse-tractusx/sig-infra",
-		RepoCategory:      DEFAULT_REPO_CATEOGRY,
+		RepoCategory:      DEFAULT_REPO_CATEGORY,
 		Repositories: []tractusx.Repository{
 			{
 				Name:             "sig-infra",

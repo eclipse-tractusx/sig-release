@@ -57,11 +57,11 @@ func (runner *GuidelineTestRunner) Run() error {
 			// - exception configured for specific repository for specific TRG
 			// - guideline does not apply to present repository
 			if m.IsExceptioned(guideline.Name(), "https://github.com/eclipse-tractusx/"+repoInfo.Reponame) {
-				runner.printer.Print(fmt.Sprintf("Test skippped. Exception exists for test '%s' and repo '%s'.", guideline.Name(), repoInfo.Reponame))
+				runner.printer.Print(fmt.Sprintf("Test skipped. Exception exists for test '%s' and repo '%s'.", guideline.Name(), repoInfo.Reponame))
 				result = &tractusx.QualityResult{Passed: true}
 				exceptionPresent = true
 			} else if !guideline.IsApplicableToCategory(runner.metadata.RepoCategory) {
-				runner.printer.Print(fmt.Sprintf("Test skippped. Test '%s' is not applicable to repo category '%s'.", guideline.Name(), repoInfo.Reponame))
+				runner.printer.Print(fmt.Sprintf("Test skippped. Test '%s' is not applicable to repo category '%s'.", guideline.Name(), runner.metadata.RepoCategory))
 				result = &tractusx.QualityResult{Passed: true}
 				exceptionPresent = true
 			}
