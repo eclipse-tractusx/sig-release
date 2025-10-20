@@ -56,7 +56,7 @@ Add all Acceptance Criteria. These criteria are important for the definition of 
 
 ## Test Cases
 <!-- 
-Please create one or multiple test cases (at the end-to-end integration test level) that will test the proposed feature in the Catena-X / Tractus-X [Jira Xray](https://catena-x.atlassian.net/jira/software/c/projects/CXTPM/issues) central test management system, and link those issues here.
+Please create one or multiple test cases (at the end-to-end integration test level) that will test the proposed feature in the [Jira Xray](https://catena-x.atlassian.net/jira/software/c/projects/CXTPM/issues) central test management system, and link those issues here.
 
 If the feature is already covered by existing or adapted regression tests, please also link those test issues or test sets here.
 -->
