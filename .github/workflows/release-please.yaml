@@ -42,7 +42,7 @@ jobs:
           with:
             path: ${{ env.APP_NAME }}
             release-type: go
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v5
         - name: Tag major and minor versions
           if: ${{ steps.release.outputs.release-automation--release_created }}
           run: |
@@ -69,7 +69,7 @@ jobs:
             - goos: darwin
               goarch: arm64
       steps:
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v5
         - name: Set up Go
           uses: actions/setup-go@v5
           with:

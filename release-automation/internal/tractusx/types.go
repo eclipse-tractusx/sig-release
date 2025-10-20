@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -21,6 +22,7 @@ package tractusx
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/fatih/color"
 )
@@ -52,6 +54,8 @@ type QualityGuideline interface {
 	Test() *QualityResult
 	// IsOptional returns a bool it the test or QualityGuideline is optional or not.
 	IsOptional() bool
+	// IsApplicableToCategory returns true if the QualityGuideline must be applied to the RepoCategory
+	IsApplicableToCategory(category RepoCategory) bool
 }
 
 // QualityResult implements test result via Passed bool and in case of error a
@@ -80,4 +84,56 @@ func (p *StdoutPrinter) LogWarning(warning string) {
 
 func (p *StdoutPrinter) LogError(err string) {
 	color.Red(err)
+}
+
+type RepoCategory int
+
+const (
+	RepoCategoryUnknown RepoCategory = iota
+	RepoCategoryProduct
+	RepoCategorySpecial
+	RepoCategorySupport
+	// Add more categories as needed
+)
+
+// String method for better debugging/logging
+func (rc RepoCategory) String() string {
+	switch rc {
+	case RepoCategoryProduct:
+		return "product"
+	case RepoCategorySpecial:
+		return "special"
+	case RepoCategorySupport:
+		return "support"
+	default:
+		return "unknown"
+	}
+}
+
+// Implement YAML marshaling
+func (rc RepoCategory) MarshalYAML() (interface{}, error) {
+	return rc.String(), nil
+}
+
+func (rc *RepoCategory) UnmarshalYAML(unmarshal func(interface{}) error) error {
+	var s string
+	if err := unmarshal(&s); err != nil {
+		return err
+	}
+	*rc = ParseRepoCategory(s)
+	return nil
+}
+
+// ParseRepoCategory converts string to RepoCategory
+func ParseRepoCategory(s string) RepoCategory {
+	switch strings.ToLower(s) {
+	case "product":
+		return RepoCategoryProduct
+	case "special":
+		return RepoCategorySpecial
+	case "support":
+		return RepoCategorySupport
+	default:
+		return RepoCategoryUnknown
+	}
 }
