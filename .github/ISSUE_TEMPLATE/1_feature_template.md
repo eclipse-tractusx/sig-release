@@ -61,3 +61,11 @@ If the feature is already covered by existing or adapted regression tests, pleas
 ## Additional information
 <!-- this is only needed, if contributors and committers are not known during feature creation -->
 - [ ] I am aware that my request may not be developed if no developer can be found for it. I'll try to contribute a developer (bring your own developer)
+
+**OR**
+
+- [ ] I am developing and driving this feature.
+
+**AND**
+
+- [ ] I will make sure that the [release check issues](https://github.com/eclipse-tractusx/sig-release/issues/new?template=3_product_release_checks.md) are created and the necessary [release guidelines](https://eclipse-tractusx.github.io/docs/release) (TRGs) are fulfilled for the target release. 
