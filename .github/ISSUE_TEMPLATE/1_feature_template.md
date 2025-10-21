@@ -58,6 +58,10 @@ If the feature is already covered by existing or adapted regression tests, pleas
 2. Expectation
 3. Expectation
 
+#### Link to Jira Xray test case
+
+- Link to Jira test case 1
+- Link to Jira test case 2
 ## Additional information
 <!-- this is only needed, if contributors and committers are not known during feature creation -->
 - [ ] I am aware that my request may not be developed if no developer can be found for it. I'll try to contribute a developer (bring your own developer)
