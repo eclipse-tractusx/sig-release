@@ -73,4 +73,4 @@ If the feature is already covered by existing or adapted regression tests, pleas
 
 **AND**
 
-- [ ] I will make sure that the [release check issues](https://github.com/eclipse-tractusx/sig-release/issues/new?template=3_product_release_checks.md) are created and the necessary [release guidelines](https://eclipse-tractusx.github.io/docs/release) (TRGs) are fulfilled for the target release. 
+- [ ] I am familiar with the necessary [release guidelines](https://eclipse-tractusx.github.io/docs/release) (TRGs) and support compliance with these Tractus-X rules.
