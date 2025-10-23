@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -21,13 +22,14 @@ package helm
 
 import (
 	"fmt"
-	"gopkg.in/yaml.v3"
 	"log"
 	"os"
 	"path"
 	"regexp"
 	"strings"
 	"tractusx-release-automation/internal/tractusx"
+
+	"gopkg.in/yaml.v3"
 )
 
 type HelmWorkflowCheck struct {
@@ -149,4 +151,8 @@ func loadGitHubWorkflowFromFile(filePath string) (GitHubWorkflow, error) {
 	}
 
 	return w, nil
+}
+
+func (a *HelmWorkflowCheck) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct
 }
