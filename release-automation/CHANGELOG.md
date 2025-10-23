@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.2.0...v1.3.0) (2025-10-23)
+
+
+### Features
+
+* add checks for TRG 1-05, TRG 1-06, TRG 7-07 ([#1517](https://github.com/eclipse-tractusx/sig-release/issues/1517)) ([cd51776](https://github.com/eclipse-tractusx/sig-release/commit/cd51776a63263a856a38049a8333a75397be10ba))
+* **release-checks:** introduce discrimination of quality guidelines by repo category ([#1530](https://github.com/eclipse-tractusx/sig-release/issues/1530)) ([54620d1](https://github.com/eclipse-tractusx/sig-release/commit/54620d18ac679e439f36d89ade302ce54caa2a7e))
+
 ## [1.2.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.1.0...v1.2.0) (2024-04-18)
 
 
