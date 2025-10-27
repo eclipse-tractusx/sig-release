@@ -57,7 +57,7 @@ jobs:
         go run main.go psql
         go run main.go k8s
     - name: Upload release artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: releases_artifact
         path: |
