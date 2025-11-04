@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/eclipse-tractusx/sig-release/compare/v1.3.0...v1.3.1) (2025-11-04)
+
+
+### Bug Fixes
+
+* **legal_notice_non_code_exists.go:** ensure globs are excluded and guideline check fails ([#1556](https://github.com/eclipse-tractusx/sig-release/issues/1556)) ([400dbb8](https://github.com/eclipse-tractusx/sig-release/commit/400dbb859cbf16f2953e738f52408aeac4b717b5))
+
 ## [1.3.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.2.0...v1.3.0) (2025-10-23)
 
 
