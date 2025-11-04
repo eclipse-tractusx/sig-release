@@ -22,6 +22,7 @@ package open_source
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -38,6 +39,7 @@ var consideredFileRegexes = []string{
 
 var excludedFileGlobs = []string{
 	".github/",
+	"CHANGELOG.md",
 	"CODE_OF_CONDUCT.md",
 	"SECURITY.md",
 	"NOTICE.md",
@@ -85,7 +87,7 @@ func (r *NoticeForNonCodeExists) Test() *tractusx.QualityResult {
 
 	if err != nil {
 		log.Printf("Could not collect documentation files due ot error: %s", err)
-		return &tractusx.QualityResult{ErrorDescription: "Unable to find all markdown or adoc files!"}
+		return &tractusx.QualityResult{ErrorDescription: "Unable to find all markdown or adoc files!", Passed: false}
 	}
 
 	invalidFiles := []string{}
@@ -95,12 +97,12 @@ func (r *NoticeForNonCodeExists) Test() *tractusx.QualityResult {
 		if err != nil {
 			checkPassed = false
 			invalidFiles = append(invalidFiles, file)
-			log.Printf("Could not find notice section with heading 2, SPDX-License-Identifier, SPDX-File-CopyrightText, Source URK for file: %s", file)
+			log.Printf("Could not find notice section with heading 2, SPDX-License-Identifier, SPDX-File-CopyrightText, Source URL for file: %s", file)
 		}
 	}
 
 	if checkPassed == false {
-		return &tractusx.QualityResult{ErrorDescription: fmt.Sprintf("Could not find notice section with heading 2, SPDX-License-Identifier, SPDX-File-CopyrightText, Source URK for following files: %v", invalidFiles)}
+		return &tractusx.QualityResult{ErrorDescription: fmt.Sprintf("Could not find notice section with heading 2, SPDX-License-Identifier, SPDX-File-CopyrightText, Source URL for following files: %v", invalidFiles), Passed: false}
 	}
 	return &tractusx.QualityResult{Passed: true}
 }
@@ -161,22 +163,31 @@ func checkNoticeSection(filePath string) (bool, error) {
 
 	// Validate the conditions
 	isValid := false
+	var errorMessages = []string{}
 
 	//log.Printf("File %s has lastHeading '%s'.", filePath, lastHeading)
 	// we could use strings.ToUpper(lastHeading) if we would like to not explicitly check the UPPERCASENES
 	if lastHeading == "NOTICE" {
 		isValid = hasSPDX && hasCopyright && hasSourceURL
 	} else {
-		log.Printf("File %s misses Level 2 NOTICE (uppercase) header.", filePath)
+		isValid = false
+		errorMessages = append(errorMessages, fmt.Sprintf("File %s misses Level 2 NOTICE (uppercase) header.", filePath))
 	}
 	if !hasSPDX {
-		log.Printf("File %s misses SPDX-License-Identifier.", filePath)
+		isValid = false
+		errorMessages = append(errorMessages, fmt.Sprintf("File %s misses SPDX-License-Identifier.", filePath))
 	}
 	if !hasCopyright {
-		log.Printf("File %s misses SPDX-FileCopyrightText.", filePath)
+		isValid = false
+		errorMessages = append(errorMessages, fmt.Sprintf("File %s misses SPDX-FileCopyrightText.", filePath))
 	}
 	if !hasSourceURL {
-		log.Printf("File %s misses Source URL .", filePath)
+		isValid = false
+		errorMessages = append(errorMessages, fmt.Sprintf("File %s misses Source URL .", filePath))
+	}
+
+	if errorMessages != nil && len(errorMessages) > 0 {
+		return false, errors.New(strings.Join(errorMessages, "\n"))
 	}
 
 	return isValid, nil
@@ -191,28 +202,27 @@ func collectDocumentationFiles(baseDir string, excludedGlobs []string) ([]string
 			return err
 		}
 
-		// Check if the file has the desired extensions
-		if !info.IsDir() && (strings.HasSuffix(info.Name(), ".md") || strings.HasSuffix(info.Name(), ".adoc")) {
-			// Check against excluded globs
-			relativePath, err := filepath.Rel(baseDir, path)
-			if err != nil {
-				return err
-			}
+		relativePath, err := filepath.Rel(baseDir, path)
+		if err != nil {
+			return err
+		}
 
+		// Check if directory should be excluded
+		if info.IsDir() {
+			if shouldExcludeDir(relativePath, excludedGlobs) {
+				log.Printf("Skipping directory: %s", relativePath)
+				return filepath.SkipDir
+			}
+			return nil
+		}
+
+		// Check if the file has the desired extensions
+		if strings.HasSuffix(info.Name(), ".md") || strings.HasSuffix(info.Name(), ".adoc") {
+			// Check against excluded globs
 			if !matchesExcludedGlob(relativePath, excludedGlobs) {
 				collectedFiles = append(collectedFiles, path)
 			} else {
-
-			}
-		} else if info.IsDir() {
-			relativePath, err := filepath.Rel(baseDir, path)
-			if err != nil {
-				return err
-			}
-			for _, glob := range excludedGlobs {
-				if strings.HasPrefix(relativePath, strings.TrimSuffix(glob, "/")) {
-					return filepath.SkipDir
-				}
+				log.Printf("Excluding file: %s", relativePath)
 			}
 		}
 		return nil
@@ -225,14 +235,68 @@ func collectDocumentationFiles(baseDir string, excludedGlobs []string) ([]string
 	return collectedFiles, nil
 }
 
-// Function to check if a file path matches any of the excluded globs
-func matchesExcludedGlob(path string, excludedGlobs []string) bool {
+// Function to check if a directory should be excluded
+func shouldExcludeDir(dirPath string, excludedGlobs []string) bool {
+	// Normalize path separators
+	normalizedPath := filepath.ToSlash(dirPath)
 
 	for _, glob := range excludedGlobs {
+		// Remove trailing slash from glob for comparison
+		globPattern := strings.TrimSuffix(glob, "/")
 
-		match, err := filepath.Match(glob, path)
+		// Check for exact directory name match (e.g., "node_modules/")
+		if normalizedPath == globPattern || strings.HasSuffix(normalizedPath, "/"+globPattern) {
+			return true
+		}
+
+		// Check for glob patterns (e.g., "**/node_modules/" or ".github/")
+		if strings.Contains(globPattern, "**") {
+			// Convert glob to path pattern
+			// "**/node_modules" should match any path ending with "/node_modules"
+			if strings.HasPrefix(globPattern, "**/") {
+				suffix := strings.TrimPrefix(globPattern, "**/")
+				if normalizedPath == suffix || strings.HasSuffix(normalizedPath, "/"+suffix) {
+					return true
+				}
+			}
+			// Try filepath.Match as fallback
+			matched, err := filepath.Match(globPattern, normalizedPath)
+			if err == nil && matched {
+				return true
+			}
+		} else {
+			// For non-glob patterns, check if path starts with the pattern
+			if strings.HasPrefix(normalizedPath, globPattern) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// Function to check if a file path matches any of the excluded globs
+func matchesExcludedGlob(path string, excludedGlobs []string) bool {
+	normalizedPath := filepath.ToSlash(path)
+
+	for _, glob := range excludedGlobs {
+		// Try direct match
+		match, err := filepath.Match(glob, normalizedPath)
 		if err == nil && match {
 			return true
+		}
+
+		// Try matching against the basename
+		match, err = filepath.Match(glob, filepath.Base(path))
+		if err == nil && match {
+			return true
+		}
+
+		// For patterns like "**/something", check if path contains the pattern
+		if strings.Contains(glob, "**/") {
+			suffix := strings.TrimPrefix(glob, "**/")
+			if normalizedPath == suffix || strings.Contains(normalizedPath, "/"+suffix) {
+				return true
+			}
 		}
 	}
 	return false
