@@ -1,8 +1,6 @@
 module tractusx-release-automation
 
-go 1.23.0
-
-toolchain go1.23.2
+go 1.24.0
 
 require (
 	github.com/fatih/color v1.18.0
@@ -11,7 +9,7 @@ require (
 	github.com/google/go-github/v53 v53.2.0
 	github.com/otiai10/copy v1.14.1
 	github.com/spf13/cobra v1.9.1
-	golang.org/x/oauth2 v0.29.0
+	golang.org/x/oauth2 v0.32.0
 	golang.org/x/text v0.24.0
 	gopkg.in/yaml.v3 v3.0.1
 	helm.sh/helm/v3 v3.17.4
