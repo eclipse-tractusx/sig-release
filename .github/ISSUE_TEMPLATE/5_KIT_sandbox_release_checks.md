@@ -75,3 +75,4 @@ If changes are already live, also point out the PRs witch included the changes f
 
 - [KIT TRGs 10.XX](https://eclipse-tractusx.github.io/docs/category/trg-10---keep-it-together-kits)
 - [KIT Office Hour](https://eclipse-tractusx.github.io/community/open-meetings#Eclipse%20Tractus-X%20KITs%20Community%20Office%20Hour)
+- [KIT Template](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/tree/main/docs-kits/kit-template)

@@ -67,11 +67,14 @@ In case your industry is not specified, please inform the KIT website maintainer
 
 Specify to which domain your KIT belongs, example (Sustanability, Engineering, Production, Enablement Service, etc.)
 
+**Domain:** *domain placeholder*
+
 ## Master Data
 
--[] I will make sure that the my KIT latest version, creation/update date, category, domain and maturity level gets reflected in the [master data](https://eclipse-tractusx.github.io/docs/release/trg-10/trg-10-01#master-data)
+- [ ] I will make sure that the my KIT latest version, creation/update date, category, domain and maturity level gets reflected in the [master data](https://eclipse-tractusx.github.io/docs/release/trg-10/trg-10-01#master-data)
 
 ## Helpful links
 
 - [KIT TRGs 10.XX](https://eclipse-tractusx.github.io/docs/category/trg-10---keep-it-together-kits)
 - [KIT Office Hour](https://eclipse-tractusx.github.io/community/open-meetings#Eclipse%20Tractus-X%20KITs%20Community%20Office%20Hour)
+- [KIT Template](https://github.com/eclipse-tractusx/eclipse-tractusx.github.io/tree/main/docs-kits/kit-template)
