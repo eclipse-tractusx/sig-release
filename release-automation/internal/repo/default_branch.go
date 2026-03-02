@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -23,8 +24,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/google/go-github/v53/github"
 	"tractusx-release-automation/internal/tractusx"
+
+	"github.com/google/go-github/v53/github"
 )
 
 type defaultBranch struct {
@@ -85,4 +87,8 @@ func getRepoInfo(repo *RepoInfo) *github.Repository {
 	}
 
 	return repoInfo
+}
+
+func (a *defaultBranch) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct || category == tractusx.RepoCategorySupport || category == tractusx.RepoCategorySpecial
 }
