@@ -33,11 +33,13 @@ import (
 )
 
 type TestStruct struct {
-	content      string
-	dirPath      string
-	fileName     string
-	expected     bool
-	expectingErr bool
+	content  string
+	dirPath  string
+	fileName string
+	// defines that the test is expected to be considered or not after evaluating exclusion criteria
+	expectedToBeTested bool
+	// defines that the test is expected to be valid (following the notice scheme)
+	expectedToBeValid bool
 }
 
 func TestShouldPassIfInvalidFilesAreExcluded(t *testing.T) {
@@ -47,50 +49,56 @@ func TestShouldPassIfInvalidFilesAreExcluded(t *testing.T) {
 - SPDX-License-Identifier: CC-BY-4.0
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			dirPath:  "./",
-			fileName: "valid.md",
-			expected: true,
+			dirPath:            "./",
+			fileName:           "valid.md",
+			expectedToBeTested: true,
+			expectedToBeValid:  true,
 		},
 		{
 			content: `## notice
 - SPDX-License-Identifier: CC-BY-4.0
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			dirPath:  "subdir",
-			fileName: "invalid_notice.adoc",
-			expected: true,
+			dirPath:            "subdir",
+			fileName:           "invalid_notice.adoc",
+			expectedToBeTested: true,
+			expectedToBeValid:  false, //notice is lowercase in header
 		},
 		{
 			content: `## NOTICE
 - SPDX-License-Identifier: CC-BY-4.0
 - Source URL: https://example.com`,
-			dirPath:  "subdir",
-			fileName: "missing_copyright_and_excluded.md",
-			expected: false,
+			dirPath:            "subdir",
+			fileName:           "missing_copyright_and_excluded.md",
+			expectedToBeTested: false,
+			expectedToBeValid:  false, //copyright missing
 		},
 		{
 			content: `## NOTICE
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			dirPath:  "subdir",
-			fileName: "wrong_filetype.yaml",
-			expected: false,
+			dirPath:            "subdir",
+			fileName:           "wrong_filetype.yaml",
+			expectedToBeTested: false,
+			expectedToBeValid:  false, // if tested, missing license identifier
 		},
 		{
 			content: `## NOTICE
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			dirPath:  ".github",
-			fileName: "excluded.md",
-			expected: false,
+			dirPath:            ".github",
+			fileName:           "excluded.md",
+			expectedToBeTested: false,
+			expectedToBeValid:  true,
 		},
 		{
 			content: `## NOTICE
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			dirPath:  ".github/ISSUE_TEMPLATE",
-			fileName: "excluded.md",
-			expected: false,
+			dirPath:            ".github/ISSUE_TEMPLATE",
+			fileName:           "excluded.md",
+			expectedToBeTested: false,
+			expectedToBeValid:  false, // if tested, missing license identifier
 		},
 	}
 
@@ -142,7 +150,7 @@ func TestShouldPassIfInvalidFilesAreExcluded(t *testing.T) {
 		if matchingTestCase == nil {
 			t.Errorf("Unexpected error as a test should be found for %s", file)
 		} else {
-			if matchingTestCase.expected == false {
+			if matchingTestCase.expectedToBeTested == false {
 				t.Errorf("File %s for test case %v should have not been collected.", file, matchingTestCase)
 			} else {
 				log.Printf("File %s for test case %v has been collected successfully.", file, matchingTestCase)
@@ -173,54 +181,58 @@ func saveMetadataConfigToExclude(LegalNoticesNonCode []string, dir string) {
 }
 
 func TestCheckNoticeSection(t *testing.T) {
-	tests := []struct {
-		content      string
-		fileName     string
-		expected     bool
-		expectingErr bool
-	}{
+	tests := []TestStruct{
 		{
 			content: `## NOTICE
 - SPDX-License-Identifier: CC-BY-4.0
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			fileName:     "valid.md",
-			expected:     true,
-			expectingErr: false,
+			fileName:           "valid.md",
+			expectedToBeTested: true,
+			expectedToBeValid:  true,
 		},
 		{
 			content: `## notice
 - SPDX-License-Identifier: CC-BY-4.0
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			fileName:     "invalid_notice.md",
-			expected:     false,
-			expectingErr: false,
+			fileName:           "invalid_notice.md",
+			expectedToBeTested: true,
+			expectedToBeValid:  false, // notice is written lowercase
 		},
 		{
 			content: `## NOTICE
 - SPDX-License-Identifier: CC-BY-4.0
 - Source URL: https://example.com`,
-			fileName:     "missing_copyright.md",
-			expected:     false,
-			expectingErr: false,
+			fileName:           "missing_copyright.md",
+			expectedToBeTested: true,
+			expectedToBeValid:  false, // missing copyright text
 		},
 		{
 			content: `## NOTICE
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			fileName:     "missing_license.md",
-			expected:     false,
-			expectingErr: false,
+			fileName:           "missing_license.md",
+			expectedToBeTested: false,
+			expectedToBeValid:  false, // missing license identifier
 		},
 		{
 			content: `== NOTICE
 - SPDX-License-Identifier: CC-BY-4.0
 - SPDX-FileCopyrightText: 2023 John Doe
 - Source URL: https://example.com`,
-			fileName:     "valid.adoc",
-			expected:     true,
-			expectingErr: false,
+			fileName:           "valid.adoc",
+			expectedToBeTested: true,
+			expectedToBeValid:  true,
+		},
+		{
+			content: `== NOTICE
+- SPDX-MISSING-Identifier: CC-BY-4.0
+- SPDX-FileCopyrightText: 2023 John Doe
+- Source URL: https://example.com`,
+			fileName:           "invalid.adoc",
+			expectedToBeTested: true,
+			expectedToBeValid:  false, // wrong SPDX header
 		},
 	}
 
@@ -241,12 +253,10 @@ func TestCheckNoticeSection(t *testing.T) {
 		// Check file requirements
 		isValid, err := checkNoticeSection(tmpFile.Name())
 
-		if (err != nil) != test.expectingErr {
+		// error is found AND (BUT) it's expected to be valid
+		if isValid != test.expectedToBeValid {
 			t.Errorf("Unexpected error for %s: %v", test.fileName, err)
 		}
 
-		if isValid != test.expected {
-			t.Errorf("Expected %v for %s, got %v", test.expected, test.fileName, isValid)
-		}
 	}
 }
