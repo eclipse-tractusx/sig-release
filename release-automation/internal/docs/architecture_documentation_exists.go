@@ -92,3 +92,7 @@ func getArchitectureDocEntryPaths(dir string) []string {
 
 	return append(allowedArchitectureDocsGlob, file.ArchitectureDocEntryPath)
 }
+
+func (a *ArchitectureDocumentationExists) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct
+}

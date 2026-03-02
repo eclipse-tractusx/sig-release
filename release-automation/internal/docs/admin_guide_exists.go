@@ -60,3 +60,7 @@ func (a *AdminGuideExists) Test() *tractusx.QualityResult {
 func (a *AdminGuideExists) IsOptional() bool {
 	return true
 }
+
+func (a *AdminGuideExists) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct
+}
