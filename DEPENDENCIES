@@ -1,4 +1,4 @@
-go/golang/dario.cat/mergo/v1.0.2, BSD-3-Clause AND (BSD-3-Clause AND JSON), approved, #26184
+go/golang/dario.cat/mergo/v1.0.2, BSD-3-Clause, approved, #26184
 go/golang/github.com%2FAdaLogics/go-fuzz-headers/v0.0.0-20230811130428-ced1acdcaa24, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2FBurntSushi/toml/v1.6.0, MIT AND BSD-3-Clause AND (Apache-2.0 AND MIT), approved, #26179
 go/golang/github.com%2FMasterminds%2Fsemver/v3/v3.4.0, MIT, approved, clearlydefined
@@ -7,7 +7,7 @@ go/golang/github.com%2FMasterminds/goutils/v1.1.1, Apache-2.0, approved, clearly
 go/golang/github.com%2FMicrosoft/go-winio/v0.5.2, MIT AND BSD-3-Clause, approved, #5617
 go/golang/github.com%2FMicrosoft/go-winio/v0.6.2, MIT AND BSD-3-Clause, approved, #10746
 go/golang/github.com%2FProtonMail/go-crypto/v1.3.0, BSD-3-Clause AND BSD-2-Clause, approved, #26172
-go/golang/github.com%2FPuerkitoBio/goquery/v1.11.0, BSD-3-Clause AND (BSD-3-Clause AND CC-BY-3.0 AND LicenseRef-scancode-unknown), approved, #26183
+go/golang/github.com%2FPuerkitoBio/goquery/v1.11.0, BSD-3-Clause, approved, #26183
 go/golang/github.com%2Fandybalholm/cascadia/v1.3.3, BSD-2-Clause, approved, clearlydefined
 go/golang/github.com%2Fanmitsu/go-shlex/v0.0.0-20200514113438-38f4b401e2be, MIT, approved, clearlydefined
 go/golang/github.com%2Fantchfx/htmlquery/v1.3.5, MIT, approved, clearlydefined
@@ -192,7 +192,7 @@ go/golang/golang.org%2Fx/text/v0.3.3, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA
 go/golang/golang.org%2Fx/text/v0.3.6, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #6123
 go/golang/golang.org%2Fx/text/v0.3.7, BSD-3-Clause, approved, #6127
 go/golang/golang.org%2Fx/text/v0.3.8, BSD-3-Clause, approved, #6127
-go/golang/golang.org%2Fx/text/v0.34.0, BSD-3-Clause AND (BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0) AND (BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0), restricted, #26167
+go/golang/golang.org%2Fx/text/v0.34.0, BSD-3-Clause, approved, #26167
 go/golang/golang.org%2Fx/text/v0.7.0, BSD-3-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0, approved, #9285
 go/golang/golang.org%2Fx/text/v0.9.0, BSD-3-Clause, approved, #11069
 go/golang/golang.org%2Fx/time/v0.14.0, BSD-3-Clause, approved, #25001
