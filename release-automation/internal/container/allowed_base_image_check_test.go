@@ -188,7 +188,7 @@ func randomSubDir(t *testing.T) string {
 
 	subDirPath := string(b)
 	if err := os.MkdirAll(subDirPath, 0770); err != nil {
-		t.Errorf("Could not create random subdirectory at path: " + subDirPath)
+		t.Errorf("Could not create random subdirectory at path: %s", subDirPath)
 	}
 
 	return subDirPath
