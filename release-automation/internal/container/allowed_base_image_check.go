@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -126,4 +127,8 @@ func containsString(slice []string, element string) bool {
 		}
 	}
 	return false
+}
+
+func (a *AllowedBaseImage) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct
 }
