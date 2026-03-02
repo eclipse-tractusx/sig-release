@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.3.2](https://github.com/eclipse-tractusx/sig-release/compare/v1.3.1...v1.3.2) (2026-03-02)
+
+
+### Bug Fixes
+
+* **tests:** improve error message formatting in allowed_base_image_check_test.go ([be351f7](https://github.com/eclipse-tractusx/sig-release/commit/be351f76cab666a6ec178c501d9b6bf7228e1a9e))
+
+## [1.3.1](https://github.com/eclipse-tractusx/sig-release/compare/v1.3.0...v1.3.1) (2025-11-04)
+
+
+### Bug Fixes
+
+* **legal_notice_non_code_exists.go:** ensure globs are excluded and guideline check fails ([#1556](https://github.com/eclipse-tractusx/sig-release/issues/1556)) ([400dbb8](https://github.com/eclipse-tractusx/sig-release/commit/400dbb859cbf16f2953e738f52408aeac4b717b5))
+
+## [1.3.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.2.0...v1.3.0) (2025-10-23)
+
+
+### Features
+
+* add checks for TRG 1-05, TRG 1-06, TRG 7-07 ([#1517](https://github.com/eclipse-tractusx/sig-release/issues/1517)) ([cd51776](https://github.com/eclipse-tractusx/sig-release/commit/cd51776a63263a856a38049a8333a75397be10ba))
+* **release-checks:** introduce discrimination of quality guidelines by repo category ([#1530](https://github.com/eclipse-tractusx/sig-release/issues/1530)) ([54620d1](https://github.com/eclipse-tractusx/sig-release/commit/54620d18ac679e439f36d89ade302ce54caa2a7e))
+
 ## [1.2.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.1.0...v1.2.0) (2024-04-18)
 
 
