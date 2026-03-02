@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -22,6 +23,11 @@ package helm
 import (
 	"errors"
 	"fmt"
+	"os"
+	"path"
+	"strings"
+	"tractusx-release-automation/internal/tractusx"
+
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"helm.sh/helm/v3/pkg/chart/loader"
@@ -29,10 +35,6 @@ import (
 	"k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes/scheme"
-	"os"
-	"path"
-	"strings"
-	"tractusx-release-automation/internal/tractusx"
 )
 
 type ResourceMgmt struct {
@@ -190,4 +192,8 @@ func firstCharUppercase(err error) string {
 	}
 
 	return result
+}
+
+func (a *ResourceMgmt) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct
 }

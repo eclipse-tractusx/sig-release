@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -30,11 +31,12 @@ import (
 const MetadataFilename = ".tractusx"
 
 type Metadata struct {
-	ProductName       string       `yaml:"product"`
-	LeadingRepository string       `yaml:"leadingRepository"`
-	RepoCategory      string       `yaml:"repoCategory"`
-	Repositories      []Repository `yaml:"repositories"`
-	SkipReleaseChecks `yaml:"skipReleaseChecks"`
+	ProductName            string       `yaml:"product"`
+	LeadingRepository      string       `yaml:"leadingRepository"`
+	RepoCategory           RepoCategory `yaml:"repoCategory"`
+	Repositories           []Repository `yaml:"repositories"`
+	SkipReleaseChecks      `yaml:"skipReleaseChecks"`
+	ConfigureReleaseChecks `yaml:"configureReleaseChecks"`
 }
 
 type Repository struct {
@@ -44,7 +46,12 @@ type Repository struct {
 }
 
 type SkipReleaseChecks struct {
-	AlignedBaseImages []string `yaml:"alignedBaseImage"`
+	AlignedBaseImages   []string `yaml:"alignedBaseImage"`
+	LegalNoticesNonCode []string `yaml:"legalNoticesNonCode"`
+}
+
+type ConfigureReleaseChecks struct {
+	ArchitectureDocEntryPath string `yaml:"architectureDocEntryPath"`
 }
 
 // MetadataFromFile does take fileContent as byte slice and tries to deserialize it into Metadata.
