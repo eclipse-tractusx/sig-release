@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/eclipse-tractusx/sig-release/compare/v1.3.1...v1.3.2) (2026-03-02)
+
+
+### Bug Fixes
+
+* **tests:** improve error message formatting in allowed_base_image_check_test.go ([be351f7](https://github.com/eclipse-tractusx/sig-release/commit/be351f76cab666a6ec178c501d9b6bf7228e1a9e))
+
 ## [1.3.1](https://github.com/eclipse-tractusx/sig-release/compare/v1.3.0...v1.3.1) (2025-11-04)
 
 
