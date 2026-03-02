@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -28,7 +29,7 @@ import (
 )
 
 func TestShouldPassIfNotTestsAreRun(t *testing.T) {
-	err := NewTestRunner([]tractusx.QualityGuideline{}).Run()
+	err := NewTestRunner([]tractusx.QualityGuideline{}, DefaultMetadata()).Run()
 
 	if err != nil {
 		t.Errorf("Running no tests should succeed")
@@ -36,7 +37,7 @@ func TestShouldPassIfNotTestsAreRun(t *testing.T) {
 }
 
 func TestShouldFailWhenRunningFailingQualityTage(t *testing.T) {
-	err := NewTestRunner([]tractusx.QualityGuideline{&FailingQualityGuideline{}}).Run()
+	err := NewTestRunner([]tractusx.QualityGuideline{&FailingQualityGuideline{}}, DefaultMetadata()).Run()
 
 	if err == nil {
 		t.Errorf("Expected error if only a failing quality guideline is run")
@@ -44,7 +45,7 @@ func TestShouldFailWhenRunningFailingQualityTage(t *testing.T) {
 }
 
 func TestShouldPassIfOnlyPassingQualityGuidelinesAreRun(t *testing.T) {
-	err := NewTestRunner([]tractusx.QualityGuideline{&PassingQualityGuideline{}}).Run()
+	err := NewTestRunner([]tractusx.QualityGuideline{&PassingQualityGuideline{}}, DefaultMetadata()).Run()
 
 	if err != nil {
 		t.Errorf("Should not raise an error if only succeeding quality guidelines are run")
@@ -57,7 +58,7 @@ func TestShouldFailIfAtLeastOneFailingTestIsRun(t *testing.T) {
 		&PassingQualityGuideline{},
 		&FailingQualityGuideline{},
 		&PassingQualityGuideline{},
-	})
+	}, DefaultMetadata())
 	err := runner.Run()
 
 	if err == nil {
@@ -68,6 +69,7 @@ func TestShouldFailIfAtLeastOneFailingTestIsRun(t *testing.T) {
 func TestShouldLogTheGuidelineNameWhenRunningTheTest(t *testing.T) {
 	runner := NewTestRunner(
 		[]tractusx.QualityGuideline{&PassingQualityGuideline{Guideline{name: "TRG 1 - README test"}}},
+		DefaultMetadata(),
 	)
 	printerMock := &PrinterMock{}
 	runner.printer = printerMock
@@ -91,7 +93,7 @@ func TestShouldLogDescriptionOfGuidelineIfTheTestIsFailing(t *testing.T) {
 			externalDescription: "https://en.wikipedia.org/wiki/Chuck_Norris",
 		},
 	}
-	runner := NewTestRunner([]tractusx.QualityGuideline{failingGuideline})
+	runner := NewTestRunner([]tractusx.QualityGuideline{failingGuideline}, DefaultMetadata())
 	printerMock := &PrinterMock{}
 	runner.printer = printerMock
 
@@ -127,7 +129,7 @@ func TestShouldOnlyLogAdditionalDescriptionForFailingTests(t *testing.T) {
 			externalDescription: "https://de.wikipedia.org/wiki//dev/null",
 		},
 	}
-	runner := NewTestRunner([]tractusx.QualityGuideline{failingGuideline, passingGuideline})
+	runner := NewTestRunner([]tractusx.QualityGuideline{failingGuideline, passingGuideline}, DefaultMetadata())
 	printerMock := &PrinterMock{}
 	runner.printer = printerMock
 
@@ -135,6 +137,30 @@ func TestShouldOnlyLogAdditionalDescriptionForFailingTests(t *testing.T) {
 
 	if len(printerMock.messages) != 4 {
 		t.Errorf("Expected exactly 4 logged messages. \n1. Name of guideline; 2. Additional info for failing; 3 Name of passing guideline. Got %d messages", len(printerMock.messages))
+	}
+}
+
+func TestShouldOnlyRunForMatchingRepoCategory(t *testing.T) {
+	executedGuideline := &PassingQualityGuideline{
+		Guideline{
+			name:                 "TRG 4711 - Applicable as Repo Type is 'special' matching to default metadata in test",
+			metadataRepoCategory: tractusx.RepoCategorySpecial,
+		},
+	}
+	excludedGuideline := &PassingQualityGuideline{
+		Guideline{
+			name:                 "TRG 3000 - Not applicable as Repo Type is 'support' NOT matching to default metadata in test",
+			metadataRepoCategory: tractusx.RepoCategorySupport,
+		},
+	}
+	runner := NewTestRunner([]tractusx.QualityGuideline{executedGuideline, excludedGuideline}, DefaultMetadata())
+	printerMock := &PrinterMock{}
+	runner.printer = printerMock
+
+	_ = runner.Run()
+
+	if len(printerMock.messages) != 5 {
+		t.Errorf("Expected exactly 5 logged messages. \n1. Name of guideline; 2. Skipped or passed! 3. Name of guideline 4. Test skippped. Test 's' is not applicable to repo category 's'.; 5. Skipped or passed!  - BUT got %d messages", len(printerMock.messages))
 	}
 }
 
@@ -157,7 +183,7 @@ func TestShouldNotFailIfOptionalTestFail(t *testing.T) {
 		},
 	}
 
-	runner := NewTestRunner([]tractusx.QualityGuideline{failingGuideline})
+	runner := NewTestRunner([]tractusx.QualityGuideline{failingGuideline}, DefaultMetadata())
 	err := runner.Run()
 
 	if err != nil {

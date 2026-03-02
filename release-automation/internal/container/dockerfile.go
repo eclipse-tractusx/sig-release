@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V. (represented by Fraunhofer ISST)
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -28,6 +29,7 @@ import (
 	pathUtil "path"
 	"path/filepath"
 	"strings"
+	"tractusx-release-automation/internal/tractusx"
 )
 
 // dockerfile is a simple utility to create or read dockerfiles.
@@ -159,4 +161,8 @@ func readLines(file *os.File) []string {
 		lines = append(lines, scanner.Text())
 	}
 	return lines
+}
+
+func (a *dockerfile) IsApplicableToCategory(category tractusx.RepoCategory) bool {
+	return category == tractusx.RepoCategoryProduct
 }
