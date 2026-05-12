@@ -29,9 +29,9 @@ go/golang/github.com%2Ffatih/color/v1.18.0, MIT, approved, #20687
 go/golang/github.com%2Ffrankban/quicktest/v1.14.6, LGPL-3.0-only AND MIT, approved, #10723
 go/golang/github.com%2Ffxamacker%2Fcbor/v2/v2.9.0, MIT, approved, #24446
 go/golang/github.com%2Fgliderlabs/ssh/v0.3.8, BSD-3-Clause, approved, clearlydefined
-go/golang/github.com%2Fgo-git%2Fgo-billy/v5/v5.7.0, Apache-2.0, approved, clearlydefined
+go/golang/github.com%2Fgo-git%2Fgo-billy/v5/v5.8.0, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgo-git%2Fgo-git-fixtures/v4/v4.3.2-0.20231010084843-55a94097c399, Apache-2.0, approved, clearlydefined
-go/golang/github.com%2Fgo-git%2Fgo-git/v5/v5.16.5, Apache-2.0 AND MIT, approved, #20740
+go/golang/github.com%2Fgo-git%2Fgo-git/v5/v5.17.0, Apache-2.0, restricted, clearlydefined
 go/golang/github.com%2Fgo-git/gcfg/v1.5.1-0.20230307220236-3a3c6141e376, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgo-ini/ini/v1.67.0, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgo-logr/logr/v1.4.3, Apache-2.0, approved, clearlydefined
@@ -220,10 +220,10 @@ go/golang/gopkg.in/yaml.v2/v2.4.0, Apache-2.0 AND MIT, approved, #6057
 go/golang/gopkg.in/yaml.v3/v3.0.1, Apache-2.0, approved, clearlydefined
 go/golang/helm.sh%2Fhelm/v3/v3.20.0, Apache-2.0 AND (Apache-2.0 AND BSD-3-Clause) AND BSD-3-Clause AND (Apache-2.0 AND MIT), approved, #25700
 go/golang/k8s.io%2Fklog/v2/v2.130.1, Apache-2.0, approved, #20699
-go/golang/k8s.io/api/v0.35.1, Apache-2.0, approved, #26171
+go/golang/k8s.io/api/v0.35.2, Apache-2.0, approved, #26171
 go/golang/k8s.io/apiextensions-apiserver/v0.35.1, Apache-2.0, approved, #26180
-go/golang/k8s.io/apimachinery/v0.35.1, Apache-2.0 AND BSD-3-Clause, approved, #25688
-go/golang/k8s.io/client-go/v0.35.1, Apache-2.0 AND BSD-3-Clause, approved, #25713
+go/golang/k8s.io/apimachinery/v0.35.2, Apache-2.0 AND BSD-3-Clause, approved, #25688
+go/golang/k8s.io/client-go/v0.35.2, Apache-2.0 AND BSD-3-Clause, approved, #25713
 go/golang/k8s.io/kube-openapi/v0.0.0-20260127142750-a19766b6e2d4, Apache-2.0 AND CC-BY-4.0, approved, #6065
 go/golang/k8s.io/utils/v0.0.0-20260210185600-b8788abfbbc2, Apache-2.0 AND BSD-3-Clause, approved, #6095
 go/golang/sigs.k8s.io%2Fstructured-merge-diff/v6/v6.3.2, Apache-2.0, approved, #24443
