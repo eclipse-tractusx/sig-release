@@ -32,7 +32,7 @@ go/golang/github.com%2Ffxamacker%2Fcbor/v2/v2.9.0, MIT, approved, #24446
 go/golang/github.com%2Fgliderlabs/ssh/v0.3.8, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgo-git%2Fgo-billy/v5/v5.8.0, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgo-git%2Fgo-git-fixtures/v4/v4.3.2-0.20231010084843-55a94097c399, Apache-2.0, approved, clearlydefined
-go/golang/github.com%2Fgo-git%2Fgo-git/v5/v5.17.0, Apache-2.0, restricted, clearlydefined
+go/golang/github.com%2Fgo-git%2Fgo-git/v5/v5.17.0, Apache-2.0 AND MIT, approved, #28049
 go/golang/github.com%2Fgo-git/gcfg/v1.5.1-0.20230307220236-3a3c6141e376, BSD-3-Clause, approved, clearlydefined
 go/golang/github.com%2Fgo-ini/ini/v1.67.0, Apache-2.0, approved, clearlydefined
 go/golang/github.com%2Fgo-logr/logr/v1.4.3, Apache-2.0, approved, clearlydefined
