@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/fatih/color v1.18.0
-	github.com/go-git/go-git/v5 v5.19.0
+	github.com/go-git/go-git/v5 v5.19.1
 	github.com/go-ini/ini v1.67.0
 	github.com/google/go-github/v53 v53.2.0
 	github.com/otiai10/copy v1.14.1
