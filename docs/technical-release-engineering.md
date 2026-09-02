@@ -26,11 +26,11 @@ The proposed TRE concept complements the current process with a cross-cutting re
 - alignment with the release bundle defined in `tractus-x-release`,
 - automated deployment of selected subsets via Helm,
 - realistic dataspace test data and identity bootstrap,
-- recurring validation runs with a clear trigger model,
+- recurring validation runs in ephemeral, per-run environments,
 - central publication of evidence,
 - evidence-based quality gates,
 - explicit governance guidelines for versioning, approval and quality assurance,
-- a reuse-first toolchain recommendation including security and compliance checks,
+- a reuse-first, GitHub-native and open-source-only toolchain recommendation including security and compliance checks,
 - and clear ownership for environment, validation, approval and continuous improvement.
 
 The recommendation is not to replace the current process immediately. That process validates releases in the shared integration environment referred to as **INT** throughout this document. The preferred approach is to build trust incrementally through a **parallel validation environment** that validates the concept, demonstrates measurable benefit and gradually reduces manual effort.
@@ -93,6 +93,8 @@ Products participating in a Tractus-X release must comply with the TRGs. These r
 
 The new TRE does not redefine these rules. It uses them as the baseline for quality gates and release readiness. Where possible, it should also reuse existing automation from `sig-release/release-automation` and `sig-infra` instead of modeling TRG compliance as a purely manual checkpoint.
 
+Two clarifications apply throughout this concept. First, despite the term "guideline", TRGs are de facto binding rules for release participation. Second, the TRG mechanism is also the vehicle for TRE itself: where the TRE model imposes new technical requirements on individual product repositories (for example the versioning and nomenclature rules in Section 6.1), those requirements are to be proposed and anchored as TRGs, so that one binding rule set exists. TRGs are only partially enforced today; within the TRE scope, enforcement is extended as far as technically possible.
+
 ### 2.3 Current Testing Situation
 
 The current testing situation combines automated and manual practices:
@@ -104,7 +106,9 @@ The current testing situation combines automated and manual practices:
 - there is no consistent full-stack automation from infrastructure to test execution,
 - the current environment model relies on INT and on expert-driven setup.
 
-X-Ray is licensed tooling operated in the Catena-X context and is not available to every Eclipse Tractus-X contributor. Any TRE evidence model therefore has to work for both groups; this constraint is addressed in Sections 6.4 and 9.5.
+X-Ray is licensed tooling that exists only because Catena-X e.V. pays for it, and it is not available to every Eclipse Tractus-X contributor. The TRE toolchain therefore must not depend on it: the agreed constraint is a GitHub-native, open-source-only toolchain (Sections 6.4, 9.1 and 9.5).
+
+Test data has historically been a weak point: for a long time it consisted of one large supply-chain JSON file, validation relied heavily on mocks, and the wallet was not available as open source. The relevant components are reported to be available as open source and functional in the meantime, which for the first time provides the basis for realistic test data management with a real connector and a real wallet.
 
 In addition, the existing `tractus-x-umbrella` repository already provides a deployable data-exchange baseline with multi-participant elements, test data seeding and identity/trust-related setup. This means a large part of the validation topology already exists, but it is not yet formalised as a TRE operating model.
 
@@ -113,11 +117,10 @@ In addition, the existing `tractus-x-umbrella` repository already provides a dep
 | Gap | Impact | Criticality |
 |-----|--------|-------------|
 | Drifted INT environment | Unreliable testing basis, expensive reinitialisation, poor reproducibility | High |
-| No full-stack automation | High dependency on expert knowledge, low repeatability | High |
+| No automated validation of the critical core scenarios | Full automation of the whole project is explicitly not the goal — functional coverage of each product lies with the product repositories. What is missing is automated validation of a completely tested core subset, above all the cross-participant data-exchange flows | Medium |
 | Insufficiently enforced technical quality gates | Release decisions still rely heavily on manual coordination | High |
 | Fragmented ownership | Responsibility gaps for environments, evidence and exceptions | High |
 | Missing explicit release input contract | It is unclear exactly which version set has been validated | High |
-| Under-specified dataspace validation | A single deployment does not prove cross-participant interoperability | High |
 | Test data and identity bootstrap not yet formalised | The hardest prerequisite of real dataspace validation remains unspecified | High |
 | Missing systematic upstream feedback from downstream QA | Quality learnings are not consistently integrated into Tractus-X | Medium |
 | Release validation scoped as test management only | The software-engineering perspective on release validation is not covered | High |
@@ -173,6 +176,8 @@ This model should enable:
 - explicit validation of cross-participant dataspace flows,
 - publication of traceable results,
 - release decisions based on technical evidence.
+
+Tractus-X today is an open-source project with a comparatively small committer base, not a large scaled consortium programme anymore. The TRE model must therefore work for the everyday contributor and committer workflow — validating before a contribution, before a commit or merge, and before a release — on the same technical basis; only the roles and the decision mindset differ at the release step. In addition, the model should provide archetypal guidance: whoever builds, for example, a reference application or an EDC extension must know where and how to contribute tests, so that the schema stands even while only few test cases exist (Section 10.1).
 
 ### 4.2 Target TRE Model
 
@@ -230,7 +235,7 @@ TRE introduces validation in parallel:
 - selected integration tests,
 - at least one multi-participant data-exchange scenario,
 - automated test data and identity bootstrap,
-- recurring execution by explicit trigger model,
+- recurring execution (the trigger granularity is a deliberate implementation decision, see Section 10.1),
 - visible and traceable results.
 
 #### Evidence and Reporting
@@ -259,12 +264,12 @@ Approval must be:
 
 | Role | Responsibility |
 | --- | --- |
-| Product Team | Deliver releasable artefacts, Helm chart, configuration and product-specific tests |
-| Technical Release Engineering Team | Define the TRE model, gates, evidence, reporting and technical orchestration |
-| Platform / Infrastructure Team | Provide cluster setup, networking, certificates and baseline environment capabilities |
+| Product Team (contributors/committers) | Deliver releasable artefacts, Helm chart, configuration and product-specific tests; product-level TRG and open-source compliance sits with the committer role |
+| Technical Release Engineering (function) | Own and maintain the TRE model, gates, evidence, reporting and technical orchestration — "master of the process" at the meta level. It does not evaluate individual releases; gate evaluation is automated and evidence-based (Section 6.2). Proposed placement: with Release Management, alternatively a dedicated role — final placement open |
+| Platform / Infrastructure Team | Provide runner and baseline environment capabilities; only relevant if validation does not run exclusively on GitHub-hosted runners (e.g. provisioning of custom runners, Section 9.2) |
 | Test / Quality Coordination | Define minimum test scope, coordinate evidence and ensure testing traceability |
-| Security / Compliance | Define security checks, open source compliance and exception criteria |
-| SIG Release / Release Governance | Review release readiness, consume evidence and coordinate go/no-go decisions |
+| Security / Compliance | Define security check and exception criteria; the product-level execution of TRG and OSS compliance lies with the committer role |
+| SIG Release / Release Governance | Review release readiness, consume evidence and take the go/no-go decision — responsible for the process, not the operational doing (which is automated) |
 | Release Authority | Approval model proposed in Section 6.2, to be confirmed with stakeholders |
 | Topic / Product Representatives | Coordinate cross-product dependencies and readiness by domain |
 
@@ -310,7 +315,7 @@ The required evidence package is complete and reviewable by release stakeholders
 
 #### Gate 9: Release Approval Gate
 
-The release authority or agreed governance body confirms readiness based on evidence and risk assessment.
+Release management (SIG Release), as the Tractus-X release governance body, confirms readiness based on evidence and risk assessment.
 
 The gates form a sequential flow from product-level readiness through bundle-level validation to the release decision:
 
@@ -372,6 +377,8 @@ The TRE model does not invent a new versioning scheme. It makes the existing Tra
 | Release candidates | Pre-release identifiers (e.g. `1.4.0-rc.1`) mark validation candidates. Only final versions enter the approved release bundle. |
 | Compatibility | The version matrix in `tractus-x-release` remains the single source of truth for which versions belong to a release. TRE strengthens its meaning: versions listed together are not only released together but demonstrably validated together. |
 
+The versioning and nomenclature rules above are to be anchored as a **mandatory TRG**: uniform version and naming conventions across repositories are a hard precondition for automation — variability in nomenclature prevents it entirely. Despite the term "guideline", TRGs are binding rules for release participation (Section 2.2), which makes a versioning TRG the right enforcement vehicle. In addition, a uniform release-candidate process across products is recommended, for which the EDC release process can serve as a model; today many teams simply increment their semantic version without an explicit release-candidate stage.
+
 The **release manifest** is the central versioning artefact of TRE: a versioned configuration (release candidate identifier, product scope, chart versions, application versions, umbrella values) stored in Git, as introduced in Section 4.2. Earlier terms such as "release input contract" or "pinned version set" refer to this artefact.
 
 How the versioning objects relate to each other and to the approved release bundle:
@@ -392,51 +399,54 @@ flowchart LR
 
 Proposed approval flow (*provisional until confirmed in Workstream 2*):
 
-> **This flow is a proposal, not an agreed governance model.** It assigns responsibilities to SIG Release, to the Eclipse Tractus-X project leads and to Catena-X e.V. None of these parties has committed to the roles described below. Catena-X e.V. in particular is a legal entity separate from the Eclipse Tractus-X project, so any role for it in an Eclipse release decision requires its explicit consent as well as the project leads' agreement. Until that consent exists, the steps referencing bodies other than SIG Release should be read as options to be discussed.
-
-1. The TRE team evaluates Gates 1–8 based on the collected evidence and issues a release readiness recommendation per product and for the bundle: *ready*, *ready with exceptions*, or *not ready*.
-2. SIG Release, as the existing release governance body, takes the go/no-go decision (Gate 9) based on the evidence package. Where ecosystem-level sign-off is required, Catena-X e.V. representation could participate in the decision (*subject to consent, see above*).
+1. The evaluation of Gates 1–8 is **automated and evidence-based**: the pipeline aggregates the collected evidence and generates a release readiness recommendation per product and for the bundle: *ready*, *ready with exceptions*, or *not ready*. The TRE function owns and maintains this process at the meta level ("master of the process"); it does not evaluate individual releases itself.
+2. Release Management (SIG Release), as the existing Tractus-X release governance body, takes the go/no-go decision (Gate 9) based on the generated recommendation and the evidence package. Release approval lies with Tractus-X release management alone; Catena-X e.V. is not part of the release approval.
 3. During the pilot phase, the SIG Release lead could act as interim release authority. The long-term release authority model is confirmed in Workstream 2.
 4. Product teams remain accountable for product-level gate evidence; SIG Release owns the release-bundle decision.
+5. On a no-go, the affected component is either fixed within the release scope with a renewed pipeline run, or excluded from the release bundle.
+
+> **Open clarification point — approval demarcation between Catena-X e.V. and Eclipse Tractus-X.** Whether and how the association can influence a Tractus-X release remains to be clarified with the Tractus-X project leads (a rework item from the concept review): there is no Tractus-X without the association, but there is no open source if releases are association-controlled. The pattern discussed follows the separation of standards ownership and software ownership (analogous to TCK/Eclipse: a Glassfish release without JEE conformance is the project's problem, not a veto right of the standardisation body): the association owns the standards; Tractus-X releases autonomously in conformance with them; feedback from third parties — including the association — flows into subsequent releases, and release authority stays with Tractus-X. Verification of Catena-X standard conformance is **not** part of the TRE process as scoped here; where those conformance tests live and who owns them is an open question (Section 13.4).
 
 Exception handling:
 
-- Any failed gate may be converted into a documented exception containing scope, risk statement, owner and expiry date.
+- Any failed gate may be converted into a documented exception containing scope, risk statement, owner and expiry date. Exceptions (for example accepted vulnerabilities in used packages) continue through risk acceptance instead of causing a hard abort; the automatically generated report lists exceptions per repository.
 - Exceptions are time-boxed to at most one release cycle (*provisional*).
 - SIG Release approves exceptions; security-related exceptions additionally require Security/Compliance approval.
 - All exceptions are recorded in the evidence package. An expired, unresolved exception blocks the product's participation in the next release until resolved (*provisional*).
-- Proposed escalation path: SIG Release → Tractus-X project leads → Catena-X e.V. (*provisional, subject to the consent noted above*).
+- Proposed escalation path: SIG Release → Tractus-X project leads (*provisional*; any role of Catena-X e.V. in escalations is part of the open demarcation question above).
 
 ```mermaid
 flowchart TB
-    EV["Evidence for Gates 1–8<br/>(evidence store)"] --> TRE["TRE team evaluates gates and issues<br/>readiness recommendation per product<br/>and for the bundle"]
+    EV["Evidence for Gates 1–8<br/>(evidence store)"] --> TRE["Automated, evidence-based evaluation<br/>generates readiness recommendation<br/>per product and for the bundle"]
     TRE --> REC{"Recommendation"}
-    REC -->|"ready"| SIG["SIG Release go/no-go (Gate 9)<br/>Catena-X e.V. participation proposed;<br/>interim release authority: SIG Release lead"]
-    REC -->|"ready with exceptions"| EXC["Exceptions documented:<br/>scope, risk, owner, expiry<br/>(max. one release cycle)"]
+    REC -->|"ready"| SIG["Release Management go/no-go (Gate 9)<br/>(SIG Release; interim release authority:<br/>SIG Release lead)"]
+    REC -->|"ready with exceptions"| EXC["Exceptions documented per repository:<br/>scope, risk, owner, expiry<br/>(max. one release cycle)"]
     EXC --> SIG
-    REC -->|"not ready"| FIX["Remediation by product team<br/>or descope from the bundle"]
+    REC -->|"not ready"| FIX["Fix in release scope with renewed<br/>pipeline run, or descope the<br/>component from the bundle"]
     SIG -->|"go"| GO["Approved release;<br/>exceptions tracked until expiry"]
     SIG -->|"no go"| FIX
     FIX -.->|"re-evaluation"| EV
 ```
 
-*Figure 3: Proposed release approval and exception flow (provisional until confirmed in Workstream 2; roles for bodies other than SIG Release are subject to their consent). Security-related exceptions additionally require Security/Compliance approval; the proposed escalation path runs SIG Release → Tractus-X project leads → Catena-X e.V.*
+*Figure 3: Proposed release approval and exception flow (provisional until confirmed in Workstream 2). Gate evaluation is automated and evidence-based; the TRE function maintains the process but does not assess individual releases. Security-related exceptions additionally require Security/Compliance approval; the proposed escalation path runs SIG Release → Tractus-X project leads.*
 
 ### 6.3 Quality Gate Operationalisation
 
 The following table operationalises the gates from Section 5.1 with owner, minimum pass criteria, required evidence and failure handling. The pass criteria are the pilot baseline and are refined in Workstream 3.
 
+The owner column names who is accountable for the gate; the execution and evaluation of Gates 2–8 themselves run automated in the pipeline (Section 6.2) — the TRE function maintains the process, it does not evaluate individual releases.
+
 | Gate | Owner | Minimum pass criteria | Evidence | On failure |
 | --- | --- | --- | --- | --- |
 | 1 Release Participation | Product team / SIG Release | Participation, scope and technical owner declared in release planning by the agreed cut-off | Planning board entry | Product is not part of the validated bundle |
-| 2 TRG Compliance | Product team (verified via TRG dashboard) | All release-mandatory TRGs green or covered by an approved exception | TRG check dashboard status | Remediation or exception per Section 6.2 |
-| 3 Version and Artefact | Product team / TRE team | Release manifest resolves completely; images and charts are published and pullable; build reproducible from tagged source | Release manifest, registry and chart repository references | Not ready |
-| 4 Deployment | TRE team | Unattended umbrella-based deployment of the manifest succeeds; all workloads reach ready state within the defined timeout | Deployment run report | Triage product vs. environment; not ready until resolved |
-| 5 Test Data and Identity | TRE team / product teams | Required participants, identities, credentials and test data are provisioned automatically | Bootstrap and seeding logs | Not ready |
-| 6 Cross-Participant Validation | TRE team / Test & Quality Coordination | 100 % of smoke tests pass; the defined minimum integration scenarios and at least one provider–consumer end-to-end flow pass | Test reports in the evidence store; additionally mirrored to X-Ray for participants who use it | Defect vs. environment triage; re-run after fix |
+| 2 TRG Compliance | Product team (verified automatically via the existing TRG workflows and dashboard) | All release-mandatory TRGs green or covered by an approved exception | TRG check dashboard status | Remediation or exception per Section 6.2 |
+| 3 Version and Artefact | Product team (builds the artefacts) / TRE function (manifest resolution, automated) | Release manifest resolves completely; images and charts are published and pullable; build reproducible from tagged source | Release manifest, registry and chart repository references | Not ready |
+| 4 Deployment | TRE function (automated pipeline step) | Unattended umbrella-based deployment of the manifest inside the pipeline run succeeds; all workloads reach ready state within the defined timeout; the environment is discarded after the run | Deployment run report | Triage product vs. environment; not ready until resolved |
+| 5 Test Data and Identity | TRE function (automated pipeline step) / product teams | Required participants, identities, credentials and test data are provisioned automatically; test data is supplied per use case — by the product under test for product-specific data, by the umbrella components (e.g. wallet, verifiable credentials) for dataspace prerequisites | Bootstrap and seeding logs | Not ready |
+| 6 Cross-Participant Validation | TRE function (automated pipeline step) / Test & Quality Coordination | 100 % of smoke tests pass; the defined minimum integration scenarios and at least one provider–consumer end-to-end flow pass | Test reports in the public evidence store | Defect vs. environment triage; re-run after fix |
 | 7 Security and Compliance | Security / Compliance | No unresolved critical or high findings (products and validation environment); scans current per Section 10.2 | Scan reports, exception log | Exception per Section 6.2 or not ready |
-| 8 Release Evidence | TRE team | Evidence package complete against the checklist in Section 5.2 | Evidence package | Completed before Gate 9 |
-| 9 Release Approval | SIG Release (Catena-X e.V. participation proposed, see Section 6.2) | Documented go/no-go decision with explicit risk acknowledgement | Signed decision record | No release, descoped product set, or corrective iteration |
+| 8 Release Evidence | TRE function (automated evidence aggregation) | Evidence package complete against the checklist in Section 5.2 | Evidence package | Completed before Gate 9 |
+| 9 Release Approval | Release Management (SIG Release, see Section 6.2) | Documented go/no-go decision with explicit risk acknowledgement | Signed decision record | No release, descoped product set, or corrective iteration |
 
 ### 6.4 Integration with Existing Release Checks and Test Management
 
@@ -444,7 +454,7 @@ The TRE gates extend the existing mechanisms; they do not create a parallel bure
 
 - Gate 2 consumes the existing TRG compliance automation (`sig-release/release-automation` dashboard, quality-check workflows in `sig-infra`) instead of re-implementing checks.
 - Gates 1 and 9 attach to the existing SIG Release process (release planning board, release checks, go/no-go coordination); the TRE evidence package becomes an input to those decisions.
-- Gate 6 results are written to the TRE evidence store, which is GitHub-native and therefore readable by every Eclipse Tractus-X contributor. For release participants who already use Jira X-Ray, results are additionally exported there so X-Ray stays their test-management record; X-Ray access is not a prerequisite for producing or reviewing TRE evidence (see Section 2.3).
+- Gate 6 results are written to the TRE evidence store, which is GitHub-native and therefore readable by every Eclipse Tractus-X contributor. The TRE toolchain itself does not depend on Jira X-Ray (GitHub-/open-source-only constraint, Section 9.1): X-Ray exists only because Catena-X e.V. funds it. An abstracted, non-technical release layer at the association may continue to consume the public evidence — including an export to X-Ray — but that consumption is outside the TRE process.
 - The detailed mapping of each existing release check to a TRE gate is worked out in Workstream 3 together with SIG Release.
 
 ---
@@ -517,6 +527,8 @@ This option pushes validation ownership into multiple product-specific environme
 
 **Disadvantage:**
 
+- the personnel effort does not scale across the participating repositories,
+- overlapping responsibilities between the product teams and the release engineering capability,
 - weak comparability across products,
 - duplicated setup effort,
 - harder release-bundle validation,
@@ -524,7 +536,7 @@ This option pushes validation ownership into multiple product-specific environme
 
 **Assessment:**
 
-- useful as a comparison point, but weaker than a shared pilot environment for the first TRE step.
+- rejected during the concept review: the personnel effort does not scale and responsibilities would overlap. Option C remains the recommendation.
 
 ### 7.5 Recommendation
 
@@ -559,7 +571,7 @@ flowchart LR
         PLAN["Release planning<br/>(SIG Release)"] --> DEV["Product development<br/>and product CI"] --> INT["INT-based validation<br/>(manual coordination)"]
     end
     subgraph sgTre["Parallel validation path (new TRE)"]
-        RM["Release manifest<br/>(pinned version set)"] --> ENV["Reproducible validation environment<br/>(IaC provisioning + tractus-x-umbrella)"] --> RUN["Recurring automated validation<br/>(smoke, integration, cross-participant)"] --> EVID["Evidence store and<br/>release readiness report"]
+        RM["Release manifest<br/>(pinned version set)"] --> ENV["Ephemeral validation environment<br/>(GitHub runner + tractus-x-umbrella)"] --> RUN["Recurring automated validation<br/>(smoke, integration, cross-participant)"] --> EVID["Evidence store and<br/>release readiness report"]
     end
     DEV -->|"published artefacts<br/>(images, charts)"| RM
     INT --> DEC["Release decision (Gate 9)<br/>SIG Release go/no-go"]
@@ -572,9 +584,11 @@ flowchart LR
 
 The approach is based on the following principles:
 
-- the current process continues while the new model is tested,
+- the current process continues while the new model is tested; because the old path remains untouched, the parallel path may be designed disruptively — both worlds run side by side until the old one can be retired,
 - the parallel environment is built automatically from scratch where feasible,
+- validation environments are ephemeral: created within a pipeline run, tested and discarded — no permanently maintained test environment,
 - existing Tractus-X assets are reused before new tooling is introduced,
+- the toolchain is GitHub-native and open-source-only (Section 9.1),
 - the validated release bundle is defined as code or versioned configuration,
 - validation starts with a minimum but realistic scope,
 - coverage grows incrementally,
@@ -584,7 +598,8 @@ The approach is based on the following principles:
 
 The parallel validation environment should conceptually include:
 
-- a hosted Kubernetes validation environment (Azure AKS or AWS EKS), provisioned reproducibly through Infrastructure as Code, for the full multi-participant bundle,
+- ephemeral validation environments, created from scratch within a GitHub Actions pipeline run, tested and discarded after the run — no permanently maintained test environment,
+- custom (self-hosted) GitHub runners with larger hardware for the full multi-participant bundle (*provisional*; feasibility and provisioning responsibility are open, see below),
 - GitHub-native execution (kind-in-a-runner) for lightweight subset and pull-request-level validation where runner resources permit,
 - versioned release manifest and umbrella values,
 - automated cluster setup or equivalent reproducible bootstrap,
@@ -596,7 +611,7 @@ The parallel validation environment should conceptually include:
 - central publication of results,
 - release readiness reporting.
 
-The hosted Kubernetes environment is the only element of this concept that requires recurring funded infrastructure. Who provides and pays for it — the Eclipse Foundation, a member organisation, or a sponsored cloud account — is not resolved by this document and is listed as an open decision in Section 13.4. Until it is resolved, only the GitHub-native lightweight track (kind in a runner) can be assumed to be available, which limits validation to subsets rather than the full multi-participant bundle.
+The custom runners are the only element of this concept that requires recurring funded infrastructure. Who provides and operates them — the Eclipse Foundation, a member organisation, or a sponsored account — is not resolved by this document and is listed as an open decision in Section 13.4. Whether the full multi-participant bundle fits into (custom) GitHub runners must be validated early in the implementation phase; a hosted Kubernetes cluster (e.g. Azure AKS or AWS EKS, provisioned through Infrastructure as Code) remains the fallback if runner resources prove insufficient. Until the provisioning question is resolved, only GitHub-hosted runners (kind) can be assumed to be available, which limits validation to subsets rather than the full multi-participant bundle.
 
 ### 8.4 Conceptual Target Architecture
 
@@ -607,7 +622,7 @@ The conceptual target architecture contains the following building blocks:
 - chart repositories,
 - CI/CD pipelines,
 - umbrella deployment baseline,
-- validation cluster,
+- ephemeral validation environment (in GitHub Actions runners),
 - certificate and secret management,
 - identity and trust bootstrap,
 - test data seeding,
@@ -632,16 +647,15 @@ flowchart TB
         PIPE["Validation pipeline:<br/>provision, deploy, seed, test, report"]
         SEC["Security and compliance checks<br/>(CodeQL, Trivy, KICS, Dash, secret scanning)"]
     end
-    subgraph sgEnv["Parallel validation environment"]
-        IAC["Terraform IaC provisions AKS/EKS<br/>incl. DNS, certificates, secrets"]
+    subgraph sgEnv["Parallel validation environment (ephemeral, per pipeline run)"]
+        ENV["Ephemeral environment on custom GitHub runner<br/>(larger hardware), created and discarded per run"]
         UMB["Umbrella-based deployment<br/>(Helm, tractus-x-umbrella)"]
         SEED["Test data seeding and<br/>identity/trust bootstrap"]
         TEST["Automated test execution<br/>(smoke, integration, cross-participant)"]
-        KIND["Lightweight track: kind in GitHub runner<br/>(PR- and chart-level subsets)"]
+        KIND["Lightweight track: kind in GitHub-hosted runner<br/>(PR- and chart-level subsets)"]
     end
     subgraph sgOut["Evidence and decision"]
-        EVID["Evidence store<br/>(Git repository + dashboard)"]
-        XRAY["Jira X-Ray<br/>(record for participants who use it)"]
+        EVID["Evidence store<br/>(Git repository + dashboard, public)"]
         GATES["Quality gates 1–9 and<br/>SIG Release go/no-go"]
     end
     SRC --> REG
@@ -650,28 +664,27 @@ flowchart TB
     RM --> PIPE
     REG --> PIPE
     CHR --> PIPE
-    PIPE --> IAC --> UMB --> SEED --> TEST
+    PIPE --> ENV --> UMB --> SEED --> TEST
     PIPE --> SEC
     PIPE -.->|"subset validation"| KIND
     SEC --> EVID
     TEST --> EVID
-    TEST --> XRAY
     KIND -.-> EVID
     EVID --> GATES
 ```
 
-*Figure 5: Conceptual target architecture of the parallel validation environment. Solid arrows show the main validation flow on the hosted environment; the dashed track shows lightweight PR-/chart-level validation on kind (Section 9.2).*
+*Figure 5: Conceptual target architecture of the parallel validation environment. Solid arrows show the main validation flow on ephemeral environments in custom GitHub runners; the dashed track shows lightweight PR-/chart-level validation on kind (Section 9.2). All evidence is published GitHub-natively; consumption by association-side tooling such as X-Ray is outside TRE (Section 6.4).*
 
 Conceptual flow:
 
 1. A release candidate or pinned version set is selected.
 2. CI/CD resolves the relevant artefacts, images and charts.
 3. Umbrella values or equivalent manifest define the bundle to deploy.
-4. The validation environment is provisioned reproducibly.
-5. Components are deployed into the parallel environment.
+4. An ephemeral validation environment is provisioned from scratch within the pipeline run.
+5. Components are deployed into the ephemeral environment.
 6. Test data and identity prerequisites are loaded automatically.
 7. Minimum tests and security/compliance checks are executed.
-8. Results are published to an evidence store or dashboard.
+8. Results are published to an evidence store or dashboard; the environment is discarded.
 9. SIG Release and stakeholders review gates and decide readiness.
 
 ---
@@ -680,20 +693,24 @@ Conceptual flow:
 
 ### 9.1 Selection Principles
 
-The toolchain recommendation follows the approach principles of Section 8: reuse existing Tractus-X and GitHub-organisation assets before introducing new tooling. Recommendations marked *Recommended* are considered settled for the pilot; recommendations marked *Provisional* are proposed defaults that stakeholder validation can overturn without affecting the overall model.
+The toolchain recommendation follows the approach principles of Section 8: reuse existing Tractus-X and GitHub-organisation assets before introducing new tooling.
+
+A binding constraint agreed during the concept review: the TRE toolchain is **GitHub-native and open-source-only** and runs publicly within the Tractus-X organisation (public runners, public test reports) — both for transparency and because validating a release on a non-public environment would lose exactly that transparency. TRE must not depend on tooling funded by Catena-X e.V., such as Jira/X-Ray; an abstracted, non-technical release layer at the association can continue to operate on such tooling, but outside TRE (Sections 2.3, 6.4).
+
+Recommendations marked *Recommended* are considered settled for the pilot; recommendations marked *Provisional* are proposed defaults that stakeholder validation can overturn without affecting the overall model.
 
 ### 9.2 CI/CD, Environment and Deployment
 
 | Capability | Recommendation | Alternatives considered | Rationale | Status |
 | --- | --- | --- | --- | --- |
-| CI/CD platform | GitHub Actions with reusable workflows from `sig-infra` | GitLab CI, Jenkins, Tekton | Organisation standard; TRG automation already lives there; no new infrastructure | Recommended |
-| Validation environment (full bundle) | Hosted Kubernetes (Azure AKS or AWS EKS) provisioned through Terraform-based IaC automation | kind-in-a-runner, k3s on VMs | The multi-participant umbrella footprint is expected to exceed GitHub-hosted runner resources; reproducible provisioning from scratch avoids environment drift | Provisional — depends on the unresolved funding and hosting question (Sections 8.3, 13.4) |
+| CI/CD platform | GitHub Actions with reusable workflows from `sig-infra`, extended by custom (self-hosted) runners where more resources are needed | GitLab CI, Jenkins, Tekton | Organisation standard; TRG automation already lives there; no new infrastructure | Recommended |
+| Validation environment (full bundle) | Ephemeral environment on custom (self-hosted) GitHub runners with larger hardware, created and discarded per pipeline run | Hosted Kubernetes (Azure AKS or AWS EKS) provisioned through Terraform-based IaC as fallback; k3s on VMs | No permanently maintained environment and no drift; the whole flow stays GitHub-native; the multi-participant umbrella footprint is expected to exceed GitHub-hosted runner resources | Provisional — feasibility of the full bundle in (custom) runners and the unresolved provisioning/funding question (Sections 8.3, 13.4) |
 | Lightweight validation (PR/chart level) | kind in GitHub-hosted runners | minikube, k3d | Established pattern for chart testing in Tractus-X; fast feedback for subsets | Recommended |
-| Infrastructure as code | Terraform | OpenTofu, Pulumi, Crossplane | Broadly established, cloud-agnostic across the AKS/EKS target options; a single provisioning approach avoids duplicated stacks | Recommended |
+| Infrastructure as code | Terraform — only required if the hosted-cluster fallback is used instead of custom runners | OpenTofu, Pulumi, Crossplane | Broadly established, cloud-agnostic across the AKS/EKS fallback options | Provisional |
 | Deployment mechanism | Helm via `tractus-x-umbrella` | Argo CD / Flux (GitOps) | Helm is TRG-mandated; umbrella is the existing deployment baseline; GitOps remains a later evolution option | Recommended |
-| Certificates | cert-manager with Let's Encrypt and a dedicated DNS zone for the validation environment | Manually managed certificates | Full automation of prerequisites | Recommended |
-| Secrets (CI) | GitHub Actions secrets and environments | — | Native, audited, no additional infrastructure | Recommended |
-| Secrets (cluster) | Cloud-native secret store (Azure Key Vault / AWS Secrets Manager) with External Secrets Operator | HashiCorp Vault | Aligns with the AKS/EKS target environments; low operational overhead | Provisional |
+| Certificates | cert-manager with cluster-internal issuers for the ephemeral in-runner environments; Let's Encrypt with a dedicated DNS zone only if a hosted fallback environment with public endpoints is used | Manually managed certificates | Full automation of prerequisites | Recommended |
+| Secrets (CI) | GitHub Actions secrets and environments | — | Native, audited, no additional infrastructure; confirmed during the concept review | Recommended |
+| Secrets (cluster) | GitHub Actions secrets injected into the ephemeral environment; a cloud-native secret store (Azure Key Vault / AWS Secrets Manager) with External Secrets Operator only for the hosted fallback | HashiCorp Vault | Ephemeral per-run environments need no standing secret infrastructure | Provisional |
 
 ### 9.3 Artefact Management
 
@@ -714,7 +731,7 @@ The recommendation reuses the scanning practice already established by the Tract
 | --- | --- | --- | --- |
 | Static application security testing | CodeQL in product CI | GitHub-native; established in the organisation | Recommended |
 | Container image scanning | Trivy on every release-candidate image | Established practice; feeds Gate 7 | Recommended |
-| IaC and configuration scanning | KICS on infrastructure code and deployment configuration (including the Terraform code and umbrella values) | Established practice; covers the validation environment itself | Recommended |
+| IaC and configuration scanning | KICS on infrastructure code and deployment configuration (including the umbrella values, runner setup and any IaC code for the hosted fallback) | Established practice; covers the validation environment itself | Recommended |
 | Dependency updates | Dependabot (or Renovate where already in use) | Keeps release candidates current | Recommended |
 | Secret scanning | GitHub secret scanning as organisation baseline | Prevents credential leakage, including in evidence | Recommended |
 | License / IP checks | Eclipse Dash License Tool with maintained `DEPENDENCIES` files, per the open-source-governance TRGs | Mandatory Eclipse Foundation process; automatable | Recommended |
@@ -727,8 +744,8 @@ Severity handling and gate thresholds for these checks are defined in Section 10
 | Capability | Recommendation | Alternatives considered | Rationale | Status |
 | --- | --- | --- | --- | --- |
 | Test execution | Product-provided automated suites executed via GitHub Actions against the validation environment; cross-participant scenarios orchestrated on the umbrella deployment | Central test orchestrator | Reuses current practice (Section 2.3); lowest adoption barrier | Recommended |
-| Test data and identity bootstrap | `tractus-x-umbrella` data seeding and identity/trust setup as the standard mechanism | Product-specific seeding scripts | The hardest dataspace prerequisite already exists in umbrella; it is formalised instead of rebuilt | Recommended |
-| Test management | Evidence store as the GitHub-native record readable by all contributors, with automated export from CI to Jira X-Ray for the participants who already use it | X-Ray as the sole record; replacing X-Ray outright | Continuity for current release participants without making licensed tooling a prerequisite for open-source contributors (Section 2.3) | Recommended |
+| Test data and identity bootstrap | `tractus-x-umbrella` data seeding and identity/trust setup as the standard mechanism; test data is supplied per use case — by the product under test for product-specific data, by the umbrella components (e.g. wallet, verifiable credentials) for dataspace prerequisites | Product-specific seeding scripts only | The hardest dataspace prerequisite already exists in umbrella; it is formalised instead of rebuilt | Recommended |
+| Test management | GitHub-native evidence store as the single TRE record, readable by all contributors (GitHub-/open-source-only constraint, Section 9.1) | X-Ray as the record; automated X-Ray export as part of TRE | X-Ray exists only because Catena-X e.V. funds it; TRE must not depend on association tooling. An abstracted, non-technical release layer at the association may consume the public evidence — including an X-Ray import — outside TRE (Sections 2.3, 6.4) | Recommended |
 | Evidence store | Versioned Git-based evidence repository per release candidate (manifest, reports, decisions), published as a release readiness dashboard via GitHub Pages — following the pattern of the existing TRG dashboard | Confluence, object storage, BI tooling | GitHub-native, traceable, reviewable by all stakeholders | Provisional (final location is an open decision, see Section 13.4) |
 | Reporting | Release readiness report generated per validation run and linked from the dashboard | Manual status reporting | Decision-ready input for SIG Release | Recommended |
 
@@ -755,11 +772,13 @@ flowchart BT
 
 - Keep the test pyramid intact: unit and component tests remain in product CI and are a prerequisite for release participation, not part of TRE execution. TRE runs few, high-value validation levels: deployment smoke tests, selected integration tests and cross-participant end-to-end flows.
 - Every pilot product declares a machine-readable minimum smoke set: health and readiness endpoints, successful chart installation and API reachability. One option is to extend the existing `.tractusx` metadata file. That file's schema is owned by the Release Guidelines (TRGs) and consumed by the quality checks in `sig-infra`, so extending it is a cross-repository change that requires a TRG change request and the agreement of the TRG owners — it cannot be decided within TRE alone (*provisional; see Section 13.4*). Until then, a TRE-local declaration file avoids blocking the pilot.
-- Test data is code: all required data is seeded automatically and deterministically through the umbrella seeding mechanism; manually prepared data disqualifies a scenario as release evidence.
+- Archetypal test guidance: for each product archetype (for example a reference application or an EDC extension), TRE defines where tests live, how they are declared and how they are executed. The schema must stand from the beginning, even while only few test cases exist, so contributors always know where and how to add tests.
+- Test data is code: all required data is seeded automatically and deterministically through the umbrella seeding mechanism; manually prepared data disqualifies a scenario as release evidence. Test data is supplied per use case: the product under test delivers its product-specific data; the umbrella components (e.g. wallet, verifiable credentials) provide the dataspace prerequisites.
 - Identity and trust bootstrap is automated and repeatable for every participant in the validation topology.
 - Tests must be idempotent and re-runnable; flaky tests are quarantined and tracked, not silently retried.
-- Trigger model for recurring validation (*provisional*): scheduled nightly runs on the current release-candidate manifest during the release phase, a run on every manifest change, and on-demand runs for triage.
-- Every run publishes results (pass/fail, logs, versions) to the evidence store, and mirrors them to X-Ray for the participants who use it; failed runs are explicitly triaged as product defect or environment defect.
+- Trigger granularity for recurring validation is a deliberate implementation decision, not a concept gap: push-/merge-based, scheduled nightly and manually triggered runs (e.g. by test management) are all viable. With roughly 25 participating repositories, the trade-off between fast feedback and runner load is made during implementation.
+- Every run publishes results (pass/fail, logs, versions) to the public evidence store; failed runs are explicitly triaged as product defect or environment defect.
+- TRE does not mandate code-coverage thresholds: coverage enforcement (e.g. SonarCloud with 70–80 % targets) was rejected by the committers in the past. How coverage expectations are handled remains an open point (Section 13.4).
 - Contract testing between dataspace components is a recommended evolution step to catch interface drift before end-to-end execution (*provisional*).
 
 ### 10.2 Security Gates
@@ -805,8 +824,7 @@ The first pilot should implement the minimum capabilities required to validate t
 - repository or configuration structure for the pilot,
 - initial CI/CD pipeline,
 - umbrella-based deployment configuration,
-- Kubernetes validation environment,
-- IaC-based provisioning automation (see Section 9.2),
+- ephemeral validation environment within GitHub Actions runners (custom runners for the full bundle, see Section 9.2),
 - initial test data and identity bootstrap mechanism,
 - execution of minimum smoke and cross-participant tests,
 - publication of results,
@@ -817,9 +835,9 @@ The first pilot should implement the minimum capabilities required to validate t
 1. Select candidate products for the pilot.
 2. Validate that the products fulfil basic TRG prerequisites.
 3. Define the target validation environment.
-4. Confirm the environment model: hosted Kubernetes for the full bundle, kind for lightweight smoke validation (recommendation in Section 9.2).
+4. Confirm the environment model: ephemeral environments on custom GitHub runners for the full bundle, kind on GitHub-hosted runners for lightweight smoke validation (recommendation in Section 9.2).
 5. Define the pinned release manifest (release candidate input contract).
-6. Prepare IaC-based provisioning and umbrella-based deployment.
+6. Prepare the runner-based environment provisioning and umbrella-based deployment.
 7. Define required minimum test data and identity bootstrap.
 8. Integrate smoke tests and existing integration tests.
 9. Publish results in a centralised format.
@@ -836,7 +854,7 @@ Before starting the pilot, the following inputs are required:
 - available Helm charts,
 - container images or build pipelines,
 - configuration and secret requirements,
-- availability of a cloud environment for the hosted validation cluster,
+- availability of custom GitHub runners with sufficient resources (or a fallback cloud environment, see Section 9.2),
 - release candidate version set,
 - minimum test data,
 - identity/trust prerequisites,
@@ -943,7 +961,7 @@ flowchart LR
 - define conceptual architecture,
 - define technical components,
 - define build-vs-extend boundaries for umbrella and release automation,
-- confirm the trigger model proposed in Section 10.1,
+- prepare the trigger-granularity decision deliberately left open in Section 10.1 (push-based, nightly, manual),
 - define pilot boundaries.
 
 **Outcome:**
@@ -1000,7 +1018,7 @@ The concept depends on:
 - participating products with minimum TRG prerequisites,
 - technical owners for pilot candidates,
 - availability of umbrella-based deployment knowledge,
-- a cloud environment for provisioning the hosted validation cluster,
+- custom GitHub runners with sufficient resources (or a fallback cloud environment) for full-bundle validation,
 - ability to centralise evidence and reporting,
 - alignment between release management, platform/infrastructure, quality coordination and security/compliance.
 
@@ -1019,13 +1037,17 @@ This concept assumes:
 
 This concept intentionally leaves the following decisions open:
 
-- **who provides and funds the hosted validation environment** — the recurring cloud cost of the full multi-participant bundle has no identified owner; options are the Eclipse Foundation, a member organisation, or a sponsored cloud account (see Section 8.3). Without this decision, only the GitHub-native lightweight track is available,
+- **who provides and operates the custom GitHub runners** — the runners with larger hardware for the full multi-participant bundle are the only recurring funded infrastructure of this concept and have no identified owner; options are the Eclipse Foundation, a member organisation, or a sponsored account (see Section 8.3). Without this decision, only the GitHub-hosted lightweight track is available,
+- **the approval demarcation between Catena-X e.V. and Eclipse Tractus-X** — release approval is proposed to lie with Tractus-X release management alone; whether and how the association can influence releases, and what the current de facto approval practice is, must be clarified with the Tractus-X project leads,
+- where Catena-X standard conformance tests are located and who owns them — they are not part of TRE as scoped here (Section 6.2); presumably a Catena-X topic,
+- whether the full multi-participant bundle is technically feasible inside (custom) GitHub runners, to be validated early in implementation (Section 9.2),
 - which products should be selected for the first pilot,
-- confirmation of the environment recommendation (hosted cluster for the full bundle, GitHub-native kind for lightweight validation, see Section 9.2),
-- who owns the long-term TRE capability, and how it is staffed,
-- confirmation of the release authority proposal in Section 6.2, including whether Catena-X e.V. and the Tractus-X project leads accept the roles proposed for them,
+- who owns the long-term TRE capability, and how it is staffed (placement with Release Management vs. a dedicated role, Section 4.3),
+- confirmation of the release authority proposal in Section 6.2,
 - where evidence and reporting should be published (provisional recommendation in Section 9.5),
 - confirmation of the exception approval process proposed in Section 6.2,
+- whether an additional "after-the-fact" security assessment (e.g. penetration testing) beyond the TRG-anchored checks should be part of release validation, or dropped — such a step has not existed so far and much is already covered by the TRGs (Sections 9.4, 10.2),
+- how test-coverage expectations are handled, given that strict coverage enforcement was rejected by the committers in the past (Section 10.1),
 - whether extending the `.tractusx` metadata file for the smoke-test declaration (Section 10.1) is acceptable to the TRG owners, and through which change process,
 - whether the environment should remain central or evolve into a more federated model,
 - how quickly the parallel path should be scaled after the pilot.
