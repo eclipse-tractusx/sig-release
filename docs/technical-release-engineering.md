@@ -112,6 +112,8 @@ Test data has historically been a weak point: for a long time it consisted of on
 
 In addition, the existing `tractus-x-umbrella` repository already provides a deployable data-exchange baseline with multi-participant elements, test data seeding and identity/trust-related setup. This means a large part of the validation topology already exists, but it is not yet formalised as a TRE operating model.
 
+For defining and executing cross-participant tests, the [`tractusx-testlab`](https://github.com/eclipse-tractusx/tractusx-testlab) repository provides a test authoring and execution engine for Tractus-X dataspaces. Tests are written as declarative YAML test case kits (TCKs) from a predefined step catalogue (connector, Digital Twin Registry, notifications, mocks), validated and packaged by a compiler, executed by a CLI player and recorded as a CloudEvents execution trace. The connectors and registries a run addresses are bound by the operator rather than inside the test, so the same TCK can run against different deployments. Testlab's own CI already deploys a reduced two-participant umbrella profile (two connectors, two IdentityHubs, Digital Twin Registry, BDRS, IssuerService including credential issuance) into an ephemeral kind cluster on a GitHub-hosted runner and runs end-to-end scenarios such as the Industry Core journey against it. Testlab is still pre-release (alpha TCK syntax).
+
 ### 2.4 Identified Gaps
 
 | Gap | Impact | Criticality |
@@ -611,7 +613,7 @@ The parallel validation environment should conceptually include:
 - central publication of results,
 - release readiness reporting.
 
-The custom runners are the only element of this concept that requires recurring funded infrastructure. Who provides and operates them — the Eclipse Foundation, a member organisation, or a sponsored account — is not resolved by this document and is listed as an open decision in Section 13.4. Whether the full multi-participant bundle fits into (custom) GitHub runners must be validated early in the implementation phase; a hosted Kubernetes cluster (e.g. Azure AKS or AWS EKS, provisioned through Infrastructure as Code) remains the fallback if runner resources prove insufficient. Until the provisioning question is resolved, only GitHub-hosted runners (kind) can be assumed to be available, which limits validation to subsets rather than the full multi-participant bundle.
+The custom runners are the only element of this concept that requires recurring funded infrastructure. Who provides and operates them — the Eclipse Foundation, a member organisation, or a sponsored account — is not resolved by this document and is listed as an open decision in Section 13.4. Whether the full multi-participant bundle fits into (custom) GitHub runners must be validated early in the implementation phase; a hosted Kubernetes cluster (e.g. Azure AKS or AWS EKS, provisioned through Infrastructure as Code) remains the fallback if runner resources prove insufficient. Until the provisioning question is resolved, only GitHub-hosted runners (kind) can be assumed to be available, which limits validation to subsets rather than the full multi-participant bundle. The `tractusx-testlab` end-to-end workflow (Section 2.3) is a first data point for this track: a reduced two-participant umbrella profile runs ephemerally on a 4-vCPU GitHub-hosted runner, although only after tuning probe delays and resource requests — feasibility of the full bundle remains open.
 
 ### 8.4 Conceptual Target Architecture
 
@@ -626,7 +628,7 @@ The conceptual target architecture contains the following building blocks:
 - certificate and secret management,
 - identity and trust bootstrap,
 - test data seeding,
-- automated test execution,
+- automated test execution (product suites and declarative cross-participant E2E tests, e.g. `tractusx-testlab` TCKs as PoC candidate),
 - security and compliance checks,
 - evidence store,
 - reporting dashboard or release evidence package,
@@ -651,7 +653,7 @@ flowchart TB
         ENV["Ephemeral environment on custom GitHub runner<br/>(larger hardware), created and discarded per run"]
         UMB["Umbrella-based deployment<br/>(Helm, tractus-x-umbrella)"]
         SEED["Test data seeding and<br/>identity/trust bootstrap"]
-        TEST["Automated test execution<br/>(smoke, integration, cross-participant)"]
+        TEST["Automated test execution<br/>(smoke, integration, cross-participant)<br/>product suites + tractusx-testlab TCKs"]
         KIND["Lightweight track: kind in GitHub-hosted runner<br/>(PR- and chart-level subsets)"]
     end
     subgraph sgOut["Evidence and decision"]
@@ -683,7 +685,7 @@ Conceptual flow:
 4. An ephemeral validation environment is provisioned from scratch within the pipeline run.
 5. Components are deployed into the ephemeral environment.
 6. Test data and identity prerequisites are loaded automatically.
-7. Minimum tests and security/compliance checks are executed.
+7. Minimum tests (product suites and cross-participant E2E test cases) and security/compliance checks are executed.
 8. Results are published to an evidence store or dashboard; the environment is discarded.
 9. SIG Release and stakeholders review gates and decide readiness.
 
@@ -744,6 +746,7 @@ Severity handling and gate thresholds for these checks are defined in Section 10
 | Capability | Recommendation | Alternatives considered | Rationale | Status |
 | --- | --- | --- | --- | --- |
 | Test execution | Product-provided automated suites executed via GitHub Actions against the validation environment; cross-participant scenarios orchestrated on the umbrella deployment | Central test orchestrator | Reuses current practice (Section 2.3); lowest adoption barrier | Recommended |
+| Cross-participant E2E test definition and execution | `tractusx-testlab`: E2E scenarios for the applications defined as declarative TCKs, executed by the `testlab` CLI against the umbrella deployment; deployment endpoints bound via operator configuration; the execution trace and run summary published to the evidence store | Product-specific E2E suites only; API collections (Bruno/Postman); custom scripts | Existing Tractus-X project built on the Tractus-X SDK; no programming required to author tests; already proven against an ephemeral umbrella deployment in GitHub Actions; same TCK runs on the lightweight and the full-bundle track | Provisional — candidate for the first PoC (Section 11); pre-release maturity (Section 13.1) |
 | Test data and identity bootstrap | `tractus-x-umbrella` data seeding and identity/trust setup as the standard mechanism; test data is supplied per use case — by the product under test for product-specific data, by the umbrella components (e.g. wallet, verifiable credentials) for dataspace prerequisites | Product-specific seeding scripts only | The hardest dataspace prerequisite already exists in umbrella; it is formalised instead of rebuilt | Recommended |
 | Test management | GitHub-native evidence store as the single TRE record, readable by all contributors (GitHub-/open-source-only constraint, Section 9.1) | X-Ray as the record; automated X-Ray export as part of TRE | X-Ray exists only because Catena-X e.V. funds it; TRE must not depend on association tooling. An abstracted, non-technical release layer at the association may consume the public evidence — including an X-Ray import — outside TRE (Sections 2.3, 6.4) | Recommended |
 | Evidence store | Versioned Git-based evidence repository per release candidate (manifest, reports, decisions), published as a release readiness dashboard via GitHub Pages — following the pattern of the existing TRG dashboard | Confluence, object storage, BI tooling | GitHub-native, traceable, reviewable by all stakeholders | Provisional (final location is an open decision, see Section 13.4) |
@@ -775,6 +778,7 @@ flowchart BT
 - Archetypal test guidance: for each product archetype (for example a reference application or an EDC extension), TRE defines where tests live, how they are declared and how they are executed. The schema must stand from the beginning, even while only few test cases exist, so contributors always know where and how to add tests.
 - Test data is code: all required data is seeded automatically and deterministically through the umbrella seeding mechanism; manually prepared data disqualifies a scenario as release evidence. Test data is supplied per use case: the product under test delivers its product-specific data; the umbrella components (e.g. wallet, verifiable credentials) provide the dataspace prerequisites.
 - Identity and trust bootstrap is automated and repeatable for every participant in the validation topology.
+- Cross-participant end-to-end flows are defined declaratively and independently of a concrete deployment: the test describes the scenario, the operator binds the endpoints. `tractusx-testlab` TCKs are the candidate format for the first PoC (*provisional*, Section 9.5); their execution trace becomes part of the release evidence.
 - Tests must be idempotent and re-runnable; flaky tests are quarantined and tracked, not silently retried.
 - Trigger granularity for recurring validation is a deliberate implementation decision, not a concept gap: push-/merge-based, scheduled nightly and manually triggered runs (e.g. by test management) are all viable. With roughly 25 participating repositories, the trade-off between fast feedback and runner load is made during implementation.
 - Every run publishes results (pass/fail, logs, versions) to the public evidence store; failed runs are explicitly triaged as product defect or environment defect.
@@ -816,6 +820,8 @@ The pilot should include a small subset of representative products. The selectio
 
 It is not recommended to start with all repositories or all products participating in the release.
 
+`tractusx-testlab` is a candidate for the first PoC to define the E2E tests for the applications using the umbrella deployment. Its existing umbrella end-to-end workflow (Section 2.3) can serve as the starting point for the pilot pipeline, so that the PoC concentrates on defining the release-relevant E2E scenarios rather than on test infrastructure.
+
 ### 11.2 Components to Implement First
 
 The first pilot should implement the minimum capabilities required to validate the concept:
@@ -827,6 +833,7 @@ The first pilot should implement the minimum capabilities required to validate t
 - ephemeral validation environment within GitHub Actions runners (custom runners for the full bundle, see Section 9.2),
 - initial test data and identity bootstrap mechanism,
 - execution of minimum smoke and cross-participant tests,
+- E2E test definition for the pilot applications, with `tractusx-testlab` as PoC candidate,
 - publication of results,
 - quality gate checklist.
 
@@ -840,9 +847,10 @@ The first pilot should implement the minimum capabilities required to validate t
 6. Prepare the runner-based environment provisioning and umbrella-based deployment.
 7. Define required minimum test data and identity bootstrap.
 8. Integrate smoke tests and existing integration tests.
-9. Publish results in a centralised format.
-10. Evaluate the defined quality gates.
-11. Document findings, gaps and expansion effort.
+9. Define the pilot E2E scenarios as `tractusx-testlab` TCKs and run them against the umbrella deployment, reusing testlab's umbrella end-to-end workflow as the starting point.
+10. Publish results in a centralised format.
+11. Evaluate the defined quality gates.
+12. Document findings, gaps and expansion effort.
 
 ### 11.4 Inputs Required Before Implementation
 
@@ -859,6 +867,7 @@ Before starting the pilot, the following inputs are required:
 - minimum test data,
 - identity/trust prerequisites,
 - existing tests,
+- availability of `tractusx-testlab` maintainers to support the PoC,
 - minimum release readiness criteria,
 - decision on where evidence and results should be published.
 
@@ -870,6 +879,7 @@ The pilot should produce:
 - umbrella-based automated deployment of selected products,
 - one validated cross-participant flow,
 - execution of a minimum test set,
+- assessment of `tractusx-testlab` as the E2E test definition and execution approach for release validation,
 - centralised result evidence,
 - initial validation of quality gates,
 - list of technical and organisational gaps,
@@ -1008,6 +1018,7 @@ flowchart LR
 | Results not integrated into release | Pilot remains isolated | Connect evidence/reporting with SIG Release review |
 | Test data and identity underestimated | Pilot proves deployment but not real dataspace interoperability | Treat identity and test data as dedicated pilot work |
 | Validation infrastructure security not addressed | New attack surface and compliance risk | Include secrets, certificates and access control in scope |
+| Pre-release maturity of `tractusx-testlab` (alpha TCK syntax) | Breaking changes in test definitions; rework of pilot E2E tests | Limit to the PoC scope, pin the testlab version, align changes with the testlab maintainers |
 
 ### 13.2 Dependencies
 
@@ -1018,6 +1029,7 @@ The concept depends on:
 - participating products with minimum TRG prerequisites,
 - technical owners for pilot candidates,
 - availability of umbrella-based deployment knowledge,
+- support from the `tractusx-testlab` project if it is used for the E2E PoC,
 - custom GitHub runners with sufficient resources (or a fallback cloud environment) for full-bundle validation,
 - ability to centralise evidence and reporting,
 - alignment between release management, platform/infrastructure, quality coordination and security/compliance.
@@ -1042,6 +1054,7 @@ This concept intentionally leaves the following decisions open:
 - where Catena-X standard conformance tests are located and who owns them — they are not part of TRE as scoped here (Section 6.2); presumably a Catena-X topic,
 - whether the full multi-participant bundle is technically feasible inside (custom) GitHub runners, to be validated early in implementation (Section 9.2),
 - which products should be selected for the first pilot,
+- whether `tractusx-testlab` is confirmed after the PoC as the standard way to define and execute release E2E tests, and who owns the release TCKs (Sections 9.5, 11),
 - who owns the long-term TRE capability, and how it is staffed (placement with Release Management vs. a dedicated role, Section 4.3),
 - confirmation of the release authority proposal in Section 6.2,
 - where evidence and reporting should be published (provisional recommendation in Section 9.5),
