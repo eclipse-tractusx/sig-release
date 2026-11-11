@@ -21,6 +21,7 @@ Please check the [Change Log(s)](CHANGELOG.md) for content, known knowns, and ba
 See [planning](./docs/planning.md), for information about planning and roadmap process.
 See [product release](./docs/product_release.md), for information about singular product releases.
 See [Tractus-X release](./docs/tractus-x-release.md), for our overarching release strategy.
+See [technical release engineering](./docs/technical-release-engineering.md), for the concept proposal on reproducible, evidence-based release validation.
 
 
 
