@@ -31,11 +31,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Concatenate dependencies
         run: cat release-automation/go.sum release-notifier/go.sum > dash-input.sum
       - name: Run dash
         id: run-dash
-        uses: eclipse-tractusx/sig-infra/.github/actions/run-dash@main
+        uses: eclipse-tractusx/sig-infra/.github/actions/run-dash@1a2be9d3b599c081a4a307d8124f33d209f7c54e # main
         with:
           dash_input: "dash-input.sum"
