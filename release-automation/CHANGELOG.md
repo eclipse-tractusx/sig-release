@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/eclipse-tractusx/sig-release/compare/v1.3.2...v1.4.0) (2026-11-23)
+
+
+### Features
+
+* add nginx/nginx-unpriviledged ([#1799](https://github.com/eclipse-tractusx/sig-release/issues/1799)) ([0c91c40](https://github.com/eclipse-tractusx/sig-release/commit/0c91c40458b05ddc13f96926ee88ce8c29274ba1))
+* make admin guide path configurable via .tractusx configureReleaseChecks ([#1731](https://github.com/eclipse-tractusx/sig-release/issues/1731)) ([54d0bf0](https://github.com/eclipse-tractusx/sig-release/commit/54d0bf02f0ea45f5c7bd3df13feda9d1468a002e))
+
 ## [1.3.2](https://github.com/eclipse-tractusx/sig-release/compare/v1.3.1...v1.3.2) (2026-03-02)
 
 
