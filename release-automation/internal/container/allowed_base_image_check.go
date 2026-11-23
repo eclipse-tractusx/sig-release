@@ -29,6 +29,8 @@ import (
 var baseImageAllowList = []string{
 	"eclipse-temurin",
 	"nginxinc/nginx-unprivileged",
+	// successor of nginxinc/nginx-unprivileged starting with versions newer than 1.31.7
+	"nginx/nginx-unprivileged",
 	"mcr.microsoft.com/dotnet/runtime",
 	"mcr.microsoft.com/dotnet/aspnet",
 	"alpine",
