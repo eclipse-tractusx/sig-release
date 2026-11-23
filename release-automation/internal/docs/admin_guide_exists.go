@@ -36,7 +36,7 @@ import (
 
 var defaultAdminGuideGlob = []string{
 	"docs/admin/*.md",
-	"docs/admin/*.adoc"
+	"docs/admin/*.adoc",
 }
 
 type AdminGuideExists struct {
