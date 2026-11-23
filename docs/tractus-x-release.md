@@ -25,6 +25,8 @@ Note: In every quarterly TX release, we shall expect evolutions (new versions) o
 
 Products **must** opt-in to the process in order to be included in a Tractus-X release. (see product release.md)
 
+A concept proposal for making this qualification process more reproducible and evidence-based — quality gates, a release manifest, a parallel validation environment and a toolchain recommendation — is described in [technical release engineering](technical-release-engineering.md). It is a proposal under discussion and does not change the process documented here.
+
 
 ## Process abstract (future state; or “to-be”)
 
